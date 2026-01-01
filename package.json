@@ -1,7 +1,7 @@
 {
   "name": "llm-zoo",
   "version": "1.0.1",
-  "description": "80+ LLM models. Pricing, capabilities, context windows. Always current.",
+  "description": "70+ LLM models. Pricing, capabilities, context windows. Always current.",
   "keywords": [
     "llm",
     "gpt",
@@ -72,7 +72,7 @@
     "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
-    "zod": "^3.22.0 || ^4.0.0"
+    "zod": "^4.0.0"
   },
   "peerDependenciesMeta": {
     "zod": {
@@ -82,7 +82,7 @@
   "devDependencies": {
     "tsup": "^8.0.0",
     "typescript": "^5.3.0",
-    "zod": "^3.22.0"
+    "zod": "^4.0.0"
   },
   "engines": {
     "node": ">=18.0.0"

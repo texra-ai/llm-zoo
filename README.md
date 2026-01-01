@@ -2,7 +2,7 @@
 
 LLM pricing and capabilities change weekly. Docs are scattered. There's no single source of truth.
 
-**One package. 80+ models. Always current.**
+**One package. 70+ models. Always current.**
 
 ```typescript
 import { lookup, cost, cheapest } from 'llm-zoo';
@@ -142,13 +142,12 @@ const { totalModels, providers, pricing, context } = insights();
 
 ---
 
-## Zod Schemas
+## Zod Schemas (v4)
 
-Validate model configs at runtime:
+Validate model configs at runtime (requires `zod@^4.0.0`):
 
 ```typescript
-import { ModelConfigSchema } from 'llm-zoo';
-// or import { ModelConfigSchema } from 'llm-zoo/schemas';
+import { ModelConfigSchema } from 'llm-zoo/schemas';
 
 // Validate custom model config
 const result = ModelConfigSchema.safeParse(myConfig);
