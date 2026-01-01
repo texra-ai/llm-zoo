@@ -1,7 +1,7 @@
 {
   "name": "llm-zoo",
-  "version": "1.0.0",
-  "description": "70+ LLM models. Pricing, capabilities, context windows. Always current.",
+  "version": "1.0.1",
+  "description": "80+ LLM models. Pricing, capabilities, context windows. Always current.",
   "keywords": [
     "llm",
     "gpt",
@@ -32,7 +32,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/texra-ai/llm-zoo.git"
+    "url": "https://github.com/texra-ai/llm-zoo"
   },
   "homepage": "https://github.com/texra-ai/llm-zoo",
   "bugs": {
@@ -72,7 +72,7 @@
     "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
-    "zod": "^3.22.0"
+    "zod": "^3.22.0 || ^4.0.0"
   },
   "peerDependenciesMeta": {
     "zod": {

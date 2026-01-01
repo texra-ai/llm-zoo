@@ -2,7 +2,7 @@
 
 LLM pricing and capabilities change weekly. Docs are scattered. There's no single source of truth.
 
-**One package. 78 models. Always current.**
+**One package. 80+ models. Always current.**
 
 ```typescript
 import { lookup, cost, cheapest } from 'llm-zoo';
@@ -52,10 +52,10 @@ npm install llm-zoo
 | `gpt45` | $75 | $150 | - | OpenAI |
 | `gpt52pro` | $21 | $168 | ✓ | OpenAI |
 | `o3pro` | $20 | $80 | ✓ | OpenAI |
-| `opus45T` | $5 | $25 | ✓ | Anthropic |
-| `opus45` | $5 | $25 | - | Anthropic |
 | `opus41T` | $15 | $75 | ✓ | Anthropic |
 | `opus41` | $15 | $75 | - | Anthropic |
+| `opus45T` | $5 | $25 | ✓ | Anthropic |
+| `opus45` | $5 | $25 | - | Anthropic |
 
 ### Largest Context
 
@@ -84,12 +84,12 @@ npm install llm-zoo
 
 | Provider | Models | Highlights |
 |----------|--------|------------|
-| **Anthropic** | 20 | 90% cache savings, PDF support |
-| **OpenAI** | 27 | o-series reasoning, deep research |
+| **Anthropic** | 21 | 90% cache savings, PDF support |
+| **OpenAI** | 28 | o-series reasoning, deep research |
 | **Google** | 6 | 1M context, audio input |
 | **DeepSeek** | 7 | Budget reasoning ($0.28/1M) |
 | **xAI** | 5 | Grok 4 with 256K context |
-| **Moonshot** | 7 | Kimi K2 thinking mode |
+| **Moonshot** | 8 | Kimi K2 thinking mode |
 | **DashScope** | 3 | Qwen with 1M context |
 | **Copilot** | 1 | Free GPT-4o |
 | **OpenRouter** | 2 | Llama 405B, QVQ-72B |

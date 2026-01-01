@@ -1,7 +1,7 @@
 /**
  * # LLM Zoo
  *
- * A comprehensive database of 70+ language models from 9 providers.
+ * A comprehensive database of 80+ language models from 9 providers.
  * Zero dependencies. Full TypeScript. Tree-shakeable.
  *
  * @packageDocumentation
