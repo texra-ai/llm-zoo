@@ -1,7 +1,7 @@
 {
   "name": "llm-zoo",
-  "version": "1.0.3",
-  "description": "70+ LLM models. Pricing, capabilities, context windows. Always current.",
+  "version": "1.0.4",
+  "description": "80+ LLM models. Pricing, capabilities, context windows. Always current.",
   "keywords": [
     "llm",
     "gpt",

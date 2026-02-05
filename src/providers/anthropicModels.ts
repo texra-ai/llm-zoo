@@ -26,6 +26,44 @@ const ANTHROPIC_DEFAULT_CAPABILITIES: ModelCapabilities = {
  * Includes Claude 4.x, 3.x Opus, Sonnet, and Haiku variants.
  */
 export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
+  opus46T: {
+    name: 'opus46T',
+    fullName: 'claude-opus-4-6',
+    openrouterFullName: 'anthropic/claude-opus-4.6:thinking',
+    provider: ModelProvider.ANTHROPIC,
+    maxOutputTokens: 128000,
+    contextWindow: 200000,
+    inputPrice: 5.0,
+    outputPrice: 25.0,
+    capabilities: {
+      ...ANTHROPIC_DEFAULT_CAPABILITIES,
+      supportsNativeMCPServer: true,
+      supportsNativeWebSearch: true,
+      supportsNativeCodeExecution: true,
+      supportsAssistantPrefill: false,
+      supportsReasoning: true,
+      supportsInterleavedThinking: true,
+    },
+    openRouterOnly: false,
+  },
+  opus46: {
+    name: 'opus46',
+    fullName: 'claude-opus-4-6',
+    openrouterFullName: 'anthropic/claude-opus-4.6',
+    provider: ModelProvider.ANTHROPIC,
+    maxOutputTokens: 128000,
+    contextWindow: 200000,
+    inputPrice: 5.0,
+    outputPrice: 25.0,
+    capabilities: {
+      ...ANTHROPIC_DEFAULT_CAPABILITIES,
+      supportsNativeWebSearch: true,
+      supportsNativeCodeExecution: true,
+      supportsAssistantPrefill: false,
+      supportsReasoning: false,
+    },
+    openRouterOnly: false,
+  },
   opus45T: {
     name: 'opus45T',
     fullName: 'claude-opus-4-5',
