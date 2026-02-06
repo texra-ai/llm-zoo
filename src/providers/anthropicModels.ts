@@ -83,6 +83,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
       supportsInterleavedThinking: true,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   opus45: {
     name: 'opus45',
@@ -101,6 +102,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
       supportsReasoning: false,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   opus41T: {
     name: 'opus41T',
@@ -121,6 +123,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
       supportsInterleavedThinking: true,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   opus41: {
     name: 'opus41',
@@ -139,6 +142,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
       supportsReasoning: false,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   opus4T: {
     name: 'opus4T',
@@ -159,6 +163,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
       supportsInterleavedThinking: true,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   opus4: {
     name: 'opus4',
@@ -177,6 +182,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
       supportsReasoning: false,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   sonnet45T: {
     name: 'sonnet45T',
@@ -270,6 +276,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
       supportsInterleavedThinking: true,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   sonnet4: {
     name: 'sonnet4',
@@ -288,6 +295,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
       supportsReasoning: false,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   sonnet37T: {
     name: 'sonnet37T',
@@ -306,6 +314,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
       supportsReasoning: true,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   sonnet37: {
     name: 'sonnet37',
@@ -324,6 +333,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
       supportsReasoning: false,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   opus3: {
     name: 'opus3',
@@ -340,6 +350,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
       supportsReasoning: false,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   sonnet36: {
     name: 'sonnet36',
@@ -356,6 +367,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
       supportsReasoning: false,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   sonnet35: {
     name: 'sonnet35',
@@ -373,6 +385,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
       supportsReasoning: false,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   sonnet3: {
     name: 'sonnet3',
@@ -389,6 +402,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
       supportsReasoning: false,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   haiku35: {
     name: 'haiku35',
@@ -408,6 +422,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
       supportsVision: true,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   haiku3: {
     name: 'haiku3',
@@ -424,5 +439,6 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
       supportsReasoning: false,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
 };

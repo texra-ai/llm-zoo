@@ -28,6 +28,7 @@ export const OTHER_MODELS: Record<string, ModelConfig> = {
     outputPrice: 3.0,
     capabilities: OTHER_DEFAULT_CAPABILITIES,
     openRouterOnly: true,
+    deprecated: true,
   },
   'qvq-72b': {
     name: 'qvq-72b',
@@ -42,5 +43,6 @@ export const OTHER_MODELS: Record<string, ModelConfig> = {
       ...OTHER_DEFAULT_CAPABILITIES,
     },
     openRouterOnly: true,
+    deprecated: true,
   },
 };

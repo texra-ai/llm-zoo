@@ -82,6 +82,7 @@ export const OPENAI_MODELS: Record<string, ModelConfig> = {
       supportsPredictiveOutput: true,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   gpt45: {
     name: 'gpt45',
@@ -97,6 +98,7 @@ export const OPENAI_MODELS: Record<string, ModelConfig> = {
       supportsPredictiveOutput: false,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   gpt4o: {
     name: 'gpt4o',
@@ -115,6 +117,7 @@ export const OPENAI_MODELS: Record<string, ModelConfig> = {
       supportsPredictiveOutput: true,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   gpt4t: {
     name: 'gpt4t',
@@ -131,6 +134,7 @@ export const OPENAI_MODELS: Record<string, ModelConfig> = {
       supportsReasoning: false,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   'gpt4o-': {
     name: 'gpt4o-',
@@ -146,6 +150,7 @@ export const OPENAI_MODELS: Record<string, ModelConfig> = {
       supportsPredictiveOutput: true,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   gpt4ol: {
     name: 'gpt4ol',
@@ -161,5 +166,6 @@ export const OPENAI_MODELS: Record<string, ModelConfig> = {
       supportsReasoning: true,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
 };

@@ -61,6 +61,7 @@ export const ModelConfigSchema = z.object({
   openrouterFullName: z.string().optional(),
   baseUrl: z.string().optional(),
   requiresResponsesAPI: z.boolean().optional(),
+  deprecated: z.boolean().optional(),
 });
 
 /** Registry of all model configurations. */

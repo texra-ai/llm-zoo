@@ -206,4 +206,11 @@ export interface ModelConfig {
    * Used for special models like deep research that bypass standard chat completions.
    */
   requiresResponsesAPI?: boolean;
+
+  /**
+   * Whether this model is deprecated and no longer recommended for use.
+   * Deprecated models are still functional but have been superseded by newer versions.
+   * @default false
+   */
+  deprecated?: boolean;
 }

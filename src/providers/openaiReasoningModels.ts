@@ -44,6 +44,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
       supportsVision: true,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   o3pro: {
     name: 'o3pro',
@@ -63,6 +64,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
       supportsVision: true,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   o3: {
     name: 'o3',
@@ -83,6 +85,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
       supportsVision: true,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   'o3-': {
     name: 'o3-',
@@ -100,6 +103,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
       supportsVision: false,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   o1pro: {
     name: 'o1pro',
@@ -116,6 +120,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
       supportsVision: true,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   o1: {
     name: 'o1',
@@ -133,6 +138,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
       supportsNativePdf: true,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   o1preview: {
     name: 'o1preview',
@@ -149,6 +155,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
       supportsSystemPrompt: false,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   'o1-': {
     name: 'o1-',
@@ -165,6 +172,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
       supportsSystemPrompt: false,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   gptoss: {
     name: 'gptoss',
@@ -180,6 +188,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
       supportsVision: false,
     },
     openRouterOnly: true,
+    deprecated: true,
   },
   'gptoss-': {
     name: 'gptoss-',
@@ -195,6 +204,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
       supportsVision: false,
     },
     openRouterOnly: true,
+    deprecated: true,
   },
   gpt5pro: {
     name: 'gpt5pro',
@@ -216,6 +226,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
       supportsNativePdf: true,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   gpt5: {
     name: 'gpt5',
@@ -237,6 +248,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
       supportsNativePdf: true,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   gpt51: {
     name: 'gpt51',
@@ -259,6 +271,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
       supportsNativePdf: true,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   gpt52pro: {
     name: 'gpt52pro',
@@ -344,6 +357,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
       supportsNativePdf: true,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   'gpt5--': {
     name: 'gpt5--',
@@ -365,5 +379,6 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
       supportsNativePdf: true,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
 };

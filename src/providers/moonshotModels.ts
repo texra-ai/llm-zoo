@@ -34,6 +34,7 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
       supportsVision: false,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   kimiv: {
     name: 'kimi128kv',
@@ -49,6 +50,7 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
       supportsVision: true,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   kimit: {
     name: 'kimit',
@@ -65,6 +67,7 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
       supportsReasoning: true,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   kimi2: {
     name: 'kimi2',
@@ -83,6 +86,7 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
       supportsReasoning: false,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   'kimi2+': {
     name: 'kimi2+',
@@ -101,6 +105,7 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
       supportsReasoning: false,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   kimi2T: {
     name: 'kimi2T',
@@ -121,6 +126,7 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
       reasoningEffort: ReasoningEffort.HIGH,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   'kimi2T+': {
     name: 'kimi2T+',
@@ -141,6 +147,7 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
       reasoningEffort: ReasoningEffort.HIGH,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   // kimi-k2.5: A model that can enable or disable thinking capability, enabled by default. You can disable thinking by using {"type": "disabled"}
   kimi25: {

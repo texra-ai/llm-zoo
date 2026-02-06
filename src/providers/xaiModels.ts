@@ -50,6 +50,7 @@ export const XAI_MODELS: Record<string, ModelConfig> = {
       supportsReasoningEffort: false,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   'grok3-': {
     name: 'grok3-',
@@ -67,6 +68,7 @@ export const XAI_MODELS: Record<string, ModelConfig> = {
       reasoningEffort: ReasoningEffort.LOW,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   grok2: {
     name: 'grok2',
@@ -79,6 +81,7 @@ export const XAI_MODELS: Record<string, ModelConfig> = {
     outputPrice: 10.0,
     capabilities: XAI_DEFAULT_CAPABILITIES,
     openRouterOnly: false,
+    deprecated: true,
   },
   grok2v: {
     name: 'grok2v',
@@ -94,5 +97,6 @@ export const XAI_MODELS: Record<string, ModelConfig> = {
       supportsVision: true,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
 };
