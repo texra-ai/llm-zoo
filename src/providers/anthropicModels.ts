@@ -29,7 +29,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
   opus46T: {
     name: 'opus46T',
     fullName: 'claude-opus-4-6',
-    openrouterFullName: 'anthropic/claude-opus-4.6:thinking',
+    openrouterFullName: 'anthropic/claude-opus-4.6',
     provider: ModelProvider.ANTHROPIC,
     maxOutputTokens: 128000,
     contextWindow: 200000,
@@ -67,7 +67,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
   opus45T: {
     name: 'opus45T',
     fullName: 'claude-opus-4-5',
-    openrouterFullName: 'anthropic/claude-opus-4.5:thinking',
+    openrouterFullName: 'anthropic/claude-opus-4.5',
     provider: ModelProvider.ANTHROPIC,
     maxOutputTokens: 64000,
     contextWindow: 200000,
@@ -224,7 +224,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
   haiku45T: {
     name: 'haiku45T',
     fullName: 'claude-haiku-4-5-20251001',
-    openrouterFullName: 'anthropic/claude-haiku-4.5:thinking',
+    openrouterFullName: 'anthropic/claude-haiku-4.5',
     provider: ModelProvider.ANTHROPIC,
     maxOutputTokens: 64000,
     contextWindow: 200000,
