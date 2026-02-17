@@ -359,6 +359,7 @@ export function insights(): {
     'supportsVision',
     'supportsNativeCodeExecution',
     'supportsNativeWebSearch',
+    'supportsDynamicFilteringWebSearch',
     'supportsPromptCaching',
     'supportsNativePdf',
     'supportsNativeAudio',
