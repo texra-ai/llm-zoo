@@ -29,6 +29,7 @@ export const ModelCapabilitiesSchema = z.object({
   supportsFunctionCalling: z.boolean(),
   supportsNativeMCPServer: z.boolean(),
   supportsNativeWebSearch: z.boolean(),
+  supportsDynamicFilteringWebSearch: z.boolean(),
   supportsNativeCodeExecution: z.boolean(),
   supportsPromptCaching: z.boolean(),
   supportsAutoPromptCaching: z.boolean(),

@@ -68,6 +68,14 @@ export interface ModelCapabilities {
   /** Whether the model has built-in web search capability */
   supportsNativeWebSearch: boolean;
 
+  /**
+   * Whether the model supports dynamic filtering for web search (web_search_20260209).
+   * Dynamic filtering allows the model to write and execute code to post-process
+   * search results before loading them into context, improving accuracy and reducing tokens.
+   * Requires code execution to be enabled.
+   */
+  supportsDynamicFilteringWebSearch: boolean;
+
   /** Whether the model can execute code natively (e.g., Python sandbox) */
   supportsNativeCodeExecution: boolean;
 
@@ -129,6 +137,7 @@ export const DEFAULT_MODEL_CAPABILITIES: ModelCapabilities = {
   supportsFunctionCalling: true,
   supportsNativeMCPServer: false,
   supportsNativeWebSearch: false,
+  supportsDynamicFilteringWebSearch: false,
   supportsNativeCodeExecution: false,
   supportsPromptCaching: false,
   supportsAutoPromptCaching: false,
