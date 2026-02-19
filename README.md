@@ -257,6 +257,17 @@ Object.keys(ANTHROPIC_MODELS);
 
 ---
 
+## Open Source by texra-ai
+
+This package is part of a growing collection of open-source projects by [texra-ai](https://github.com/texra-ai):
+
+| Project | Description | Links |
+|---------|-------------|-------|
+| **llm-zoo** | 80+ LLM models — pricing, capabilities, and context windows in one package | [GitHub](https://github.com/texra-ai/llm-zoo) · [npm](https://www.npmjs.com/package/llm-zoo) |
+| **mcp-server-mathematica** | MCP server that executes Mathematica code via `wolframscript` and verifies mathematical derivations | [GitHub](https://github.com/texra-ai/mcp-server-mathematica) |
+
+---
+
 ## Contributing
 
 Found incorrect pricing? Missing capability? New model released? **PRs welcome!**
