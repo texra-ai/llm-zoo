@@ -29,6 +29,27 @@ const GOOGLE_DEFAULT_CAPABILITIES: ModelCapabilities = {
  * Includes Gemini 3.x and 2.5 Pro/Flash variants.
  */
 export const GOOGLE_MODELS: Record<string, ModelConfig> = {
+  gemini31p: {
+    name: 'gemini31p',
+    fullName: 'gemini-3.1-pro-preview',
+    openrouterFullName: 'google/gemini-3.1-pro-preview',
+    provider: ModelProvider.GOOGLE,
+    maxOutputTokens: 65536,
+    contextWindow: 1048576,
+    inputPrice: 2.0,
+    outputPrice: 12.0,
+    capabilities: {
+      ...GOOGLE_DEFAULT_CAPABILITIES,
+      supportsPromptCaching: true,
+      supportsAutoPromptCaching: true,
+      supportsReasoning: true,
+      supportsReasoningEffort: true,
+      reasoningEffort: ReasoningEffort.HIGH,
+      supportsNativeCodeExecution: true,
+      supportsNativeMCPServer: true,
+    },
+    openRouterOnly: false,
+  },
   gemini3p: {
     name: 'gemini3p',
     fullName: 'gemini-3-pro-preview',
