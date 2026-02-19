@@ -70,6 +70,7 @@ export const GOOGLE_MODELS: Record<string, ModelConfig> = {
       supportsNativeMCPServer: true,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   gemini3f: {
     name: 'gemini3f',
