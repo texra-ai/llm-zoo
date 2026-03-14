@@ -185,6 +185,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
   gptoss: {
     name: 'gptoss',
     fullName: 'gpt-oss-120b',
+    shortName: 'gpt-oss-120b',
     openrouterFullName: 'openai/gpt-oss-120b',
     provider: ModelProvider.OPENAI,
     maxOutputTokens: 33000,
@@ -201,6 +202,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
   'gptoss-': {
     name: 'gptoss-',
     fullName: 'gpt-oss-20b',
+    shortName: 'gpt-oss-20b',
     openrouterFullName: 'openai/gpt-oss-20b',
     provider: ModelProvider.OPENAI,
     maxOutputTokens: 33000,
@@ -332,6 +334,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
   gpt52codex: {
     name: 'gpt52codex',
     fullName: 'gpt-5.2-codex',
+    shortName: 'gpt-5.2-codex',
     openrouterFullName: 'openai/gpt-5.2-codex',
     provider: ModelProvider.OPENAI,
     maxOutputTokens: 128000,
@@ -354,6 +357,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
   gpt53codex: {
     name: 'gpt53codex',
     fullName: 'gpt-5.3-codex',
+    shortName: 'gpt-5.3-codex',
     openrouterFullName: 'openai/gpt-5.3-codex',
     provider: ModelProvider.OPENAI,
     maxOutputTokens: 128000,

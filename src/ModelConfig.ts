@@ -176,10 +176,10 @@ export interface ModelConfig {
 
   /**
    * Unpinned API model name without date suffix (e.g., "gpt-5.4", "claude-opus-4-1").
-   * Only set when the short name differs from fullName.
+   * Equals fullName when the model has no date-pinned variant.
    * Useful for providers/clients that prefer non-date-pinned model identifiers.
    */
-  shortName?: string;
+  shortName: string;
 
   /** The model's provider */
   provider: ModelProvider;

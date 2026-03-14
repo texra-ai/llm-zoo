@@ -90,6 +90,7 @@ export const OPENAI_MODELS: Record<string, ModelConfig> = {
   gpt45: {
     name: 'gpt45',
     fullName: 'gpt-4.5-preview',
+    shortName: 'gpt-4.5-preview',
     openrouterFullName: 'openai/gpt-4.5-preview',
     provider: ModelProvider.OPENAI,
     maxOutputTokens: 16384,
@@ -161,6 +162,7 @@ export const OPENAI_MODELS: Record<string, ModelConfig> = {
   gpt4ol: {
     name: 'gpt4ol',
     fullName: 'chatgpt-4o-latest',
+    shortName: 'chatgpt-4o-latest',
     openrouterFullName: 'openai/chatgpt-4o-latest',
     provider: ModelProvider.OPENAI,
     maxOutputTokens: 16384,

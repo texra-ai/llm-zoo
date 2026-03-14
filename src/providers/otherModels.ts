@@ -20,6 +20,7 @@ export const OTHER_MODELS: Record<string, ModelConfig> = {
   llama31: {
     name: 'llama31',
     fullName: 'meta-llama/llama-3.1-405b-instruct',
+    shortName: 'meta-llama/llama-3.1-405b-instruct',
     openrouterFullName: 'meta-llama/llama-3.1-405b-instruct',
     provider: ModelProvider.OTHERS,
     maxOutputTokens: 131072,
@@ -33,6 +34,7 @@ export const OTHER_MODELS: Record<string, ModelConfig> = {
   'qvq-72b': {
     name: 'qvq-72b',
     fullName: 'qwen/qvq-72b-preview',
+    shortName: 'qwen/qvq-72b-preview',
     openrouterFullName: 'qwen/qvq-72b-preview',
     provider: ModelProvider.OTHERS,
     maxOutputTokens: 4096,

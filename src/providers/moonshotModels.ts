@@ -23,6 +23,7 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
   kimi: {
     name: 'kimi128k',
     fullName: 'moonshot-v1-128k',
+    shortName: 'moonshot-v1-128k',
     openrouterFullName: 'moonshotai/moonshot-v1-128k',
     provider: ModelProvider.MOONSHOT,
     maxOutputTokens: 64000,
@@ -39,6 +40,7 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
   kimiv: {
     name: 'kimi128kv',
     fullName: 'moonshot-v1-128k-vision-preview',
+    shortName: 'moonshot-v1-128k-vision-preview',
     openrouterFullName: 'moonshotai/moonshot-v1-128k-vision',
     provider: ModelProvider.MOONSHOT,
     maxOutputTokens: 64000,
@@ -55,6 +57,7 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
   kimit: {
     name: 'kimit',
     fullName: 'kimi-thinking-preview',
+    shortName: 'kimi-thinking-preview',
     openrouterFullName: 'moonshotai/kimi-thinking-preview',
     provider: ModelProvider.MOONSHOT,
     maxOutputTokens: 64000,
@@ -92,6 +95,7 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
   'kimi2+': {
     name: 'kimi2+',
     fullName: 'kimi-k2-turbo-preview',
+    shortName: 'kimi-k2-turbo-preview',
     openrouterFullName: 'moonshotai/kimi-k2-turbo',
     provider: ModelProvider.MOONSHOT,
     maxOutputTokens: 64000,
@@ -111,6 +115,7 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
   kimi2T: {
     name: 'kimi2T',
     fullName: 'kimi-k2-thinking',
+    shortName: 'kimi-k2-thinking',
     openrouterFullName: 'moonshotai/kimi-k2-thinking',
     provider: ModelProvider.MOONSHOT,
     maxOutputTokens: 64000,
@@ -132,6 +137,7 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
   'kimi2T+': {
     name: 'kimi2T+',
     fullName: 'kimi-k2-thinking-turbo',
+    shortName: 'kimi-k2-thinking-turbo',
     openrouterFullName: 'moonshotai/kimi-k2-thinking-turbo',
     provider: ModelProvider.MOONSHOT,
     maxOutputTokens: 64000,
@@ -154,6 +160,7 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
   kimi25: {
     name: 'kimi25',
     fullName: 'kimi-k2.5',
+    shortName: 'kimi-k2.5',
     openrouterFullName: 'moonshotai/kimi-k2.5',
     provider: ModelProvider.MOONSHOT,
     maxOutputTokens: 64000,
@@ -171,6 +178,7 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
   kimi25T: {
     name: 'kimi25T',
     fullName: 'kimi-k2.5',
+    shortName: 'kimi-k2.5',
     openrouterFullName: 'moonshotai/kimi-k2.5',
     provider: ModelProvider.MOONSHOT,
     maxOutputTokens: 64000,

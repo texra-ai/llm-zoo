@@ -32,6 +32,7 @@ export const GOOGLE_MODELS: Record<string, ModelConfig> = {
   gemini31p: {
     name: 'gemini31p',
     fullName: 'gemini-3.1-pro-preview',
+    shortName: 'gemini-3.1-pro-preview',
     openrouterFullName: 'google/gemini-3.1-pro-preview',
     provider: ModelProvider.GOOGLE,
     maxOutputTokens: 65536,
@@ -53,6 +54,7 @@ export const GOOGLE_MODELS: Record<string, ModelConfig> = {
   gemini3p: {
     name: 'gemini3p',
     fullName: 'gemini-3-pro-preview',
+    shortName: 'gemini-3-pro-preview',
     openrouterFullName: 'google/gemini-3-pro-preview',
     provider: ModelProvider.GOOGLE,
     maxOutputTokens: 65536,
@@ -75,6 +77,7 @@ export const GOOGLE_MODELS: Record<string, ModelConfig> = {
   gemini3f: {
     name: 'gemini3f',
     fullName: 'gemini-3-flash-preview',
+    shortName: 'gemini-3-flash-preview',
     openrouterFullName: 'google/gemini-3-flash-preview',
     provider: ModelProvider.GOOGLE,
     maxOutputTokens: 65536,
@@ -96,6 +99,7 @@ export const GOOGLE_MODELS: Record<string, ModelConfig> = {
   gemini25p: {
     name: 'gemini25p',
     fullName: 'gemini-2.5-pro',
+    shortName: 'gemini-2.5-pro',
     openrouterFullName: 'google/gemini-2.5-pro',
     provider: ModelProvider.GOOGLE,
     maxOutputTokens: 65536,
@@ -117,6 +121,7 @@ export const GOOGLE_MODELS: Record<string, ModelConfig> = {
   gemini25f: {
     name: 'gemini25f',
     fullName: 'gemini-flash-latest',
+    shortName: 'gemini-flash-latest',
     openrouterFullName: 'google/gemini-2.5-flash-preview-09-2025',
     provider: ModelProvider.GOOGLE,
     maxOutputTokens: 65536,
@@ -138,6 +143,7 @@ export const GOOGLE_MODELS: Record<string, ModelConfig> = {
   gemini25f0617: {
     name: 'gemini25f',
     fullName: 'gemini-2.5-flash',
+    shortName: 'gemini-2.5-flash',
     openrouterFullName: 'google/gemini-2.5-flash',
     provider: ModelProvider.GOOGLE,
     maxOutputTokens: 65536,

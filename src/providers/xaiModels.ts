@@ -39,6 +39,7 @@ export const XAI_MODELS: Record<string, ModelConfig> = {
   grok3: {
     name: 'grok3',
     fullName: 'grok-3-beta',
+    shortName: 'grok-3-beta',
     openrouterFullName: 'x-ai/grok-3',
     provider: ModelProvider.XAI,
     maxOutputTokens: 131072,
@@ -56,6 +57,7 @@ export const XAI_MODELS: Record<string, ModelConfig> = {
   'grok3-': {
     name: 'grok3-',
     fullName: 'grok-3-mini-beta',
+    shortName: 'grok-3-mini-beta',
     openrouterFullName: 'x-ai/grok-3-mini-beta',
     provider: ModelProvider.XAI,
     maxOutputTokens: 131072,

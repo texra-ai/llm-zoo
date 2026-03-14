@@ -29,6 +29,7 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
   deepseek: {
     name: 'deepseek',
     fullName: 'deepseek-chat',
+    shortName: 'deepseek-chat',
     openrouterFullName: 'deepseek/deepseek-v3.2',
     provider: ModelProvider.DEEPSEEK,
     maxOutputTokens: 8192,
@@ -46,6 +47,7 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
   deepseekT: {
     name: 'deepseekT',
     fullName: 'deepseek-reasoner',
+    shortName: 'deepseek-reasoner',
     openrouterFullName: 'deepseek/deepseek-v3.2',
     provider: ModelProvider.DEEPSEEK,
     maxOutputTokens: 65536,
@@ -65,6 +67,7 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
   'deepseekT+': {
     name: 'deepseekT+',
     fullName: 'deepseek-reasoner',
+    shortName: 'deepseek-reasoner',
     openrouterFullName: 'deepseek/deepseek-v3.2-speciale',
     provider: ModelProvider.DEEPSEEK,
     maxOutputTokens: 131072,
@@ -85,6 +88,7 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
   dsv3: {
     name: 'dsv3',
     fullName: 'deepseek-chat',
+    shortName: 'deepseek-chat',
     openrouterFullName: 'deepseek/deepseek-chat-v3-0324',
     provider: ModelProvider.DEEPSEEK,
     maxOutputTokens: 64000,
@@ -101,6 +105,7 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
   dsr1: {
     name: 'dsr1',
     fullName: 'deepseek-reasoner',
+    shortName: 'deepseek-reasoner',
     openrouterFullName: 'deepseek/deepseek-r1-0528',
     provider: ModelProvider.DEEPSEEK,
     maxOutputTokens: 65536,
@@ -118,6 +123,7 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
   dsv3o: {
     name: 'dsv3o',
     fullName: 'deepseek-chat',
+    shortName: 'deepseek-chat',
     openrouterFullName: 'deepseek/deepseek-chat-v3-0324',
     provider: ModelProvider.DEEPSEEK,
     maxOutputTokens: 8192,
@@ -134,6 +140,7 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
   dsr1o: {
     name: 'dsr1o',
     fullName: 'deepseek-reasoner',
+    shortName: 'deepseek-reasoner',
     openrouterFullName: 'deepseek/deepseek-r1-0528',
     provider: ModelProvider.DEEPSEEK,
     maxOutputTokens: 64000,
