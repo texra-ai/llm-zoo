@@ -149,6 +149,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
   opus41T: {
     name: 'opus41T',
     fullName: 'claude-opus-4-1-20250805',
+    shortName: 'claude-opus-4-1',
     openrouterFullName: 'anthropic/claude-opus-4.1',
     provider: ModelProvider.ANTHROPIC,
     maxOutputTokens: 32000,
@@ -170,6 +171,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
   opus41: {
     name: 'opus41',
     fullName: 'claude-opus-4-1-20250805',
+    shortName: 'claude-opus-4-1',
     openrouterFullName: 'anthropic/claude-opus-4.1',
     provider: ModelProvider.ANTHROPIC,
     maxOutputTokens: 32000,
@@ -189,6 +191,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
   opus4T: {
     name: 'opus4T',
     fullName: 'claude-opus-4-20250514',
+    shortName: 'claude-opus-4',
     openrouterFullName: 'anthropic/claude-opus-4',
     provider: ModelProvider.ANTHROPIC,
     maxOutputTokens: 32000,
@@ -210,6 +213,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
   opus4: {
     name: 'opus4',
     fullName: 'claude-opus-4-20250514',
+    shortName: 'claude-opus-4',
     openrouterFullName: 'anthropic/claude-opus-4',
     provider: ModelProvider.ANTHROPIC,
     maxOutputTokens: 32000,
@@ -268,6 +272,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
   haiku45T: {
     name: 'haiku45T',
     fullName: 'claude-haiku-4-5-20251001',
+    shortName: 'claude-haiku-4-5',
     openrouterFullName: 'anthropic/claude-haiku-4.5',
     provider: ModelProvider.ANTHROPIC,
     maxOutputTokens: 64000,
@@ -287,6 +292,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
   haiku45: {
     name: 'haiku45',
     fullName: 'claude-haiku-4-5-20251001',
+    shortName: 'claude-haiku-4-5',
     openrouterFullName: 'anthropic/claude-haiku-4.5',
     provider: ModelProvider.ANTHROPIC,
     maxOutputTokens: 64000,
@@ -305,6 +311,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
   sonnet4T: {
     name: 'sonnet4T',
     fullName: 'claude-sonnet-4-20250514',
+    shortName: 'claude-sonnet-4',
     openrouterFullName: 'anthropic/claude-sonnet-4',
     provider: ModelProvider.ANTHROPIC,
     maxOutputTokens: 64000,
@@ -325,6 +332,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
   sonnet4: {
     name: 'sonnet4',
     fullName: 'claude-sonnet-4-20250514',
+    shortName: 'claude-sonnet-4',
     openrouterFullName: 'anthropic/claude-sonnet-4',
     provider: ModelProvider.ANTHROPIC,
     maxOutputTokens: 64000,
@@ -344,6 +352,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
   sonnet37T: {
     name: 'sonnet37T',
     fullName: 'claude-3-7-sonnet-20250219',
+    shortName: 'claude-3-7-sonnet',
     openrouterFullName: 'anthropic/claude-3.7-sonnet:thinking',
     provider: ModelProvider.ANTHROPIC,
     maxOutputTokens: 64000,
@@ -363,6 +372,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
   sonnet37: {
     name: 'sonnet37',
     fullName: 'claude-3-7-sonnet-20250219',
+    shortName: 'claude-3-7-sonnet',
     openrouterFullName: 'anthropic/claude-3.7-sonnet',
     provider: ModelProvider.ANTHROPIC,
     maxOutputTokens: 64000,
@@ -382,6 +392,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
   opus3: {
     name: 'opus3',
     fullName: 'claude-3-opus-20240229',
+    shortName: 'claude-3-opus',
     openrouterFullName: 'anthropic/claude-3-opus:beta',
     provider: ModelProvider.ANTHROPIC,
     maxOutputTokens: 4096,
@@ -399,6 +410,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
   sonnet36: {
     name: 'sonnet36',
     fullName: 'claude-3-5-sonnet-20241022',
+    shortName: 'claude-3-5-sonnet',
     openrouterFullName: 'anthropic/claude-3.5-sonnet:beta',
     provider: ModelProvider.ANTHROPIC,
     maxOutputTokens: 8192,
@@ -416,6 +428,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
   sonnet35: {
     name: 'sonnet35',
     fullName: 'claude-3-5-sonnet-20240620',
+    shortName: 'claude-3-5-sonnet',
     openrouterFullName: 'anthropic/claude-3.5-sonnet-20240620:beta',
     provider: ModelProvider.ANTHROPIC,
     maxOutputTokens: 8192,
@@ -434,6 +447,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
   sonnet3: {
     name: 'sonnet3',
     fullName: 'claude-3-sonnet-20240229',
+    shortName: 'claude-3-sonnet',
     openrouterFullName: 'anthropic/claude-3.5-sonnet-20240229:beta',
     provider: ModelProvider.ANTHROPIC,
     maxOutputTokens: 8192,
@@ -451,6 +465,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
   haiku35: {
     name: 'haiku35',
     fullName: 'claude-3-5-haiku-20241022',
+    shortName: 'claude-3-5-haiku',
     openrouterFullName: 'anthropic/claude-3.5-haiku:beta',
     provider: ModelProvider.ANTHROPIC,
     maxOutputTokens: 8192,
@@ -471,6 +486,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
   haiku3: {
     name: 'haiku3',
     fullName: 'claude-3-haiku-20240307',
+    shortName: 'claude-3-haiku',
     openrouterFullName: 'anthropic/claude-3.5-haiku-20240307:beta',
     provider: ModelProvider.ANTHROPIC,
     maxOutputTokens: 8192,

@@ -159,6 +159,7 @@ export const GOOGLE_MODELS: Record<string, ModelConfig> = {
   'gemini25f-': {
     name: 'gemini25f-',
     fullName: 'gemini-2.5-flash-lite-preview-09-2025',
+    shortName: 'gemini-2.5-flash-lite-preview',
     openrouterFullName: 'google/gemini-2.5-flash-lite-preview-09-2025',
     provider: ModelProvider.GOOGLE,
     maxOutputTokens: 32768,

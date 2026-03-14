@@ -52,6 +52,7 @@ export const ModelCapabilitiesSchema = z.object({
 export const ModelConfigSchema = z.object({
   name: z.string(),
   fullName: z.string(),
+  shortName: z.string().optional(),
   provider: ModelProviderSchema,
   maxOutputTokens: z.number(),
   inputPrice: z.number(),

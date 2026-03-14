@@ -28,6 +28,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
   'o4-': {
     name: 'o4-',
     fullName: 'o4-mini-2025-04-16',
+    shortName: 'o4-mini',
     openrouterFullName: 'openai/o4-mini-high',
     provider: ModelProvider.OPENAI,
     maxOutputTokens: 100000,
@@ -49,6 +50,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
   o3pro: {
     name: 'o3pro',
     fullName: 'o3-pro-2025-06-10',
+    shortName: 'o3-pro',
     openrouterFullName: 'openai/o3-pro',
     provider: ModelProvider.OPENAI,
     maxOutputTokens: 100000,
@@ -69,6 +71,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
   o3: {
     name: 'o3',
     fullName: 'o3-2025-04-16',
+    shortName: 'o3',
     openrouterFullName: 'openai/o3',
     provider: ModelProvider.OPENAI,
     maxOutputTokens: 100000,
@@ -90,6 +93,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
   'o3-': {
     name: 'o3-',
     fullName: 'o3-mini-2025-01-31',
+    shortName: 'o3-mini',
     openrouterFullName: 'openai/o3-mini-2025-01-31',
     provider: ModelProvider.OPENAI,
     maxOutputTokens: 100000,
@@ -108,6 +112,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
   o1pro: {
     name: 'o1pro',
     fullName: 'o1-pro-2025-03-19',
+    shortName: 'o1-pro',
     openrouterFullName: 'openai/o1-pro-2025-03-19',
     provider: ModelProvider.OPENAI,
     maxOutputTokens: 100000,
@@ -125,6 +130,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
   o1: {
     name: 'o1',
     fullName: 'o1-2024-12-17',
+    shortName: 'o1',
     openrouterFullName: 'openai/o1-2024-12-17',
     provider: ModelProvider.OPENAI,
     maxOutputTokens: 100000,
@@ -143,6 +149,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
   o1preview: {
     name: 'o1preview',
     fullName: 'o1-preview-2024-09-12',
+    shortName: 'o1-preview',
     openrouterFullName: 'openai/o1-preview-2024-09-12',
     provider: ModelProvider.OPENAI,
     maxOutputTokens: 32768,
@@ -160,6 +167,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
   'o1-': {
     name: 'o1-',
     fullName: 'o1-mini-2024-09-12',
+    shortName: 'o1-mini',
     openrouterFullName: 'openai/o1-mini-2024-09-12',
     provider: ModelProvider.OPENAI,
     maxOutputTokens: 65536,
@@ -209,6 +217,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
   gpt5pro: {
     name: 'gpt5pro',
     fullName: 'gpt-5-pro-2025-10-06',
+    shortName: 'gpt-5-pro',
     openrouterFullName: 'openai/gpt-5-pro-2025-10-06',
     provider: ModelProvider.OPENAI,
     maxOutputTokens: 272000,
@@ -231,6 +240,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
   gpt5: {
     name: 'gpt5',
     fullName: 'gpt-5-2025-08-07',
+    shortName: 'gpt-5',
     openrouterFullName: 'openai/gpt-5-2025-08-07',
     provider: ModelProvider.OPENAI,
     maxOutputTokens: 128000,
@@ -253,6 +263,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
   gpt51: {
     name: 'gpt51',
     fullName: 'gpt-5.1-2025-11-13',
+    shortName: 'gpt-5.1',
     openrouterFullName: 'openai/gpt-5.1-2025-11-13',
     provider: ModelProvider.OPENAI,
     maxOutputTokens: 128000,
@@ -276,6 +287,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
   gpt52pro: {
     name: 'gpt52pro',
     fullName: 'gpt-5.2-pro-2025-12-11',
+    shortName: 'gpt-5.2-pro',
     openrouterFullName: 'openai/gpt-5.2-pro',
     provider: ModelProvider.OPENAI,
     maxOutputTokens: 128000,
@@ -298,6 +310,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
   gpt52: {
     name: 'gpt52',
     fullName: 'gpt-5.2-2025-12-11',
+    shortName: 'gpt-5.2',
     openrouterFullName: 'openai/gpt-5.2',
     provider: ModelProvider.OPENAI,
     maxOutputTokens: 128000,
@@ -362,6 +375,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
   gpt54pro: {
     name: 'gpt54pro',
     fullName: 'gpt-5.4-pro-2026-03-05',
+    shortName: 'gpt-5.4-pro',
     openrouterFullName: 'openai/gpt-5.4-pro',
     provider: ModelProvider.OPENAI,
     maxOutputTokens: 128000,
@@ -383,6 +397,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
   gpt54: {
     name: 'gpt54',
     fullName: 'gpt-5.4-2026-03-05',
+    shortName: 'gpt-5.4',
     openrouterFullName: 'openai/gpt-5.4',
     provider: ModelProvider.OPENAI,
     maxOutputTokens: 128000,
@@ -405,6 +420,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
   'gpt5-': {
     name: 'gpt5-',
     fullName: 'gpt-5-mini-2025-08-07',
+    shortName: 'gpt-5-mini',
     openrouterFullName: 'openai/gpt-5-mini-2025-08-07',
     provider: ModelProvider.OPENAI,
     maxOutputTokens: 128000,
@@ -427,6 +443,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
   'gpt5--': {
     name: 'gpt5--',
     fullName: 'gpt-5-nano-2025-08-07',
+    shortName: 'gpt-5-nano',
     openrouterFullName: 'openai/gpt-5-nano-2025-08-07',
     provider: ModelProvider.OPENAI,
     maxOutputTokens: 128000,
