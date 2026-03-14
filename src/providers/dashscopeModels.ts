@@ -23,6 +23,7 @@ export const DASHSCOPE_MODELS: Record<string, ModelConfig> = {
   qwen3max: {
     name: 'qwen3max',
     fullName: 'qwen3-max',
+    shortName: 'qwen3-max',
     openrouterFullName: 'qwen/qwen-max',
     provider: ModelProvider.DASHSCOPE,
     maxOutputTokens: 65536,
@@ -38,6 +39,7 @@ export const DASHSCOPE_MODELS: Record<string, ModelConfig> = {
   qwenplus: {
     name: 'qwenplus',
     fullName: 'qwen-plus',
+    shortName: 'qwen-plus',
     openrouterFullName: 'qwen/qwen-plus',
     provider: ModelProvider.DASHSCOPE,
     maxOutputTokens: 32768,
@@ -54,6 +56,7 @@ export const DASHSCOPE_MODELS: Record<string, ModelConfig> = {
   qwenturbo: {
     name: 'qwenturbo',
     fullName: 'qwen-turbo-latest',
+    shortName: 'qwen-turbo-latest',
     openrouterFullName: 'qwen/qwen-turbo',
     provider: ModelProvider.DASHSCOPE,
     maxOutputTokens: 8192,

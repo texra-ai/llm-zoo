@@ -34,6 +34,7 @@ export const OPENAI_DEEP_RESEARCH_MODELS: Record<string, ModelConfig> = {
   'o3-deep-research': {
     name: 'o3-deep-research',
     fullName: 'o3-deep-research',
+    shortName: 'o3-deep-research',
     openrouterFullName: 'openai/o3-deep-research',
     provider: ModelProvider.OPENAI,
     maxOutputTokens: 100000,
@@ -50,6 +51,7 @@ export const OPENAI_DEEP_RESEARCH_MODELS: Record<string, ModelConfig> = {
   'o4-mini-deep-research': {
     name: 'o4-mini-deep-research',
     fullName: 'o4-mini-deep-research',
+    shortName: 'o4-mini-deep-research',
     openrouterFullName: 'openai/o4-mini-deep-research',
     provider: ModelProvider.OPENAI,
     maxOutputTokens: 100000,

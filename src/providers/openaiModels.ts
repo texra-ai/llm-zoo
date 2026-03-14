@@ -29,6 +29,7 @@ export const OPENAI_MODELS: Record<string, ModelConfig> = {
   gpt41: {
     name: 'gpt41',
     fullName: 'gpt-4.1-2025-04-14',
+    shortName: 'gpt-4.1',
     openrouterFullName: 'openai/gpt-4.1',
     provider: ModelProvider.OPENAI,
     maxOutputTokens: 32768,
@@ -48,6 +49,7 @@ export const OPENAI_MODELS: Record<string, ModelConfig> = {
   'gpt41-': {
     name: 'gpt41-',
     fullName: 'gpt-4.1-mini-2025-04-14',
+    shortName: 'gpt-4.1-mini',
     openrouterFullName: 'openai/gpt-4.1-mini',
     provider: ModelProvider.OPENAI,
     maxOutputTokens: 32768,
@@ -67,6 +69,7 @@ export const OPENAI_MODELS: Record<string, ModelConfig> = {
   'gpt41--': {
     name: 'gpt41--',
     fullName: 'gpt-4.1-nano-2025-04-14',
+    shortName: 'gpt-4.1-nano',
     openrouterFullName: 'openai/gpt-4.1-nano',
     provider: ModelProvider.OPENAI,
     maxOutputTokens: 32768,
@@ -87,6 +90,7 @@ export const OPENAI_MODELS: Record<string, ModelConfig> = {
   gpt45: {
     name: 'gpt45',
     fullName: 'gpt-4.5-preview',
+    shortName: 'gpt-4.5-preview',
     openrouterFullName: 'openai/gpt-4.5-preview',
     provider: ModelProvider.OPENAI,
     maxOutputTokens: 16384,
@@ -103,6 +107,7 @@ export const OPENAI_MODELS: Record<string, ModelConfig> = {
   gpt4o: {
     name: 'gpt4o',
     fullName: 'gpt-4o-2024-11-20',
+    shortName: 'gpt-4o',
     openrouterFullName: 'openai/gpt-4o-2024-11-20',
     provider: ModelProvider.OPENAI,
     maxOutputTokens: 16384,
@@ -122,6 +127,7 @@ export const OPENAI_MODELS: Record<string, ModelConfig> = {
   gpt4t: {
     name: 'gpt4t',
     fullName: 'gpt-4-turbo-2024-04-09',
+    shortName: 'gpt-4-turbo',
     openrouterFullName: 'openai/gpt-4-turbo-2024-04-09',
     provider: ModelProvider.OPENAI,
     maxOutputTokens: 4096,
@@ -139,6 +145,7 @@ export const OPENAI_MODELS: Record<string, ModelConfig> = {
   'gpt4o-': {
     name: 'gpt4o-',
     fullName: 'gpt-4o-mini-2024-07-18',
+    shortName: 'gpt-4o-mini',
     openrouterFullName: 'openai/gpt-4o-mini-2024-07-18',
     provider: ModelProvider.OPENAI,
     maxOutputTokens: 16384,
@@ -155,6 +162,7 @@ export const OPENAI_MODELS: Record<string, ModelConfig> = {
   gpt4ol: {
     name: 'gpt4ol',
     fullName: 'chatgpt-4o-latest',
+    shortName: 'chatgpt-4o-latest',
     openrouterFullName: 'openai/chatgpt-4o-latest',
     provider: ModelProvider.OPENAI,
     maxOutputTokens: 16384,
