@@ -8,8 +8,8 @@ LLM pricing and capabilities change weekly. Docs are scattered. There's no singl
 import { lookup, cost, cheapest } from 'llm-zoo';
 
 // Know everything about any model
-const claude = lookup('sonnet45');
-console.log(claude.contextWindow);  // 200000
+const claude = lookup('sonnet46');
+console.log(claude.contextWindow);  // 1000000
 console.log(claude.inputPrice);     // 3
 
 // Calculate exact costs
@@ -54,13 +54,15 @@ npm install llm-zoo
 | `o3pro` | $20 | $80 | ✓ | OpenAI |
 | `opus41T` | $15 | $75 | ✓ | Anthropic |
 | `opus41` | $15 | $75 | - | Anthropic |
-| `opus45T` | $5 | $25 | ✓ | Anthropic |
-| `opus45` | $5 | $25 | - | Anthropic |
+| `opus46T` | $5 | $25 | ✓ | Anthropic |
+| `opus46` | $5 | $25 | - | Anthropic |
 
 ### Largest Context
 
 | Model | Context | Provider |
 |-------|---------|----------|
+| `opus46` | 1M | Anthropic |
+| `sonnet46` | 1M | Anthropic |
 | `gemini3p` | 1M | Google |
 | `gemini25p` | 1M | Google |
 | `qwenplus` | 1M | DashScope |
@@ -68,16 +70,15 @@ npm install llm-zoo
 | `gpt5` | 400K | OpenAI |
 | `kimi2` | 262K | Moonshot |
 | `grok4` | 256K | xAI |
-| `sonnet45` | 200K | Anthropic |
 
 ### Capabilities
 
 | Capability | Count | Examples |
 |------------|-------|----------|
-| Vision | 45+ | `sonnet45`, `gpt4o`, `gemini25p` |
-| Reasoning | 30+ | `opus45T`, `o3`, `deepseekT`, `grok4` |
-| Code Execution | 20+ | `sonnet45`, `gpt41`, `gemini3p` |
-| Web Search | 15+ | `opus45`, `gpt4o`, `o3` |
+| Vision | 45+ | `sonnet46`, `gpt4o`, `gemini25p` |
+| Reasoning | 30+ | `opus46T`, `o3`, `deepseekT`, `grok4` |
+| Code Execution | 20+ | `sonnet46`, `gpt41`, `gemini3p` |
+| Web Search | 15+ | `opus46`, `gpt4o`, `o3` |
 | Prompt Caching | 25+ | All Claude, Gemini, DeepSeek |
 
 ### Providers
@@ -101,8 +102,8 @@ npm install llm-zoo
 ### Lookup
 
 ```typescript
-lookup('sonnet45')              // → ModelConfig | undefined
-resolve('claude-sonnet-4-5')    // → by full API name
+lookup('sonnet46')              // → ModelConfig | undefined
+resolve('claude-sonnet-4-6')    // → by full API name
 exists('gpt4o')                 // → true
 ```
 
@@ -118,10 +119,10 @@ withContext(500000)             // → 500K+ context models
 ### Cost
 
 ```typescript
-cost('sonnet45', { input: 10000, output: 5000 })
-cost('sonnet45', { input: 10000, output: 5000, cached: 8000 })  // with caching
+cost('sonnet46', { input: 10000, output: 5000 })
+cost('sonnet46', { input: 10000, output: 5000, cached: 8000 })  // with caching
 maxCost('gpt4o', 50000)                                         // worst case
-compareCosts(['sonnet45', 'gpt4o'], { input: 10000, output: 2000 })
+compareCosts(['sonnet46', 'gpt4o'], { input: 10000, output: 2000 })
 ```
 
 ### Select
@@ -171,8 +172,8 @@ Available schemas:
 
 ```typescript
 interface ModelConfig {
-  name: string;              // 'sonnet45'
-  fullName: string;          // 'claude-sonnet-4-5'
+  name: string;              // 'sonnet46'
+  fullName: string;          // 'claude-sonnet-4-6'
   provider: ModelProvider;
   inputPrice: number;        // $/1M tokens
   outputPrice: number;
@@ -250,7 +251,7 @@ const report = Object.entries(usage).map(([model, tokens]) => ({
 ```typescript
 import { MODEL_CONFIGS, MODELS, ANTHROPIC_MODELS } from 'llm-zoo';
 
-MODEL_CONFIGS['sonnet45'].inputPrice;
+MODEL_CONFIGS['sonnet46'].inputPrice;
 MODELS.forEach(name => console.log(name));
 Object.keys(ANTHROPIC_MODELS);
 ```

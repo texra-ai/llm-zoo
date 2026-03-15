@@ -34,7 +34,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     openrouterFullName: 'anthropic/claude-opus-4.6',
     provider: ModelProvider.ANTHROPIC,
     maxOutputTokens: 128000,
-    contextWindow: 200000,
+    contextWindow: 1000000,
     inputPrice: 5.0,
     outputPrice: 25.0,
     capabilities: {
@@ -56,7 +56,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     openrouterFullName: 'anthropic/claude-opus-4.6',
     provider: ModelProvider.ANTHROPIC,
     maxOutputTokens: 128000,
-    contextWindow: 200000,
+    contextWindow: 1000000,
     inputPrice: 5.0,
     outputPrice: 25.0,
     capabilities: {
@@ -76,7 +76,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     openrouterFullName: 'anthropic/claude-sonnet-4.6',
     provider: ModelProvider.ANTHROPIC,
     maxOutputTokens: 64000,
-    contextWindow: 200000,
+    contextWindow: 1000000,
     inputPrice: 3.0,
     outputPrice: 15.0,
     capabilities: {
@@ -97,7 +97,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     openrouterFullName: 'anthropic/claude-sonnet-4.6',
     provider: ModelProvider.ANTHROPIC,
     maxOutputTokens: 64000,
-    contextWindow: 200000,
+    contextWindow: 1000000,
     inputPrice: 3.0,
     outputPrice: 15.0,
     capabilities: {
