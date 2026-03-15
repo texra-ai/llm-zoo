@@ -2,7 +2,7 @@
 
 LLM pricing and capabilities change weekly. Docs are scattered. There's no single source of truth.
 
-**One package. 70+ models. Always current.**
+**One package. 85+ models. Always current.**
 
 ```typescript
 import { lookup, cost, cheapest } from 'llm-zoo';
@@ -36,61 +36,62 @@ npm install llm-zoo
 | Model | Input | Output | Provider |
 |-------|-------|--------|----------|
 | `qwenturbo` | $0.05 | $0.50 | DashScope |
-| `gpt41--` | $0.10 | $0.40 | OpenAI |
-| `gemini25f-` | $0.10 | $0.40 | Google |
-| `dsv3` | $0.14 | $0.28 | DeepSeek |
-| `gpt4o-` | $0.15 | $0.60 | OpenAI |
-| `haiku3` | $0.25 | $1.25 | Anthropic |
 | `deepseek` | $0.28 | $0.42 | DeepSeek |
 | `gemini3f` | $0.30 | $2.50 | Google |
+| `gpt41-` | $0.40 | $1.60 | OpenAI |
+| `qwenplus` | $0.40 | $1.20 | DashScope |
+| `kimi25` | $0.60 | $3.00 | Moonshot |
+| `haiku45` | $1.00 | $5.00 | Anthropic |
+| `gpt52` | $1.75 | $14.00 | OpenAI |
 
 ### Premium ($/1M tokens)
 
 | Model | Input | Output | Reasoning | Provider |
 |-------|-------|--------|-----------|----------|
-| `o1pro` | $150 | $600 | ✓ | OpenAI |
-| `gpt45` | $75 | $150 | - | OpenAI |
-| `gpt52pro` | $21 | $168 | ✓ | OpenAI |
-| `o3pro` | $20 | $80 | ✓ | OpenAI |
-| `opus41T` | $15 | $75 | ✓ | Anthropic |
-| `opus41` | $15 | $75 | - | Anthropic |
+| `gpt54pro` | $30 | $180 | ✓ | OpenAI |
 | `opus46T` | $5 | $25 | ✓ | Anthropic |
 | `opus46` | $5 | $25 | - | Anthropic |
+| `sonnet46T` | $3 | $15 | ✓ | Anthropic |
+| `grok4` | $3 | $15 | ✓ | xAI |
+| `gpt54` | $2.50 | $15 | ✓ | OpenAI |
+| `gpt41` | $2 | $8 | - | OpenAI |
+| `gpt52` | $1.75 | $14 | ✓ | OpenAI |
 
 ### Largest Context
 
 | Model | Context | Provider |
 |-------|---------|----------|
+| `gpt54` | 1M | OpenAI |
+| `gemini31p` | 1M | Google |
+| `gemini3f` | 1M | Google |
 | `opus46` | 1M | Anthropic |
 | `sonnet46` | 1M | Anthropic |
-| `gemini3p` | 1M | Google |
-| `gemini25p` | 1M | Google |
 | `qwenplus` | 1M | DashScope |
 | `gpt41` | 1M | OpenAI |
-| `gpt5` | 400K | OpenAI |
-| `kimi2` | 262K | Moonshot |
+| `gpt52` | 400K | OpenAI |
+| `kimi25` | 262K | Moonshot |
 | `grok4` | 256K | xAI |
 
 ### Capabilities
 
 | Capability | Count | Examples |
 |------------|-------|----------|
-| Vision | 45+ | `sonnet46`, `gpt4o`, `gemini25p` |
-| Reasoning | 30+ | `opus46T`, `o3`, `deepseekT`, `grok4` |
-| Code Execution | 20+ | `sonnet46`, `gpt41`, `gemini3p` |
-| Web Search | 15+ | `opus46`, `gpt4o`, `o3` |
+| Vision | 45+ | `sonnet46`, `gpt41`, `gemini31p` |
+| Reasoning | 30+ | `opus46T`, `gpt54`, `deepseekT`, `grok4` |
+| Code Execution | 20+ | `sonnet46`, `gpt41`, `gemini3f` |
+| Web Search | 15+ | `opus46`, `gpt41`, `gpt54` |
 | Prompt Caching | 25+ | All Claude, Gemini, DeepSeek |
 
 ### Providers
 
 | Provider | Models | Highlights |
 |----------|--------|------------|
-| **Anthropic** | 21 | 90% cache savings, PDF support |
-| **OpenAI** | 28 | o-series reasoning, deep research |
+| **Anthropic** | 22 | 1M context, 90% cache savings, PDF support |
+| **OpenAI** | 34 | GPT-5.x reasoning, deep research |
 | **Google** | 6 | 1M context, audio input |
-| **DeepSeek** | 7 | Budget reasoning ($0.28/1M) |
+| **DeepSeek** | 8 | Budget reasoning ($0.28/1M) |
 | **xAI** | 5 | Grok 4 with 256K context |
-| **Moonshot** | 8 | Kimi K2 thinking mode |
+| **Moonshot** | 8 | Kimi K2.5 thinking mode |
 | **DashScope** | 3 | Qwen with 1M context |
 | **Copilot** | 1 | Free GPT-4o |
 | **OpenRouter** | 2 | Llama 405B, QVQ-72B |
