@@ -50,6 +50,7 @@ export const GOOGLE_MODELS: Record<string, ModelConfig> = {
       supportsNativeMCPServer: true,
     },
     openRouterOnly: false,
+    description: 'Latest Gemini Pro. Strong reasoning with 1M context, native audio, and code execution. Configurable reasoning effort.',
   },
   gemini3p: {
     name: 'gemini3p',
@@ -73,6 +74,7 @@ export const GOOGLE_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'Gemini 3 Pro preview. Multimodal reasoning with 1M context and native audio. Superseded by 3.1.',
   },
   gemini3f: {
     name: 'gemini3f',
@@ -95,6 +97,7 @@ export const GOOGLE_MODELS: Record<string, ModelConfig> = {
       supportsNativeMCPServer: true,
     },
     openRouterOnly: false,
+    description: 'Gemini 3 Flash. Fast, affordable multimodal model with 1M context. Great for high-volume workflows and subagent tasks.',
   },
   gemini25p: {
     name: 'gemini25p',
@@ -117,6 +120,7 @@ export const GOOGLE_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'Gemini 2.5 Pro. Previous-gen multimodal reasoning model with 1M context and native audio.',
   },
   gemini25f: {
     name: 'gemini25f',
@@ -139,6 +143,7 @@ export const GOOGLE_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'Gemini 2.5 Flash (latest). Fast and affordable with 1M context. Good for quick analysis and high-volume tasks.',
   },
   gemini25f0617: {
     name: 'gemini25f',
@@ -161,6 +166,7 @@ export const GOOGLE_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'Gemini 2.5 Flash (stable). Fast multimodal model with reasoning. 1M context.',
   },
   'gemini25f-': {
     name: 'gemini25f-',
@@ -182,5 +188,6 @@ export const GOOGLE_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'Gemini 2.5 Flash Lite. Ultra-low cost for simple tasks. 64K context, no code execution.',
   },
 };

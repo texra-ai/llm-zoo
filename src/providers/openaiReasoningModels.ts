@@ -46,6 +46,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'o4-mini reasoning model. Cost-efficient reasoning with vision and tool use. 200K context.',
   },
   o3pro: {
     name: 'o3pro',
@@ -67,6 +68,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'o3-pro premium reasoning model. Maximum reasoning depth for the hardest problems. 200K context.',
   },
   o3: {
     name: 'o3',
@@ -89,6 +91,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'o3 reasoning model. Strong math, science, and coding reasoning with tool use. 200K context.',
   },
   'o3-': {
     name: 'o3-',
@@ -108,6 +111,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'o3-mini reasoning model. Affordable reasoning for STEM tasks. Text-only, 200K context.',
   },
   o1pro: {
     name: 'o1pro',
@@ -126,6 +130,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'o1-pro premium reasoning. Highest-quality reasoning for critical tasks. Very high cost. 200K context.',
   },
   o1: {
     name: 'o1',
@@ -145,6 +150,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'o1 reasoning model. First-gen deep reasoning for math, science, and complex analysis. 200K context.',
   },
   o1preview: {
     name: 'o1preview',
@@ -163,6 +169,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'o1 preview. Early reasoning model preview. No vision or system prompt support. 128K context.',
   },
   'o1-': {
     name: 'o1-',
@@ -181,6 +188,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'o1-mini. Affordable early reasoning model. Text-only, no system prompt. 128K context.',
   },
   gptoss: {
     name: 'gptoss',
@@ -198,6 +206,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: true,
     deprecated: true,
+    description: 'GPT-OSS 120B open-source model. OpenRouter-only, affordable reasoning. 128K context.',
   },
   'gptoss-': {
     name: 'gptoss-',
@@ -215,6 +224,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: true,
     deprecated: true,
+    description: 'GPT-OSS 20B open-source model. Ultra-low cost, OpenRouter-only. 128K context.',
   },
   gpt5pro: {
     name: 'gpt5pro',
@@ -238,6 +248,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'GPT-5 Pro. Premium reasoning with massive 272K output and 400K context. Deep analysis and research.',
   },
   gpt5: {
     name: 'gpt5',
@@ -261,6 +272,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'GPT-5 base. Strong reasoning with great cache savings (90%). 400K context with full tool support.',
   },
   gpt51: {
     name: 'gpt51',
@@ -285,6 +297,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'GPT-5.1 reasoning model. Improved GPT-5 with better instruction following. 400K context.',
   },
   gpt52pro: {
     name: 'gpt52pro',
@@ -308,6 +321,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     },
     requiresResponsesAPI: true,
     openRouterOnly: false,
+    description: 'GPT-5.2 Pro. Premium deep reasoning with extra-high effort. Requires Responses API. 400K context.',
   },
   gpt52: {
     name: 'gpt52',
@@ -330,6 +344,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
       supportsNativePdf: true,
     },
     openRouterOnly: false,
+    description: 'GPT-5.2 reasoning model. Extra-high reasoning effort with 90% cache savings. 400K context.',
   },
   gpt52codex: {
     name: 'gpt52codex',
@@ -353,6 +368,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'GPT-5.2 Codex. Code-specialized reasoning model optimized for software development. 400K context.',
   },
   gpt53codex: {
     name: 'gpt53codex',
@@ -375,6 +391,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
       supportsNativePdf: true,
     },
     openRouterOnly: false,
+    description: 'GPT-5.3 Codex. Latest code-specialized reasoning model for advanced software engineering. 400K context.',
   },
   gpt54pro: {
     name: 'gpt54pro',
@@ -397,6 +414,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     },
     requiresResponsesAPI: true,
     openRouterOnly: false,
+    description: 'GPT-5.4 Pro. Most capable OpenAI model with 1M+ context. Premium deep reasoning for the hardest problems.',
   },
   gpt54: {
     name: 'gpt54',
@@ -420,6 +438,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
       supportsNativePdf: true,
     },
     openRouterOnly: false,
+    description: 'GPT-5.4 flagship. Latest OpenAI reasoning model with 1M+ context, extra-high effort, and 90% cache savings.',
   },
   'gpt5-': {
     name: 'gpt5-',
@@ -443,6 +462,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'GPT-5 mini. Affordable reasoning model for cost-sensitive workflows. 400K context.',
   },
   'gpt5--': {
     name: 'gpt5--',
@@ -466,5 +486,6 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'GPT-5 nano. Ultra-low cost reasoning for simple tasks and high-volume processing. 400K context.',
   },
 };

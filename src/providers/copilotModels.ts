@@ -34,5 +34,6 @@ export const COPILOT_MODELS: Record<string, ModelConfig> = {
       reasoningEffort: ReasoningEffort.MEDIUM,
     },
     openRouterOnly: false,
+    description: 'GitHub Copilot GPT-4o. Free-tier model for code completion and chat. 128K context, 8K max output.',
   },
 };

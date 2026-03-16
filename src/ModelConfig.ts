@@ -229,4 +229,11 @@ export interface ModelConfig {
    * @default false
    */
   deprecated?: boolean;
+
+  /**
+   * Human-readable description of the model's strengths, intended use cases,
+   * and distinguishing characteristics. Useful for agent/subagent selection UIs
+   * and workflow agent displays.
+   */
+  description?: string;
 }

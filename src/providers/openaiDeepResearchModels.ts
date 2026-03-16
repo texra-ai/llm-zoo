@@ -47,6 +47,7 @@ export const OPENAI_DEEP_RESEARCH_MODELS: Record<string, ModelConfig> = {
     openRouterOnly: false,
     requiresResponsesAPI: true,
     deprecated: true,
+    description: 'o3 Deep Research. Autonomous research agent that browses the web and synthesizes findings. No function calling. 200K context.',
   },
   'o4-mini-deep-research': {
     name: 'o4-mini-deep-research',
@@ -64,5 +65,6 @@ export const OPENAI_DEEP_RESEARCH_MODELS: Record<string, ModelConfig> = {
     openRouterOnly: false,
     requiresResponsesAPI: true,
     deprecated: true,
+    description: 'o4-mini Deep Research. Cost-efficient autonomous research agent. No function calling. 200K context.',
   },
 };

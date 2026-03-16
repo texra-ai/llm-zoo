@@ -42,6 +42,7 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
       supportsFunctionCalling: true,
     },
     openRouterOnly: false,
+    description: 'DeepSeek V3.2 chat. Very affordable general-purpose model with function calling. 128K context, 90% cache savings.',
   },
   // DeepSeek-V3.2 (Thinking Mode)
   deepseekT: {
@@ -62,6 +63,7 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
       supportsAssistantPrefill: true,
     },
     openRouterOnly: false,
+    description: 'DeepSeek V3.2 with thinking. Affordable reasoning model with function calling. 160K context.',
   },
   // DeepSeek-V3.2-Speciale (Extended Thinking)
   'deepseekT+': {
@@ -84,6 +86,7 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
     openRouterOnly: false,
     baseUrl: 'https://api.deepseek.com/v3.2_speciale_expires_on_20251215',
     deprecated: true,
+    description: 'DeepSeek V3.2 Speciale. Extended thinking variant with 128K output. No function calling.',
   },
   dsv3: {
     name: 'dsv3',
@@ -101,6 +104,7 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'DeepSeek V3 (March). Legacy chat model. Very low cost. 128K context.',
   },
   dsr1: {
     name: 'dsr1',
@@ -119,6 +123,7 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'DeepSeek R1. Dedicated reasoning model for math and science. 128K context.',
   },
   dsv3o: {
     name: 'dsv3o',
@@ -136,6 +141,7 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'DeepSeek V3 (OpenRouter variant). Legacy chat model. 64K context.',
   },
   dsr1o: {
     name: 'dsr1o',
@@ -154,5 +160,6 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'DeepSeek R1 (OpenRouter variant). Reasoning model. 64K context.',
   },
 };

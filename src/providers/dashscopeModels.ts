@@ -35,6 +35,7 @@ export const DASHSCOPE_MODELS: Record<string, ModelConfig> = {
       supportsVision: false,
     },
     openRouterOnly: false,
+    description: 'Qwen 3 Max. Alibaba flagship model for complex tasks. Text-only, 256K context.',
   },
   qwenplus: {
     name: 'qwenplus',
@@ -52,6 +53,7 @@ export const DASHSCOPE_MODELS: Record<string, ModelConfig> = {
       supportsReasoning: true,
     },
     openRouterOnly: false,
+    description: 'Qwen Plus. Affordable reasoning model with 1M context. Text-only.',
   },
   qwenturbo: {
     name: 'qwenturbo',
@@ -69,5 +71,6 @@ export const DASHSCOPE_MODELS: Record<string, ModelConfig> = {
       supportsReasoning: true,
     },
     openRouterOnly: false,
+    description: 'Qwen Turbo. Ultra-low cost reasoning model for high-volume tasks. Text-only, 128K context.',
   },
 };

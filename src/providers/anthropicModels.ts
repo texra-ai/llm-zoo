@@ -48,6 +48,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
       supportsInterleavedThinking: true,
     },
     openRouterOnly: false,
+    description: 'Most capable Anthropic model with extended thinking. Excels at complex reasoning, agentic coding, multi-step analysis, and advanced math/science. 1M context window with interleaved thinking.',
   },
   opus46: {
     name: 'opus46',
@@ -68,6 +69,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
       supportsReasoning: false,
     },
     openRouterOnly: false,
+    description: 'Most capable Anthropic model without extended thinking. Ideal for complex tasks requiring deep knowledge, nuanced writing, and sophisticated code generation. 1M context window.',
   },
   sonnet46T: {
     name: 'sonnet46T',
@@ -89,6 +91,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
       supportsInterleavedThinking: true,
     },
     openRouterOnly: false,
+    description: 'High-performance model with extended thinking. Best balance of capability and cost for coding, analysis, and reasoning tasks. 1M context window with interleaved thinking.',
   },
   sonnet46: {
     name: 'sonnet46',
@@ -109,6 +112,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
       supportsReasoning: false,
     },
     openRouterOnly: false,
+    description: 'High-performance model for everyday tasks. Excellent for coding, writing, and analysis with fast response times. 1M context window with assistant prefill support.',
   },
   opus45T: {
     name: 'opus45T',
@@ -131,6 +135,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'Previous-gen flagship with extended thinking. Strong at complex reasoning and agentic coding tasks. 200K context.',
   },
   opus45: {
     name: 'opus45',
@@ -151,6 +156,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'Previous-gen flagship without extended thinking. Strong at complex tasks, writing, and code generation. 200K context.',
   },
   opus41T: {
     name: 'opus41T',
@@ -173,6 +179,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'Legacy flagship with extended thinking. Powerful reasoning and agentic capabilities. 200K context.',
   },
   opus41: {
     name: 'opus41',
@@ -193,6 +200,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'Legacy flagship without extended thinking. Strong general-purpose capabilities. 200K context.',
   },
   opus4T: {
     name: 'opus4T',
@@ -215,6 +223,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'Original Opus 4 with extended thinking. First-gen flagship reasoning model. 200K context.',
   },
   opus4: {
     name: 'opus4',
@@ -235,6 +244,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'Original Opus 4 without extended thinking. First-gen flagship model. 200K context.',
   },
   sonnet45T: {
     name: 'sonnet45T',
@@ -256,6 +266,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'Previous-gen Sonnet with extended thinking. Great balance of speed and reasoning capability. 200K context.',
   },
   sonnet45: {
     name: 'sonnet45',
@@ -276,6 +287,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'Previous-gen Sonnet without extended thinking. Fast and capable for everyday coding and writing tasks. 200K context.',
   },
   haiku45T: {
     name: 'haiku45T',
@@ -296,6 +308,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
       supportsInterleavedThinking: true,
     },
     openRouterOnly: false,
+    description: 'Fast, affordable model with extended thinking. Ideal for high-volume reasoning tasks, quick subagent work, and cost-sensitive workflows. 200K context.',
   },
   haiku45: {
     name: 'haiku45',
@@ -315,6 +328,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
       supportsReasoning: false,
     },
     openRouterOnly: false,
+    description: 'Fast, affordable model for lightweight tasks. Best for high-volume operations, classification, extraction, and cost-efficient subagent workflows. 200K context.',
   },
   sonnet4T: {
     name: 'sonnet4T',
@@ -336,6 +350,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'Legacy Sonnet 4 with extended thinking. Reliable reasoning and coding model. 200K context.',
   },
   sonnet4: {
     name: 'sonnet4',
@@ -356,6 +371,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'Legacy Sonnet 4 without extended thinking. Solid general-purpose coding and writing model. 200K context.',
   },
   sonnet37T: {
     name: 'sonnet37T',
@@ -376,6 +392,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'Legacy Sonnet 3.7 with extended thinking. Early reasoning-capable Sonnet. 200K context.',
   },
   sonnet37: {
     name: 'sonnet37',
@@ -396,6 +413,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'Legacy Sonnet 3.7. Reliable general-purpose model. 200K context.',
   },
   opus3: {
     name: 'opus3',
@@ -414,6 +432,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'Original Claude 3 Opus. Legacy flagship model for complex tasks. 200K context, 4K max output.',
   },
   sonnet36: {
     name: 'sonnet36',
@@ -432,6 +451,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'Claude 3.5 Sonnet (v2). Strong coding and analysis capabilities. 200K context, 8K max output.',
   },
   sonnet35: {
     name: 'sonnet35',
@@ -451,6 +471,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'Claude 3.5 Sonnet (v1). Original 3.5 Sonnet release. 200K context, 8K max output.',
   },
   sonnet3: {
     name: 'sonnet3',
@@ -469,6 +490,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'Original Claude 3 Sonnet. Legacy mid-tier model. 200K context, 8K max output.',
   },
   haiku35: {
     name: 'haiku35',
@@ -490,6 +512,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'Claude 3.5 Haiku. Fast and affordable for high-volume tasks. 200K context, 8K max output.',
   },
   haiku3: {
     name: 'haiku3',
@@ -508,5 +531,6 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'Original Claude 3 Haiku. Ultra-fast, lowest cost option. 200K context, 8K max output.',
   },
 };

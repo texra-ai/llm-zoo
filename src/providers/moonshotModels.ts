@@ -36,6 +36,7 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'Moonshot V1 128K. Legacy Kimi model. Text-only, 128K context.',
   },
   kimiv: {
     name: 'kimi128kv',
@@ -53,6 +54,7 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'Moonshot V1 128K Vision. Legacy Kimi model with image understanding. 128K context.',
   },
   kimit: {
     name: 'kimit',
@@ -71,6 +73,7 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'Kimi Thinking preview. Early reasoning model with vision. 128K context.',
   },
   kimi2: {
     name: 'kimi2',
@@ -91,6 +94,7 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'Kimi K2 preview. Affordable chat model with 256K context and auto caching.',
   },
   'kimi2+': {
     name: 'kimi2+',
@@ -111,6 +115,7 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'Kimi K2 Turbo. Higher performance K2 variant. 256K context.',
   },
   kimi2T: {
     name: 'kimi2T',
@@ -133,6 +138,7 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'Kimi K2 Thinking. Reasoning model with interleaved thinking. 256K context.',
   },
   'kimi2T+': {
     name: 'kimi2T+',
@@ -155,6 +161,7 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'Kimi K2 Thinking Turbo. Higher performance reasoning variant. 256K context.',
   },
   // kimi-k2.5: A model that can enable or disable thinking capability, enabled by default. You can disable thinking by using {"type": "disabled"}
   kimi25: {
@@ -174,6 +181,7 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
       cacheDiscountFactor: 0.1 / 0.6,
     },
     openRouterOnly: false,
+    description: 'Kimi K2.5. Latest Moonshot model with vision support. 256K context with excellent cache savings.',
   },
   kimi25T: {
     name: 'kimi25T',
@@ -195,5 +203,6 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
       reasoningEffort: ReasoningEffort.HIGH,
     },
     openRouterOnly: false,
+    description: 'Kimi K2.5 with thinking. Latest Moonshot reasoning model with vision and interleaved thinking. 256K context.',
   },
 };

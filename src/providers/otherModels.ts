@@ -30,6 +30,7 @@ export const OTHER_MODELS: Record<string, ModelConfig> = {
     capabilities: OTHER_DEFAULT_CAPABILITIES,
     openRouterOnly: true,
     deprecated: true,
+    description: 'Llama 3.1 405B. Meta open-source large model. OpenRouter-only, 128K context.',
   },
   'qvq-72b': {
     name: 'qvq-72b',
@@ -46,5 +47,6 @@ export const OTHER_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: true,
     deprecated: true,
+    description: 'QVQ 72B preview. Qwen visual reasoning model. OpenRouter-only, 128K context, 4K max output.',
   },
 };

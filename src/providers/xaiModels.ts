@@ -35,6 +35,7 @@ export const XAI_MODELS: Record<string, ModelConfig> = {
       supportsReasoningEffort: false,
     },
     openRouterOnly: false,
+    description: 'Grok 4. xAI flagship reasoning model. Strong at math, coding, and analysis. 256K context, text-only.',
   },
   grok3: {
     name: 'grok3',
@@ -53,6 +54,7 @@ export const XAI_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'Grok 3 beta. Previous-gen xAI model. Text-only, 128K context.',
   },
   'grok3-': {
     name: 'grok3-',
@@ -72,6 +74,7 @@ export const XAI_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'Grok 3 mini beta. Affordable reasoning with configurable effort. Text-only, 128K context.',
   },
   grok2: {
     name: 'grok2',
@@ -86,6 +89,7 @@ export const XAI_MODELS: Record<string, ModelConfig> = {
     capabilities: XAI_DEFAULT_CAPABILITIES,
     openRouterOnly: false,
     deprecated: true,
+    description: 'Grok 2. Legacy xAI model. Text-only, 128K context.',
   },
   grok2v: {
     name: 'grok2v',
@@ -103,5 +107,6 @@ export const XAI_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'Grok 2 Vision. Legacy xAI model with image understanding. 32K context.',
   },
 };

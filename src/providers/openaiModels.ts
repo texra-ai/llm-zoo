@@ -45,6 +45,7 @@ export const OPENAI_MODELS: Record<string, ModelConfig> = {
       supportsPredictiveOutput: true,
     },
     openRouterOnly: false,
+    description: 'Flagship GPT-4.1 model. Strong coding, instruction following, and long-context performance. 1M context with predictive output.',
   },
   'gpt41-': {
     name: 'gpt41-',
@@ -65,6 +66,7 @@ export const OPENAI_MODELS: Record<string, ModelConfig> = {
       supportsPredictiveOutput: true,
     },
     openRouterOnly: false,
+    description: 'Cost-efficient GPT-4.1 mini. Fast and affordable for everyday tasks, coding, and high-volume workflows. 1M context.',
   },
   'gpt41--': {
     name: 'gpt41--',
@@ -86,6 +88,7 @@ export const OPENAI_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'Ultra-lightweight GPT-4.1 nano. Lowest cost for simple classification, extraction, and routing tasks. 1M context.',
   },
   gpt45: {
     name: 'gpt45',
@@ -103,6 +106,7 @@ export const OPENAI_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'GPT-4.5 preview. Large-scale model focused on creative writing and nuanced understanding. 128K context.',
   },
   gpt4o: {
     name: 'gpt4o',
@@ -123,6 +127,7 @@ export const OPENAI_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'GPT-4o multimodal model. Strong vision, audio, and text capabilities. 128K context.',
   },
   gpt4t: {
     name: 'gpt4t',
@@ -141,6 +146,7 @@ export const OPENAI_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'GPT-4 Turbo. Legacy model with vision support. 128K context, 4K max output.',
   },
   'gpt4o-': {
     name: 'gpt4o-',
@@ -158,6 +164,7 @@ export const OPENAI_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'GPT-4o mini. Affordable small model for lightweight tasks and high-volume use. 128K context.',
   },
   gpt4ol: {
     name: 'gpt4ol',
@@ -175,5 +182,6 @@ export const OPENAI_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    description: 'ChatGPT-4o latest. Dynamic model pointing to the latest ChatGPT version. 128K context.',
   },
 };
