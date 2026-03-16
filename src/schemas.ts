@@ -64,6 +64,7 @@ export const ModelConfigSchema = z.object({
   baseUrl: z.string().optional(),
   requiresResponsesAPI: z.boolean().optional(),
   deprecated: z.boolean().optional(),
+  excludeByDefault: z.boolean().optional(),
 });
 
 /** Registry of all model configurations. */
