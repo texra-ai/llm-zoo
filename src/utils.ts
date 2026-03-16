@@ -229,12 +229,9 @@ export function compareCosts(
  */
 export function cheapest(
   capabilities: Partial<ModelCapabilities>,
-  options?: { minContext?: number; provider?: ModelProvider; includeAll?: boolean },
+  options?: { minContext?: number; provider?: ModelProvider },
 ): ModelConfig | undefined {
   const candidates = Object.values(MODEL_CONFIGS).filter((m) => {
-    if (!options?.includeAll && (m.deprecated || m.excludeByDefault)) {
-      return false;
-    }
     if (options?.minContext && m.contextWindow < options.minContext) {
       return false;
     }
@@ -272,14 +269,10 @@ export function cheapest(
 export function smartpick(
   maxPricePerMillion: number,
   capabilities?: Partial<ModelCapabilities>,
-  options?: { includeAll?: boolean },
 ): ModelConfig | undefined {
-  let candidates = Object.values(MODEL_CONFIGS).filter((m) => {
-    if (!options?.includeAll && (m.deprecated || m.excludeByDefault)) {
-      return false;
-    }
-    return m.inputPrice + m.outputPrice <= maxPricePerMillion;
-  });
+  let candidates = Object.values(MODEL_CONFIGS).filter(
+    (m) => m.inputPrice + m.outputPrice <= maxPricePerMillion,
+  );
 
   if (capabilities) {
     candidates = candidates.filter((m) => {
@@ -313,7 +306,6 @@ export function smartpick(
 export function ranked(
   by: 'price' | 'context' | 'output',
   order: 'asc' | 'desc' = 'asc',
-  options?: { includeAll?: boolean },
 ): ModelConfig[] {
   const getValue = (m: ModelConfig): number => {
     switch (by) {
@@ -326,11 +318,7 @@ export function ranked(
     }
   };
 
-  const models = options?.includeAll
-    ? Object.values(MODEL_CONFIGS)
-    : Object.values(MODEL_CONFIGS).filter((m) => !m.deprecated && !m.excludeByDefault);
-
-  return models.sort((a, b) => {
+  return Object.values(MODEL_CONFIGS).sort((a, b) => {
     const diff = getValue(a) - getValue(b);
     return order === 'asc' ? diff : -diff;
   });

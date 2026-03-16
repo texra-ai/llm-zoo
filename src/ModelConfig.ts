@@ -229,13 +229,4 @@ export interface ModelConfig {
    * @default false
    */
   deprecated?: boolean;
-
-  /**
-   * Whether this model should be excluded from default selection results.
-   * Used for premium-tier models (e.g., "pro" variants) that are too expensive
-   * for most use cases. These models are still accessible via `lookup()` and
-   * `resolve()`, but excluded from `cheapest()`, `smartpick()`, and `ranked()`.
-   * @default false
-   */
-  excludeByDefault?: boolean;
 }

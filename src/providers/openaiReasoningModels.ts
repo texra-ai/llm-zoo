@@ -308,7 +308,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     },
     requiresResponsesAPI: true,
     openRouterOnly: false,
-    excludeByDefault: true,
+    deprecated: true,
   },
   gpt52: {
     name: 'gpt52',
@@ -399,7 +399,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     },
     requiresResponsesAPI: true,
     openRouterOnly: false,
-    excludeByDefault: true,
+    deprecated: true,
   },
   gpt54: {
     name: 'gpt54',
