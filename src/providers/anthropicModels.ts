@@ -29,6 +29,7 @@ const ANTHROPIC_DEFAULT_CAPABILITIES: ModelCapabilities = {
 export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
   opus46T: {
     name: 'opus46T',
+    label: 'Opus 4.6 (Thinking)',
     fullName: 'claude-opus-4-6',
     shortName: 'claude-opus-4-6',
     openrouterFullName: 'anthropic/claude-opus-4.6',
@@ -51,6 +52,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
   },
   opus46: {
     name: 'opus46',
+    label: 'Opus 4.6',
     fullName: 'claude-opus-4-6',
     shortName: 'claude-opus-4-6',
     openrouterFullName: 'anthropic/claude-opus-4.6',
@@ -71,6 +73,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
   },
   sonnet46T: {
     name: 'sonnet46T',
+    label: 'Sonnet 4.6 (Thinking)',
     fullName: 'claude-sonnet-4-6',
     shortName: 'claude-sonnet-4-6',
     openrouterFullName: 'anthropic/claude-sonnet-4.6',
@@ -92,6 +95,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
   },
   sonnet46: {
     name: 'sonnet46',
+    label: 'Sonnet 4.6',
     fullName: 'claude-sonnet-4-6',
     shortName: 'claude-sonnet-4-6',
     openrouterFullName: 'anthropic/claude-sonnet-4.6',
@@ -112,6 +116,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
   },
   opus45T: {
     name: 'opus45T',
+    label: 'Opus 4.5 (Thinking)',
     fullName: 'claude-opus-4-5',
     shortName: 'claude-opus-4-5',
     openrouterFullName: 'anthropic/claude-opus-4.5',
@@ -134,6 +139,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
   },
   opus45: {
     name: 'opus45',
+    label: 'Opus 4.5',
     fullName: 'claude-opus-4-5',
     shortName: 'claude-opus-4-5',
     openrouterFullName: 'anthropic/claude-opus-4.5',
@@ -154,6 +160,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
   },
   opus41T: {
     name: 'opus41T',
+    label: 'Opus 4.1 (Thinking)',
     fullName: 'claude-opus-4-1-20250805',
     shortName: 'claude-opus-4-1',
     openrouterFullName: 'anthropic/claude-opus-4.1',
@@ -176,6 +183,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
   },
   opus41: {
     name: 'opus41',
+    label: 'Opus 4.1',
     fullName: 'claude-opus-4-1-20250805',
     shortName: 'claude-opus-4-1',
     openrouterFullName: 'anthropic/claude-opus-4.1',
@@ -196,6 +204,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
   },
   opus4T: {
     name: 'opus4T',
+    label: 'Opus 4 (Thinking)',
     fullName: 'claude-opus-4-20250514',
     shortName: 'claude-opus-4',
     openrouterFullName: 'anthropic/claude-opus-4',
@@ -218,6 +227,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
   },
   opus4: {
     name: 'opus4',
+    label: 'Opus 4',
     fullName: 'claude-opus-4-20250514',
     shortName: 'claude-opus-4',
     openrouterFullName: 'anthropic/claude-opus-4',
@@ -238,6 +248,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
   },
   sonnet45T: {
     name: 'sonnet45T',
+    label: 'Sonnet 4.5 (Thinking)',
     fullName: 'claude-sonnet-4-5',
     shortName: 'claude-sonnet-4-5',
     openrouterFullName: 'anthropic/claude-sonnet-4.5:thinking',
@@ -259,6 +270,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
   },
   sonnet45: {
     name: 'sonnet45',
+    label: 'Sonnet 4.5',
     fullName: 'claude-sonnet-4-5',
     shortName: 'claude-sonnet-4-5',
     openrouterFullName: 'anthropic/claude-sonnet-4.5',
@@ -279,6 +291,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
   },
   haiku45T: {
     name: 'haiku45T',
+    label: 'Haiku 4.5 (Thinking)',
     fullName: 'claude-haiku-4-5-20251001',
     shortName: 'claude-haiku-4-5',
     openrouterFullName: 'anthropic/claude-haiku-4.5',
@@ -299,6 +312,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
   },
   haiku45: {
     name: 'haiku45',
+    label: 'Haiku 4.5',
     fullName: 'claude-haiku-4-5-20251001',
     shortName: 'claude-haiku-4-5',
     openrouterFullName: 'anthropic/claude-haiku-4.5',
@@ -318,6 +332,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
   },
   sonnet4T: {
     name: 'sonnet4T',
+    label: 'Sonnet 4 (Thinking)',
     fullName: 'claude-sonnet-4-20250514',
     shortName: 'claude-sonnet-4',
     openrouterFullName: 'anthropic/claude-sonnet-4',
@@ -339,6 +354,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
   },
   sonnet4: {
     name: 'sonnet4',
+    label: 'Sonnet 4',
     fullName: 'claude-sonnet-4-20250514',
     shortName: 'claude-sonnet-4',
     openrouterFullName: 'anthropic/claude-sonnet-4',
@@ -359,6 +375,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
   },
   sonnet37T: {
     name: 'sonnet37T',
+    label: 'Sonnet 3.7 (Thinking)',
     fullName: 'claude-3-7-sonnet-20250219',
     shortName: 'claude-3-7-sonnet',
     openrouterFullName: 'anthropic/claude-3.7-sonnet:thinking',
@@ -379,6 +396,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
   },
   sonnet37: {
     name: 'sonnet37',
+    label: 'Sonnet 3.7',
     fullName: 'claude-3-7-sonnet-20250219',
     shortName: 'claude-3-7-sonnet',
     openrouterFullName: 'anthropic/claude-3.7-sonnet',
@@ -399,6 +417,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
   },
   opus3: {
     name: 'opus3',
+    label: 'Opus 3',
     fullName: 'claude-3-opus-20240229',
     shortName: 'claude-3-opus',
     openrouterFullName: 'anthropic/claude-3-opus:beta',
@@ -417,6 +436,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
   },
   sonnet36: {
     name: 'sonnet36',
+    label: 'Sonnet 3.6',
     fullName: 'claude-3-5-sonnet-20241022',
     shortName: 'claude-3-5-sonnet',
     openrouterFullName: 'anthropic/claude-3.5-sonnet:beta',
@@ -435,6 +455,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
   },
   sonnet35: {
     name: 'sonnet35',
+    label: 'Sonnet 3.5',
     fullName: 'claude-3-5-sonnet-20240620',
     shortName: 'claude-3-5-sonnet',
     openrouterFullName: 'anthropic/claude-3.5-sonnet-20240620:beta',
@@ -454,6 +475,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
   },
   sonnet3: {
     name: 'sonnet3',
+    label: 'Sonnet 3',
     fullName: 'claude-3-sonnet-20240229',
     shortName: 'claude-3-sonnet',
     openrouterFullName: 'anthropic/claude-3.5-sonnet-20240229:beta',
@@ -472,6 +494,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
   },
   haiku35: {
     name: 'haiku35',
+    label: 'Haiku 3.5',
     fullName: 'claude-3-5-haiku-20241022',
     shortName: 'claude-3-5-haiku',
     openrouterFullName: 'anthropic/claude-3.5-haiku:beta',
@@ -493,6 +516,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
   },
   haiku3: {
     name: 'haiku3',
+    label: 'Haiku 3',
     fullName: 'claude-3-haiku-20240307',
     shortName: 'claude-3-haiku',
     openrouterFullName: 'anthropic/claude-3.5-haiku-20240307:beta',

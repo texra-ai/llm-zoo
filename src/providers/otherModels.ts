@@ -19,6 +19,7 @@ const OTHER_DEFAULT_CAPABILITIES: ModelCapabilities = {
 export const OTHER_MODELS: Record<string, ModelConfig> = {
   llama31: {
     name: 'llama31',
+    label: 'Llama 3.1 405B',
     fullName: 'meta-llama/llama-3.1-405b-instruct',
     shortName: 'meta-llama/llama-3.1-405b-instruct',
     openrouterFullName: 'meta-llama/llama-3.1-405b-instruct',
@@ -33,6 +34,7 @@ export const OTHER_MODELS: Record<string, ModelConfig> = {
   },
   'qvq-72b': {
     name: 'qvq-72b',
+    label: 'QVQ 72B',
     fullName: 'qwen/qvq-72b-preview',
     shortName: 'qwen/qvq-72b-preview',
     openrouterFullName: 'qwen/qvq-72b-preview',

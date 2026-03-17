@@ -21,6 +21,7 @@ const XAI_DEFAULT_CAPABILITIES: ModelCapabilities = {
 export const XAI_MODELS: Record<string, ModelConfig> = {
   grok4: {
     name: 'grok4',
+    label: 'Grok 4',
     fullName: 'grok-4-0709',
     shortName: 'grok-4',
     openrouterFullName: 'x-ai/grok-4-0709',
@@ -38,6 +39,7 @@ export const XAI_MODELS: Record<string, ModelConfig> = {
   },
   grok3: {
     name: 'grok3',
+    label: 'Grok 3',
     fullName: 'grok-3-beta',
     shortName: 'grok-3-beta',
     openrouterFullName: 'x-ai/grok-3',
@@ -56,6 +58,7 @@ export const XAI_MODELS: Record<string, ModelConfig> = {
   },
   'grok3-': {
     name: 'grok3-',
+    label: 'Grok 3 Mini',
     fullName: 'grok-3-mini-beta',
     shortName: 'grok-3-mini-beta',
     openrouterFullName: 'x-ai/grok-3-mini-beta',
@@ -75,6 +78,7 @@ export const XAI_MODELS: Record<string, ModelConfig> = {
   },
   grok2: {
     name: 'grok2',
+    label: 'Grok 2',
     fullName: 'grok-2-1212',
     shortName: 'grok-2',
     openrouterFullName: 'grok-ai/grok-2-1212',
@@ -89,6 +93,7 @@ export const XAI_MODELS: Record<string, ModelConfig> = {
   },
   grok2v: {
     name: 'grok2v',
+    label: 'Grok 2 Vision',
     fullName: 'grok-2-1212-vision',
     shortName: 'grok-2-vision',
     openrouterFullName: 'grok-ai/grok-2-1212-vision',
