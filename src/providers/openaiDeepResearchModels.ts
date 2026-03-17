@@ -33,6 +33,7 @@ const OPENAI_DEEP_RESEARCH_DEFAULT_CAPABILITIES: ModelCapabilities = {
 export const OPENAI_DEEP_RESEARCH_MODELS: Record<string, ModelConfig> = {
   'o3-deep-research': {
     name: 'o3-deep-research',
+    label: 'o3 Deep Research',
     fullName: 'o3-deep-research',
     shortName: 'o3-deep-research',
     openrouterFullName: 'openai/o3-deep-research',
@@ -50,6 +51,7 @@ export const OPENAI_DEEP_RESEARCH_MODELS: Record<string, ModelConfig> = {
   },
   'o4-mini-deep-research': {
     name: 'o4-mini-deep-research',
+    label: 'o4 Mini Deep Research',
     fullName: 'o4-mini-deep-research',
     shortName: 'o4-mini-deep-research',
     openrouterFullName: 'openai/o4-mini-deep-research',

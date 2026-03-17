@@ -224,6 +224,12 @@ export interface ModelConfig {
   requiresResponsesAPI?: boolean;
 
   /**
+   * Human-friendly display name for the model.
+   * Used as the label in model dropdowns so users can identify models at a glance.
+   */
+  label: string;
+
+  /**
    * Whether this model is deprecated and no longer recommended for use.
    * Deprecated models are still functional but have been superseded by newer versions.
    * @default false

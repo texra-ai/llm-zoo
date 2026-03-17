@@ -22,6 +22,7 @@ const COPILOT_DEFAULT_CAPABILITIES: ModelCapabilities = {
 export const COPILOT_MODELS: Record<string, ModelConfig> = {
   copilot4o: {
     name: 'copilot4o',
+    label: 'Copilot GPT-4o',
     fullName: 'copilot-gpt-4o',
     shortName: 'copilot-gpt-4o',
     provider: ModelProvider.COPILOT,

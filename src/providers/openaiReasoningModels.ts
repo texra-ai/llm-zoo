@@ -27,6 +27,7 @@ const OPENAI_REASONING_DEFAULT_CAPABILITIES: ModelCapabilities = {
 export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
   'o4-': {
     name: 'o4-',
+    label: 'o4 Mini',
     fullName: 'o4-mini-2025-04-16',
     shortName: 'o4-mini',
     openrouterFullName: 'openai/o4-mini-high',
@@ -49,6 +50,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
   },
   o3pro: {
     name: 'o3pro',
+    label: 'o3 Pro',
     fullName: 'o3-pro-2025-06-10',
     shortName: 'o3-pro',
     openrouterFullName: 'openai/o3-pro',
@@ -70,6 +72,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
   },
   o3: {
     name: 'o3',
+    label: 'o3',
     fullName: 'o3-2025-04-16',
     shortName: 'o3',
     openrouterFullName: 'openai/o3',
@@ -92,6 +95,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
   },
   'o3-': {
     name: 'o3-',
+    label: 'o3 Mini',
     fullName: 'o3-mini-2025-01-31',
     shortName: 'o3-mini',
     openrouterFullName: 'openai/o3-mini-2025-01-31',
@@ -111,6 +115,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
   },
   o1pro: {
     name: 'o1pro',
+    label: 'o1 Pro',
     fullName: 'o1-pro-2025-03-19',
     shortName: 'o1-pro',
     openrouterFullName: 'openai/o1-pro-2025-03-19',
@@ -129,6 +134,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
   },
   o1: {
     name: 'o1',
+    label: 'o1',
     fullName: 'o1-2024-12-17',
     shortName: 'o1',
     openrouterFullName: 'openai/o1-2024-12-17',
@@ -148,6 +154,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
   },
   o1preview: {
     name: 'o1preview',
+    label: 'o1 Preview',
     fullName: 'o1-preview-2024-09-12',
     shortName: 'o1-preview',
     openrouterFullName: 'openai/o1-preview-2024-09-12',
@@ -166,6 +173,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
   },
   'o1-': {
     name: 'o1-',
+    label: 'o1 Mini',
     fullName: 'o1-mini-2024-09-12',
     shortName: 'o1-mini',
     openrouterFullName: 'openai/o1-mini-2024-09-12',
@@ -184,6 +192,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
   },
   gptoss: {
     name: 'gptoss',
+    label: 'GPT-OSS 120B',
     fullName: 'gpt-oss-120b',
     shortName: 'gpt-oss-120b',
     openrouterFullName: 'openai/gpt-oss-120b',
@@ -201,6 +210,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
   },
   'gptoss-': {
     name: 'gptoss-',
+    label: 'GPT-OSS 20B',
     fullName: 'gpt-oss-20b',
     shortName: 'gpt-oss-20b',
     openrouterFullName: 'openai/gpt-oss-20b',
@@ -218,6 +228,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
   },
   gpt5pro: {
     name: 'gpt5pro',
+    label: 'GPT-5 Pro',
     fullName: 'gpt-5-pro-2025-10-06',
     shortName: 'gpt-5-pro',
     openrouterFullName: 'openai/gpt-5-pro-2025-10-06',
@@ -241,6 +252,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
   },
   gpt5: {
     name: 'gpt5',
+    label: 'GPT-5',
     fullName: 'gpt-5-2025-08-07',
     shortName: 'gpt-5',
     openrouterFullName: 'openai/gpt-5-2025-08-07',
@@ -264,6 +276,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
   },
   gpt51: {
     name: 'gpt51',
+    label: 'GPT-5.1',
     fullName: 'gpt-5.1-2025-11-13',
     shortName: 'gpt-5.1',
     openrouterFullName: 'openai/gpt-5.1-2025-11-13',
@@ -288,6 +301,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
   },
   gpt52pro: {
     name: 'gpt52pro',
+    label: 'GPT-5.2 Pro',
     fullName: 'gpt-5.2-pro-2025-12-11',
     shortName: 'gpt-5.2-pro',
     openrouterFullName: 'openai/gpt-5.2-pro',
@@ -312,6 +326,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
   },
   gpt52: {
     name: 'gpt52',
+    label: 'GPT-5.2',
     fullName: 'gpt-5.2-2025-12-11',
     shortName: 'gpt-5.2',
     openrouterFullName: 'openai/gpt-5.2',
@@ -335,6 +350,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
   },
   gpt52codex: {
     name: 'gpt52codex',
+    label: 'GPT-5.2 Codex',
     fullName: 'gpt-5.2-codex',
     shortName: 'gpt-5.2-codex',
     openrouterFullName: 'openai/gpt-5.2-codex',
@@ -358,6 +374,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
   },
   gpt53codex: {
     name: 'gpt53codex',
+    label: 'GPT-5.3 Codex',
     fullName: 'gpt-5.3-codex',
     shortName: 'gpt-5.3-codex',
     openrouterFullName: 'openai/gpt-5.3-codex',
@@ -380,6 +397,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
   },
   gpt54pro: {
     name: 'gpt54pro',
+    label: 'GPT-5.4 Pro',
     fullName: 'gpt-5.4-pro-2026-03-05',
     shortName: 'gpt-5.4-pro',
     openrouterFullName: 'openai/gpt-5.4-pro',
@@ -403,6 +421,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
   },
   gpt54: {
     name: 'gpt54',
+    label: 'GPT-5.4',
     fullName: 'gpt-5.4-2026-03-05',
     shortName: 'gpt-5.4',
     openrouterFullName: 'openai/gpt-5.4',
@@ -426,6 +445,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
   },
   'gpt5-': {
     name: 'gpt5-',
+    label: 'GPT-5 Mini',
     fullName: 'gpt-5-mini-2025-08-07',
     shortName: 'gpt-5-mini',
     openrouterFullName: 'openai/gpt-5-mini-2025-08-07',
@@ -449,6 +469,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
   },
   'gpt5--': {
     name: 'gpt5--',
+    label: 'GPT-5 Nano',
     fullName: 'gpt-5-nano-2025-08-07',
     shortName: 'gpt-5-nano',
     openrouterFullName: 'openai/gpt-5-nano-2025-08-07',

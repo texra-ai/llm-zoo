@@ -28,6 +28,7 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
   // DeepSeek-V3.2 (Non-thinking Mode)
   deepseek: {
     name: 'deepseek',
+    label: 'DeepSeek V3.2',
     fullName: 'deepseek-chat',
     shortName: 'deepseek-chat',
     openrouterFullName: 'deepseek/deepseek-v3.2',
@@ -46,6 +47,7 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
   // DeepSeek-V3.2 (Thinking Mode)
   deepseekT: {
     name: 'deepseekT',
+    label: 'DeepSeek (Thinking)',
     fullName: 'deepseek-reasoner',
     shortName: 'deepseek-reasoner',
     openrouterFullName: 'deepseek/deepseek-v3.2',
@@ -66,6 +68,7 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
   // DeepSeek-V3.2-Speciale (Extended Thinking)
   'deepseekT+': {
     name: 'deepseekT+',
+    label: 'DeepSeek Speciale (Thinking)',
     fullName: 'deepseek-reasoner',
     shortName: 'deepseek-reasoner',
     openrouterFullName: 'deepseek/deepseek-v3.2-speciale',
@@ -87,6 +90,7 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
   },
   dsv3: {
     name: 'dsv3',
+    label: 'DeepSeek V3',
     fullName: 'deepseek-chat',
     shortName: 'deepseek-chat',
     openrouterFullName: 'deepseek/deepseek-chat-v3-0324',
@@ -104,6 +108,7 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
   },
   dsr1: {
     name: 'dsr1',
+    label: 'DeepSeek R1',
     fullName: 'deepseek-reasoner',
     shortName: 'deepseek-reasoner',
     openrouterFullName: 'deepseek/deepseek-r1-0528',
@@ -122,6 +127,7 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
   },
   dsv3o: {
     name: 'dsv3o',
+    label: 'DeepSeek V3 (Old)',
     fullName: 'deepseek-chat',
     shortName: 'deepseek-chat',
     openrouterFullName: 'deepseek/deepseek-chat-v3-0324',
@@ -139,6 +145,7 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
   },
   dsr1o: {
     name: 'dsr1o',
+    label: 'DeepSeek R1 (Old)',
     fullName: 'deepseek-reasoner',
     shortName: 'deepseek-reasoner',
     openrouterFullName: 'deepseek/deepseek-r1-0528',

@@ -28,6 +28,7 @@ const OPENAI_DEFAULT_CAPABILITIES: ModelCapabilities = {
 export const OPENAI_MODELS: Record<string, ModelConfig> = {
   gpt41: {
     name: 'gpt41',
+    label: 'GPT-4.1',
     fullName: 'gpt-4.1-2025-04-14',
     shortName: 'gpt-4.1',
     openrouterFullName: 'openai/gpt-4.1',
@@ -48,6 +49,7 @@ export const OPENAI_MODELS: Record<string, ModelConfig> = {
   },
   'gpt41-': {
     name: 'gpt41-',
+    label: 'GPT-4.1 Mini',
     fullName: 'gpt-4.1-mini-2025-04-14',
     shortName: 'gpt-4.1-mini',
     openrouterFullName: 'openai/gpt-4.1-mini',
@@ -68,6 +70,7 @@ export const OPENAI_MODELS: Record<string, ModelConfig> = {
   },
   'gpt41--': {
     name: 'gpt41--',
+    label: 'GPT-4.1 Nano',
     fullName: 'gpt-4.1-nano-2025-04-14',
     shortName: 'gpt-4.1-nano',
     openrouterFullName: 'openai/gpt-4.1-nano',
@@ -89,6 +92,7 @@ export const OPENAI_MODELS: Record<string, ModelConfig> = {
   },
   gpt45: {
     name: 'gpt45',
+    label: 'GPT-4.5 Preview',
     fullName: 'gpt-4.5-preview',
     shortName: 'gpt-4.5-preview',
     openrouterFullName: 'openai/gpt-4.5-preview',
@@ -106,6 +110,7 @@ export const OPENAI_MODELS: Record<string, ModelConfig> = {
   },
   gpt4o: {
     name: 'gpt4o',
+    label: 'GPT-4o',
     fullName: 'gpt-4o-2024-11-20',
     shortName: 'gpt-4o',
     openrouterFullName: 'openai/gpt-4o-2024-11-20',
@@ -126,6 +131,7 @@ export const OPENAI_MODELS: Record<string, ModelConfig> = {
   },
   gpt4t: {
     name: 'gpt4t',
+    label: 'GPT-4 Turbo',
     fullName: 'gpt-4-turbo-2024-04-09',
     shortName: 'gpt-4-turbo',
     openrouterFullName: 'openai/gpt-4-turbo-2024-04-09',
@@ -144,6 +150,7 @@ export const OPENAI_MODELS: Record<string, ModelConfig> = {
   },
   'gpt4o-': {
     name: 'gpt4o-',
+    label: 'GPT-4o Mini',
     fullName: 'gpt-4o-mini-2024-07-18',
     shortName: 'gpt-4o-mini',
     openrouterFullName: 'openai/gpt-4o-mini-2024-07-18',
@@ -161,6 +168,7 @@ export const OPENAI_MODELS: Record<string, ModelConfig> = {
   },
   gpt4ol: {
     name: 'gpt4ol',
+    label: 'ChatGPT-4o Latest',
     fullName: 'chatgpt-4o-latest',
     shortName: 'chatgpt-4o-latest',
     openrouterFullName: 'openai/chatgpt-4o-latest',

@@ -31,6 +31,7 @@ const GOOGLE_DEFAULT_CAPABILITIES: ModelCapabilities = {
 export const GOOGLE_MODELS: Record<string, ModelConfig> = {
   gemini31p: {
     name: 'gemini31p',
+    label: 'Gemini 3.1 Pro',
     fullName: 'gemini-3.1-pro-preview',
     shortName: 'gemini-3.1-pro-preview',
     openrouterFullName: 'google/gemini-3.1-pro-preview',
@@ -53,6 +54,7 @@ export const GOOGLE_MODELS: Record<string, ModelConfig> = {
   },
   gemini3p: {
     name: 'gemini3p',
+    label: 'Gemini 3 Pro',
     fullName: 'gemini-3-pro-preview',
     shortName: 'gemini-3-pro-preview',
     openrouterFullName: 'google/gemini-3-pro-preview',
@@ -76,6 +78,7 @@ export const GOOGLE_MODELS: Record<string, ModelConfig> = {
   },
   gemini3f: {
     name: 'gemini3f',
+    label: 'Gemini 3 Flash',
     fullName: 'gemini-3-flash-preview',
     shortName: 'gemini-3-flash-preview',
     openrouterFullName: 'google/gemini-3-flash-preview',
@@ -98,6 +101,7 @@ export const GOOGLE_MODELS: Record<string, ModelConfig> = {
   },
   gemini25p: {
     name: 'gemini25p',
+    label: 'Gemini 2.5 Pro',
     fullName: 'gemini-2.5-pro',
     shortName: 'gemini-2.5-pro',
     openrouterFullName: 'google/gemini-2.5-pro',
@@ -120,6 +124,7 @@ export const GOOGLE_MODELS: Record<string, ModelConfig> = {
   },
   gemini25f: {
     name: 'gemini25f',
+    label: 'Gemini 2.5 Flash',
     fullName: 'gemini-flash-latest',
     shortName: 'gemini-flash-latest',
     openrouterFullName: 'google/gemini-2.5-flash-preview-09-2025',
@@ -142,6 +147,7 @@ export const GOOGLE_MODELS: Record<string, ModelConfig> = {
   },
   gemini25f0617: {
     name: 'gemini25f',
+    label: 'Gemini 2.5 Flash (06-17)',
     fullName: 'gemini-2.5-flash',
     shortName: 'gemini-2.5-flash',
     openrouterFullName: 'google/gemini-2.5-flash',
@@ -164,6 +170,7 @@ export const GOOGLE_MODELS: Record<string, ModelConfig> = {
   },
   'gemini25f-': {
     name: 'gemini25f-',
+    label: 'Gemini 2.5 Flash Lite',
     fullName: 'gemini-2.5-flash-lite-preview-09-2025',
     shortName: 'gemini-2.5-flash-lite-preview',
     openrouterFullName: 'google/gemini-2.5-flash-lite-preview-09-2025',
