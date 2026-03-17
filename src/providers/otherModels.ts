@@ -28,7 +28,6 @@ export const OTHER_MODELS: Record<string, ModelConfig> = {
     contextWindow: 131072,
     inputPrice: 3.0,
     outputPrice: 3.0,
-    description: 'Llama 3.1 405B, OpenRouter only',
     capabilities: OTHER_DEFAULT_CAPABILITIES,
     openRouterOnly: true,
     deprecated: true,
@@ -44,7 +43,6 @@ export const OTHER_MODELS: Record<string, ModelConfig> = {
     contextWindow: 128000,
     inputPrice: 0.25,
     outputPrice: 0.5,
-    description: 'QVQ 72B vision model, OpenRouter only',
     capabilities: {
       ...OTHER_DEFAULT_CAPABILITIES,
     },

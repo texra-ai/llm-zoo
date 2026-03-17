@@ -37,7 +37,6 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
     contextWindow: 128000,
     inputPrice: 0.28,
     outputPrice: 0.42,
-    description: 'DeepSeek V3.2 chat, very cheap',
     capabilities: {
       ...DEEPSEEK_DEFAULT_CAPABILITIES,
       supportsAssistantPrefill: true,
@@ -57,7 +56,6 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
     contextWindow: 163840,
     inputPrice: 0.28,
     outputPrice: 0.42,
-    description: 'DeepSeek V3.2 with reasoning, very cheap',
     capabilities: {
       ...DEEPSEEK_DEFAULT_CAPABILITIES,
       supportsReasoning: true,
@@ -79,7 +77,6 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
     contextWindow: 163840,
     inputPrice: 0.28,
     outputPrice: 0.42,
-    description: 'DeepSeek V3.2 Speciale, extended thinking',
     capabilities: {
       ...DEEPSEEK_DEFAULT_CAPABILITIES,
       supportsReasoning: true,
@@ -102,7 +99,6 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
     contextWindow: 128000,
     inputPrice: 0.14,
     outputPrice: 0.28,
-    description: 'DeepSeek V3.0 chat',
     capabilities: {
       ...DEEPSEEK_DEFAULT_CAPABILITIES,
       supportsAssistantPrefill: true,
@@ -121,7 +117,6 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
     contextWindow: 128000,
     inputPrice: 4,
     outputPrice: 4,
-    description: 'DeepSeek R1 reasoning model',
     capabilities: {
       ...DEEPSEEK_DEFAULT_CAPABILITIES,
       supportsReasoning: true,
@@ -141,7 +136,6 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
     contextWindow: 64000,
     inputPrice: 0.27,
     outputPrice: 1.1,
-    description: 'DeepSeek V3.0 chat (OpenRouter)',
     capabilities: {
       ...DEEPSEEK_DEFAULT_CAPABILITIES,
       supportsAssistantPrefill: true,
@@ -160,7 +154,6 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
     contextWindow: 64000,
     inputPrice: 0.55,
     outputPrice: 2.19,
-    description: 'DeepSeek R1 reasoning (OpenRouter)',
     capabilities: {
       ...DEEPSEEK_DEFAULT_CAPABILITIES,
       supportsReasoning: true,

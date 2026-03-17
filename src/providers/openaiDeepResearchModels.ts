@@ -42,7 +42,6 @@ export const OPENAI_DEEP_RESEARCH_MODELS: Record<string, ModelConfig> = {
     contextWindow: 200000,
     inputPrice: 10,
     outputPrice: 40,
-    description: 'o3 deep research, Responses API only',
     capabilities: {
       ...OPENAI_DEEP_RESEARCH_DEFAULT_CAPABILITIES,
     },
@@ -61,7 +60,6 @@ export const OPENAI_DEEP_RESEARCH_MODELS: Record<string, ModelConfig> = {
     contextWindow: 200000,
     inputPrice: 2,
     outputPrice: 8,
-    description: 'o4-mini deep research, cheaper alternative',
     capabilities: {
       ...OPENAI_DEEP_RESEARCH_DEFAULT_CAPABILITIES,
     },

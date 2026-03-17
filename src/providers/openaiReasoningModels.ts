@@ -36,7 +36,6 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     contextWindow: 200000,
     inputPrice: 1.0,
     outputPrice: 4.4,
-    description: 'o4-mini reasoning model with vision',
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       cacheDiscountFactor: 0.25,
@@ -60,7 +59,6 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     contextWindow: 200000,
     inputPrice: 20.0,
     outputPrice: 80.0,
-    description: 'o3 Pro, deep reasoning, expensive',
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       supportsNativeWebSearch: true,
@@ -83,7 +81,6 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     contextWindow: 200000,
     inputPrice: 2.0,
     outputPrice: 8.0,
-    description: 'o3 reasoning model with vision and tools',
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       cacheDiscountFactor: 0.25,
@@ -107,7 +104,6 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     contextWindow: 200000,
     inputPrice: 1.1,
     outputPrice: 4.4,
-    description: 'o3-mini, cheap reasoning, no vision',
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       supportsNativeMCPServer: true,
@@ -128,7 +124,6 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     contextWindow: 200000,
     inputPrice: 150.0,
     outputPrice: 600.0,
-    description: 'o1 Pro, very expensive deep reasoning',
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       supportsNativeMCPServer: true,
@@ -148,7 +143,6 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     contextWindow: 200000,
     inputPrice: 15.0,
     outputPrice: 60.0,
-    description: 'o1 reasoning with vision and PDF',
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       supportsNativeMCPServer: true,
@@ -169,7 +163,6 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     contextWindow: 128000,
     inputPrice: 15.0,
     outputPrice: 60.0,
-    description: 'Early o1 preview, no system prompt',
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       supportsVision: false,
@@ -189,7 +182,6 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     contextWindow: 128000,
     inputPrice: 1.1,
     outputPrice: 4.4,
-    description: 'o1-mini, cheap reasoning, no vision',
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       supportsVision: false,
@@ -209,7 +201,6 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     contextWindow: 131072,
     inputPrice: 0.15,
     outputPrice: 0.6,
-    description: 'GPT OSS 120B, OpenRouter only',
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       supportsVision: false,
@@ -228,7 +219,6 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     contextWindow: 131072,
     inputPrice: 0.05,
     outputPrice: 0.2,
-    description: 'GPT OSS 20B, ultra-cheap, OpenRouter only',
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       supportsVision: false,
@@ -247,7 +237,6 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     contextWindow: 400000,
     inputPrice: 15.0,
     outputPrice: 120.0,
-    description: 'GPT-5 Pro, deep reasoning, expensive',
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       supportsAutoPromptCaching: false,
@@ -272,7 +261,6 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     contextWindow: 400000,
     inputPrice: 1.25,
     outputPrice: 10.0,
-    description: 'GPT-5 with reasoning, 400K context',
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       cacheDiscountFactor: 0.1,
@@ -297,7 +285,6 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     contextWindow: 400000,
     inputPrice: 1.25,
     outputPrice: 10.0,
-    description: 'GPT-5.1 with reasoning, 400K context',
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       cacheDiscountFactor: 0.1,
@@ -323,7 +310,6 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     contextWindow: 400000,
     inputPrice: 21.0,
     outputPrice: 168.0,
-    description: 'GPT-5.2 Pro, deep reasoning, Responses API',
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       supportsAutoPromptCaching: false,
@@ -349,7 +335,6 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     contextWindow: 400000,
     inputPrice: 1.75,
     outputPrice: 14.0,
-    description: 'GPT-5.2 with xhigh reasoning',
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       cacheDiscountFactor: 0.1,
@@ -374,7 +359,6 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     contextWindow: 400000,
     inputPrice: 1.75,
     outputPrice: 14.0,
-    description: 'GPT-5.2 Codex, code-optimized reasoning',
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       cacheDiscountFactor: 0.1,
@@ -399,7 +383,6 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     contextWindow: 400000,
     inputPrice: 1.75,
     outputPrice: 14.0,
-    description: 'Latest Codex, code-optimized reasoning',
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       cacheDiscountFactor: 0.1,
@@ -423,7 +406,6 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     contextWindow: 1050000,
     inputPrice: 30.0,
     outputPrice: 180.0,
-    description: 'GPT-5.4 Pro, deepest reasoning, 1M context',
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       supportsAutoPromptCaching: false,
@@ -448,7 +430,6 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     contextWindow: 1050000,
     inputPrice: 2.5,
     outputPrice: 15.0,
-    description: 'Latest GPT-5.4 with reasoning, 1M context',
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       cacheDiscountFactor: 0.1,
@@ -473,7 +454,6 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     contextWindow: 400000,
     inputPrice: 0.25,
     outputPrice: 2.0,
-    description: 'GPT-5 Mini, cheap reasoning, 400K context',
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       cacheDiscountFactor: 0.1,
@@ -498,7 +478,6 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     contextWindow: 400000,
     inputPrice: 0.05,
     outputPrice: 0.4,
-    description: 'GPT-5 Nano, ultra-cheap reasoning',
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       cacheDiscountFactor: 0.1,

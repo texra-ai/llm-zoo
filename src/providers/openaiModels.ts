@@ -37,7 +37,6 @@ export const OPENAI_MODELS: Record<string, ModelConfig> = {
     contextWindow: 1000000,
     inputPrice: 2.0,
     outputPrice: 8.0,
-    description: 'GPT-4.1 with 1M context, tool use, web search',
     capabilities: {
       ...OPENAI_DEFAULT_CAPABILITIES,
       cacheDiscountFactor: 0.25,
@@ -59,7 +58,6 @@ export const OPENAI_MODELS: Record<string, ModelConfig> = {
     contextWindow: 1000000,
     inputPrice: 0.4,
     outputPrice: 1.6,
-    description: 'Affordable GPT-4.1 Mini, 1M context',
     capabilities: {
       ...OPENAI_DEFAULT_CAPABILITIES,
       cacheDiscountFactor: 0.25,
@@ -81,7 +79,6 @@ export const OPENAI_MODELS: Record<string, ModelConfig> = {
     contextWindow: 1000000,
     inputPrice: 0.1,
     outputPrice: 0.4,
-    description: 'Ultra-cheap GPT-4.1 Nano, 1M context',
     capabilities: {
       ...OPENAI_DEFAULT_CAPABILITIES,
       cacheDiscountFactor: 0.25,
@@ -104,7 +101,6 @@ export const OPENAI_MODELS: Record<string, ModelConfig> = {
     contextWindow: 128000,
     inputPrice: 75.0,
     outputPrice: 150.0,
-    description: 'GPT-4.5 preview, very expensive',
     capabilities: {
       ...OPENAI_DEFAULT_CAPABILITIES,
       supportsPredictiveOutput: false,
@@ -123,7 +119,6 @@ export const OPENAI_MODELS: Record<string, ModelConfig> = {
     contextWindow: 128000,
     inputPrice: 2.5,
     outputPrice: 10.0,
-    description: 'GPT-4o multimodal, 128K context',
     capabilities: {
       ...OPENAI_DEFAULT_CAPABILITIES,
       supportsNativeMCPServer: true,
@@ -145,7 +140,6 @@ export const OPENAI_MODELS: Record<string, ModelConfig> = {
     contextWindow: 128000,
     inputPrice: 10.0,
     outputPrice: 30.0,
-    description: 'Legacy GPT-4 Turbo, 128K context',
     capabilities: {
       ...OPENAI_DEFAULT_CAPABILITIES,
       supportsAutoPromptCaching: false,
@@ -165,7 +159,6 @@ export const OPENAI_MODELS: Record<string, ModelConfig> = {
     contextWindow: 128000,
     inputPrice: 0.15,
     outputPrice: 0.6,
-    description: 'Cheap GPT-4o Mini',
     capabilities: {
       ...OPENAI_DEFAULT_CAPABILITIES,
       supportsPredictiveOutput: true,
@@ -184,7 +177,6 @@ export const OPENAI_MODELS: Record<string, ModelConfig> = {
     contextWindow: 128000,
     inputPrice: 5.0,
     outputPrice: 15.0,
-    description: 'ChatGPT 4o latest snapshot',
     capabilities: {
       ...OPENAI_DEFAULT_CAPABILITIES,
       supportsReasoning: true,

@@ -30,7 +30,6 @@ export const COPILOT_MODELS: Record<string, ModelConfig> = {
     contextWindow: 128000,
     inputPrice: 0,
     outputPrice: 0,
-    description: 'Free Copilot GPT-4o, 128K context',
     capabilities: {
       ...COPILOT_DEFAULT_CAPABILITIES,
       reasoningEffort: ReasoningEffort.MEDIUM,

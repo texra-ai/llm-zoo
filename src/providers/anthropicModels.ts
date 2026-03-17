@@ -38,7 +38,6 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     contextWindow: 1000000,
     inputPrice: 5.0,
     outputPrice: 25.0,
-    description: 'Most capable Claude with extended thinking, 1M context',
     capabilities: {
       ...ANTHROPIC_DEFAULT_CAPABILITIES,
       supportsNativeMCPServer: true,
@@ -62,7 +61,6 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     contextWindow: 1000000,
     inputPrice: 5.0,
     outputPrice: 25.0,
-    description: 'Most capable Claude, 1M context, no thinking mode',
     capabilities: {
       ...ANTHROPIC_DEFAULT_CAPABILITIES,
       supportsNativeWebSearch: true,
@@ -84,7 +82,6 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     contextWindow: 1000000,
     inputPrice: 3.0,
     outputPrice: 15.0,
-    description: 'Fast and capable with extended thinking, 1M context',
     capabilities: {
       ...ANTHROPIC_DEFAULT_CAPABILITIES,
       supportsNativeWebSearch: true,
@@ -107,7 +104,6 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     contextWindow: 1000000,
     inputPrice: 3.0,
     outputPrice: 15.0,
-    description: 'Fast and capable Claude, 1M context, no thinking mode',
     capabilities: {
       ...ANTHROPIC_DEFAULT_CAPABILITIES,
       supportsNativeWebSearch: true,
@@ -129,7 +125,6 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     contextWindow: 200000,
     inputPrice: 5.0,
     outputPrice: 25.0,
-    description: 'Previous-gen Opus with extended thinking',
     capabilities: {
       ...ANTHROPIC_DEFAULT_CAPABILITIES,
       supportsNativeMCPServer: true,
@@ -153,7 +148,6 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     contextWindow: 200000,
     inputPrice: 5.0,
     outputPrice: 25.0,
-    description: 'Previous-gen Opus without thinking',
     capabilities: {
       ...ANTHROPIC_DEFAULT_CAPABILITIES,
       supportsNativeWebSearch: true,
@@ -175,7 +169,6 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     contextWindow: 200000,
     inputPrice: 15.0,
     outputPrice: 75.0,
-    description: 'Opus 4.1 with extended thinking',
     capabilities: {
       ...ANTHROPIC_DEFAULT_CAPABILITIES,
       supportsNativeMCPServer: true,
@@ -199,7 +192,6 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     contextWindow: 200000,
     inputPrice: 15.0,
     outputPrice: 75.0,
-    description: 'Opus 4.1 without thinking',
     capabilities: {
       ...ANTHROPIC_DEFAULT_CAPABILITIES,
       supportsNativeWebSearch: true,
@@ -221,7 +213,6 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     contextWindow: 200000,
     inputPrice: 15.0,
     outputPrice: 75.0,
-    description: 'Opus 4.0 with extended thinking',
     capabilities: {
       ...ANTHROPIC_DEFAULT_CAPABILITIES,
       supportsNativeMCPServer: true,
@@ -245,7 +236,6 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     contextWindow: 200000,
     inputPrice: 15.0,
     outputPrice: 75.0,
-    description: 'Opus 4.0 without thinking',
     capabilities: {
       ...ANTHROPIC_DEFAULT_CAPABILITIES,
       supportsNativeWebSearch: true,
@@ -267,7 +257,6 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     contextWindow: 200000,
     inputPrice: 3.0,
     outputPrice: 15.0,
-    description: 'Sonnet 4.5 with extended thinking',
     capabilities: {
       ...ANTHROPIC_DEFAULT_CAPABILITIES,
       supportsNativeWebSearch: true,
@@ -290,7 +279,6 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     contextWindow: 200000,
     inputPrice: 3.0,
     outputPrice: 15.0,
-    description: 'Sonnet 4.5 without thinking',
     capabilities: {
       ...ANTHROPIC_DEFAULT_CAPABILITIES,
       supportsNativeWebSearch: true,
@@ -312,7 +300,6 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     contextWindow: 200000,
     inputPrice: 1.0,
     outputPrice: 5.0,
-    description: 'Fast and affordable with extended thinking',
     capabilities: {
       ...ANTHROPIC_DEFAULT_CAPABILITIES,
       supportsNativeWebSearch: true,
@@ -334,7 +321,6 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     contextWindow: 200000,
     inputPrice: 1.0,
     outputPrice: 5.0,
-    description: 'Fast and affordable Claude without thinking',
     capabilities: {
       ...ANTHROPIC_DEFAULT_CAPABILITIES,
       supportsNativeWebSearch: true,
@@ -355,7 +341,6 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     contextWindow: 200000,
     inputPrice: 5.0,
     outputPrice: 25.0,
-    description: 'Sonnet 4.0 with extended thinking',
     capabilities: {
       ...ANTHROPIC_DEFAULT_CAPABILITIES,
       supportsNativeWebSearch: true,
@@ -378,7 +363,6 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     contextWindow: 200000,
     inputPrice: 3.0,
     outputPrice: 15.0,
-    description: 'Sonnet 4.0 without thinking',
     capabilities: {
       ...ANTHROPIC_DEFAULT_CAPABILITIES,
       supportsNativeWebSearch: true,
@@ -400,7 +384,6 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     contextWindow: 200000,
     inputPrice: 3.0,
     outputPrice: 15.0,
-    description: 'Sonnet 3.7 with thinking',
     capabilities: {
       ...ANTHROPIC_DEFAULT_CAPABILITIES,
       supportsNativeWebSearch: true,
@@ -422,7 +405,6 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     contextWindow: 200000,
     inputPrice: 3.0,
     outputPrice: 15.0,
-    description: 'Sonnet 3.7 without thinking',
     capabilities: {
       ...ANTHROPIC_DEFAULT_CAPABILITIES,
       supportsNativeWebSearch: true,
@@ -444,7 +426,6 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     contextWindow: 200000,
     inputPrice: 15.0,
     outputPrice: 75.0,
-    description: 'Legacy Opus 3, small output window',
     capabilities: {
       ...ANTHROPIC_DEFAULT_CAPABILITIES,
       supportsAssistantPrefill: true,
@@ -464,7 +445,6 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     contextWindow: 200000,
     inputPrice: 3.0,
     outputPrice: 15.0,
-    description: 'Sonnet 3.5 v2 (Oct 2024)',
     capabilities: {
       ...ANTHROPIC_DEFAULT_CAPABILITIES,
       supportsAssistantPrefill: true,
@@ -484,7 +464,6 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     contextWindow: 200000,
     inputPrice: 3.0,
     outputPrice: 15.0,
-    description: 'Sonnet 3.5 v1 (Jun 2024)',
     capabilities: {
       ...ANTHROPIC_DEFAULT_CAPABILITIES,
       supportsNativeWebSearch: true,
@@ -505,7 +484,6 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     contextWindow: 200000,
     inputPrice: 3.0,
     outputPrice: 15.0,
-    description: 'Legacy Sonnet 3.0',
     capabilities: {
       ...ANTHROPIC_DEFAULT_CAPABILITIES,
       supportsAssistantPrefill: true,
@@ -525,7 +503,6 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     contextWindow: 200000,
     inputPrice: 0.8,
     outputPrice: 4.0,
-    description: 'Haiku 3.5, fast and cheap',
     capabilities: {
       ...ANTHROPIC_DEFAULT_CAPABILITIES,
       supportsNativeWebSearch: true,
@@ -548,7 +525,6 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     contextWindow: 200000,
     inputPrice: 0.25,
     outputPrice: 1.25,
-    description: 'Legacy Haiku 3, cheapest Claude',
     capabilities: {
       ...ANTHROPIC_DEFAULT_CAPABILITIES,
       supportsAssistantPrefill: true,

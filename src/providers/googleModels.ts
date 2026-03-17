@@ -40,7 +40,6 @@ export const GOOGLE_MODELS: Record<string, ModelConfig> = {
     contextWindow: 1048576,
     inputPrice: 2.0,
     outputPrice: 12.0,
-    description: 'Latest Gemini Pro with reasoning and 1M context',
     capabilities: {
       ...GOOGLE_DEFAULT_CAPABILITIES,
       supportsPromptCaching: true,
@@ -64,7 +63,6 @@ export const GOOGLE_MODELS: Record<string, ModelConfig> = {
     contextWindow: 1048576,
     inputPrice: 2.0,
     outputPrice: 12.0,
-    description: 'Gemini 3.0 Pro with reasoning, 1M context',
     capabilities: {
       ...GOOGLE_DEFAULT_CAPABILITIES,
       supportsPromptCaching: true,
@@ -89,7 +87,6 @@ export const GOOGLE_MODELS: Record<string, ModelConfig> = {
     contextWindow: 1048576,
     inputPrice: 0.3,
     outputPrice: 2.5,
-    description: 'Fast and cheap Gemini with reasoning, 1M context',
     capabilities: {
       ...GOOGLE_DEFAULT_CAPABILITIES,
       supportsPromptCaching: true,
@@ -113,7 +110,6 @@ export const GOOGLE_MODELS: Record<string, ModelConfig> = {
     contextWindow: 1048576,
     inputPrice: 1.25,
     outputPrice: 10.0,
-    description: 'Gemini 2.5 Pro with reasoning',
     capabilities: {
       ...GOOGLE_DEFAULT_CAPABILITIES,
       supportsPromptCaching: true,
@@ -137,7 +133,6 @@ export const GOOGLE_MODELS: Record<string, ModelConfig> = {
     contextWindow: 1048576,
     inputPrice: 0.3,
     outputPrice: 2.5,
-    description: 'Gemini 2.5 Flash, fast and cheap',
     capabilities: {
       ...GOOGLE_DEFAULT_CAPABILITIES,
       supportsPromptCaching: true,
@@ -161,7 +156,6 @@ export const GOOGLE_MODELS: Record<string, ModelConfig> = {
     contextWindow: 1048576,
     inputPrice: 0.3,
     outputPrice: 2.5,
-    description: 'Gemini 2.5 Flash (stable release)',
     capabilities: {
       ...GOOGLE_DEFAULT_CAPABILITIES,
       supportsPromptCaching: true,
@@ -185,7 +179,6 @@ export const GOOGLE_MODELS: Record<string, ModelConfig> = {
     contextWindow: 65536,
     inputPrice: 0.1,
     outputPrice: 0.4,
-    description: 'Ultra-cheap Gemini Flash Lite, 65K context',
     capabilities: {
       ...GOOGLE_DEFAULT_CAPABILITIES,
       supportsPromptCaching: true,

@@ -31,7 +31,6 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
     contextWindow: 131072,
     inputPrice: 2.0,
     outputPrice: 5.0,
-    description: 'Moonshot V1 128K, no vision',
     capabilities: {
       ...MOONSHOT_DEFAULT_CAPABILITIES,
       supportsVision: false,
@@ -50,7 +49,6 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
     contextWindow: 131072,
     inputPrice: 2.0,
     outputPrice: 5.0,
-    description: 'Moonshot V1 128K with vision',
     capabilities: {
       ...MOONSHOT_DEFAULT_CAPABILITIES,
       supportsVision: true,
@@ -69,7 +67,6 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
     contextWindow: 128000,
     inputPrice: 0.42,
     outputPrice: 1.68,
-    description: 'Kimi thinking preview with vision',
     capabilities: {
       ...MOONSHOT_DEFAULT_CAPABILITIES,
       supportsVision: true,
@@ -89,7 +86,6 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
     contextWindow: 262144,
     inputPrice: 0.6,
     outputPrice: 2.5,
-    description: 'Kimi K2, 256K context, no reasoning',
     capabilities: {
       ...MOONSHOT_DEFAULT_CAPABILITIES,
       supportsVision: false,
@@ -111,7 +107,6 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
     contextWindow: 262144,
     inputPrice: 1.15,
     outputPrice: 8.0,
-    description: 'Kimi K2 Turbo, faster, more expensive',
     capabilities: {
       ...MOONSHOT_DEFAULT_CAPABILITIES,
       supportsVision: false,
@@ -133,7 +128,6 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
     contextWindow: 262144,
     inputPrice: 0.6,
     outputPrice: 2.5,
-    description: 'Kimi K2 with thinking, 256K context',
     capabilities: {
       ...MOONSHOT_DEFAULT_CAPABILITIES,
       supportsVision: false,
@@ -157,7 +151,6 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
     contextWindow: 262144,
     inputPrice: 1.15,
     outputPrice: 8.0,
-    description: 'Kimi K2 Thinking Turbo, fast reasoning',
     capabilities: {
       ...MOONSHOT_DEFAULT_CAPABILITIES,
       supportsVision: false,
@@ -182,7 +175,6 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
     contextWindow: 262144,
     inputPrice: 0.6,
     outputPrice: 3.0,
-    description: 'Latest Kimi K2.5 with vision, 256K context',
     capabilities: {
       ...MOONSHOT_DEFAULT_CAPABILITIES,
       supportsVision: true,
@@ -202,7 +194,6 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
     contextWindow: 262144,
     inputPrice: 0.6,
     outputPrice: 3.0,
-    description: 'Kimi K2.5 with thinking and vision, 256K context',
     capabilities: {
       ...MOONSHOT_DEFAULT_CAPABILITIES,
       supportsVision: true,
