@@ -63,6 +63,8 @@ export {
   cheapest,
   smartpick,
   ranked,
+  // Display
+  hint,
   // Insights
   insights,
   // Legacy (deprecated)

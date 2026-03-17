@@ -325,6 +325,64 @@ export function ranked(
 }
 
 // ============================================================================
+// Display Helpers
+// ============================================================================
+
+/**
+ * Format a token count as a human-readable string (e.g. 128000 → "128K", 1000000 → "1M").
+ */
+function formatTokens(tokens: number): string {
+  if (tokens >= 1_000_000 && tokens % 1_000_000 === 0) {
+    return `${tokens / 1_000_000}M`;
+  }
+  if (tokens >= 1_000) {
+    return `${Math.round(tokens / 1_000)}K`;
+  }
+  return String(tokens);
+}
+
+/**
+ * Format a price as a compact string (e.g. 3.0 → "$3", 0.25 → "$0.25").
+ */
+function formatPrice(price: number): string {
+  if (price === 0) return 'free';
+  // Drop trailing zeros: $3.00 → $3, $0.50 → $0.50
+  const formatted = price % 1 === 0 ? String(price) : price.toFixed(2).replace(/0+$/, '');
+  return `$${formatted}`;
+}
+
+/**
+ * Generate a dynamic hint string for a model, suitable for dropdown tooltips.
+ * Combines context window size and pricing info.
+ *
+ * @example
+ * ```typescript
+ * hint('sonnet45');
+ * // → "200K context, $3/$15 per 1M tokens"
+ *
+ * hint('gpt4o');
+ * // → "128K context, $2.50/$10 per 1M tokens"
+ *
+ * // Also accepts a ModelConfig directly
+ * const model = lookup('opus46T');
+ * hint(model);
+ * // → "200K context, $15/$75 per 1M tokens"
+ * ```
+ */
+export function hint(model: ModelConfig | string): string {
+  const config = typeof model === 'string' ? lookup(model) : model;
+  if (!config) {
+    throw new Error(`Unknown model: ${model}`);
+  }
+
+  const ctx = formatTokens(config.contextWindow);
+  const input = formatPrice(config.inputPrice);
+  const output = formatPrice(config.outputPrice);
+
+  return `${ctx} context, ${input}/${output} per 1M tokens`;
+}
+
+// ============================================================================
 // Insights
 // ============================================================================
 
