@@ -30,6 +30,7 @@ export const XAI_MODELS: Record<string, ModelConfig> = {
     contextWindow: 256000,
     inputPrice: 3.0,
     outputPrice: 15.0,
+    description: 'Latest Grok with reasoning, 256K context',
     capabilities: {
       ...XAI_DEFAULT_CAPABILITIES,
       supportsReasoning: true,
@@ -48,6 +49,7 @@ export const XAI_MODELS: Record<string, ModelConfig> = {
     contextWindow: 131072,
     inputPrice: 3.0,
     outputPrice: 15.0,
+    description: 'Grok 3 beta, no reasoning',
     capabilities: {
       ...XAI_DEFAULT_CAPABILITIES,
       supportsReasoning: false,
@@ -67,6 +69,7 @@ export const XAI_MODELS: Record<string, ModelConfig> = {
     contextWindow: 131072,
     inputPrice: 0.3,
     outputPrice: 0.5,
+    description: 'Grok 3 Mini with reasoning, cheap',
     capabilities: {
       ...XAI_DEFAULT_CAPABILITIES,
       supportsReasoning: true,
@@ -87,6 +90,7 @@ export const XAI_MODELS: Record<string, ModelConfig> = {
     contextWindow: 131072,
     inputPrice: 2.0,
     outputPrice: 10.0,
+    description: 'Grok 2, no vision',
     capabilities: XAI_DEFAULT_CAPABILITIES,
     openRouterOnly: false,
     deprecated: true,
@@ -102,6 +106,7 @@ export const XAI_MODELS: Record<string, ModelConfig> = {
     contextWindow: 32768,
     inputPrice: 2.0,
     outputPrice: 10.0,
+    description: 'Grok 2 with vision, 32K context',
     capabilities: {
       ...XAI_DEFAULT_CAPABILITIES,
       supportsVision: true,

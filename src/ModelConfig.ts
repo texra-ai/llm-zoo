@@ -230,6 +230,12 @@ export interface ModelConfig {
   label: string;
 
   /**
+   * Short description of the model for display in dropdowns and tooltips.
+   * Helps users distinguish between models at a glance.
+   */
+  description?: string;
+
+  /**
    * Whether this model is deprecated and no longer recommended for use.
    * Deprecated models are still functional but have been superseded by newer versions.
    * @default false

@@ -358,15 +358,15 @@ function formatPrice(price: number): string {
  * @example
  * ```typescript
  * hint('sonnet45');
- * // → "200K context, $3/$15 per 1M tokens"
+ * // → "Sonnet 4.5 without thinking — 200K context, $3/$15 per 1M tokens"
  *
  * hint('gpt4o');
- * // → "128K context, $2.50/$10 per 1M tokens"
+ * // → "GPT-4o multimodal, 128K context — 128K context, $2.50/$10 per 1M tokens"
  *
  * // Also accepts a ModelConfig directly
  * const model = lookup('opus46T');
  * hint(model);
- * // → "200K context, $15/$75 per 1M tokens"
+ * // → "Most capable Claude with extended thinking, 1M context — 1M context, $5/$25 per 1M tokens"
  * ```
  */
 export function hint(model: ModelConfig | string): string {
@@ -379,7 +379,8 @@ export function hint(model: ModelConfig | string): string {
   const input = formatPrice(config.inputPrice);
   const output = formatPrice(config.outputPrice);
 
-  return `${ctx} context, ${input}/${output} per 1M tokens`;
+  const pricing = `${ctx} context, ${input}/${output} per 1M tokens`;
+  return config.description ? `${config.description} — ${pricing}` : pricing;
 }
 
 // ============================================================================
