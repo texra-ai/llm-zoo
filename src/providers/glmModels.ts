@@ -76,6 +76,7 @@ export const GLM_MODELS: Record<string, ModelConfig> = {
       ...GLM_DEFAULT_CAPABILITIES,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   // GLM-4.7 Flash (Free efficient 30B-class model)
   glm47flash: {
@@ -93,6 +94,7 @@ export const GLM_MODELS: Record<string, ModelConfig> = {
       ...GLM_DEFAULT_CAPABILITIES,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   // GLM-4.6V (Multimodal vision model)
   glm46v: {
@@ -112,6 +114,7 @@ export const GLM_MODELS: Record<string, ModelConfig> = {
       supportsNativePdf: true,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   // GLM-4.5 (Hybrid reasoning MoE model, 355B/32B active)
   glm45: {
@@ -132,6 +135,7 @@ export const GLM_MODELS: Record<string, ModelConfig> = {
       reasoningEffort: ReasoningEffort.HIGH,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   // GLM-4.5V (Vision-language MoE model, 106B/12B active)
   glm45v: {
@@ -150,6 +154,7 @@ export const GLM_MODELS: Record<string, ModelConfig> = {
       supportsVision: true,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   // GLM-4.5 Air (Free lightweight agent model)
   glm45air: {
@@ -167,6 +172,7 @@ export const GLM_MODELS: Record<string, ModelConfig> = {
       ...GLM_DEFAULT_CAPABILITIES,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   // GLM-4 32B (Superseded by GLM-4.7 and GLM-5)
   glm432b: {
