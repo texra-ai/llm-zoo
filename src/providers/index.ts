@@ -8,6 +8,7 @@ export { COPILOT_MODELS } from './copilotModels';
 export { DASHSCOPE_MODELS } from './dashscopeModels';
 export { DEEPSEEK_MODELS } from './deepseekModels';
 export { GOOGLE_MODELS } from './googleModels';
+export { MINIMAX_MODELS } from './minimaxModels';
 export { MOONSHOT_MODELS } from './moonshotModels';
 export { OPENAI_DEEP_RESEARCH_MODELS } from './openaiDeepResearchModels';
 export { OPENAI_MODELS } from './openaiModels';
