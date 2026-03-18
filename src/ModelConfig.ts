@@ -48,6 +48,8 @@ export enum ModelProvider {
   MOONSHOT = 'moonshot',
   /** Alibaba DashScope (Qwen models) */
   DASHSCOPE = 'dashscope',
+  /** MiniMax (M-series models) */
+  MINIMAX = 'minimax',
   /** GitHub Copilot */
   COPILOT = 'copilot',
   /** Other providers (OpenRouter-only models, etc.) */
