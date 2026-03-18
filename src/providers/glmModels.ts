@@ -36,8 +36,8 @@ export const GLM_MODELS: Record<string, ModelConfig> = {
     provider: ModelProvider.GLM,
     maxOutputTokens: 131072,
     contextWindow: 80000,
-    inputPrice: 0.72,
-    outputPrice: 2.3,
+    inputPrice: 0.8,
+    outputPrice: 2.56,
     capabilities: {
       ...GLM_DEFAULT_CAPABILITIES,
     },
@@ -51,10 +51,10 @@ export const GLM_MODELS: Record<string, ModelConfig> = {
     shortName: 'glm-5-turbo',
     openrouterFullName: 'z-ai/glm-5-turbo',
     provider: ModelProvider.GLM,
-    maxOutputTokens: 131072,
-    contextWindow: 203000,
-    inputPrice: 0.96,
-    outputPrice: 3.5,
+    maxOutputTokens: 128000,
+    contextWindow: 200000,
+    inputPrice: 1.2,
+    outputPrice: 4.0,
     capabilities: {
       ...GLM_DEFAULT_CAPABILITIES,
     },
@@ -77,18 +77,18 @@ export const GLM_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
   },
-  // GLM-4.7 Flash (Efficient 30B-class model)
+  // GLM-4.7 Flash (Free efficient 30B-class model)
   glm47flash: {
     name: 'glm47flash',
     label: 'GLM-4.7 Flash',
     fullName: 'glm-4.7-flash',
     shortName: 'glm-4.7-flash',
-    openrouterFullName: 'z-ai/glm-4.7-flash',
+    openrouterFullName: 'z-ai/glm-4.7-flash:free',
     provider: ModelProvider.GLM,
     maxOutputTokens: 128000,
     contextWindow: 202752,
-    inputPrice: 0.06,
-    outputPrice: 0.4,
+    inputPrice: 0,
+    outputPrice: 0,
     capabilities: {
       ...GLM_DEFAULT_CAPABILITIES,
     },
@@ -168,7 +168,7 @@ export const GLM_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
   },
-  // GLM-4 32B (Cost-effective open-source model)
+  // GLM-4 32B (Superseded by GLM-4.7 and GLM-5)
   glm432b: {
     name: 'glm432b',
     label: 'GLM-4 32B',
@@ -185,5 +185,6 @@ export const GLM_MODELS: Record<string, ModelConfig> = {
       supportsVision: false,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
 };
