@@ -52,6 +52,8 @@ export enum ModelProvider {
   MINIMAX = 'minimax',
   /** GitHub Copilot */
   COPILOT = 'copilot',
+  /** Zhipu AI (GLM models) */
+  GLM = 'glm',
   /** Other providers (OpenRouter-only models, etc.) */
   OTHERS = 'others',
 }
