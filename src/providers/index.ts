@@ -7,6 +7,7 @@ export { ANTHROPIC_MODELS } from './anthropicModels';
 export { COPILOT_MODELS } from './copilotModels';
 export { DASHSCOPE_MODELS } from './dashscopeModels';
 export { DEEPSEEK_MODELS } from './deepseekModels';
+export { GLM_MODELS } from './glmModels';
 export { GOOGLE_MODELS } from './googleModels';
 export { MINIMAX_MODELS } from './minimaxModels';
 export { MOONSHOT_MODELS } from './moonshotModels';
