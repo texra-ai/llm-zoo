@@ -168,8 +168,8 @@ export const GOOGLE_MODELS: Record<string, ModelConfig> = {
     openRouterOnly: false,
     deprecated: true,
   },
-  'gemini25f-': {
-    name: 'gemini25f-',
+  gemini25flite: {
+    name: 'gemini25flite',
     label: 'Gemini 2.5 Flash Lite',
     fullName: 'gemini-2.5-flash-lite-preview-09-2025',
     shortName: 'gemini-2.5-flash-lite-preview',

@@ -47,8 +47,8 @@ export const OPENAI_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
   },
-  'gpt41-': {
-    name: 'gpt41-',
+  gpt41mini: {
+    name: 'gpt41mini',
     label: 'GPT-4.1 Mini',
     fullName: 'gpt-4.1-mini-2025-04-14',
     shortName: 'gpt-4.1-mini',
@@ -68,8 +68,8 @@ export const OPENAI_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
   },
-  'gpt41--': {
-    name: 'gpt41--',
+  gpt41nano: {
+    name: 'gpt41nano',
     label: 'GPT-4.1 Nano',
     fullName: 'gpt-4.1-nano-2025-04-14',
     shortName: 'gpt-4.1-nano',
@@ -148,8 +148,8 @@ export const OPENAI_MODELS: Record<string, ModelConfig> = {
     openRouterOnly: false,
     deprecated: true,
   },
-  'gpt4o-': {
-    name: 'gpt4o-',
+  gpt4omini: {
+    name: 'gpt4omini',
     label: 'GPT-4o Mini',
     fullName: 'gpt-4o-mini-2024-07-18',
     shortName: 'gpt-4o-mini',

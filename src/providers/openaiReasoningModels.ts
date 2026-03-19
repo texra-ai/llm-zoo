@@ -25,8 +25,8 @@ const OPENAI_REASONING_DEFAULT_CAPABILITIES: ModelCapabilities = {
  * Includes o1, o3, o4, and GPT-5 reasoning variants.
  */
 export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
-  'o4-': {
-    name: 'o4-',
+  o4mini: {
+    name: 'o4mini',
     label: 'o4 Mini',
     fullName: 'o4-mini-2025-04-16',
     shortName: 'o4-mini',
@@ -93,8 +93,8 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     openRouterOnly: false,
     deprecated: true,
   },
-  'o3-': {
-    name: 'o3-',
+  o3mini: {
+    name: 'o3mini',
     label: 'o3 Mini',
     fullName: 'o3-mini-2025-01-31',
     shortName: 'o3-mini',
@@ -171,8 +171,8 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     openRouterOnly: false,
     deprecated: true,
   },
-  'o1-': {
-    name: 'o1-',
+  o1mini: {
+    name: 'o1mini',
     label: 'o1 Mini',
     fullName: 'o1-mini-2024-09-12',
     shortName: 'o1-mini',
@@ -208,8 +208,8 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     openRouterOnly: true,
     deprecated: true,
   },
-  'gptoss-': {
-    name: 'gptoss-',
+  gptoss20b: {
+    name: 'gptoss20b',
     label: 'GPT-OSS 20B',
     fullName: 'gpt-oss-20b',
     shortName: 'gpt-oss-20b',
@@ -393,6 +393,31 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
       supportsVision: true,
       supportsNativePdf: true,
     },
+    requiresResponsesAPI: true,
+    openRouterOnly: false,
+  },
+  codexmini: {
+    name: 'codexmini',
+    label: 'Codex Mini',
+    fullName: 'codex-mini-latest',
+    shortName: 'codex-mini',
+    openrouterFullName: 'openai/codex-mini-latest',
+    provider: ModelProvider.OPENAI,
+    maxOutputTokens: 100000,
+    contextWindow: 200000,
+    inputPrice: 1.5,
+    outputPrice: 6.0,
+    capabilities: {
+      ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
+      cacheDiscountFactor: 0.25,
+      supportsNativeMCPServer: true,
+      supportsNativeWebSearch: true,
+      supportsNativeCodeExecution: true,
+      supportsVision: true,
+      supportsNativePdf: true,
+      reasoningEffort: ReasoningEffort.HIGH,
+    },
+    requiresResponsesAPI: true,
     openRouterOnly: false,
   },
   gpt54pro: {
@@ -443,8 +468,8 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
   },
-  'gpt54-': {
-    name: 'gpt54-',
+  gpt54mini: {
+    name: 'gpt54mini',
     label: 'GPT-5.4 Mini',
     fullName: 'gpt-5.4-mini-2026-03-17',
     shortName: 'gpt-5.4-mini',
@@ -467,8 +492,8 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
   },
-  'gpt54--': {
-    name: 'gpt54--',
+  gpt54nano: {
+    name: 'gpt54nano',
     label: 'GPT-5.4 Nano',
     fullName: 'gpt-5.4-nano-2026-03-17',
     shortName: 'gpt-5.4-nano',
@@ -490,8 +515,8 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
   },
-  'gpt5-': {
-    name: 'gpt5-',
+  gpt5mini: {
+    name: 'gpt5mini',
     label: 'GPT-5 Mini',
     fullName: 'gpt-5-mini-2025-08-07',
     shortName: 'gpt-5-mini',
@@ -514,8 +539,8 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     openRouterOnly: false,
     deprecated: true,
   },
-  'gpt5--': {
-    name: 'gpt5--',
+  gpt5nano: {
+    name: 'gpt5nano',
     label: 'GPT-5 Nano',
     fullName: 'gpt-5-nano-2025-08-07',
     shortName: 'gpt-5-nano',

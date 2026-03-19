@@ -56,8 +56,8 @@ export const XAI_MODELS: Record<string, ModelConfig> = {
     openRouterOnly: false,
     deprecated: true,
   },
-  'grok3-': {
-    name: 'grok3-',
+  grok3mini: {
+    name: 'grok3mini',
     label: 'Grok 3 Mini',
     fullName: 'grok-3-mini-beta',
     shortName: 'grok-3-mini-beta',
