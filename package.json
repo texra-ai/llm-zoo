@@ -39,24 +39,27 @@
     "url": "https://github.com/texra-ai/llm-zoo/issues"
   },
   "type": "module",
-  "main": "./dist/index.js",
+  "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.js"
     },
     "./providers": {
       "types": "./dist/providers/index.d.ts",
       "import": "./dist/providers/index.js",
-      "require": "./dist/providers/index.cjs"
+      "require": "./dist/providers/index.cjs",
+      "default": "./dist/providers/index.js"
     },
     "./schemas": {
       "types": "./dist/schemas.d.ts",
       "import": "./dist/schemas.js",
-      "require": "./dist/schemas.cjs"
+      "require": "./dist/schemas.cjs",
+      "default": "./dist/schemas.js"
     }
   },
   "files": [
