@@ -1,7 +1,7 @@
 {
   "name": "llm-zoo",
   "version": "1.2.0",
-  "description": "80+ LLM models. Pricing, capabilities, context windows. Always current.",
+  "description": "100+ LLM models. Pricing, capabilities, context windows. Always current.",
   "keywords": [
     "llm",
     "gpt",
@@ -13,6 +13,12 @@
     "deepseek",
     "grok",
     "qwen",
+    "minimax",
+    "glm",
+    "moonshot",
+    "dashscope",
+    "copilot",
+    "openrouter",
     "ai",
     "chatgpt",
     "gpt-4",
