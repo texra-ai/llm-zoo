@@ -126,6 +126,32 @@ export function openRouterOnly(): ModelConfig[] {
   return Object.values(MODEL_CONFIGS).filter((m) => m.openRouterOnly);
 }
 
+/**
+ * Get models that have been retired and are no longer served.
+ *
+ * @example
+ * ```typescript
+ * const gone = retired();
+ * console.log(`${gone.length} models are no longer available`);
+ * ```
+ */
+export function retired(): ModelConfig[] {
+  return Object.values(MODEL_CONFIGS).filter((m) => m.retired === true);
+}
+
+/**
+ * Get only active (non-retired) models.
+ *
+ * @example
+ * ```typescript
+ * const available = active();
+ * console.log(`${available.length} models are currently available`);
+ * ```
+ */
+export function active(): ModelConfig[] {
+  return Object.values(MODEL_CONFIGS).filter((m) => !m.retired);
+}
+
 // ============================================================================
 // Cost Intelligence
 // ============================================================================

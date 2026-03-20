@@ -87,6 +87,7 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
     openRouterOnly: false,
     baseUrl: 'https://api.deepseek.com/v3.2_speciale_expires_on_20251215',
     deprecated: true,
+    retired: true,
   },
   dsv3: {
     name: 'dsv3',
@@ -105,6 +106,7 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    retired: true,
   },
   dsr1: {
     name: 'dsr1',
@@ -124,6 +126,7 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    retired: true,
   },
   dsv3o: {
     name: 'dsv3o',
@@ -142,6 +145,7 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    retired: true,
   },
   dsr1o: {
     name: 'dsr1o',
@@ -161,5 +165,6 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    retired: true,
   },
 };

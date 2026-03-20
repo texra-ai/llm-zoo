@@ -55,6 +55,8 @@ export {
   withContext,
   directAccess,
   openRouterOnly,
+  retired,
+  active,
   // Cost
   cost,
   maxCost,
