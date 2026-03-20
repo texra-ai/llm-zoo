@@ -48,5 +48,6 @@ export const OTHER_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: true,
     deprecated: true,
+    retired: true,
   },
 };
