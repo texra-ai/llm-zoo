@@ -107,6 +107,7 @@ export const OPENAI_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    retired: true,
   },
   gpt4o: {
     name: 'gpt4o',
@@ -147,6 +148,7 @@ export const OPENAI_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    retired: true,
   },
   'gpt4o-': {
     name: 'gpt4o-',
@@ -183,5 +185,6 @@ export const OPENAI_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    retired: true,
   },
 };

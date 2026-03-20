@@ -393,6 +393,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    retired: true,
   },
   sonnet37: {
     name: 'sonnet37',
@@ -414,6 +415,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    retired: true,
   },
   opus3: {
     name: 'opus3',
@@ -433,6 +435,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    retired: true,
   },
   sonnet36: {
     name: 'sonnet36',
@@ -452,6 +455,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    retired: true,
   },
   sonnet35: {
     name: 'sonnet35',
@@ -472,6 +476,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    retired: true,
   },
   sonnet3: {
     name: 'sonnet3',
@@ -491,6 +496,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    retired: true,
   },
   haiku35: {
     name: 'haiku35',
@@ -513,6 +519,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    retired: true,
   },
   haiku3: {
     name: 'haiku3',
@@ -532,5 +539,6 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    retired: true,
   },
 };
