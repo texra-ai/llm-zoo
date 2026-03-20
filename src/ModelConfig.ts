@@ -239,4 +239,11 @@ export interface ModelConfig {
    * @default false
    */
   deprecated?: boolean;
+
+  /**
+   * Whether this model has been retired and is no longer served by the provider.
+   * Retired models cannot be used for inference — API calls will fail.
+   * @default false
+   */
+  retired?: boolean;
 }
