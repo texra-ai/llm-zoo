@@ -27,6 +27,50 @@ const ANTHROPIC_DEFAULT_CAPABILITIES: ModelCapabilities = {
  * Includes Claude 4.x, 3.x Opus, Sonnet, and Haiku variants.
  */
 export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
+  opus47T: {
+    name: 'opus47T',
+    label: 'Opus 4.7 (Thinking)',
+    fullName: 'claude-opus-4-7',
+    shortName: 'claude-opus-4-7',
+    openrouterFullName: 'anthropic/claude-opus-4.7',
+    provider: ModelProvider.ANTHROPIC,
+    maxOutputTokens: 128000,
+    contextWindow: 1000000,
+    inputPrice: 5.0,
+    outputPrice: 25.0,
+    capabilities: {
+      ...ANTHROPIC_DEFAULT_CAPABILITIES,
+      supportsNativeMCPServer: true,
+      supportsNativeWebSearch: true,
+      supportsDynamicFilteringWebSearch: true,
+      supportsNativeCodeExecution: true,
+      supportsAssistantPrefill: false,
+      supportsReasoning: true,
+      supportsInterleavedThinking: true,
+    },
+    openRouterOnly: false,
+  },
+  opus47: {
+    name: 'opus47',
+    label: 'Opus 4.7',
+    fullName: 'claude-opus-4-7',
+    shortName: 'claude-opus-4-7',
+    openrouterFullName: 'anthropic/claude-opus-4.7',
+    provider: ModelProvider.ANTHROPIC,
+    maxOutputTokens: 128000,
+    contextWindow: 1000000,
+    inputPrice: 5.0,
+    outputPrice: 25.0,
+    capabilities: {
+      ...ANTHROPIC_DEFAULT_CAPABILITIES,
+      supportsNativeWebSearch: true,
+      supportsDynamicFilteringWebSearch: true,
+      supportsNativeCodeExecution: true,
+      supportsAssistantPrefill: false,
+      supportsReasoning: false,
+    },
+    openRouterOnly: false,
+  },
   opus46T: {
     name: 'opus46T',
     label: 'Opus 4.6 (Thinking)',
@@ -49,6 +93,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
       supportsInterleavedThinking: true,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   opus46: {
     name: 'opus46',
@@ -70,6 +115,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
       supportsReasoning: false,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   sonnet46T: {
     name: 'sonnet46T',
