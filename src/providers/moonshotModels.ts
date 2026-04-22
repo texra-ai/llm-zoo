@@ -224,6 +224,7 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
       cacheDiscountFactor: 0.1 / 0.6,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   kimi25T: {
     name: 'kimi25T',
@@ -246,5 +247,6 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
       reasoningEffort: ReasoningEffort.HIGH,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
 };

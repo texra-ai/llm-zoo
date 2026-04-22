@@ -19,13 +19,49 @@ const GLM_DEFAULT_CAPABILITIES: ModelCapabilities = {
 
 /**
  * Zhipu AI GLM model configurations.
- * Includes GLM-5, GLM-4.7, GLM-4.6V, and GLM-4.5 series.
+ * Includes GLM-5.1, GLM-5V-Turbo, GLM-5, GLM-4.7, GLM-4.6V, and GLM-4.5 series.
  *
  * Model name conventions:
- * - fullName: Model name for native Zhipu AI API (e.g., 'glm-4.7', 'glm-5')
- * - openrouterFullName: Model name for OpenRouter API (e.g., 'z-ai/glm-4.7')
+ * - fullName: Model name for native Zhipu AI API (e.g., 'glm-5.1', 'glm-5')
+ * - openrouterFullName: Model name for OpenRouter API (e.g., 'z-ai/glm-5.1')
  */
 export const GLM_MODELS: Record<string, ModelConfig> = {
+  // GLM-5.1 (Flagship agentic coding model, released 2026-04-07)
+  glm51: {
+    name: 'glm51',
+    label: 'GLM-5.1',
+    fullName: 'glm-5.1',
+    shortName: 'glm-5.1',
+    openrouterFullName: 'z-ai/glm-5.1',
+    provider: ModelProvider.GLM,
+    maxOutputTokens: 65535,
+    contextWindow: 202752,
+    inputPrice: 1.05,
+    outputPrice: 3.5,
+    capabilities: {
+      ...GLM_DEFAULT_CAPABILITIES,
+    },
+    openRouterOnly: false,
+  },
+  // GLM-5V-Turbo (Native multimodal agent for vision-based coding)
+  glm5vturbo: {
+    name: 'glm5vturbo',
+    label: 'GLM-5V Turbo',
+    fullName: 'glm-5v-turbo',
+    shortName: 'glm-5v-turbo',
+    openrouterFullName: 'z-ai/glm-5v-turbo',
+    provider: ModelProvider.GLM,
+    maxOutputTokens: 131072,
+    contextWindow: 202752,
+    inputPrice: 1.2,
+    outputPrice: 4.0,
+    capabilities: {
+      ...GLM_DEFAULT_CAPABILITIES,
+      supportsVision: true,
+      supportsNativePdf: true,
+    },
+    openRouterOnly: false,
+  },
   // GLM-5 (Flagship open-source model)
   glm5: {
     name: 'glm5',

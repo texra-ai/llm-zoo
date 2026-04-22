@@ -36,6 +36,7 @@ export const DASHSCOPE_MODELS: Record<string, ModelConfig> = {
       supportsVision: false,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   qwenplus: {
     name: 'qwenplus',

@@ -46,6 +46,7 @@ export const OPENAI_MODELS: Record<string, ModelConfig> = {
       supportsPredictiveOutput: true,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   'gpt41-': {
     name: 'gpt41-',
@@ -67,6 +68,7 @@ export const OPENAI_MODELS: Record<string, ModelConfig> = {
       supportsPredictiveOutput: true,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   'gpt41--': {
     name: 'gpt41--',

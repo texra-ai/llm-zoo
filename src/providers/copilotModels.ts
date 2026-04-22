@@ -35,5 +35,6 @@ export const COPILOT_MODELS: Record<string, ModelConfig> = {
       reasoningEffort: ReasoningEffort.MEDIUM,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
 };

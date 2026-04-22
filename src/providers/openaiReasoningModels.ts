@@ -396,6 +396,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
       supportsNativePdf: true,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   gpt54pro: {
     name: 'gpt54pro',

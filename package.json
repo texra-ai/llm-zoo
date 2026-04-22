@@ -1,6 +1,6 @@
 {
   "name": "llm-zoo",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "100+ LLM models. Pricing, capabilities, context windows. Always current.",
   "keywords": [
     "llm",
