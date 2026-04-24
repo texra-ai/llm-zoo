@@ -129,7 +129,7 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
   // Legacy alias: deepseek-reasoner routes to deepseek-v4-flash (thinking)
   deepseekT: {
     name: 'deepseekT',
-    label: 'DeepSeek V4 Flash Thinking (legacy alias)',
+    label: 'DeepSeek V4 Flash (Thinking) (legacy alias)',
     fullName: 'deepseek-reasoner',
     shortName: 'deepseek-reasoner',
     openrouterFullName: 'deepseek/deepseek-v3.2',
