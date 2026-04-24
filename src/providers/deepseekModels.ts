@@ -34,7 +34,7 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
     openrouterFullName: 'deepseek/deepseek-v4-flash',
     provider: ModelProvider.DEEPSEEK,
     maxOutputTokens: 393216,
-    contextWindow: 1000000,
+    contextWindow: 1048576,
     inputPrice: 0.14,
     outputPrice: 0.28,
     capabilities: {
@@ -54,7 +54,7 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
     openrouterFullName: 'deepseek/deepseek-v4-flash',
     provider: ModelProvider.DEEPSEEK,
     maxOutputTokens: 393216,
-    contextWindow: 1000000,
+    contextWindow: 1048576,
     inputPrice: 0.14,
     outputPrice: 0.28,
     capabilities: {
@@ -76,7 +76,7 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
     openrouterFullName: 'deepseek/deepseek-v4-pro',
     provider: ModelProvider.DEEPSEEK,
     maxOutputTokens: 393216,
-    contextWindow: 1000000,
+    contextWindow: 1048576,
     inputPrice: 1.74,
     outputPrice: 3.48,
     capabilities: {
@@ -96,7 +96,7 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
     openrouterFullName: 'deepseek/deepseek-v4-pro',
     provider: ModelProvider.DEEPSEEK,
     maxOutputTokens: 393216,
-    contextWindow: 1000000,
+    contextWindow: 1048576,
     inputPrice: 1.74,
     outputPrice: 3.48,
     capabilities: {
@@ -118,7 +118,7 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
     openrouterFullName: 'deepseek/deepseek-v4-flash',
     provider: ModelProvider.DEEPSEEK,
     maxOutputTokens: 393216,
-    contextWindow: 1000000,
+    contextWindow: 1048576,
     inputPrice: 0.14,
     outputPrice: 0.28,
     capabilities: {
@@ -139,7 +139,7 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
     openrouterFullName: 'deepseek/deepseek-v4-flash',
     provider: ModelProvider.DEEPSEEK,
     maxOutputTokens: 393216,
-    contextWindow: 1000000,
+    contextWindow: 1048576,
     inputPrice: 0.14,
     outputPrice: 0.28,
     capabilities: {
