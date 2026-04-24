@@ -68,8 +68,8 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
     openRouterOnly: false,
   },
   // DeepSeek-V4-Pro (Non-thinking Mode)
-  dsv4pro: {
-    name: 'dsv4pro',
+  deepseekpro: {
+    name: 'deepseekpro',
     label: 'DeepSeek V4 Pro',
     fullName: 'deepseek-v4-pro',
     shortName: 'deepseek-v4-pro',
@@ -88,8 +88,8 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
     openRouterOnly: false,
   },
   // DeepSeek-V4-Pro (Thinking Mode)
-  dsv4proT: {
-    name: 'dsv4proT',
+  deepseekproT: {
+    name: 'deepseekproT',
     label: 'DeepSeek V4 Pro (Thinking)',
     fullName: 'deepseek-v4-pro',
     shortName: 'deepseek-v4-pro',
