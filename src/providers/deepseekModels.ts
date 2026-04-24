@@ -26,8 +26,8 @@ const DEEPSEEK_DEFAULT_CAPABILITIES: ModelCapabilities = {
  */
 export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
   // DeepSeek-V4-Flash (Non-thinking Mode)
-  dsv4f: {
-    name: 'dsv4f',
+  deepseek: {
+    name: 'deepseek',
     label: 'DeepSeek V4 Flash',
     fullName: 'deepseek-v4-flash',
     shortName: 'deepseek-v4-flash',
@@ -46,8 +46,8 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
     openRouterOnly: false,
   },
   // DeepSeek-V4-Flash (Thinking Mode)
-  dsv4fT: {
-    name: 'dsv4fT',
+  deepseekT: {
+    name: 'deepseekT',
     label: 'DeepSeek V4 Flash (Thinking)',
     fullName: 'deepseek-v4-flash',
     shortName: 'deepseek-v4-flash',
@@ -68,8 +68,8 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
     openRouterOnly: false,
   },
   // DeepSeek-V4-Pro (Non-thinking Mode)
-  dsv4p: {
-    name: 'dsv4p',
+  dsv4pro: {
+    name: 'dsv4pro',
     label: 'DeepSeek V4 Pro',
     fullName: 'deepseek-v4-pro',
     shortName: 'deepseek-v4-pro',
@@ -88,8 +88,8 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
     openRouterOnly: false,
   },
   // DeepSeek-V4-Pro (Thinking Mode)
-  dsv4pT: {
-    name: 'dsv4pT',
+  dsv4proT: {
+    name: 'dsv4proT',
     label: 'DeepSeek V4 Pro (Thinking)',
     fullName: 'deepseek-v4-pro',
     shortName: 'deepseek-v4-pro',
@@ -109,49 +109,49 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
   },
-  // Legacy alias: deepseek-chat routes to deepseek-v4-flash (non-thinking)
-  deepseek: {
-    name: 'deepseek',
-    label: 'DeepSeek V4 Flash (legacy alias)',
+  // DeepSeek-V3.2 (Non-thinking Mode)
+  dsv32: {
+    name: 'dsv32',
+    label: 'DeepSeek V3.2',
     fullName: 'deepseek-chat',
     shortName: 'deepseek-chat',
-    openrouterFullName: 'deepseek/deepseek-v4-flash',
+    openrouterFullName: 'deepseek/deepseek-v3.2',
     provider: ModelProvider.DEEPSEEK,
-    maxOutputTokens: 393216,
-    contextWindow: 1048576,
-    inputPrice: 0.14,
-    outputPrice: 0.28,
+    maxOutputTokens: 8192,
+    contextWindow: 128000,
+    inputPrice: 0.28,
+    outputPrice: 0.42,
     capabilities: {
       ...DEEPSEEK_DEFAULT_CAPABILITIES,
       supportsAssistantPrefill: true,
       supportsFunctionCalling: true,
-      cacheDiscountFactor: 0.2,
     },
     openRouterOnly: false,
     deprecated: true,
+    retired: true,
   },
-  // Legacy alias: deepseek-reasoner routes to deepseek-v4-flash (thinking)
-  deepseekT: {
-    name: 'deepseekT',
-    label: 'DeepSeek V4 Flash (Thinking) (legacy alias)',
+  // DeepSeek-V3.2 (Thinking Mode)
+  dsv32T: {
+    name: 'dsv32T',
+    label: 'DeepSeek V3.2 (Thinking)',
     fullName: 'deepseek-reasoner',
     shortName: 'deepseek-reasoner',
-    openrouterFullName: 'deepseek/deepseek-v4-flash',
+    openrouterFullName: 'deepseek/deepseek-v3.2',
     provider: ModelProvider.DEEPSEEK,
-    maxOutputTokens: 393216,
-    contextWindow: 1048576,
-    inputPrice: 0.14,
-    outputPrice: 0.28,
+    maxOutputTokens: 65536,
+    contextWindow: 163840,
+    inputPrice: 0.28,
+    outputPrice: 0.42,
     capabilities: {
       ...DEEPSEEK_DEFAULT_CAPABILITIES,
       supportsReasoning: true,
       supportsReasoningEffort: false,
       supportsFunctionCalling: true,
       supportsAssistantPrefill: true,
-      cacheDiscountFactor: 0.2,
     },
     openRouterOnly: false,
     deprecated: true,
+    retired: true,
   },
   // DeepSeek-V3.2-Speciale (Extended Thinking)
   'deepseekT+': {
