@@ -18,13 +18,53 @@ const DEEPSEEK_DEFAULT_CAPABILITIES: ModelCapabilities = {
 
 /**
  * DeepSeek model configurations.
- * Includes V3.2, R1, and thinking variants.
+ * Includes V4, V3.2, R1, and thinking variants.
  *
  * Model name conventions:
  * - fullName: Model name for native DeepSeek API (e.g., 'deepseek-chat', 'deepseek-reasoner')
  * - openrouterFullName: Model name for OpenRouter API (e.g., 'deepseek/deepseek-v3.2')
  */
 export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
+  // DeepSeek-V4 (Non-thinking Mode)
+  dsv4: {
+    name: 'dsv4',
+    label: 'DeepSeek V4',
+    fullName: 'deepseek-v4',
+    shortName: 'deepseek-v4',
+    openrouterFullName: 'deepseek/deepseek-v4',
+    provider: ModelProvider.DEEPSEEK,
+    maxOutputTokens: 16384,
+    contextWindow: 1000000,
+    inputPrice: 0.3,
+    outputPrice: 0.5,
+    capabilities: {
+      ...DEEPSEEK_DEFAULT_CAPABILITIES,
+      supportsAssistantPrefill: true,
+      supportsFunctionCalling: true,
+    },
+    openRouterOnly: false,
+  },
+  // DeepSeek-V4 (Thinking Mode)
+  dsv4T: {
+    name: 'dsv4T',
+    label: 'DeepSeek V4 (Thinking)',
+    fullName: 'deepseek-v4-reasoner',
+    shortName: 'deepseek-v4-reasoner',
+    openrouterFullName: 'deepseek/deepseek-v4',
+    provider: ModelProvider.DEEPSEEK,
+    maxOutputTokens: 65536,
+    contextWindow: 1000000,
+    inputPrice: 0.3,
+    outputPrice: 0.5,
+    capabilities: {
+      ...DEEPSEEK_DEFAULT_CAPABILITIES,
+      supportsReasoning: true,
+      supportsReasoningEffort: false,
+      supportsFunctionCalling: true,
+      supportsAssistantPrefill: true,
+    },
+    openRouterOnly: false,
+  },
   // DeepSeek-V3.2 (Non-thinking Mode)
   deepseek: {
     name: 'deepseek',
