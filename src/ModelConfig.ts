@@ -216,6 +216,12 @@ export interface ModelConfig {
   openrouterFullName?: string;
 
   /**
+   * Model identifier for the VS Code Language Model API (`vscode.lm`).
+   * Example: "claude-sonnet-4.5" (matches the `id` field of a vscode.lm ChatModel).
+   */
+  vscodeLMFullName?: string;
+
+  /**
    * Custom base URL for this specific model.
    * Overrides the provider's default endpoint.
    */
