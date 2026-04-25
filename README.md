@@ -48,7 +48,7 @@ npm install llm-zoo
 
 | Model | Input | Output | Reasoning | Provider |
 |-------|-------|--------|-----------|----------|
-| `gpt54pro` | $30 | $180 | ✓ | OpenAI |
+| `gpt55pro` | $30 | $180 | ✓ | OpenAI |
 | `gpt55` | $5 | $30 | ✓ | OpenAI |
 | `opus47T` | $5 | $25 | ✓ | Anthropic |
 | `opus47` | $5 | $25 | - | Anthropic |
