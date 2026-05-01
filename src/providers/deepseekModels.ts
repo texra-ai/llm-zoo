@@ -3,11 +3,12 @@ import {
   ModelCapabilities,
   ModelConfig,
   ModelProvider,
+  ReasoningEffort,
 } from '../ModelConfig';
 
 /**
  * Default capabilities for DeepSeek models.
- * Features automatic prompt caching with 90% cost savings.
+ * Features automatic prompt caching.
  */
 const DEEPSEEK_DEFAULT_CAPABILITIES: ModelCapabilities = {
   ...DEFAULT_MODEL_CAPABILITIES,
@@ -41,7 +42,7 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
       ...DEEPSEEK_DEFAULT_CAPABILITIES,
       supportsAssistantPrefill: true,
       supportsFunctionCalling: true,
-      cacheDiscountFactor: 0.2,
+      cacheDiscountFactor: 0.02,
     },
     openRouterOnly: false,
   },
@@ -60,10 +61,11 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
     capabilities: {
       ...DEEPSEEK_DEFAULT_CAPABILITIES,
       supportsReasoning: true,
-      supportsReasoningEffort: false,
+      supportsReasoningEffort: true,
+      reasoningEffort: ReasoningEffort.XHIGH,
       supportsFunctionCalling: true,
       supportsAssistantPrefill: true,
-      cacheDiscountFactor: 0.2,
+      cacheDiscountFactor: 0.02,
     },
     openRouterOnly: false,
   },
@@ -77,13 +79,13 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
     provider: ModelProvider.DEEPSEEK,
     maxOutputTokens: 393216,
     contextWindow: 1048576,
-    inputPrice: 1.74,
-    outputPrice: 3.48,
+    inputPrice: 0.435,
+    outputPrice: 0.87,
     capabilities: {
       ...DEEPSEEK_DEFAULT_CAPABILITIES,
       supportsAssistantPrefill: true,
       supportsFunctionCalling: true,
-      cacheDiscountFactor: 0.0833,
+      cacheDiscountFactor: 0.003625 / 0.435,
     },
     openRouterOnly: false,
   },
@@ -97,15 +99,16 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
     provider: ModelProvider.DEEPSEEK,
     maxOutputTokens: 393216,
     contextWindow: 1048576,
-    inputPrice: 1.74,
-    outputPrice: 3.48,
+    inputPrice: 0.435,
+    outputPrice: 0.87,
     capabilities: {
       ...DEEPSEEK_DEFAULT_CAPABILITIES,
       supportsReasoning: true,
-      supportsReasoningEffort: false,
+      supportsReasoningEffort: true,
+      reasoningEffort: ReasoningEffort.XHIGH,
       supportsFunctionCalling: true,
       supportsAssistantPrefill: true,
-      cacheDiscountFactor: 0.0833,
+      cacheDiscountFactor: 0.003625 / 0.435,
     },
     openRouterOnly: false,
   },

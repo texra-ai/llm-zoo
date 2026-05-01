@@ -36,7 +36,7 @@ npm install llm-zoo
 | Model | Input | Output | Provider |
 |-------|-------|--------|----------|
 | `qwenturbo` | $0.05 | $0.50 | DashScope |
-| `deepseek` | $0.28 | $0.42 | DeepSeek |
+| `deepseek` | $0.14 | $0.28 | DeepSeek |
 | `gemini3f` | $0.30 | $2.50 | Google |
 | `gpt41-` | $0.40 | $1.60 | OpenAI |
 | `qwenplus` | $0.40 | $1.20 | DashScope |
@@ -91,7 +91,7 @@ npm install llm-zoo
 | **Anthropic** | 22 | 1M context, 90% cache savings, PDF support |
 | **OpenAI** | 35 | GPT-5.x reasoning, deep research |
 | **Google** | 6 | 1M context, audio input |
-| **DeepSeek** | 8 | Budget reasoning ($0.28/1M) |
+| **DeepSeek** | 8 | Budget reasoning ($0.14/1M) |
 | **xAI** | 5 | Grok 4 with 256K context |
 | **Moonshot** | 8 | Kimi K2.5 thinking mode |
 | **DashScope** | 3 | Qwen with 1M context |
