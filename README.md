@@ -53,10 +53,10 @@ npm install llm-zoo
 | `opus47T` | $5 | $25 | ✓ | Anthropic |
 | `opus47` | $5 | $25 | - | Anthropic |
 | `sonnet46T` | $3 | $15 | ✓ | Anthropic |
-| `grok4` | $3 | $15 | ✓ | xAI |
 | `gpt54` | $2.50 | $15 | ✓ | OpenAI |
 | `gpt41` | $2 | $8 | - | OpenAI |
 | `gpt52` | $1.75 | $14 | ✓ | OpenAI |
+| `grok43` | $1.25 | $2.50 | ✓ | xAI |
 
 ### Largest Context
 
@@ -70,16 +70,16 @@ npm install llm-zoo
 | `sonnet46` | 1M | Anthropic |
 | `qwenplus` | 1M | DashScope |
 | `gpt41` | 1M | OpenAI |
+| `grok43` | 1M | xAI |
 | `gpt52` | 400K | OpenAI |
 | `kimi25` | 262K | Moonshot |
-| `grok4` | 256K | xAI |
 
 ### Capabilities
 
 | Capability | Count | Examples |
 |------------|-------|----------|
 | Vision | 45+ | `sonnet46`, `gpt41`, `gemini31p` |
-| Reasoning | 30+ | `opus47T`, `gpt55`, `deepseekT`, `grok4` |
+| Reasoning | 30+ | `opus47T`, `gpt55`, `deepseekT`, `grok43` |
 | Code Execution | 20+ | `sonnet46`, `gpt41`, `gemini3f` |
 | Web Search | 15+ | `opus47`, `gpt41`, `gpt54` |
 | Prompt Caching | 25+ | All Claude, Gemini, DeepSeek |
@@ -92,7 +92,7 @@ npm install llm-zoo
 | **OpenAI** | 35 | GPT-5.x reasoning, deep research |
 | **Google** | 6 | 1M context, audio input |
 | **DeepSeek** | 8 | Budget reasoning ($0.14/1M) |
-| **xAI** | 5 | Grok 4 with 256K context |
+| **xAI** | 6 | Grok 4.3 with 1M context, configurable reasoning |
 | **Moonshot** | 8 | Kimi K2.5 thinking mode |
 | **DashScope** | 3 | Qwen with 1M context |
 | **Copilot** | 1 | Free GPT-4o |
