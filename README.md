@@ -42,6 +42,7 @@ npm install llm-zoo
 | `qwenplus` | $0.40 | $1.20 | DashScope |
 | `kimi25` | $0.60 | $3.00 | Moonshot |
 | `haiku45` | $1.00 | $5.00 | Anthropic |
+| `grok43` | $1.25 | $2.50 | xAI |
 | `gpt52` | $1.75 | $14.00 | OpenAI |
 
 ### Premium ($/1M tokens)
@@ -56,7 +57,6 @@ npm install llm-zoo
 | `gpt54` | $2.50 | $15 | ✓ | OpenAI |
 | `gpt41` | $2 | $8 | - | OpenAI |
 | `gpt52` | $1.75 | $14 | ✓ | OpenAI |
-| `grok43` | $1.25 | $2.50 | ✓ | xAI |
 
 ### Largest Context
 
