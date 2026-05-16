@@ -37,6 +37,7 @@ npm install llm-zoo
 |-------|-------|--------|----------|
 | `qwenturbo` | $0.05 | $0.50 | DashScope |
 | `deepseek` | $0.14 | $0.28 | DeepSeek |
+| `gemini31f-` | $0.25 | $1.50 | Google |
 | `gemini3f` | $0.30 | $2.50 | Google |
 | `gpt41-` | $0.40 | $1.60 | OpenAI |
 | `qwenplus` | $0.40 | $1.20 | DashScope |
@@ -65,6 +66,7 @@ npm install llm-zoo
 | `gpt55` | 1M | OpenAI |
 | `gpt54` | 1M | OpenAI |
 | `gemini31p` | 1M | Google |
+| `gemini31f-` | 1M | Google |
 | `gemini3f` | 1M | Google |
 | `opus47` | 1M | Anthropic |
 | `sonnet46` | 1M | Anthropic |
@@ -90,7 +92,7 @@ npm install llm-zoo
 |----------|--------|------------|
 | **Anthropic** | 22 | 1M context, 90% cache savings, PDF support |
 | **OpenAI** | 35 | GPT-5.x reasoning, deep research |
-| **Google** | 6 | 1M context, audio input |
+| **Google** | 8 | 1M context, audio input |
 | **DeepSeek** | 8 | Budget reasoning ($0.14/1M) |
 | **xAI** | 6 | Grok 4.3 with 1M context, configurable reasoning |
 | **Moonshot** | 8 | Kimi K2.5 thinking mode |
