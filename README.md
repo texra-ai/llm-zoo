@@ -37,11 +37,13 @@ npm install llm-zoo
 |-------|-------|--------|----------|
 | `qwenturbo` | $0.05 | $0.50 | DashScope |
 | `deepseek` | $0.14 | $0.28 | DeepSeek |
+| `gemini31f-` | $0.25 | $1.50 | Google |
 | `gemini3f` | $0.30 | $2.50 | Google |
 | `gpt41-` | $0.40 | $1.60 | OpenAI |
 | `qwenplus` | $0.40 | $1.20 | DashScope |
 | `kimi25` | $0.60 | $3.00 | Moonshot |
 | `haiku45` | $1.00 | $5.00 | Anthropic |
+| `grok43` | $1.25 | $2.50 | xAI |
 | `gpt52` | $1.75 | $14.00 | OpenAI |
 
 ### Premium ($/1M tokens)
@@ -53,7 +55,6 @@ npm install llm-zoo
 | `opus47T` | $5 | $25 | ✓ | Anthropic |
 | `opus47` | $5 | $25 | - | Anthropic |
 | `sonnet46T` | $3 | $15 | ✓ | Anthropic |
-| `grok4` | $3 | $15 | ✓ | xAI |
 | `gpt54` | $2.50 | $15 | ✓ | OpenAI |
 | `gpt41` | $2 | $8 | - | OpenAI |
 | `gpt52` | $1.75 | $14 | ✓ | OpenAI |
@@ -65,21 +66,22 @@ npm install llm-zoo
 | `gpt55` | 1M | OpenAI |
 | `gpt54` | 1M | OpenAI |
 | `gemini31p` | 1M | Google |
+| `gemini31f-` | 1M | Google |
 | `gemini3f` | 1M | Google |
 | `opus47` | 1M | Anthropic |
 | `sonnet46` | 1M | Anthropic |
 | `qwenplus` | 1M | DashScope |
 | `gpt41` | 1M | OpenAI |
+| `grok43` | 1M | xAI |
 | `gpt52` | 400K | OpenAI |
 | `kimi25` | 262K | Moonshot |
-| `grok4` | 256K | xAI |
 
 ### Capabilities
 
 | Capability | Count | Examples |
 |------------|-------|----------|
 | Vision | 45+ | `sonnet46`, `gpt41`, `gemini31p` |
-| Reasoning | 30+ | `opus47T`, `gpt55`, `deepseekT`, `grok4` |
+| Reasoning | 30+ | `opus47T`, `gpt55`, `deepseekT`, `grok43` |
 | Code Execution | 20+ | `sonnet46`, `gpt41`, `gemini3f` |
 | Web Search | 15+ | `opus47`, `gpt41`, `gpt54` |
 | Prompt Caching | 25+ | All Claude, Gemini, DeepSeek |
@@ -90,9 +92,9 @@ npm install llm-zoo
 |----------|--------|------------|
 | **Anthropic** | 22 | 1M context, 90% cache savings, PDF support |
 | **OpenAI** | 35 | GPT-5.x reasoning, deep research |
-| **Google** | 6 | 1M context, audio input |
+| **Google** | 8 | 1M context, audio input |
 | **DeepSeek** | 8 | Budget reasoning ($0.14/1M) |
-| **xAI** | 5 | Grok 4 with 256K context |
+| **xAI** | 6 | Grok 4.3 with 1M context, configurable reasoning |
 | **Moonshot** | 8 | Kimi K2.5 thinking mode |
 | **DashScope** | 3 | Qwen with 1M context |
 | **Copilot** | 1 | Free GPT-4o |

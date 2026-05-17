@@ -16,9 +16,28 @@ const XAI_DEFAULT_CAPABILITIES: ModelCapabilities = {
 
 /**
  * xAI Grok model configurations.
- * Includes Grok 4, 3, and 2 variants.
+ * Includes Grok 4.3, 4, 3, and 2 variants.
  */
 export const XAI_MODELS: Record<string, ModelConfig> = {
+  grok43: {
+    name: 'grok43',
+    label: 'Grok 4.3',
+    fullName: 'grok-4.3',
+    shortName: 'grok-4.3',
+    openrouterFullName: 'x-ai/grok-4.3',
+    provider: ModelProvider.XAI,
+    maxOutputTokens: 128000,
+    contextWindow: 1000000,
+    inputPrice: 1.25,
+    outputPrice: 2.5,
+    capabilities: {
+      ...XAI_DEFAULT_CAPABILITIES,
+      supportsReasoning: true,
+      supportsReasoningEffort: true,
+      reasoningEffort: ReasoningEffort.LOW,
+    },
+    openRouterOnly: false,
+  },
   grok4: {
     name: 'grok4',
     label: 'Grok 4',
@@ -36,6 +55,8 @@ export const XAI_MODELS: Record<string, ModelConfig> = {
       supportsReasoningEffort: false,
     },
     openRouterOnly: false,
+    deprecated: true,
+    retired: true,
   },
   grok3: {
     name: 'grok3',
@@ -55,6 +76,7 @@ export const XAI_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    retired: true,
   },
   'grok3-': {
     name: 'grok3-',
