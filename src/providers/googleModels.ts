@@ -149,6 +149,7 @@ export const GOOGLE_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    retired: true,
   },
   gemini25p: {
     name: 'gemini25p',
