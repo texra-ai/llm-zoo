@@ -27,6 +27,52 @@ const ANTHROPIC_DEFAULT_CAPABILITIES: ModelCapabilities = {
  * Includes Claude 4.x, 3.x Opus, Sonnet, and Haiku variants.
  */
 export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
+  opus48T: {
+    name: 'opus48T',
+    label: 'Opus 4.8 (Thinking)',
+    fullName: 'claude-opus-4-8',
+    shortName: 'claude-opus-4-8',
+    openrouterFullName: 'anthropic/claude-opus-4.8',
+    vscodeLMFullName: 'claude-opus-4.8',
+    provider: ModelProvider.ANTHROPIC,
+    maxOutputTokens: 128000,
+    contextWindow: 1000000,
+    inputPrice: 5.0,
+    outputPrice: 25.0,
+    capabilities: {
+      ...ANTHROPIC_DEFAULT_CAPABILITIES,
+      supportsNativeMCPServer: true,
+      supportsNativeWebSearch: true,
+      supportsDynamicFilteringWebSearch: true,
+      supportsNativeCodeExecution: true,
+      supportsAssistantPrefill: false,
+      supportsReasoning: true,
+      supportsInterleavedThinking: true,
+    },
+    openRouterOnly: false,
+  },
+  opus48: {
+    name: 'opus48',
+    label: 'Opus 4.8',
+    fullName: 'claude-opus-4-8',
+    shortName: 'claude-opus-4-8',
+    openrouterFullName: 'anthropic/claude-opus-4.8',
+    vscodeLMFullName: 'claude-opus-4.8',
+    provider: ModelProvider.ANTHROPIC,
+    maxOutputTokens: 128000,
+    contextWindow: 1000000,
+    inputPrice: 5.0,
+    outputPrice: 25.0,
+    capabilities: {
+      ...ANTHROPIC_DEFAULT_CAPABILITIES,
+      supportsNativeWebSearch: true,
+      supportsDynamicFilteringWebSearch: true,
+      supportsNativeCodeExecution: true,
+      supportsAssistantPrefill: false,
+      supportsReasoning: false,
+    },
+    openRouterOnly: false,
+  },
   opus47T: {
     name: 'opus47T',
     label: 'Opus 4.7 (Thinking)',
@@ -50,6 +96,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
       supportsInterleavedThinking: true,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   opus47: {
     name: 'opus47',
@@ -72,6 +119,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
       supportsReasoning: false,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   opus46T: {
     name: 'opus46T',
