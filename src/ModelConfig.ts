@@ -17,6 +17,8 @@ export const DEFAULT_CONTEXT_WINDOW = 128000;
  * Higher effort typically results in better reasoning quality but increased latency and cost.
  */
 export enum ReasoningEffort {
+  /** Maximum reasoning effort - highest tier, above extra high */
+  MAX = 'max',
   /** Extra high reasoning effort - maximum depth analysis */
   XHIGH = 'xhigh',
   /** High reasoning effort - thorough analysis */
