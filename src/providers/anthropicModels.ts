@@ -3,6 +3,7 @@ import {
   ModelCapabilities,
   ModelConfig,
   ModelProvider,
+  ReasoningEffort,
 } from '../ModelConfig';
 
 /**
@@ -47,6 +48,8 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
       supportsNativeCodeExecution: true,
       supportsAssistantPrefill: false,
       supportsReasoning: true,
+      supportsReasoningEffort: true,
+      reasoningEffort: ReasoningEffort.HIGH,
       supportsInterleavedThinking: true,
     },
     openRouterOnly: false,
