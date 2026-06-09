@@ -51,6 +51,7 @@ npm install llm-zoo
 | Model | Input | Output | Reasoning | Provider |
 |-------|-------|--------|-----------|----------|
 | `gpt55pro` | $30 | $180 | ✓ | OpenAI |
+| `fable5` | $10 | $50 | ✓ | Anthropic |
 | `gpt55` | $5 | $30 | ✓ | OpenAI |
 | `opus48T` | $5 | $25 | ✓ | Anthropic |
 | `opus48` | $5 | $25 | - | Anthropic |
@@ -90,7 +91,7 @@ npm install llm-zoo
 
 | Provider | Models | Highlights |
 |----------|--------|------------|
-| **Anthropic** | 22 | 1M context, 90% cache savings, PDF support |
+| **Anthropic** | 23 | Fable 5, 1M context, 90% cache savings, PDF support |
 | **OpenAI** | 35 | GPT-5.x reasoning, deep research |
 | **Google** | 8 | 1M context, audio input |
 | **DeepSeek** | 8 | Budget reasoning ($0.14/1M) |

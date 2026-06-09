@@ -28,6 +28,33 @@ const ANTHROPIC_DEFAULT_CAPABILITIES: ModelCapabilities = {
  * Includes Claude 4.x, 3.x Opus, Sonnet, and Haiku variants.
  */
 export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
+  fable5: {
+    name: 'fable5',
+    label: 'Fable 5',
+    fullName: 'claude-fable-5',
+    shortName: 'claude-fable-5',
+    openrouterFullName: 'anthropic/claude-fable-5',
+    vscodeLMFullName: 'claude-fable-5',
+    provider: ModelProvider.ANTHROPIC,
+    maxOutputTokens: 128000,
+    contextWindow: 1000000,
+    inputPrice: 10.0,
+    outputPrice: 50.0,
+    capabilities: {
+      ...ANTHROPIC_DEFAULT_CAPABILITIES,
+      supportsNativeMCPServer: true,
+      supportsNativeWebSearch: true,
+      supportsDynamicFilteringWebSearch: true,
+      supportsNativeCodeExecution: true,
+      supportsAssistantPrefill: false,
+      // Adaptive thinking is always on for Fable 5 and cannot be disabled.
+      supportsReasoning: true,
+      supportsReasoningEffort: true,
+      reasoningEffort: ReasoningEffort.HIGH,
+      supportsInterleavedThinking: true,
+    },
+    openRouterOnly: false,
+  },
   opus48T: {
     name: 'opus48T',
     label: 'Opus 4.8 (Thinking)',
