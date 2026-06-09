@@ -2,7 +2,7 @@
 
 LLM pricing and capabilities change weekly. Docs are scattered. There's no single source of truth.
 
-**One package. 85+ models. Always current.**
+**One package. 100+ models. Always current.**
 
 ```typescript
 import { lookup, cost, cheapest } from 'llm-zoo';
