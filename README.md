@@ -93,13 +93,15 @@ npm install llm-zoo
 |----------|--------|------------|
 | **Anthropic** | 29 | Fable 5, 1M context, 90% cache savings, PDF support |
 | **OpenAI** | 35 | GPT-5.x reasoning, deep research |
-| **Google** | 8 | 1M context, audio input |
-| **DeepSeek** | 8 | Budget reasoning ($0.14/1M) |
+| **GLM** | 11 | Zhipu GLM-5.x, 200K context |
+| **DeepSeek** | 11 | Budget reasoning ($0.14/1M) |
+| **Moonshot** | 11 | Kimi K2.5 thinking mode |
+| **Google** | 9 | 1M context, audio input |
+| **MiniMax** | 6 | M-series reasoning, 1M context |
 | **xAI** | 6 | Grok 4.3 with 1M context, configurable reasoning |
-| **Moonshot** | 8 | Kimi K2.5 thinking mode |
 | **DashScope** | 3 | Qwen with 1M context |
-| **Copilot** | 1 | Free GPT-4o |
 | **OpenRouter** | 2 | Llama 405B, QVQ-72B |
+| **Copilot** | 1 | Free GPT-4o |
 
 ---
 
