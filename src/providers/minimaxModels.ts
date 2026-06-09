@@ -27,9 +27,26 @@ const MINIMAX_DEFAULT_CAPABILITIES: ModelCapabilities = {
 
 /**
  * MiniMax model configurations.
- * Includes the M-series models: M2.7, M2.5, M2.1, M2, M1, and MiniMax-01.
+ * Includes the M-series models: M3, M2.7, M2.5, M2.1, M2, M1, and MiniMax-01.
  */
 export const MINIMAX_MODELS: Record<string, ModelConfig> = {
+  minimaxM3: {
+    name: 'minimaxM3',
+    label: 'MiniMax M3',
+    fullName: 'MiniMax-M3',
+    shortName: 'MiniMax-M3',
+    openrouterFullName: 'minimax/minimax-m3',
+    provider: ModelProvider.MINIMAX,
+    maxOutputTokens: 512000,
+    contextWindow: 1048576,
+    inputPrice: 0.3,
+    outputPrice: 1.2,
+    capabilities: {
+      ...MINIMAX_DEFAULT_CAPABILITIES,
+      supportsVision: true,
+    },
+    openRouterOnly: false,
+  },
   minimaxM27: {
     name: 'minimaxM27',
     label: 'MiniMax M2.7',
