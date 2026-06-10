@@ -47,6 +47,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
       supportsDynamicFilteringWebSearch: true,
       supportsNativeCodeExecution: true,
       supportsAssistantPrefill: false,
+      // Adaptive thinking is always on for Fable 5 and cannot be disabled.
       supportsReasoning: true,
       supportsReasoningEffort: true,
       reasoningEffort: ReasoningEffort.HIGH,
