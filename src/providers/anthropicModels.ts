@@ -30,7 +30,7 @@ const ANTHROPIC_DEFAULT_CAPABILITIES: ModelCapabilities = {
 export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
   fable5: {
     name: 'fable5',
-    label: 'Fable 5',
+    label: 'Claude Fable 5',
     fullName: 'claude-fable-5',
     shortName: 'claude-fable-5',
     openrouterFullName: 'anthropic/claude-fable-5',
