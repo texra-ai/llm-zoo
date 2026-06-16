@@ -19,14 +19,39 @@ const GLM_DEFAULT_CAPABILITIES: ModelCapabilities = {
 
 /**
  * Zhipu AI GLM model configurations.
- * Includes GLM-5.1, GLM-5V-Turbo, GLM-5, GLM-4.7, GLM-4.6V, and GLM-4.5 series.
+ * Includes GLM-5.2, GLM-5.1, GLM-5V-Turbo, GLM-5, GLM-4.7, GLM-4.6V, and GLM-4.5 series.
  *
  * Model name conventions:
- * - fullName: Model name for native Zhipu AI API (e.g., 'glm-5.1', 'glm-5')
- * - openrouterFullName: Model name for OpenRouter API (e.g., 'z-ai/glm-5.1')
+ * - fullName: Model name for native Zhipu AI API (e.g., 'glm-5.2', 'glm-5')
+ * - openrouterFullName: Model name for OpenRouter API (e.g., 'z-ai/glm-5.2')
  */
 export const GLM_MODELS: Record<string, ModelConfig> = {
-  // GLM-5.1 (Flagship agentic coding model, released 2026-04-07)
+  // GLM-5.2 (Flagship agentic coding model, announced 2026-06-13)
+  // 744B MoE (40B active), 1M-token context, dual thinking-effort (High/Max), text-only.
+  glm52: {
+    name: 'glm52',
+    label: 'GLM-5.2',
+    fullName: 'glm-5.2',
+    shortName: 'glm-5.2',
+    openrouterFullName: 'z-ai/glm-5.2',
+    provider: ModelProvider.GLM,
+    maxOutputTokens: 131072,
+    contextWindow: 1000000,
+    inputPrice: 1.4,
+    outputPrice: 4.4,
+    capabilities: {
+      ...GLM_DEFAULT_CAPABILITIES,
+      supportsVision: false,
+      supportsReasoning: true,
+      supportsReasoningEffort: true,
+      reasoningEffort: ReasoningEffort.HIGH,
+      supportsPromptCaching: true,
+      // Cached input $0.26 / 1M vs $1.4 / 1M input.
+      cacheDiscountFactor: 0.186,
+    },
+    openRouterOnly: false,
+  },
+  // GLM-5.1 (Agentic coding model, released 2026-04-07)
   glm51: {
     name: 'glm51',
     label: 'GLM-5.1',
@@ -36,10 +61,13 @@ export const GLM_MODELS: Record<string, ModelConfig> = {
     provider: ModelProvider.GLM,
     maxOutputTokens: 65535,
     contextWindow: 202752,
-    inputPrice: 1.05,
-    outputPrice: 3.5,
+    inputPrice: 1.4,
+    outputPrice: 4.4,
     capabilities: {
       ...GLM_DEFAULT_CAPABILITIES,
+      supportsPromptCaching: true,
+      // Cached input $0.26 / 1M vs $1.4 / 1M input.
+      cacheDiscountFactor: 0.186,
     },
     openRouterOnly: false,
   },
@@ -72,10 +100,13 @@ export const GLM_MODELS: Record<string, ModelConfig> = {
     provider: ModelProvider.GLM,
     maxOutputTokens: 131072,
     contextWindow: 80000,
-    inputPrice: 0.8,
-    outputPrice: 2.56,
+    inputPrice: 1.0,
+    outputPrice: 3.2,
     capabilities: {
       ...GLM_DEFAULT_CAPABILITIES,
+      supportsPromptCaching: true,
+      // Cached input $0.2 / 1M vs $1.0 / 1M input.
+      cacheDiscountFactor: 0.2,
     },
     openRouterOnly: false,
   },
@@ -93,6 +124,9 @@ export const GLM_MODELS: Record<string, ModelConfig> = {
     outputPrice: 4.0,
     capabilities: {
       ...GLM_DEFAULT_CAPABILITIES,
+      supportsPromptCaching: true,
+      // Cached input $0.24 / 1M vs $1.2 / 1M input.
+      cacheDiscountFactor: 0.2,
     },
     openRouterOnly: false,
   },
@@ -106,10 +140,13 @@ export const GLM_MODELS: Record<string, ModelConfig> = {
     provider: ModelProvider.GLM,
     maxOutputTokens: 128000,
     contextWindow: 200000,
-    inputPrice: 0.4,
-    outputPrice: 1.75,
+    inputPrice: 0.6,
+    outputPrice: 2.2,
     capabilities: {
       ...GLM_DEFAULT_CAPABILITIES,
+      supportsPromptCaching: true,
+      // Cached input $0.11 / 1M vs $0.6 / 1M input.
+      cacheDiscountFactor: 0.183,
     },
     openRouterOnly: false,
     deprecated: true,
