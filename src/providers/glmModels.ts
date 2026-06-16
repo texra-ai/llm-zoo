@@ -19,14 +19,36 @@ const GLM_DEFAULT_CAPABILITIES: ModelCapabilities = {
 
 /**
  * Zhipu AI GLM model configurations.
- * Includes GLM-5.1, GLM-5V-Turbo, GLM-5, GLM-4.7, GLM-4.6V, and GLM-4.5 series.
+ * Includes GLM-5.2, GLM-5.1, GLM-5V-Turbo, GLM-5, GLM-4.7, GLM-4.6V, and GLM-4.5 series.
  *
  * Model name conventions:
- * - fullName: Model name for native Zhipu AI API (e.g., 'glm-5.1', 'glm-5')
- * - openrouterFullName: Model name for OpenRouter API (e.g., 'z-ai/glm-5.1')
+ * - fullName: Model name for native Zhipu AI API (e.g., 'glm-5.2', 'glm-5')
+ * - openrouterFullName: Model name for OpenRouter API (e.g., 'z-ai/glm-5.2')
  */
 export const GLM_MODELS: Record<string, ModelConfig> = {
-  // GLM-5.1 (Flagship agentic coding model, released 2026-04-07)
+  // GLM-5.2 (Flagship agentic coding model, announced 2026-06-13)
+  // 744B MoE (40B active), 1M-token context, dual thinking-effort (High/Max), text-only.
+  glm52: {
+    name: 'glm52',
+    label: 'GLM-5.2',
+    fullName: 'glm-5.2',
+    shortName: 'glm-5.2',
+    openrouterFullName: 'z-ai/glm-5.2',
+    provider: ModelProvider.GLM,
+    maxOutputTokens: 131072,
+    contextWindow: 1000000,
+    inputPrice: 1.05,
+    outputPrice: 3.5,
+    capabilities: {
+      ...GLM_DEFAULT_CAPABILITIES,
+      supportsVision: false,
+      supportsReasoning: true,
+      supportsReasoningEffort: true,
+      reasoningEffort: ReasoningEffort.HIGH,
+    },
+    openRouterOnly: false,
+  },
+  // GLM-5.1 (Agentic coding model, released 2026-04-07)
   glm51: {
     name: 'glm51',
     label: 'GLM-5.1',
