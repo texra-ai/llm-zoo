@@ -61,10 +61,13 @@ export const GLM_MODELS: Record<string, ModelConfig> = {
     provider: ModelProvider.GLM,
     maxOutputTokens: 65535,
     contextWindow: 202752,
-    inputPrice: 1.05,
-    outputPrice: 3.5,
+    inputPrice: 1.4,
+    outputPrice: 4.4,
     capabilities: {
       ...GLM_DEFAULT_CAPABILITIES,
+      supportsPromptCaching: true,
+      // Cached input $0.26 / 1M vs $1.4 / 1M input.
+      cacheDiscountFactor: 0.186,
     },
     openRouterOnly: false,
   },
@@ -97,10 +100,13 @@ export const GLM_MODELS: Record<string, ModelConfig> = {
     provider: ModelProvider.GLM,
     maxOutputTokens: 131072,
     contextWindow: 80000,
-    inputPrice: 0.8,
-    outputPrice: 2.56,
+    inputPrice: 1.0,
+    outputPrice: 3.2,
     capabilities: {
       ...GLM_DEFAULT_CAPABILITIES,
+      supportsPromptCaching: true,
+      // Cached input $0.2 / 1M vs $1.0 / 1M input.
+      cacheDiscountFactor: 0.2,
     },
     openRouterOnly: false,
   },
@@ -118,6 +124,9 @@ export const GLM_MODELS: Record<string, ModelConfig> = {
     outputPrice: 4.0,
     capabilities: {
       ...GLM_DEFAULT_CAPABILITIES,
+      supportsPromptCaching: true,
+      // Cached input $0.24 / 1M vs $1.2 / 1M input.
+      cacheDiscountFactor: 0.2,
     },
     openRouterOnly: false,
   },
@@ -131,10 +140,13 @@ export const GLM_MODELS: Record<string, ModelConfig> = {
     provider: ModelProvider.GLM,
     maxOutputTokens: 128000,
     contextWindow: 200000,
-    inputPrice: 0.4,
-    outputPrice: 1.75,
+    inputPrice: 0.6,
+    outputPrice: 2.2,
     capabilities: {
       ...GLM_DEFAULT_CAPABILITIES,
+      supportsPromptCaching: true,
+      // Cached input $0.11 / 1M vs $0.6 / 1M input.
+      cacheDiscountFactor: 0.183,
     },
     openRouterOnly: false,
     deprecated: true,
