@@ -5,7 +5,9 @@ name: Daily model update
 # which has WebSearch / WebFetch for research and the gh CLI for PR creation.
 #
 # Requirements:
-#   - Repo secret ANTHROPIC_API_KEY (Settings > Secrets and variables > Actions).
+#   - Repo secret CLAUDE_CODE_OAUTH_TOKEN — a Claude subscription OAuth token
+#     (generate locally with `claude setup-token`). Same secret the texra repos
+#     use; no metered Anthropic API key needed.
 #   - "Allow GitHub Actions to create and approve pull requests" enabled in
 #     Settings > Actions > General (needed for the workflow GITHUB_TOKEN to open PRs).
 
@@ -42,7 +44,8 @@ jobs:
       - name: Research and add new models
         uses: anthropics/claude-code-action@v1
         with:
-          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          # OAuth (Claude subscription) instead of a metered API key.
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
           base_branch: main
           claude_args: |
