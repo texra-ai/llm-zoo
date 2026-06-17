@@ -14,10 +14,6 @@ concurrency:
   group: bot-respond-${{ github.event.issue.number || github.event.pull_request.number || github.event.comment.id }}
   cancel-in-progress: false
 
-env:
-  BOT_PAT: ${{ secrets.BOT_PAT }}
-  GH_TOKEN: ${{ secrets.BOT_PAT || secrets.GITHUB_TOKEN }}
-
 jobs:
   claude:
     # Repository variable kill switch:
@@ -35,12 +31,6 @@ jobs:
       )
     runs-on: ubuntu-latest
     timeout-minutes: 45
-    env:
-      CLAUDE_CODE_PROVIDER: ${{ vars.CLAUDE_CODE_PROVIDER || 'anthropic' }}
-      CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-      CLAUDE_OPUS_MODEL: ${{ vars.CLAUDE_OPUS_MODEL }}
-      CLAUDE_SONNET_MODEL: ${{ vars.CLAUDE_SONNET_MODEL }}
-
     permissions:
       contents: write
       pull-requests: write
@@ -53,31 +43,22 @@ jobs:
         uses: actions/checkout@v6
         with:
           fetch-depth: 1
-          token: ${{ env.GH_TOKEN }}
-
-      - name: Checkout trusted automation
-        uses: actions/checkout@v6
-        with:
-          ref: ${{ github.event.pull_request.base.ref || github.event.repository.default_branch }}
-          path: .trusted-actions
-          fetch-depth: 1
 
       - name: Run Claude Code
         id: claude
         continue-on-error: true
-        uses: LionSR/agent-ci-actions@v1
+        uses: anthropics/claude-code-action@v1
         with:
-          provider: ${{ env.CLAUDE_CODE_PROVIDER }}
-          model-tier: opus
-          allowed-bots: 'claude[bot],cursor[bot],cursor,copilot-pull-request-reviewer[bot]'
-          branch-name-template: '{{prefix}}{{entityType}}-{{entityNumber}}-{{description}}'
-          allowed_tools_preset: claude-interactive
-          allowed_tools_preset_map_file: .trusted-actions/.github/allowed-tools.json
-          additional-permissions: |
-            actions: read
-          system-prompt-file: .trusted-actions/.github/prompts/claude-code-system-prompt.md
+          # OAuth (Claude subscription) — same secret as the review + updater workflows.
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # Repo conventions come from CLAUDE.md, which the action loads automatically.
+          # The action reads the @claude mention itself; no prompt needed here.
+          claude_args: |
+            --model ${{ vars.CLAUDE_OPUS_MODEL || 'opus' }}
+            --allowedTools "Read,Edit,Write,Glob,Grep,WebSearch,WebFetch,Bash(npm ci),Bash(npm install),Bash(npm run build),Bash(npm run typecheck),Bash(node *),Bash(git diff:*),Bash(git status),Bash(gh pr:*),Bash(gh issue:*)"
 
-      - name: Check for Claude quota errors and post comment
+      - name: Report quota / rate-limit errors
         if: |
           steps.claude.outcome != 'success' &&
           (github.event_name == 'issues' ||
@@ -88,28 +69,10 @@ jobs:
         with:
           script: |
             const issue_number = context.issue.number;
-            if (!issue_number) {
-              console.log('No issue/PR number found, skipping comment');
-              return;
-            }
+            if (!issue_number) return;
             await github.rest.issues.createComment({
               issue_number,
               owner: context.repo.owner,
               repo: context.repo.repo,
               body: '⏳ Claude ran into a quota or rate limit. Will retry on the next interaction.\n\n(See [action logs](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) for details)'
             });
-
-      - name: Auto-create PR for completed issue work
-        if: |
-          !cancelled() &&
-          steps.claude.outcome == 'success' &&
-          env.BOT_PAT != '' &&
-          (github.event_name == 'issues' ||
-           (github.event_name == 'issue_comment' && !github.event.issue.pull_request))
-        uses: LionSR/agent-ci-actions/auto-create-issue-pr@v1
-        with:
-          issue-number: ${{ github.event.issue.number }}
-          repo: ${{ github.repository }}
-          branch-prefix: 'claude/issue-'
-          creator-name: 'Claude Code action'
-          gh-token: ${{ env.BOT_PAT }}
