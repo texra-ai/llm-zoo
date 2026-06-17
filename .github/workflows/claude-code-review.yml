@@ -1,0 +1,95 @@
+name: Claude Code Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, ready_for_review, reopened]
+
+concurrency:
+  group: claude-review-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  claude-review:
+    # Repository variable kill switch:
+    #   CLAUDE_REVIEW_ENABLED=false disables Claude-powered PR review.
+    #   unset or any other value preserves the default enabled behavior.
+    if: vars.CLAUDE_REVIEW_ENABLED != 'false'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      actions: read
+      issues: write
+      id-token: write
+
+    env:
+      CLAUDE_CODE_PROVIDER: ${{ vars.CLAUDE_CODE_PROVIDER || 'anthropic' }}
+      CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+      CLAUDE_OPUS_MODEL: ${{ vars.CLAUDE_OPUS_MODEL }}
+      CLAUDE_SONNET_MODEL: ${{ vars.CLAUDE_SONNET_MODEL }}
+
+    steps:
+      - name: Check review token
+        id: provider-token
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+        run: |
+          set -euo pipefail
+          if [ -n "${CLAUDE_CODE_OAUTH_TOKEN:-}" ]; then
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            echo "::notice::Skipping Claude review: CLAUDE_CODE_OAUTH_TOKEN is not configured"
+          fi
+
+      - name: Checkout repository under review
+        if: steps.provider-token.outputs.skip != 'true'
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 1
+
+      - name: Checkout trusted automation
+        if: steps.provider-token.outputs.skip != 'true'
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.base.ref }}
+          path: .trusted-actions
+          fetch-depth: 1
+
+      - name: Run Claude Code Review
+        if: steps.provider-token.outputs.skip != 'true'
+        id: claude-review
+        continue-on-error: true
+        uses: LionSR/agent-ci-actions@v1
+        with:
+          provider: ${{ env.CLAUDE_CODE_PROVIDER }}
+          model-tier: opus
+          allowed-bots: 'claude[bot],cursor[bot],cursor,copilot-pull-request-reviewer[bot]'
+          plugin_marketplaces: 'https://github.com/anthropics/claude-code.git'
+          plugins: 'code-review@claude-code-plugins'
+          claude-prompt-file: .trusted-actions/.github/prompts/claude-code-review-prompt.md
+          claude-prompt-context: |
+            PR number: ${{ github.event.pull_request.number }}
+            Repository: ${{ github.repository }}
+            Repository owner: ${{ github.repository_owner }}
+            Repository name: ${{ github.event.repository.name }}
+            Review this llm-zoo pull request: ${{ github.repository }}/pull/${{ github.event.pull_request.number }}
+            Trigger event: ${{ github.event.action }}
+          system-prompt-file: .trusted-actions/.github/prompts/claude-code-review-system-prompt.md
+
+      - name: Check for Claude quota errors and post comment
+        if: |
+          steps.provider-token.outputs.skip != 'true' &&
+          steps.claude-review.outcome != 'success'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const outcomeText = '${{ steps.claude-review.outcome }}';
+            if (outcomeText === 'failure' || outcomeText === 'cancelled') {
+              await github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: '⏳ Claude quota exhausted or rate limit reached. Code review will be retried on the next push.\n\n(If this persists, check the [action logs](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}))'
+              });
+            }

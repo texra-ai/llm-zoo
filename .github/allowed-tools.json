@@ -1,0 +1,4 @@
+{
+  "claude-interactive": "Read,Edit,Write,Glob,Grep,WebSearch,WebFetch,Bash(npm install),Bash(npm ci),Bash(npm run build),Bash(npm run typecheck),Bash(node *),Bash(git diff *),Bash(git status),Bash(gh pr:*),Bash(gh issue:*),mcp__github__*",
+  "github-read": "Read,Glob,Grep,mcp__github__*"
+}
