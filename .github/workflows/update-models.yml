@@ -49,7 +49,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           base_branch: main
           claude_args: |
-            --model claude-sonnet-4-6
+            --model sonnet
             --max-turns 40
             --allowedTools "WebSearch,WebFetch,Bash,Read,Edit,Write,Glob,Grep"
           prompt: |
