@@ -163,6 +163,52 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
     openRouterOnly: false,
     deprecated: true,
   },
+  // kimi-k2.7-code: Moonshot's strongest coding model (released 2026-06-12).
+  // 1T-param MoE (32B active), multimodal, thinking enabled by default (~30% fewer
+  // thinking tokens than K2.6). Disable thinking via {"type": "disabled"}.
+  kimi27code: {
+    name: 'kimi27code',
+    label: 'Kimi K2.7 Code',
+    fullName: 'kimi-k2.7-code',
+    shortName: 'kimi-k2.7-code',
+    openrouterFullName: 'moonshotai/kimi-k2.7-code',
+    provider: ModelProvider.MOONSHOT,
+    maxOutputTokens: 64000,
+    contextWindow: 262144,
+    inputPrice: 0.95,
+    outputPrice: 4.0,
+    capabilities: {
+      ...MOONSHOT_DEFAULT_CAPABILITIES,
+      supportsVision: true,
+      supportsAutoPromptCaching: true,
+      // Cached input $0.19 / 1M vs $0.95 / 1M input.
+      cacheDiscountFactor: 0.19 / 0.95,
+    },
+    openRouterOnly: false,
+  },
+  kimi27codeT: {
+    name: 'kimi27codeT',
+    label: 'Kimi K2.7 Code (Thinking)',
+    fullName: 'kimi-k2.7-code',
+    shortName: 'kimi-k2.7-code',
+    openrouterFullName: 'moonshotai/kimi-k2.7-code',
+    provider: ModelProvider.MOONSHOT,
+    maxOutputTokens: 64000,
+    contextWindow: 262144,
+    inputPrice: 0.95,
+    outputPrice: 4.0,
+    capabilities: {
+      ...MOONSHOT_DEFAULT_CAPABILITIES,
+      supportsVision: true,
+      supportsReasoning: true,
+      supportsInterleavedThinking: true,
+      supportsAutoPromptCaching: true,
+      // Cached input $0.19 / 1M vs $0.95 / 1M input.
+      cacheDiscountFactor: 0.19 / 0.95,
+      reasoningEffort: ReasoningEffort.HIGH,
+    },
+    openRouterOnly: false,
+  },
   // kimi-k2.6: A model that can enable or disable thinking capability, enabled by default. You can disable thinking by using {"type": "disabled"}
   kimi26: {
     name: 'kimi26',

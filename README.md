@@ -95,7 +95,7 @@ npm install llm-zoo
 | **OpenAI** | 35 | GPT-5.x reasoning, deep research |
 | **GLM** | 12 | Zhipu GLM-5.x, up to 1M context |
 | **DeepSeek** | 11 | Budget reasoning ($0.14/1M) |
-| **Moonshot** | 11 | Kimi K2.5 thinking mode |
+| **Moonshot** | 13 | Kimi K2.7 Code, K2.6 thinking mode |
 | **Google** | 9 | 1M context, audio input |
 | **MiniMax** | 6 | M-series reasoning, 1M context |
 | **xAI** | 6 | Grok 4.3 with 1M context, configurable reasoning |
