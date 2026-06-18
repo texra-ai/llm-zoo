@@ -1,0 +1,82 @@
+name: Claude Code Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, ready_for_review, reopened]
+
+concurrency:
+  group: claude-review-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  claude-review:
+    # Repository variable kill switch:
+    #   CLAUDE_REVIEW_ENABLED=false disables Claude-powered PR review.
+    #   unset or any other value preserves the default enabled behavior.
+    if: vars.CLAUDE_REVIEW_ENABLED != 'false'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
+      id-token: write
+      actions: read
+
+    steps:
+      - name: Checkout repository under review
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 1
+
+      - name: Run Claude Code Review
+        id: claude-review
+        continue-on-error: true
+        uses: anthropics/claude-code-action@v1
+        with:
+          # OAuth (Claude subscription) — same secret as the bot + updater workflows.
+          # If the secret is unset the action fails this step cleanly (continue-on-error).
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # Repo conventions come from CLAUDE.md, loaded automatically by the action.
+          prompt: |
+            Review PR #${{ github.event.pull_request.number }} in ${{ github.repository }}.
+
+            This package catalogs LLM models, so most PRs add or edit entries in
+            `src/providers/*Models.ts` or adjust pricing. Get the diff with
+            `gh pr diff ${{ github.event.pull_request.number }}` and focus on:
+
+            1. VERIFY THE DATA. For every added or changed model, check the API
+               model ID, context window, max output tokens, input/output/cached
+               prices, and capability flags against the provider's OFFICIAL docs
+               (use WebFetch/WebSearch on the provider's own pricing or model
+               pages — not aggregator blogs, which hallucinate versions and
+               prices). Call out any field you cannot confirm from a primary
+               source.
+            2. INTERNAL CONSISTENCY. `cacheDiscountFactor` should equal cached ÷
+               input price; base and `(Thinking)` variants should share the right
+               model ID; capability flags should be coherent.
+            3. REPO CONSISTENCY. Confirm `package.json` was bumped (minor, for new
+               models) and `README.md` provider counts/highlights were updated to
+               match. Reason about whether `npm run typecheck` / `npm run build`
+               still pass; do not run a publish.
+
+            Do not ask for new abstractions, factories, or wrappers — this is a
+            data package. Read existing inline threads and PR comments first and
+            avoid re-raising resolved issues. Post inline comments on the relevant
+            lines, then a concise PR-level summary with a `Verified` section
+            listing the files you opened and the official sources you checked.
+          claude_args: |
+            --model ${{ vars.CLAUDE_OPUS_MODEL || 'opus' }}
+            --allowedTools "Read,Glob,Grep,WebSearch,WebFetch,Bash(gh pr diff:*),Bash(gh pr view:*),Bash(gh pr comment:*),Bash(git diff:*),Bash(git log:*),mcp__github_inline_comment__create_inline_comment,mcp__github__*"
+
+      - name: Report quota / rate-limit errors
+        if: steps.claude-review.outcome == 'failure' || steps.claude-review.outcome == 'cancelled'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '⏳ Claude quota exhausted or rate limit reached. Code review will be retried on the next push.\n\n(If this persists, check the [action logs](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}))'
+            });
