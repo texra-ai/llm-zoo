@@ -91,7 +91,7 @@ npm install llm-zoo
 
 | Provider | Models | Highlights |
 |----------|--------|------------|
-| **Anthropic** | 29 | Fable 5, 1M context, 90% cache savings, PDF support |
+| **Anthropic** | 31 | Fable 5, Sonnet 5, 1M context, 90% cache savings, PDF support |
 | **OpenAI** | 35 | GPT-5.x reasoning, deep research |
 | **GLM** | 12 | Zhipu GLM-5.x, up to 1M context |
 | **DeepSeek** | 11 | Budget reasoning ($0.14/1M) |
