@@ -432,6 +432,8 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    // Retired on the Claude API; still served on Google Cloud (Vertex).
+    retired: true,
   },
   opus4: {
     name: 'opus4',
@@ -454,6 +456,8 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    // Retired on the Claude API; still served on Google Cloud (Vertex).
+    retired: true,
   },
   sonnet45T: {
     name: 'sonnet45T',
@@ -564,6 +568,8 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    // Retired on the Claude API; still served on Bedrock and Google Cloud.
+    retired: true,
   },
   sonnet4: {
     name: 'sonnet4',
@@ -586,6 +592,8 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    // Retired on the Claude API; still served on Bedrock and Google Cloud.
+    retired: true,
   },
   sonnet37T: {
     name: 'sonnet37T',
