@@ -25,7 +25,7 @@ const ANTHROPIC_DEFAULT_CAPABILITIES: ModelCapabilities = {
 
 /**
  * Anthropic Claude model configurations.
- * Includes Claude 4.x, 3.x Opus, Sonnet, and Haiku variants.
+ * Includes Claude Fable 5, Claude Mythos 5, and 4.x/3.x Opus, Sonnet, and Haiku variants.
  */
 export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
   fable5: {
@@ -53,6 +53,32 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
       reasoningEffort: ReasoningEffort.HIGH,
       supportsInterleavedThinking: true,
     },
+    openRouterOnly: false,
+  },
+  mythos5: {
+    name: 'mythos5',
+    label: 'Mythos 5 (Limited Availability)',
+    fullName: 'claude-mythos-5',
+    shortName: 'claude-mythos-5',
+    provider: ModelProvider.ANTHROPIC,
+    maxOutputTokens: 128000,
+    contextWindow: 1000000,
+    inputPrice: 10.0,
+    outputPrice: 50.0,
+    capabilities: {
+      ...ANTHROPIC_DEFAULT_CAPABILITIES,
+      supportsNativeMCPServer: true,
+      supportsNativeWebSearch: true,
+      supportsDynamicFilteringWebSearch: true,
+      supportsNativeCodeExecution: true,
+      supportsAssistantPrefill: false,
+      // Adaptive thinking is always on for Mythos 5 and cannot be disabled.
+      supportsReasoning: true,
+      supportsReasoningEffort: true,
+      reasoningEffort: ReasoningEffort.HIGH,
+      supportsInterleavedThinking: true,
+    },
+    // Invitation-only via Project Glasswing; no OpenRouter or VS Code LM routing.
     openRouterOnly: false,
   },
   opus48T: {
