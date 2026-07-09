@@ -52,11 +52,11 @@ npm install llm-zoo
 |-------|-------|--------|-----------|----------|
 | `gpt55pro` | $30 | $180 | ✓ | OpenAI |
 | `fable5` | $10 | $50 | ✓ | Anthropic |
-| `gpt55` | $5 | $30 | ✓ | OpenAI |
+| `gpt56` | $5 | $30 | ✓ | OpenAI |
 | `opus48T` | $5 | $25 | ✓ | Anthropic |
 | `opus48` | $5 | $25 | - | Anthropic |
 | `sonnet46T` | $3 | $15 | ✓ | Anthropic |
-| `gpt54` | $2.50 | $15 | ✓ | OpenAI |
+| `gpt56-` | $2.50 | $15 | ✓ | OpenAI |
 | `gpt41` | $2 | $8 | - | OpenAI |
 | `gpt52` | $1.75 | $14 | ✓ | OpenAI |
 
@@ -64,8 +64,9 @@ npm install llm-zoo
 
 | Model | Context | Provider |
 |-------|---------|----------|
-| `gpt55` | 1M | OpenAI |
-| `gpt54` | 1M | OpenAI |
+| `gpt56` | 1M | OpenAI |
+| `gpt56-` | 1M | OpenAI |
+| `gpt56--` | 1M | OpenAI |
 | `gemini31p` | 1M | Google |
 | `gemini31f-` | 1M | Google |
 | `gemini3f` | 1M | Google |
@@ -82,9 +83,9 @@ npm install llm-zoo
 | Capability | Count | Examples |
 |------------|-------|----------|
 | Vision | 45+ | `sonnet46`, `gpt41`, `gemini31p` |
-| Reasoning | 30+ | `opus48T`, `gpt55`, `deepseekT`, `grok43` |
+| Reasoning | 30+ | `opus48T`, `gpt56`, `deepseekT`, `grok43` |
 | Code Execution | 20+ | `sonnet46`, `gpt41`, `gemini3f` |
-| Web Search | 15+ | `opus48`, `gpt41`, `gpt54` |
+| Web Search | 15+ | `opus48`, `gpt41`, `gpt56-` |
 | Prompt Caching | 25+ | All Claude, Gemini, DeepSeek |
 
 ### Providers
@@ -92,7 +93,7 @@ npm install llm-zoo
 | Provider | Models | Highlights |
 |----------|--------|------------|
 | **Anthropic** | 32 | Fable 5, Mythos 5, Sonnet 5, 1M context, 90% cache savings, PDF support |
-| **OpenAI** | 35 | GPT-5.x reasoning, deep research |
+| **OpenAI** | 38 | GPT-5.x reasoning, deep research |
 | **GLM** | 12 | Zhipu GLM-5.x, up to 1M context |
 | **DeepSeek** | 11 | Budget reasoning ($0.14/1M) |
 | **Moonshot** | 13 | Kimi K2.7 Code, K2.6 thinking mode |
