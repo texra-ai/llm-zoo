@@ -39,6 +39,7 @@ export {
   MOONSHOT_MODELS,
   DASHSCOPE_MODELS,
   COPILOT_MODELS,
+  META_MODELS,
   OTHER_MODELS,
 } from './ModelRegistry';
 

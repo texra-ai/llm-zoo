@@ -56,6 +56,8 @@ export enum ModelProvider {
   COPILOT = 'copilot',
   /** Zhipu AI (GLM models) */
   GLM = 'glm',
+  /** Meta (Muse Spark models via Meta Model API) */
+  META = 'meta',
   /** Other providers (OpenRouter-only models, etc.) */
   OTHERS = 'others',
 }
