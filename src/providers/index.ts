@@ -9,6 +9,7 @@ export { DASHSCOPE_MODELS } from './dashscopeModels';
 export { DEEPSEEK_MODELS } from './deepseekModels';
 export { GLM_MODELS } from './glmModels';
 export { GOOGLE_MODELS } from './googleModels';
+export { META_MODELS } from './metaModels';
 export { MINIMAX_MODELS } from './minimaxModels';
 export { MOONSHOT_MODELS } from './moonshotModels';
 export { OPENAI_DEEP_RESEARCH_MODELS } from './openaiDeepResearchModels';

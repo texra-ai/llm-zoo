@@ -99,6 +99,7 @@ npm install llm-zoo
 | **Google** | 9 | 1M context, audio input |
 | **MiniMax** | 6 | M-series reasoning, 1M context |
 | **xAI** | 6 | Grok 4.3 with 1M context, configurable reasoning |
+| **Meta** | 1 | Muse Spark 1.1, 1M context, agentic + multimodal |
 | **DashScope** | 3 | Qwen with 1M context |
 | **OpenRouter** | 2 | Llama 405B, QVQ-72B |
 | **Copilot** | 1 | Free GPT-4o |
