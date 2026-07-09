@@ -504,7 +504,8 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       cacheDiscountFactor: 0.1,
-      reasoningEffort: ReasoningEffort.XHIGH,
+      reasoningEffort: ReasoningEffort.MEDIUM,
+      supportsPromptCaching: true,
       supportsNativeMCPServer: true,
       supportsNativeWebSearch: true,
       supportsNativeCodeExecution: true,
@@ -529,7 +530,8 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       cacheDiscountFactor: 0.1,
-      reasoningEffort: ReasoningEffort.XHIGH,
+      reasoningEffort: ReasoningEffort.MEDIUM,
+      supportsPromptCaching: true,
       supportsNativeMCPServer: true,
       supportsNativeWebSearch: true,
       supportsNativeCodeExecution: true,
@@ -553,7 +555,8 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       cacheDiscountFactor: 0.1,
-      reasoningEffort: ReasoningEffort.XHIGH,
+      reasoningEffort: ReasoningEffort.MEDIUM,
+      supportsPromptCaching: true,
       supportsNativeMCPServer: true,
       supportsNativeWebSearch: true,
       supportsNativeCodeExecution: true,
