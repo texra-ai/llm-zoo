@@ -66,6 +66,7 @@ npm install llm-zoo
 |-------|---------|----------|
 | `gpt56` | 1M | OpenAI |
 | `gpt56-` | 1M | OpenAI |
+| `gpt56--` | 1M | OpenAI |
 | `gemini31p` | 1M | Google |
 | `gemini31f-` | 1M | Google |
 | `gemini3f` | 1M | Google |
