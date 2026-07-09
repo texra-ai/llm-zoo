@@ -98,7 +98,7 @@ npm install llm-zoo
 | **Moonshot** | 13 | Kimi K2.7 Code, K2.6 thinking mode |
 | **Google** | 9 | 1M context, audio input |
 | **MiniMax** | 6 | M-series reasoning, 1M context |
-| **xAI** | 6 | Grok 4.3 with 1M context, configurable reasoning |
+| **xAI** | 7 | Grok 4.5, 500K context, configurable reasoning |
 | **DashScope** | 3 | Qwen with 1M context |
 | **OpenRouter** | 2 | Llama 405B, QVQ-72B |
 | **Copilot** | 1 | Free GPT-4o |
