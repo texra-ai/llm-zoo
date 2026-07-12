@@ -9,11 +9,11 @@ import {
 /**
  * Model names documented as supported by GitHub Copilot.
  *
- * These names prepare the catalog for a future Copilot adapter without
- * asserting request identifiers, API pricing, context limits, or capabilities
- * that GitHub does not specify for third-party clients. A future authenticated
- * adapter should obtain request identifiers from the account-specific `/models`
- * response at runtime.
+ * These labels cover the complete documented catalog. Matching ModelConfig
+ * entries also carry `copilotFullName` and `vscodeLMFullName` route identifiers.
+ * An authenticated adapter should still intersect the static catalog with the
+ * account-specific model response at runtime because availability depends on
+ * the user's plan, policy, and client.
  *
  * Source (verified 2026-07-12):
  * https://docs.github.com/en/copilot/reference/ai-models/supported-models
@@ -61,7 +61,8 @@ const COPILOT_DEFAULT_CAPABILITIES: ModelCapabilities = {
 /**
  * GitHub Copilot model configurations.
  * The configured GPT-4o placeholder is retained for compatibility. Future
- * Copilot integrations should use COPILOT_MODEL_NAMES plus runtime discovery.
+ * Copilot integrations should use the per-model route identifiers plus runtime
+ * discovery; COPILOT_MODEL_NAMES retains models without a ModelConfig entry.
  */
 export const COPILOT_MODELS: Record<string, ModelConfig> = {
   copilot4o: {

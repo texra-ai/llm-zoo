@@ -63,6 +63,7 @@ export const ModelConfigSchema = z.object({
   openRouterOnly: z.boolean(),
   openrouterFullName: z.string().optional(),
   vscodeLMFullName: z.string().optional(),
+  copilotFullName: z.string().optional(),
   baseUrl: z.string().optional(),
   requiresResponsesAPI: z.boolean().optional(),
   description: z.string().optional(),
