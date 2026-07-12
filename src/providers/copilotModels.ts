@@ -6,32 +6,48 @@ import {
   ReasoningEffort,
 } from '../ModelConfig';
 
-/** A GitHub-documented Copilot model identifier and its display name. */
-export interface CopilotModelName {
-  readonly fullName: string;
-  readonly label: string;
-}
-
 /**
- * Model identifiers accepted by GitHub Copilot CLI.
+ * Model names documented as supported by GitHub Copilot.
  *
- * These name-only records prepare the catalog for a future Copilot adapter
- * without asserting API pricing, context limits, or capabilities that GitHub
- * does not specify for third-party clients. A future authenticated adapter
- * should still prefer the account-specific `/models` response at runtime.
+ * These names prepare the catalog for a future Copilot adapter without
+ * asserting request identifiers, API pricing, context limits, or capabilities
+ * that GitHub does not specify for third-party clients. A future authenticated
+ * adapter should obtain request identifiers from the account-specific `/models`
+ * response at runtime.
  *
  * Source (verified 2026-07-12):
- * https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-command-reference#supported-models
+ * https://docs.github.com/en/copilot/reference/ai-models/supported-models
  */
 export const COPILOT_MODEL_NAMES = [
-  { fullName: 'claude-sonnet-4.6', label: 'Claude Sonnet 4.6' },
-  { fullName: 'gpt-5.4', label: 'GPT-5.4' },
-  { fullName: 'claude-haiku-4.5', label: 'Claude Haiku 4.5' },
-  { fullName: 'gpt-5.3-codex', label: 'GPT-5.3 Codex' },
-  { fullName: 'gemini-3.1-pro-preview', label: 'Gemini 3.1 Pro' },
-  { fullName: 'gemini-3.5-flash', label: 'Gemini 3.5 Flash' },
-  { fullName: 'mai-code-1-flash', label: 'MAI-Code-1-Flash' },
-] as const satisfies readonly CopilotModelName[];
+  'GPT-5 mini',
+  'GPT-5.3-Codex',
+  'GPT-5.4',
+  'GPT-5.4 mini',
+  'GPT-5.4 nano',
+  'GPT-5.5',
+  'GPT-5.6 Luna',
+  'GPT-5.6 Sol',
+  'GPT-5.6 Terra',
+  'Claude Fable 5',
+  'Claude Haiku 4.5',
+  'Claude Opus 4.5',
+  'Claude Opus 4.6',
+  'Claude Opus 4.7',
+  'Claude Opus 4.8',
+  'Claude Opus 4.8 (fast mode) (preview)',
+  'Claude Sonnet 4.5',
+  'Claude Sonnet 4.6',
+  'Claude Sonnet 5',
+  'Gemini 2.5 Pro',
+  'Gemini 3 Flash',
+  'Gemini 3.1 Pro',
+  'Gemini 3.5 Flash',
+  'MAI-Code-1-Flash',
+  'Raptor mini',
+  'Kimi-K2.7-Code',
+] as const;
+
+export type CopilotModelName = (typeof COPILOT_MODEL_NAMES)[number];
 
 /**
  * Default capabilities for GitHub Copilot models.
