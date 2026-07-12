@@ -232,7 +232,7 @@ export interface ModelConfig {
    */
   vscodeLMFullName?: string;
 
-  /** Exact model identifier accepted by GitHub Copilot's model route. */
+  /** Exact model identifier documented for GitHub Copilot model selection. */
   copilotFullName?: string;
 
   /**

@@ -50,6 +50,24 @@ export const COPILOT_MODEL_NAMES = [
 export type CopilotModelName = (typeof COPILOT_MODEL_NAMES)[number];
 
 /**
+ * Exact identifiers documented for GitHub Copilot's `--model` option.
+ *
+ * Source (verified 2026-07-13):
+ * https://github.com/github/docs/blob/f19a0135b2fe88a1ca17efbadb1d2bf14eb332b4/content/copilot/reference/copilot-cli-reference/cli-command-reference.md#L365-L377
+ */
+export const COPILOT_MODEL_IDS = [
+  'claude-sonnet-4.6',
+  'gpt-5.4',
+  'claude-haiku-4.5',
+  'gpt-5.3-codex',
+  'gemini-3.1-pro-preview',
+  'gemini-3.5-flash',
+  'mai-code-1-flash',
+] as const;
+
+export type CopilotModelId = (typeof COPILOT_MODEL_IDS)[number];
+
+/**
  * Default capabilities for GitHub Copilot models.
  */
 const COPILOT_DEFAULT_CAPABILITIES: ModelCapabilities = {
