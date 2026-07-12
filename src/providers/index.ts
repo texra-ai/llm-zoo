@@ -4,7 +4,11 @@
  */
 
 export { ANTHROPIC_MODELS } from './anthropicModels';
-export { COPILOT_MODELS } from './copilotModels';
+export {
+  COPILOT_MODELS,
+  COPILOT_MODEL_NAMES,
+  type CopilotModelName,
+} from './copilotModels';
 export { DASHSCOPE_MODELS } from './dashscopeModels';
 export { DEEPSEEK_MODELS } from './deepseekModels';
 export { GLM_MODELS } from './glmModels';

@@ -39,9 +39,11 @@ export {
   MOONSHOT_MODELS,
   DASHSCOPE_MODELS,
   COPILOT_MODELS,
+  COPILOT_MODEL_NAMES,
   META_MODELS,
   OTHER_MODELS,
 } from './ModelRegistry';
+export type { CopilotModelName } from './ModelRegistry';
 
 // Utilities
 export {
