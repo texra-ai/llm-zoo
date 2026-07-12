@@ -461,6 +461,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
       supportsNativePdf: true,
     },
     openRouterOnly: false,
+    codexSubscription: true,
     deprecated: true,
   },
   gpt55pro: {
@@ -505,6 +506,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       cacheDiscountFactor: 0.1,
       reasoningEffort: ReasoningEffort.MEDIUM,
+      maxReasoningEffort: ReasoningEffort.MAX,
       supportsPromptCaching: true,
       supportsNativeMCPServer: true,
       supportsNativeWebSearch: true,
@@ -514,6 +516,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
       supportsNativePdf: true,
     },
     openRouterOnly: false,
+    codexSubscription: true,
   },
   'gpt56-': {
     name: 'gpt56-',
@@ -531,6 +534,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       cacheDiscountFactor: 0.1,
       reasoningEffort: ReasoningEffort.MEDIUM,
+      maxReasoningEffort: ReasoningEffort.MAX,
       supportsPromptCaching: true,
       supportsNativeMCPServer: true,
       supportsNativeWebSearch: true,
@@ -540,6 +544,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
       supportsNativePdf: true,
     },
     openRouterOnly: false,
+    codexSubscription: true,
   },
   'gpt56--': {
     name: 'gpt56--',
@@ -556,6 +561,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       cacheDiscountFactor: 0.1,
       reasoningEffort: ReasoningEffort.MEDIUM,
+      maxReasoningEffort: ReasoningEffort.MAX,
       supportsPromptCaching: true,
       supportsNativeMCPServer: true,
       supportsNativeWebSearch: true,
@@ -565,6 +571,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
       supportsNativePdf: true,
     },
     openRouterOnly: false,
+    codexSubscription: true,
   },
   gpt54: {
     name: 'gpt54',
@@ -590,6 +597,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
       supportsNativePdf: true,
     },
     openRouterOnly: false,
+    codexSubscription: true,
     deprecated: true,
   },
   'gpt54-': {
@@ -616,6 +624,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
       supportsNativePdf: true,
     },
     openRouterOnly: false,
+    codexSubscription: true,
   },
   'gpt54--': {
     name: 'gpt54--',

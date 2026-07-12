@@ -112,6 +112,13 @@ export interface ModelCapabilities {
   /** Default reasoning effort level when reasoning is enabled */
   reasoningEffort: ReasoningEffort;
 
+  /**
+   * Highest reasoning effort level the model accepts, when it differs from
+   * the default. Read as `maxReasoningEffort ?? reasoningEffort`.
+   * Example: GPT-5.6 defaults to `medium` but accepts up to `max`.
+   */
+  maxReasoningEffort?: ReasoningEffort;
+
   /** Whether the model can process images */
   supportsVision: boolean;
 
@@ -242,6 +249,16 @@ export interface ModelConfig {
    * Used as the label in model dropdowns so users can identify models at a glance.
    */
   label: string;
+
+  /**
+   * Whether the Codex backend (ChatGPT subscription) currently serves this
+   * model. Source of truth: the model manifest embedded in the Codex CLI
+   * (`models-manager`) cross-checked against
+   * https://developers.openai.com/codex/models — serving status is not
+   * derivable from the model name, reasoning tier, or deprecation status.
+   * @default false
+   */
+  codexSubscription?: boolean;
 
   /**
    * Whether this model is deprecated and no longer recommended for use.

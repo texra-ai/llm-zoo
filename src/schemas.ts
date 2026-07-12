@@ -37,6 +37,7 @@ export const ModelCapabilitiesSchema = z.object({
   supportsReasoning: z.boolean(),
   supportsInterleavedThinking: z.boolean(),
   reasoningEffort: ReasoningEffortSchema,
+  maxReasoningEffort: ReasoningEffortSchema.optional(),
   supportsVision: z.boolean(),
   supportsNativePdf: z.boolean(),
   supportsAssistantPrefill: z.boolean(),
@@ -65,6 +66,7 @@ export const ModelConfigSchema = z.object({
   baseUrl: z.string().optional(),
   requiresResponsesAPI: z.boolean().optional(),
   description: z.string().optional(),
+  codexSubscription: z.boolean().optional(),
   deprecated: z.boolean().optional(),
   retired: z.boolean().optional(),
 });
