@@ -103,7 +103,7 @@ npm install llm-zoo
 | **Meta** | 1 | Muse Spark 1.1, 1M context, agentic + multimodal |
 | **DashScope** | 3 | Qwen with 1M context |
 | **OpenRouter** | 2 | Llama 405B, QVQ-72B |
-| **Copilot** | 1 | Free GPT-4o |
+| **Copilot** | 1 | Deprecated GPT-4o config; 26 documented names and 7 exact model identifiers |
 
 ---
 

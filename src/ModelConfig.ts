@@ -232,6 +232,9 @@ export interface ModelConfig {
    */
   vscodeLMFullName?: string;
 
+  /** Exact model identifier documented for GitHub Copilot model selection. */
+  copilotFullName?: string;
+
   /**
    * Custom base URL for this specific model.
    * Overrides the provider's default endpoint.
