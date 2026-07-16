@@ -38,6 +38,7 @@ export const ModelCapabilitiesSchema = z.object({
   supportsInterleavedThinking: z.boolean(),
   reasoningEffort: ReasoningEffortSchema,
   maxReasoningEffort: ReasoningEffortSchema.optional(),
+  reasoningMode: z.literal('pro').optional(),
   supportsVision: z.boolean(),
   supportsNativePdf: z.boolean(),
   supportsAssistantPrefill: z.boolean(),
