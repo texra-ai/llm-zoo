@@ -519,6 +519,38 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     openRouterOnly: false,
     codexSubscription: true,
   },
+  // gpt56pro: GPT-5.6 Sol driven in the Responses API's pro reasoning mode
+  // (`reasoning.mode: 'pro'`). Unlike earlier Pro releases this is not a
+  // separate model id — the request targets gpt-5.6-sol, and pro mode bills
+  // the aggregated work at the model's standard token rates, so pricing
+  // matches the gpt56 entry. Responses-API only.
+  gpt56pro: {
+    name: 'gpt56pro',
+    label: 'GPT-5.6 Pro',
+    fullName: 'gpt-5.6-sol',
+    shortName: 'gpt-5.6-pro',
+    provider: ModelProvider.OPENAI,
+    maxOutputTokens: 128000,
+    contextWindow: 1050000,
+    inputPrice: 5.0,
+    outputPrice: 30.0,
+    capabilities: {
+      ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
+      cacheDiscountFactor: 0.1,
+      reasoningEffort: ReasoningEffort.MEDIUM,
+      maxReasoningEffort: ReasoningEffort.MAX,
+      reasoningMode: 'pro',
+      supportsPromptCaching: true,
+      supportsNativeMCPServer: true,
+      supportsNativeWebSearch: true,
+      supportsNativeCodeExecution: true,
+      supportsPredictiveOutput: true,
+      supportsVision: true,
+      supportsNativePdf: true,
+    },
+    requiresResponsesAPI: true,
+    openRouterOnly: false,
+  },
   'gpt56-': {
     name: 'gpt56-',
     label: 'GPT-5.6 Terra',

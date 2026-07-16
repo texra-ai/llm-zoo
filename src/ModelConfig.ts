@@ -119,6 +119,15 @@ export interface ModelCapabilities {
    */
   maxReasoningEffort?: ReasoningEffort;
 
+  /**
+   * Reasoning mode the request must send for this registry entry, when the
+   * provider exposes one beyond the default. OpenAI's Responses API accepts
+   * `reasoning.mode: 'standard' | 'pro'` on GPT-5.6 models; entries that
+   * represent the pro-mode variant set `'pro'` here, and absence means the
+   * provider default (standard). Orthogonal to `reasoningEffort`.
+   */
+  reasoningMode?: 'pro';
+
   /** Whether the model can process images */
   supportsVision: boolean;
 
