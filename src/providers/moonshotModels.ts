@@ -295,4 +295,31 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
     openRouterOnly: false,
     deprecated: true,
   },
+  // kimi-k3: Moonshot's flagship model (2.8T params), built on Kimi Delta
+  // Attention with native visual understanding and a 1M-token context window.
+  // Always reasons; reasoning_effort currently supports only "max". Not yet
+  // listed on OpenRouter (full weights pending release).
+  kimi3: {
+    name: 'kimi3',
+    label: 'Kimi K3',
+    fullName: 'kimi-k3',
+    shortName: 'kimi-k3',
+    provider: ModelProvider.MOONSHOT,
+    maxOutputTokens: 1048576,
+    contextWindow: 1048576,
+    inputPrice: 3.0,
+    outputPrice: 15.0,
+    capabilities: {
+      ...MOONSHOT_DEFAULT_CAPABILITIES,
+      supportsVision: true,
+      supportsReasoning: true,
+      supportsReasoningEffort: true,
+      reasoningEffort: ReasoningEffort.MAX,
+      supportsInterleavedThinking: true,
+      supportsAutoPromptCaching: true,
+      // Cached input $0.30 / 1M vs $3.00 / 1M input (cache miss).
+      cacheDiscountFactor: 0.3 / 3.0,
+    },
+    openRouterOnly: false,
+  },
 };
