@@ -297,13 +297,13 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
   },
   // kimi-k3: Moonshot's flagship model (2.8T params), built on Kimi Delta
   // Attention with native visual understanding and a 1M-token context window.
-  // Always reasons; reasoning_effort currently supports only "max". Not yet
-  // listed on OpenRouter (full weights pending release).
+  // Always reasons; reasoning_effort currently supports only "max".
   kimi3: {
     name: 'kimi3',
     label: 'Kimi K3',
     fullName: 'kimi-k3',
     shortName: 'kimi-k3',
+    openrouterFullName: 'moonshotai/kimi-k3',
     provider: ModelProvider.MOONSHOT,
     maxOutputTokens: 1048576,
     contextWindow: 1048576,
