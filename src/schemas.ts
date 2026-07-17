@@ -69,6 +69,7 @@ export const ModelConfigSchema = z.object({
   requiresResponsesAPI: z.boolean().optional(),
   description: z.string().optional(),
   codexSubscription: z.boolean().optional(),
+  kimiSubscription: z.boolean().optional(),
   deprecated: z.boolean().optional(),
   retired: z.boolean().optional(),
 });

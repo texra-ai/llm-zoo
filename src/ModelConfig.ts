@@ -273,6 +273,17 @@ export interface ModelConfig {
   codexSubscription?: boolean;
 
   /**
+   * Whether the Kimi Code backend (Moonshot coding-subscription plan) serves
+   * this model. Kimi Code models are exclusive to the managed endpoint
+   * `https://api.kimi.com/coding/v1` (OAuth device-flow token or console API
+   * key) — they are NOT served by the Moonshot open platform, and open-platform
+   * keys do not work on the coding endpoint. Source of truth: kimi-cli's
+   * platform registry and https://www.kimi.com/code/docs/en/.
+   * @default false
+   */
+  kimiSubscription?: boolean;
+
+  /**
    * Whether this model is deprecated and no longer recommended for use.
    * Deprecated models are still functional but have been superseded by newer versions.
    * @default false
