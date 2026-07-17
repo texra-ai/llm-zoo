@@ -304,6 +304,10 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
     fullName: 'kimi-k3',
     shortName: 'kimi-k3',
     openrouterFullName: 'moonshotai/kimi-k3',
+    // Also served by the Kimi Code subscription endpoint under the wire ID
+    // `k3` (clients must rewrite kimi-k3 -> k3 on that route). Moderato tier
+    // gets 256K context there; Allegretto+ gets the full 1M.
+    kimiSubscription: true,
     provider: ModelProvider.MOONSHOT,
     maxOutputTokens: 1048576,
     contextWindow: 1048576,
@@ -329,37 +333,12 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
   // Both protocols on that endpoint accept exactly these three wire IDs.
   // Prices are 0: usage is covered by the membership, not per-token billing.
   // ==========================================================================
-  // k3 on Kimi Code: requires Moderato tier or above; Allegretto+ unlocks the
-  // 1M context. Pinned to 256K conservatively — overstating the window breaks
-  // compaction budgets for Moderato users. Always reasons (same engine as
-  // kimi-k3); reasoning_effort support on the coding endpoint is unverified,
-  // so no supportsReasoningEffort.
-  kimiCode3: {
-    name: 'kimiCode3',
-    label: 'Kimi Code K3',
-    fullName: 'k3',
-    shortName: 'k3',
-    provider: ModelProvider.MOONSHOT,
-    baseUrl: 'https://api.kimi.com/coding/v1',
-    kimiSubscription: true,
-    maxOutputTokens: 64000,
-    contextWindow: 262144,
-    inputPrice: 0,
-    outputPrice: 0,
-    capabilities: {
-      ...MOONSHOT_DEFAULT_CAPABILITIES,
-      supportsVision: true,
-      supportsReasoning: true,
-      supportsInterleavedThinking: true,
-      supportsAutoPromptCaching: true,
-    },
-    openRouterOnly: false,
-  },
-  // kimi-for-coding: the K2.7-code-class model included with every membership
-  // tier. Thinking enabled by default, like kimi-k2.7-code.
-  kimiCode27: {
-    name: 'kimiCode27',
-    label: 'Kimi Code K2.7',
+  // kimi-for-coding: the coding-plan alias included with every membership
+  // tier (currently K2.7-code-class; Moonshot may repoint it over time).
+  // Thinking enabled by default, like kimi-k2.7-code.
+  kimiCoding: {
+    name: 'kimiCoding',
+    label: 'Kimi for Coding',
     fullName: 'kimi-for-coding',
     shortName: 'kimi-for-coding',
     provider: ModelProvider.MOONSHOT,
@@ -379,9 +358,9 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
     openRouterOnly: false,
   },
   // kimi-for-coding-highspeed: Allegretto+ only; same model at 5-6x output speed.
-  kimiCode27fast: {
-    name: 'kimiCode27fast',
-    label: 'Kimi Code K2.7 High-Speed',
+  kimiCodingFast: {
+    name: 'kimiCodingFast',
+    label: 'Kimi for Coding (High-Speed)',
     fullName: 'kimi-for-coding-highspeed',
     shortName: 'kimi-for-coding-highspeed',
     provider: ModelProvider.MOONSHOT,
