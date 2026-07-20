@@ -19,6 +19,32 @@ const XAI_DEFAULT_CAPABILITIES: ModelCapabilities = {
  * Includes Grok 4.3, 4, 3, and 2 variants.
  */
 export const XAI_MODELS: Record<string, ModelConfig> = {
+  // Grok 4.5 (released 2026-07-08). Reasoning is mandatory (always on;
+  // low/medium/high effort, default high). Base tier is <200k prompt tokens;
+  // requests at/above that threshold bill at $4/$12 input/output instead.
+  grok45: {
+    name: 'grok45',
+    label: 'Grok 4.5',
+    fullName: 'grok-4.5',
+    shortName: 'grok-4.5',
+    openrouterFullName: 'x-ai/grok-4.5',
+    provider: ModelProvider.XAI,
+    maxOutputTokens: 500000,
+    contextWindow: 500000,
+    inputPrice: 2.0,
+    outputPrice: 6.0,
+    capabilities: {
+      ...XAI_DEFAULT_CAPABILITIES,
+      supportsVision: true,
+      supportsReasoning: true,
+      supportsReasoningEffort: true,
+      reasoningEffort: ReasoningEffort.HIGH,
+      supportsAutoPromptCaching: true,
+      // Cached input $0.30 / 1M vs $2.00 / 1M input (base tier).
+      cacheDiscountFactor: 0.15,
+    },
+    openRouterOnly: false,
+  },
   grok43: {
     name: 'grok43',
     label: 'Grok 4.3',
