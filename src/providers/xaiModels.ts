@@ -57,6 +57,7 @@ export const XAI_MODELS: Record<string, ModelConfig> = {
       reasoningEffort: ReasoningEffort.LOW,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   grok4: {
     name: 'grok4',
