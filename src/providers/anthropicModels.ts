@@ -103,6 +103,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
       supportsReasoning: true,
       supportsReasoningEffort: true,
       reasoningEffort: ReasoningEffort.HIGH,
+      maxReasoningEffort: ReasoningEffort.MAX,
       supportsInterleavedThinking: true,
     },
     openRouterOnly: false,
