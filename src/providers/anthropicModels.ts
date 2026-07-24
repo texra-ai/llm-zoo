@@ -154,6 +154,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
       supportsInterleavedThinking: true,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   opus48: {
     name: 'opus48',
@@ -176,6 +177,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
       supportsReasoning: false,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   opus47T: {
     name: 'opus47T',
