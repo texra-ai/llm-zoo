@@ -26,7 +26,7 @@ export const XAI_MODELS: Record<string, ModelConfig> = {
     shortName: 'grok-4.5',
     openrouterFullName: 'x-ai/grok-4.5',
     provider: ModelProvider.XAI,
-    maxOutputTokens: 500000,
+    maxOutputTokens: 128000,
     contextWindow: 500000,
     inputPrice: 2.0,
     outputPrice: 6.0,
