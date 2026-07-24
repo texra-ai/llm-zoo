@@ -53,8 +53,8 @@ npm install llm-zoo
 | `gpt55pro` | $30 | $180 | ✓ | OpenAI |
 | `fable5` | $10 | $50 | ✓ | Anthropic |
 | `gpt56` | $5 | $30 | ✓ | OpenAI |
-| `opus48T` | $5 | $25 | ✓ | Anthropic |
-| `opus48` | $5 | $25 | - | Anthropic |
+| `opus5T` | $5 | $25 | ✓ | Anthropic |
+| `opus5` | $5 | $25 | - | Anthropic |
 | `sonnet46T` | $3 | $15 | ✓ | Anthropic |
 | `gpt56-` | $2.50 | $15 | ✓ | OpenAI |
 | `gpt41` | $2 | $8 | - | OpenAI |
@@ -70,7 +70,7 @@ npm install llm-zoo
 | `gemini31p` | 1M | Google |
 | `gemini31f-` | 1M | Google |
 | `gemini36f` | 1M | Google |
-| `opus48` | 1M | Anthropic |
+| `opus5` | 1M | Anthropic |
 | `sonnet46` | 1M | Anthropic |
 | `qwenplus` | 1M | DashScope |
 | `gpt41` | 1M | OpenAI |
@@ -83,9 +83,9 @@ npm install llm-zoo
 | Capability | Count | Examples |
 |------------|-------|----------|
 | Vision | 45+ | `sonnet46`, `gpt41`, `gemini31p` |
-| Reasoning | 30+ | `opus48T`, `gpt56`, `deepseekT`, `grok43` |
+| Reasoning | 30+ | `opus5T`, `gpt56`, `deepseekT`, `grok43` |
 | Code Execution | 20+ | `sonnet46`, `gpt41`, `gemini36f` |
-| Web Search | 15+ | `opus48`, `gpt41`, `gpt56-` |
+| Web Search | 15+ | `opus5`, `gpt41`, `gpt56-` |
 | Prompt Caching | 25+ | All Claude, Gemini, DeepSeek |
 
 ### Providers
