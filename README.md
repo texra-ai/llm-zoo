@@ -202,6 +202,11 @@ interface ModelCapabilities {
   supportsNativeWebSearch: boolean;
   supportsPromptCaching: boolean;
   cacheDiscountFactor: number;   // 0.1 = 90% savings
+  supportsReasoningEffort: boolean;
+  supportsAdaptiveThinking: boolean; // This entry's request shape supports adaptive thinking
+  reasoningEffort: ReasoningEffort;
+  maxReasoningEffort?: ReasoningEffort;
+  supportedReasoningEfforts?: readonly ReasoningEffort[];
   // ... and more
 }
 ```

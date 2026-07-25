@@ -106,18 +106,32 @@ export interface ModelCapabilities {
   /** Whether reasoning can be interleaved with regular output */
   supportsInterleavedThinking: boolean;
 
-  /** Whether the model supports configurable reasoning effort levels */
+  /**
+   * Whether requests accept a configurable reasoning or response effort.
+   * Independent of whether reasoning or adaptive thinking is enabled.
+   */
   supportsReasoningEffort: boolean;
 
-  /** Default reasoning effort level when reasoning is enabled */
+  /**
+   * Whether this registry entry's request shape supports adaptive thinking
+   * rather than a fixed token budget.
+   */
+  supportsAdaptiveThinking: boolean;
+
+  /** Default reasoning effort level when effort is supported */
   reasoningEffort: ReasoningEffort;
 
   /**
    * Highest reasoning effort level the model accepts, when it differs from
    * the default. Read as `maxReasoningEffort ?? reasoningEffort`.
+   * This does not imply that every lower enum tier is accepted; use
+   * `supportedReasoningEfforts` when a model has a non-contiguous vocabulary.
    * Example: GPT-5.6 defaults to `medium` but accepts up to `max`.
    */
   maxReasoningEffort?: ReasoningEffort;
+
+  /** Exact reasoning effort values accepted by the model, when known */
+  supportedReasoningEfforts?: readonly ReasoningEffort[];
 
   /**
    * Reasoning mode the request must send for this registry entry, when the
@@ -168,6 +182,7 @@ export const DEFAULT_MODEL_CAPABILITIES: ModelCapabilities = {
   cacheDiscountFactor: 1.0,
   supportsReasoning: false,
   supportsInterleavedThinking: false,
+  supportsAdaptiveThinking: false,
   reasoningEffort: ReasoningEffort.NONE,
   supportsVision: true,
   supportsNativePdf: false,
