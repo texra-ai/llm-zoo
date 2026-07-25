@@ -126,3 +126,11 @@ test('Anthropic capability data round-trips through both Zod exports', () => {
     assert.deepEqual(ModelCapabilitiesSchemaCjs.parse(capabilities), capabilities, `${key} CJS schema`);
   }
 });
+
+test('legacy capability payloads default adaptive thinking to false', () => {
+  const capabilities = JSON.parse(JSON.stringify(rootEsm.ANTHROPIC_MODELS.opus46T.capabilities));
+  delete capabilities.supportsAdaptiveThinking;
+
+  assert.equal(ModelCapabilitiesSchemaEsm.parse(capabilities).supportsAdaptiveThinking, false);
+  assert.equal(ModelCapabilitiesSchemaCjs.parse(capabilities).supportsAdaptiveThinking, false);
+});

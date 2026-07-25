@@ -36,7 +36,7 @@ export const ModelCapabilitiesSchema = z.object({
   cacheDiscountFactor: z.number(),
   supportsReasoning: z.boolean(),
   supportsInterleavedThinking: z.boolean(),
-  supportsAdaptiveThinking: z.boolean(),
+  supportsAdaptiveThinking: z.boolean().default(false),
   reasoningEffort: ReasoningEffortSchema,
   maxReasoningEffort: ReasoningEffortSchema.optional(),
   supportedReasoningEfforts: z.array(ReasoningEffortSchema).readonly().optional(),
