@@ -46,6 +46,13 @@ const OPUS_45_REASONING_EFFORTS = [
   ReasoningEffort.HIGH,
 ] as const;
 
+// Opus 5 rejects disabled thinking at `xhigh` and `max` effort.
+const OPUS_5_NON_THINKING_REASONING_EFFORTS = [
+  ReasoningEffort.LOW,
+  ReasoningEffort.MEDIUM,
+  ReasoningEffort.HIGH,
+] as const;
+
 /**
  * Anthropic Claude model configurations.
  * Includes Claude Fable 5, Claude Mythos 5, and 4.x/3.x Opus, Sonnet, and Haiku variants.
@@ -160,8 +167,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
       supportsReasoning: false,
       supportsReasoningEffort: true,
       reasoningEffort: ReasoningEffort.HIGH,
-      maxReasoningEffort: ReasoningEffort.MAX,
-      supportedReasoningEfforts: ANTHROPIC_REASONING_EFFORTS,
+      supportedReasoningEfforts: OPUS_5_NON_THINKING_REASONING_EFFORTS,
     },
     openRouterOnly: false,
   },

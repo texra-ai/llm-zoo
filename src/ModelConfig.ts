@@ -112,7 +112,10 @@ export interface ModelCapabilities {
    */
   supportsReasoningEffort: boolean;
 
-  /** Whether the model supports adaptive thinking instead of a fixed token budget */
+  /**
+   * Whether this registry entry's request shape supports adaptive thinking
+   * rather than a fixed token budget.
+   */
   supportsAdaptiveThinking: boolean;
 
   /** Default reasoning effort level when effort is supported */

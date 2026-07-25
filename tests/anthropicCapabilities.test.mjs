@@ -26,6 +26,12 @@ const effortVocabularyWithoutXhigh = [
   ReasoningEffort.MAX,
 ];
 const opus45EffortVocabulary = [ReasoningEffort.LOW, ReasoningEffort.MEDIUM, ReasoningEffort.HIGH];
+// Opus 5 rejects disabled thinking at xhigh/max even though its adaptive entry accepts both.
+const opus5NonThinkingEffortVocabulary = [
+  ReasoningEffort.LOW,
+  ReasoningEffort.MEDIUM,
+  ReasoningEffort.HIGH,
+];
 
 // Anthropic effort controls the whole response and does not require thinking.
 // Adaptive thinking is a separate model behavior and is true only for its thinking entries.
@@ -37,7 +43,7 @@ const anthropicCapabilityMatrix = [
   ['opus48T', 'claude-opus-4-8', true, true, fullEffortVocabulary, ReasoningEffort.MAX],
   ['opus48', 'claude-opus-4-8', false, true, fullEffortVocabulary, ReasoningEffort.MAX],
   ['opus5T', 'claude-opus-5', true, true, fullEffortVocabulary, ReasoningEffort.MAX],
-  ['opus5', 'claude-opus-5', false, true, fullEffortVocabulary, ReasoningEffort.MAX],
+  ['opus5', 'claude-opus-5', false, true, opus5NonThinkingEffortVocabulary, undefined],
   ['sonnet46T', 'claude-sonnet-4-6', true, true, effortVocabularyWithoutXhigh, ReasoningEffort.MAX],
   ['sonnet46', 'claude-sonnet-4-6', false, true, effortVocabularyWithoutXhigh, ReasoningEffort.MAX],
   ['sonnet5T', 'claude-sonnet-5', true, true, fullEffortVocabulary, ReasoningEffort.MAX],
