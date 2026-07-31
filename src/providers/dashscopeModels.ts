@@ -20,6 +20,29 @@ const DASHSCOPE_DEFAULT_CAPABILITIES: ModelCapabilities = {
  * Includes Qwen 3 Max, Plus, and Turbo variants.
  */
 export const DASHSCOPE_MODELS: Record<string, ModelConfig> = {
+  // Qwen3.7-Flash (native vision-language reasoning model, released 2026-07-27)
+  // 1M-token context, thinking-capable, multimodal (image + video input).
+  qwen37flash: {
+    name: 'qwen37flash',
+    label: 'Qwen 3.7 Flash',
+    fullName: 'qwen3.7-flash',
+    shortName: 'qwen3.7-flash',
+    openrouterFullName: 'qwen/qwen3.7-flash',
+    provider: ModelProvider.DASHSCOPE,
+    maxOutputTokens: 65536,
+    contextWindow: 1000000,
+    inputPrice: 0.03,
+    outputPrice: 0.13,
+    capabilities: {
+      ...DASHSCOPE_DEFAULT_CAPABILITIES,
+      supportsReasoning: true,
+      supportsPromptCaching: true,
+      supportsAutoPromptCaching: true,
+      // Implicit cache read $0.006/1M vs $0.03/1M base input.
+      cacheDiscountFactor: 0.2,
+    },
+    openRouterOnly: false,
+  },
   qwen3max: {
     name: 'qwen3max',
     label: 'Qwen 3 Max',
