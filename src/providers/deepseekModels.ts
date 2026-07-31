@@ -52,10 +52,9 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
   },
   // DeepSeek-V4-Flash (Thinking Mode)
   // reasoning_effort defaults to high. Flash resolves three distinct levels —
-  // low, high, max — so all three are listed. The docs' mapping table also has
-  // an xhigh row, but on Flash it collapses onto high, so it is deliberately
-  // not listed here as a distinct level (unlike on Pro, where xhigh resolves
-  // to xhigh).
+  // low, high, max — so all three are listed. xhigh and medium are accepted as
+  // compatibility aliases and both map onto high here, so neither is listed as
+  // a distinct level.
   deepseekT: {
     name: 'deepseekT',
     label: 'DeepSeek V4 Flash (Thinking)',
@@ -105,11 +104,11 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
     openRouterOnly: false,
   },
   // DeepSeek-V4-Pro (Thinking Mode)
-  // Same reasoning_effort vocabulary as Flash, but the levels Pro resolves to
-  // differ: low collapses onto high, while xhigh stays distinct (the mirror of
-  // Flash, where xhigh collapses onto high). Only the distinct levels are
-  // listed. DeepSeek notes this mapping will be updated in early August 2026;
-  // recheck the table then.
+  // Same reasoning_effort vocabulary as Flash (low/high/max), but Pro
+  // currently resolves low onto high, so only two distinct levels are listed.
+  // The compatibility alias xhigh maps to max here, so it is not a level of
+  // its own. DeepSeek says Pro is expected to support all three levels in
+  // early August 2026; recheck then.
   deepseekproT: {
     name: 'deepseekproT',
     label: 'DeepSeek V4 Pro (Thinking)',
@@ -127,11 +126,7 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
       supportsReasoningEffort: true,
       reasoningEffort: ReasoningEffort.HIGH,
       maxReasoningEffort: ReasoningEffort.MAX,
-      supportedReasoningEfforts: [
-        ReasoningEffort.HIGH,
-        ReasoningEffort.XHIGH,
-        ReasoningEffort.MAX,
-      ],
+      supportedReasoningEfforts: [ReasoningEffort.HIGH, ReasoningEffort.MAX],
       supportsFunctionCalling: true,
       supportsAssistantPrefill: true,
       cacheDiscountFactor: 0.003625 / 0.435,
