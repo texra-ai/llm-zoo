@@ -558,10 +558,10 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
   // id and same intelligence as gpt56 — up to 2.5x faster than Standard
   // processing at twice the Standard token rates. Cached-input discounts still
   // apply, so cacheDiscountFactor matches the standard-tier entry.
-  // Fast mode is not Sol-only — the tier also serves Terra and Luna — but Sol
-  // is the tier that got the 2.5x speed-up, so it is the only fast-tier entry
-  // cataloged here. Add the others once their fast rates are confirmed against
-  // the pricing page.
+  // Fast mode is not Sol-only — the tier also serves Terra and Luna, whose
+  // fast rates are published at a flat 2x like Sol's. Cataloging Sol alone is
+  // a scoping choice (it is the tier that got the 2.5x speed-up), not a gap in
+  // the source data.
   gpt56fast: {
     name: 'gpt56fast',
     label: 'GPT-5.6 Sol (Fast)',
