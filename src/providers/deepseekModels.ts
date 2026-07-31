@@ -51,7 +51,10 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
     openRouterOnly: false,
   },
   // DeepSeek-V4-Flash (Thinking Mode)
-  // reasoning_effort accepts only [high, max] and defaults to high.
+  // reasoning_effort defaults to high. The 0731 build resolves three distinct
+  // levels — low, high, max — so all three are listed. The API also accepts
+  // medium and xhigh for compatibility, mapping them onto high and max
+  // respectively; those aliases are deliberately not listed.
   deepseekT: {
     name: 'deepseekT',
     label: 'DeepSeek V4 Flash (Thinking)',
@@ -69,7 +72,11 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
       supportsReasoningEffort: true,
       reasoningEffort: ReasoningEffort.HIGH,
       maxReasoningEffort: ReasoningEffort.MAX,
-      supportedReasoningEfforts: [ReasoningEffort.HIGH, ReasoningEffort.MAX],
+      supportedReasoningEfforts: [
+        ReasoningEffort.LOW,
+        ReasoningEffort.HIGH,
+        ReasoningEffort.MAX,
+      ],
       supportsFunctionCalling: true,
       supportsAssistantPrefill: true,
       cacheDiscountFactor: 0.02,
@@ -97,6 +104,10 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
     openRouterOnly: false,
   },
   // DeepSeek-V4-Pro (Thinking Mode)
+  // Same reasoning_effort vocabulary as Flash, but Pro currently resolves low
+  // onto high, so only the two distinct levels are listed; DeepSeek has said
+  // Pro's mapping changes in early August 2026, at which point low becomes a
+  // distinct level here too.
   deepseekproT: {
     name: 'deepseekproT',
     label: 'DeepSeek V4 Pro (Thinking)',

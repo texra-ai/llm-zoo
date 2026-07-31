@@ -528,7 +528,9 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     name: 'gpt56pro',
     label: 'GPT-5.6 Pro',
     fullName: 'gpt-5.6-sol',
-    shortName: 'gpt-5.6-pro',
+    // Not `gpt-5.6-pro`: pro mode is a request parameter, not a model id, so
+    // the unpinned API name is the same one fullName targets.
+    shortName: 'gpt-5.6-sol',
     provider: ModelProvider.OPENAI,
     maxOutputTokens: 128000,
     contextWindow: 1050000,
@@ -556,11 +558,15 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
   // id and same intelligence as gpt56 — up to 2.5x faster than Standard
   // processing at twice the Standard token rates. Cached-input discounts still
   // apply, so cacheDiscountFactor matches the standard-tier entry.
+  // Fast mode is not Sol-only — the tier also serves Terra and Luna — but Sol
+  // is the tier that got the 2.5x speed-up, so it is the only fast-tier entry
+  // cataloged here. Add the others once their fast rates are confirmed against
+  // the pricing page.
   gpt56fast: {
     name: 'gpt56fast',
     label: 'GPT-5.6 Sol (Fast)',
     fullName: 'gpt-5.6-sol',
-    shortName: 'gpt-5.6-fast',
+    shortName: 'gpt-5.6-sol',
     provider: ModelProvider.OPENAI,
     maxOutputTokens: 128000,
     contextWindow: 1050000,
