@@ -27,6 +27,10 @@ const DEEPSEEK_DEFAULT_CAPABILITIES: ModelCapabilities = {
  */
 export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
   // DeepSeek-V4-Flash (Non-thinking Mode)
+  // Official API release (DeepSeek-V4-Flash-0731, public beta): the model id
+  // stays `deepseek-v4-flash`, so this entry covers the official build. The
+  // legacy `deepseek-chat` / `deepseek-reasoner` names point at this model's
+  // non-thinking / thinking modes until they are discontinued.
   deepseek: {
     name: 'deepseek',
     label: 'DeepSeek V4 Flash',
@@ -47,6 +51,7 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
     openRouterOnly: false,
   },
   // DeepSeek-V4-Flash (Thinking Mode)
+  // reasoning_effort accepts only [high, max] and defaults to high.
   deepseekT: {
     name: 'deepseekT',
     label: 'DeepSeek V4 Flash (Thinking)',
@@ -62,7 +67,9 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
       ...DEEPSEEK_DEFAULT_CAPABILITIES,
       supportsReasoning: true,
       supportsReasoningEffort: true,
-      reasoningEffort: ReasoningEffort.XHIGH,
+      reasoningEffort: ReasoningEffort.HIGH,
+      maxReasoningEffort: ReasoningEffort.MAX,
+      supportedReasoningEfforts: [ReasoningEffort.HIGH, ReasoningEffort.MAX],
       supportsFunctionCalling: true,
       supportsAssistantPrefill: true,
       cacheDiscountFactor: 0.02,
@@ -105,7 +112,9 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
       ...DEEPSEEK_DEFAULT_CAPABILITIES,
       supportsReasoning: true,
       supportsReasoningEffort: true,
-      reasoningEffort: ReasoningEffort.XHIGH,
+      reasoningEffort: ReasoningEffort.HIGH,
+      maxReasoningEffort: ReasoningEffort.MAX,
+      supportedReasoningEfforts: [ReasoningEffort.HIGH, ReasoningEffort.MAX],
       supportsFunctionCalling: true,
       supportsAssistantPrefill: true,
       cacheDiscountFactor: 0.003625 / 0.435,

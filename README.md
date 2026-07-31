@@ -37,6 +37,7 @@ npm install llm-zoo
 |-------|-------|--------|----------|
 | `qwenturbo` | $0.05 | $0.50 | DashScope |
 | `deepseek` | $0.14 | $0.28 | DeepSeek |
+| `gpt56--` | $0.20 | $1.20 | OpenAI |
 | `gemini31f-` | $0.25 | $1.50 | Google |
 | `gemini35f-` | $0.30 | $2.50 | Google |
 | `gpt41-` | $0.40 | $1.60 | OpenAI |
@@ -44,19 +45,19 @@ npm install llm-zoo
 | `kimi25` | $0.60 | $3.00 | Moonshot |
 | `haiku45` | $1.00 | $5.00 | Anthropic |
 | `grok43` | $1.25 | $2.50 | xAI |
-| `gpt52` | $1.75 | $14.00 | OpenAI |
 
 ### Premium ($/1M tokens)
 
 | Model | Input | Output | Reasoning | Provider |
 |-------|-------|--------|-----------|----------|
 | `gpt55pro` | $30 | $180 | ✓ | OpenAI |
+| `gpt56fast` | $10 | $60 | ✓ | OpenAI |
 | `fable5` | $10 | $50 | ✓ | Anthropic |
 | `gpt56` | $5 | $30 | ✓ | OpenAI |
 | `opus5T` | $5 | $25 | ✓ | Anthropic |
 | `opus5` | $5 | $25 | - | Anthropic |
 | `sonnet46T` | $3 | $15 | ✓ | Anthropic |
-| `gpt56-` | $2.50 | $15 | ✓ | OpenAI |
+| `gpt56-` | $2 | $12 | ✓ | OpenAI |
 | `gpt41` | $2 | $8 | - | OpenAI |
 | `gpt52` | $1.75 | $14 | ✓ | OpenAI |
 
@@ -93,7 +94,7 @@ npm install llm-zoo
 | Provider | Models | Highlights |
 |----------|--------|------------|
 | **Anthropic** | 34 | Fable 5, Mythos 5, Opus 5, Sonnet 5, 1M context, 90% cache savings, PDF support |
-| **OpenAI** | 38 | GPT-5.x reasoning, deep research |
+| **OpenAI** | 40 | GPT-5.x reasoning, Fast mode tier, deep research |
 | **GLM** | 12 | Zhipu GLM-5.x, up to 1M context |
 | **DeepSeek** | 11 | Budget reasoning ($0.14/1M) |
 | **Moonshot** | 14 | Kimi K3 (1M context), K2.7 Code, K2.6 thinking mode |

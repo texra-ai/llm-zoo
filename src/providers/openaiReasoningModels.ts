@@ -551,6 +551,37 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     requiresResponsesAPI: true,
     openRouterOnly: false,
   },
+  // gpt56fast: GPT-5.6 Sol served in Fast mode (`service_tier: 'fast'`, the
+  // 2026-07-30 rename of `'priority'`, which both remain accepted). Same model
+  // id and same intelligence as gpt56 — up to 2.5x faster than Standard
+  // processing at twice the Standard token rates. Cached-input discounts still
+  // apply, so cacheDiscountFactor matches the standard-tier entry.
+  gpt56fast: {
+    name: 'gpt56fast',
+    label: 'GPT-5.6 Sol (Fast)',
+    fullName: 'gpt-5.6-sol',
+    shortName: 'gpt-5.6-fast',
+    provider: ModelProvider.OPENAI,
+    maxOutputTokens: 128000,
+    contextWindow: 1050000,
+    inputPrice: 10.0,
+    outputPrice: 60.0,
+    capabilities: {
+      ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
+      cacheDiscountFactor: 0.1,
+      reasoningEffort: ReasoningEffort.MEDIUM,
+      maxReasoningEffort: ReasoningEffort.MAX,
+      supportsPromptCaching: true,
+      supportsNativeMCPServer: true,
+      supportsNativeWebSearch: true,
+      supportsNativeCodeExecution: true,
+      supportsPredictiveOutput: true,
+      supportsVision: true,
+      supportsNativePdf: true,
+    },
+    serviceTier: 'fast',
+    openRouterOnly: false,
+  },
   'gpt56-': {
     name: 'gpt56-',
     label: 'GPT-5.6 Terra',
@@ -561,8 +592,9 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     provider: ModelProvider.OPENAI,
     maxOutputTokens: 128000,
     contextWindow: 1050000,
-    inputPrice: 2.5,
-    outputPrice: 15.0,
+    // 2026-07-30 price cut: 20% off the launch rates ($2.50 / $15).
+    inputPrice: 2.0,
+    outputPrice: 12.0,
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       cacheDiscountFactor: 0.1,
@@ -588,8 +620,9 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     provider: ModelProvider.OPENAI,
     maxOutputTokens: 128000,
     contextWindow: 1050000,
-    inputPrice: 1.0,
-    outputPrice: 6.0,
+    // 2026-07-30 price cut: 80% off the launch rates ($1 / $6).
+    inputPrice: 0.2,
+    outputPrice: 1.2,
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       cacheDiscountFactor: 0.1,
