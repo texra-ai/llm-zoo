@@ -27,6 +27,10 @@ const DEEPSEEK_DEFAULT_CAPABILITIES: ModelCapabilities = {
  */
 export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
   // DeepSeek-V4-Flash (Non-thinking Mode)
+  // Official API release (DeepSeek-V4-Flash-0731, public beta): the model id
+  // stays `deepseek-v4-flash`, so this entry covers the official build. The
+  // legacy `deepseek-chat` / `deepseek-reasoner` names point at this model's
+  // non-thinking / thinking modes until they are discontinued.
   deepseek: {
     name: 'deepseek',
     label: 'DeepSeek V4 Flash',
@@ -47,6 +51,10 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
     openRouterOnly: false,
   },
   // DeepSeek-V4-Flash (Thinking Mode)
+  // reasoning_effort defaults to high. Flash resolves three distinct levels —
+  // low, high, max — so all three are listed. xhigh and medium are accepted as
+  // compatibility aliases and both map onto high here, so neither is listed as
+  // a distinct level.
   deepseekT: {
     name: 'deepseekT',
     label: 'DeepSeek V4 Flash (Thinking)',
@@ -62,7 +70,13 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
       ...DEEPSEEK_DEFAULT_CAPABILITIES,
       supportsReasoning: true,
       supportsReasoningEffort: true,
-      reasoningEffort: ReasoningEffort.XHIGH,
+      reasoningEffort: ReasoningEffort.HIGH,
+      maxReasoningEffort: ReasoningEffort.MAX,
+      supportedReasoningEfforts: [
+        ReasoningEffort.LOW,
+        ReasoningEffort.HIGH,
+        ReasoningEffort.MAX,
+      ],
       supportsFunctionCalling: true,
       supportsAssistantPrefill: true,
       cacheDiscountFactor: 0.02,
@@ -90,6 +104,11 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
     openRouterOnly: false,
   },
   // DeepSeek-V4-Pro (Thinking Mode)
+  // Same reasoning_effort vocabulary as Flash (low/high/max), but Pro
+  // currently resolves low onto high, so only two distinct levels are listed.
+  // The compatibility alias xhigh maps to max here, so it is not a level of
+  // its own. DeepSeek says Pro is expected to support all three levels in
+  // early August 2026; recheck then.
   deepseekproT: {
     name: 'deepseekproT',
     label: 'DeepSeek V4 Pro (Thinking)',
@@ -105,7 +124,9 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
       ...DEEPSEEK_DEFAULT_CAPABILITIES,
       supportsReasoning: true,
       supportsReasoningEffort: true,
-      reasoningEffort: ReasoningEffort.XHIGH,
+      reasoningEffort: ReasoningEffort.HIGH,
+      maxReasoningEffort: ReasoningEffort.MAX,
+      supportedReasoningEfforts: [ReasoningEffort.HIGH, ReasoningEffort.MAX],
       supportsFunctionCalling: true,
       supportsAssistantPrefill: true,
       cacheDiscountFactor: 0.003625 / 0.435,

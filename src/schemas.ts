@@ -69,6 +69,7 @@ export const ModelConfigSchema = z.object({
   copilotFullName: z.string().optional(),
   baseUrl: z.string().optional(),
   requiresResponsesAPI: z.boolean().optional(),
+  serviceTier: z.literal('fast').optional(),
   description: z.string().optional(),
   codexSubscription: z.boolean().optional(),
   kimiSubscription: z.boolean().optional(),

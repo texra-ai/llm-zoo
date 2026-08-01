@@ -272,6 +272,18 @@ export interface ModelConfig {
   requiresResponsesAPI?: boolean;
 
   /**
+   * Processing tier the request must send for this registry entry, when it
+   * differs from the provider default. OpenAI's `service_tier: 'fast'`
+   * (Priority Processing, renamed Fast mode on 2026-07-30) serves a request
+   * faster than Standard processing for a per-token premium; how much faster
+   * is model-specific. Entries that represent the fast-tier variant of a model
+   * set `'fast'` here
+   * and carry the premium rates in `inputPrice` / `outputPrice`. Absence means
+   * the provider default (standard).
+   */
+  serviceTier?: 'fast';
+
+  /**
    * Human-friendly display name for the model.
    * Used as the label in model dropdowns so users can identify models at a glance.
    */
