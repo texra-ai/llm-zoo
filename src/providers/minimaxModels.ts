@@ -62,6 +62,7 @@ export const MINIMAX_MODELS: Record<string, ModelConfig> = {
       ...MINIMAX_DEFAULT_CAPABILITIES,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   minimaxM25: {
     name: 'minimaxM25',
@@ -78,6 +79,7 @@ export const MINIMAX_MODELS: Record<string, ModelConfig> = {
       ...MINIMAX_DEFAULT_CAPABILITIES,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   minimaxM21: {
     name: 'minimaxM21',

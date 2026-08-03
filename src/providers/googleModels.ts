@@ -103,6 +103,7 @@ export const GOOGLE_MODELS: Record<string, ModelConfig> = {
       supportsNativeMCPServer: true,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   gemini31p: {
     name: 'gemini31p',
@@ -150,6 +151,7 @@ export const GOOGLE_MODELS: Record<string, ModelConfig> = {
       supportsNativeCodeExecution: true,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   gemini3p: {
     name: 'gemini3p',
@@ -174,6 +176,7 @@ export const GOOGLE_MODELS: Record<string, ModelConfig> = {
       supportsNativeMCPServer: true,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   gemini3f: {
     name: 'gemini3f',

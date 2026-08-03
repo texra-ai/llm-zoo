@@ -228,6 +228,7 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
       cacheDiscountFactor: 0.2 / 0.6,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   kimi26T: {
     name: 'kimi26T',

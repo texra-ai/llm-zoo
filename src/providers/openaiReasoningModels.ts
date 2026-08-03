@@ -698,6 +698,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     codexSubscription: true,
+    deprecated: true,
   },
   'gpt54--': {
     name: 'gpt54--',
@@ -721,6 +722,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
       supportsNativePdf: true,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   'gpt5-': {
     name: 'gpt5-',

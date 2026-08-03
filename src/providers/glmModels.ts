@@ -70,6 +70,7 @@ export const GLM_MODELS: Record<string, ModelConfig> = {
       cacheDiscountFactor: 0.186,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   // GLM-5V-Turbo (Native multimodal agent for vision-based coding)
   glm5vturbo: {
@@ -109,6 +110,7 @@ export const GLM_MODELS: Record<string, ModelConfig> = {
       cacheDiscountFactor: 0.2,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   // GLM-5 Turbo (Fast inference, agent-optimized)
   glm5turbo: {

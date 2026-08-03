@@ -426,6 +426,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
       supportsInterleavedThinking: true,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   sonnet46: {
     name: 'sonnet46',
@@ -453,6 +454,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
       supportedReasoningEfforts: ANTHROPIC_REASONING_EFFORTS_WITHOUT_XHIGH,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   opus45T: {
     name: 'opus45T',
