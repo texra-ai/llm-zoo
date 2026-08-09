@@ -102,7 +102,7 @@ npm install llm-zoo
 | **MiniMax** | 6 | M-series reasoning, 1M context |
 | **xAI** | 7 | Grok 4.5, Grok 4.3 with 1M context, configurable reasoning |
 | **Meta** | 1 | Muse Spark 1.1, 1M context, agentic + multimodal |
-| **DashScope** | 3 | Qwen with 1M context |
+| **DashScope** | 4 | Qwen 3.8 Max, 1M context |
 | **OpenRouter** | 2 | Llama 405B, QVQ-72B |
 | **Copilot** | 1 | Deprecated GPT-4o config; 26 documented names and 7 exact model identifiers |
 
