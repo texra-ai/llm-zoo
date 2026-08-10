@@ -177,6 +177,7 @@ export const GOOGLE_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    retired: true,
   },
   gemini3f: {
     name: 'gemini3f',
@@ -294,5 +295,6 @@ export const GOOGLE_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    retired: true,
   },
 };
