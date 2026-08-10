@@ -48,6 +48,7 @@ export const OPENAI_DEEP_RESEARCH_MODELS: Record<string, ModelConfig> = {
     openRouterOnly: false,
     requiresResponsesAPI: true,
     deprecated: true,
+    retired: true,
   },
   'o4-mini-deep-research': {
     name: 'o4-mini-deep-research',
@@ -66,5 +67,6 @@ export const OPENAI_DEEP_RESEARCH_MODELS: Record<string, ModelConfig> = {
     openRouterOnly: false,
     requiresResponsesAPI: true,
     deprecated: true,
+    retired: true,
   },
 };

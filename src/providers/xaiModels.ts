@@ -133,6 +133,7 @@ export const XAI_MODELS: Record<string, ModelConfig> = {
     capabilities: XAI_DEFAULT_CAPABILITIES,
     openRouterOnly: false,
     deprecated: true,
+    retired: true,
   },
   grok2v: {
     name: 'grok2v',
@@ -151,5 +152,6 @@ export const XAI_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    retired: true,
   },
 };
