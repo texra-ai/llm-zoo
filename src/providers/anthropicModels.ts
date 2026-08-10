@@ -531,6 +531,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    retired: true,
   },
   opus41: {
     name: 'opus41',
@@ -553,6 +554,7 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    retired: true,
   },
   opus4T: {
     name: 'opus4T',

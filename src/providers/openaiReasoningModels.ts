@@ -386,6 +386,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    retired: true,
   },
   gpt53codex: {
     name: 'gpt53codex',

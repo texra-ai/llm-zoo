@@ -74,6 +74,7 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    retired: true,
   },
   kimi2: {
     name: 'kimi2',
@@ -95,6 +96,7 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    retired: true,
   },
   'kimi2+': {
     name: 'kimi2+',
@@ -116,6 +118,7 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    retired: true,
   },
   kimi2T: {
     name: 'kimi2T',
@@ -139,6 +142,7 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    retired: true,
   },
   'kimi2T+': {
     name: 'kimi2T+',
@@ -162,6 +166,7 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    retired: true,
   },
   // kimi-k2.7-code: Moonshot's strongest coding model (released 2026-06-12).
   // 1T-param MoE (32B active), multimodal, thinking enabled by default (~30% fewer
@@ -228,7 +233,6 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
       cacheDiscountFactor: 0.2 / 0.6,
     },
     openRouterOnly: false,
-    deprecated: true,
   },
   kimi26T: {
     name: 'kimi26T',

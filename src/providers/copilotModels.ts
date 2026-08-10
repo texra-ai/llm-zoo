@@ -99,5 +99,6 @@ export const COPILOT_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+    retired: true,
   },
 };
