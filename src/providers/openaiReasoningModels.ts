@@ -589,6 +589,31 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     serviceTier: 'fast',
     openRouterOnly: false,
   },
+  // gpt-5.6-cyber: purpose-trained cybersecurity alias built on GPT-5.6 Sol,
+  // for approved defenders doing authorized vulnerability research, exploit
+  // validation, and security testing. Gated behind the Daybreak Red tier —
+  // requires separate approval/provisioning to use. Released 2026-08-10.
+  gpt56cyber: {
+    name: 'gpt56cyber',
+    label: 'GPT-5.6 Cyber',
+    fullName: 'gpt-5.6-cyber',
+    shortName: 'gpt-5.6-cyber',
+    provider: ModelProvider.OPENAI,
+    maxOutputTokens: 128000,
+    contextWindow: 400000,
+    inputPrice: 12.5,
+    outputPrice: 75.0,
+    capabilities: {
+      ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
+      cacheDiscountFactor: 0.1,
+      supportsNativeMCPServer: true,
+      supportsNativeWebSearch: true,
+      supportsNativeCodeExecution: true,
+      supportsVision: true,
+    },
+    requiresResponsesAPI: true,
+    openRouterOnly: false,
+  },
   'gpt56-': {
     name: 'gpt56-',
     label: 'GPT-5.6 Terra',
