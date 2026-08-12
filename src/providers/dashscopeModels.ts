@@ -17,9 +17,33 @@ const DASHSCOPE_DEFAULT_CAPABILITIES: ModelCapabilities = {
 
 /**
  * Alibaba DashScope (Qwen) model configurations.
- * Includes Qwen 3 Max, Plus, and Turbo variants.
+ * Includes Qwen 3.8 Max, 3 Max, Plus, and Turbo variants.
  */
 export const DASHSCOPE_MODELS: Record<string, ModelConfig> = {
+  // Qwen3.8-Max (flagship, released 2026-08-03): 2.4T-param MoE (~95B active),
+  // 1M-token context, native vision/video understanding, optional thinking
+  // mode. Supersedes Qwen3-Max as the top of the Max tier.
+  qwen38max: {
+    name: 'qwen38max',
+    label: 'Qwen3.8-Max',
+    fullName: 'qwen3.8-max',
+    shortName: 'qwen3.8-max',
+    openrouterFullName: 'qwen/qwen3.8-max',
+    provider: ModelProvider.DASHSCOPE,
+    maxOutputTokens: 131072,
+    contextWindow: 1000000,
+    inputPrice: 2.0,
+    outputPrice: 6.0,
+    capabilities: {
+      ...DASHSCOPE_DEFAULT_CAPABILITIES,
+      supportsVision: true,
+      supportsReasoning: true,
+      supportsAutoPromptCaching: true,
+      // Cached input hit ¥1.50 vs ¥12 input (Beijing-region rate card).
+      cacheDiscountFactor: 0.125,
+    },
+    openRouterOnly: false,
+  },
   qwen3max: {
     name: 'qwen3max',
     label: 'Qwen 3 Max',

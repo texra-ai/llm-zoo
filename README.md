@@ -94,7 +94,7 @@ npm install llm-zoo
 | Provider | Models | Highlights |
 |----------|--------|------------|
 | **Anthropic** | 34 | Fable 5, Mythos 5, Opus 5, Sonnet 5, 1M context, 90% cache savings, PDF support |
-| **OpenAI** | 40 | GPT-5.x reasoning, Fast mode tier, deep research |
+| **OpenAI** | 41 | GPT-5.x reasoning, Fast mode tier, Cyber, deep research |
 | **GLM** | 12 | Zhipu GLM-5.x, up to 1M context |
 | **DeepSeek** | 11 | Budget reasoning ($0.14/1M) |
 | **Moonshot** | 14 | Kimi K3 (1M context), K2.7 Code, K2.6 thinking mode |
@@ -102,7 +102,7 @@ npm install llm-zoo
 | **MiniMax** | 6 | M-series reasoning, 1M context |
 | **xAI** | 7 | Grok 4.5, Grok 4.3 with 1M context, configurable reasoning |
 | **Meta** | 1 | Muse Spark 1.1, 1M context, agentic + multimodal |
-| **DashScope** | 3 | Qwen with 1M context |
+| **DashScope** | 4 | Qwen3.8-Max flagship, 1M context |
 | **OpenRouter** | 2 | Llama 405B, QVQ-72B |
 | **Copilot** | 1 | Deprecated GPT-4o config; 26 documented names and 7 exact model identifiers |
 
