@@ -16,9 +16,33 @@ const XAI_DEFAULT_CAPABILITIES: ModelCapabilities = {
 
 /**
  * xAI Grok model configurations.
- * Includes Grok 4.5, 4.3, 4, 3, and 2 variants.
+ * Includes Grok 4.6, 4.5, 4.3, 4, 3, and 2 variants.
  */
 export const XAI_MODELS: Record<string, ModelConfig> = {
+  // Grok 4.6: 500K context and $2/$6 (<200K tier) pricing per docs.x.ai, same
+  // as 4.5. xAI publishes no max output tokens for any Grok model ("no text
+  // output limit"), so this carries over the 128K value used by the other
+  // Grok 4.x entries here.
+  grok46: {
+    name: 'grok46',
+    label: 'Grok 4.6',
+    fullName: 'grok-4.6',
+    shortName: 'grok-4.6',
+    openrouterFullName: 'x-ai/grok-4.6',
+    provider: ModelProvider.XAI,
+    maxOutputTokens: 128000,
+    contextWindow: 500000,
+    inputPrice: 2.0,
+    outputPrice: 6.0,
+    capabilities: {
+      ...XAI_DEFAULT_CAPABILITIES,
+      supportsVision: true,
+      supportsReasoning: true,
+      supportsReasoningEffort: true,
+      reasoningEffort: ReasoningEffort.HIGH,
+    },
+    openRouterOnly: false,
+  },
   grok45: {
     name: 'grok45',
     label: 'Grok 4.5',
