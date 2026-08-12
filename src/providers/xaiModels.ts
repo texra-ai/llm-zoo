@@ -19,9 +19,10 @@ const XAI_DEFAULT_CAPABILITIES: ModelCapabilities = {
  * Includes Grok 4.6, 4.5, 4.3, 4, 3, and 2 variants.
  */
 export const XAI_MODELS: Record<string, ModelConfig> = {
-  // Grok 4.6: same 500K context and $2/$6 pricing as 4.5. docs.x.ai does not
-  // publish a per-model max output tokens figure, so this reuses the Grok 4.x
-  // family's documented 128K value; verify against docs.x.ai if that changes.
+  // Grok 4.6: 500K context and $2/$6 (<200K tier) pricing per docs.x.ai, same
+  // as 4.5. xAI publishes no max output tokens for any Grok model ("no text
+  // output limit"), so this carries over the 128K value used by the other
+  // Grok 4.x entries here.
   grok46: {
     name: 'grok46',
     label: 'Grok 4.6',
