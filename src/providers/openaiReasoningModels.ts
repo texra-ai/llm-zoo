@@ -589,6 +589,27 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     serviceTier: 'fast',
     openRouterOnly: false,
   },
+  // GPT-5.6 Cyber: purpose-trained cybersecurity model (launched 2026-08-10),
+  // gated behind OpenAI's Daybreak Red / Daybreak Blue defender program — not
+  // broadly available via ChatGPT/Codex or OpenRouter. Model id, context, and
+  // pricing per developers.openai.com/api/docs/models/gpt-5.6-cyber.
+  gpt56cyber: {
+    name: 'gpt56cyber',
+    label: 'GPT-5.6 Cyber (Daybreak, Limited Availability)',
+    fullName: 'gpt-5.6-cyber',
+    shortName: 'gpt-5.6-cyber',
+    provider: ModelProvider.OPENAI,
+    maxOutputTokens: 128000,
+    contextWindow: 400000,
+    inputPrice: 12.5,
+    outputPrice: 75.0,
+    capabilities: {
+      ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
+      cacheDiscountFactor: 1.25 / 12.5,
+      supportsVision: true,
+    },
+    openRouterOnly: false,
+  },
   'gpt56-': {
     name: 'gpt56-',
     label: 'GPT-5.6 Terra',

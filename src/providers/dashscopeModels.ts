@@ -20,6 +20,25 @@ const DASHSCOPE_DEFAULT_CAPABILITIES: ModelCapabilities = {
  * Includes Qwen 3 Max, Plus, and Turbo variants.
  */
 export const DASHSCOPE_MODELS: Record<string, ModelConfig> = {
+  // Qwen3.8-Max: Alibaba's flagship 2.4T-param MoE model (released 2026-08-03).
+  // Singapore/international pricing per help.aliyun.com/en/model-studio/qwen3-8-max
+  // (14.988 / 44.965 CNY per 1M tokens) matches OpenRouter's listed $2 / $6 USD rate.
+  qwen38max: {
+    name: 'qwen38max',
+    label: 'Qwen 3.8 Max',
+    fullName: 'qwen3.8-max',
+    shortName: 'qwen3.8-max',
+    openrouterFullName: 'qwen/qwen3.8-max',
+    provider: ModelProvider.DASHSCOPE,
+    maxOutputTokens: 131072,
+    contextWindow: 1000000,
+    inputPrice: 2.0,
+    outputPrice: 6.0,
+    capabilities: {
+      ...DASHSCOPE_DEFAULT_CAPABILITIES,
+    },
+    openRouterOnly: false,
+  },
   qwen3max: {
     name: 'qwen3max',
     label: 'Qwen 3 Max',
