@@ -646,6 +646,37 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     openRouterOnly: false,
     codexSubscription: true,
   },
+  // GPT-5.6 Cyber: trained off GPT-5.6 Sol for authorized cybersecurity
+  // workflows (vulnerability research, exploit validation, red teaming).
+  // Released 2026-08-10, gated behind the Daybreak Red program (identity
+  // verification, approved-use restrictions) — no OpenRouter/VS Code/Codex
+  // routing. Responses API only.
+  gpt56cyber: {
+    name: 'gpt56cyber',
+    label: 'GPT-5.6 Cyber',
+    fullName: 'gpt-5.6-cyber',
+    shortName: 'gpt-5.6-cyber',
+    provider: ModelProvider.OPENAI,
+    maxOutputTokens: 128000,
+    contextWindow: 400000,
+    inputPrice: 12.5,
+    outputPrice: 75.0,
+    capabilities: {
+      ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
+      cacheDiscountFactor: 1.25 / 12.5,
+      reasoningEffort: ReasoningEffort.MEDIUM,
+      maxReasoningEffort: ReasoningEffort.MAX,
+      supportsPromptCaching: true,
+      supportsNativeMCPServer: true,
+      supportsNativeWebSearch: true,
+      supportsNativeCodeExecution: true,
+      supportsPredictiveOutput: true,
+      supportsVision: true,
+      supportsNativePdf: true,
+    },
+    requiresResponsesAPI: true,
+    openRouterOnly: false,
+  },
   gpt54: {
     name: 'gpt54',
     label: 'GPT-5.4',
