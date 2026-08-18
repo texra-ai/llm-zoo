@@ -241,6 +241,9 @@ export const GLM_MODELS: Record<string, ModelConfig> = {
       supportsReasoning: true,
       supportsReasoningEffort: false,
       reasoningEffort: ReasoningEffort.HIGH,
+      supportsPromptCaching: true,
+      // Cached input $0.11 / 1M vs $0.6 / 1M input.
+      cacheDiscountFactor: 0.183,
     },
     openRouterOnly: false,
     deprecated: true,
