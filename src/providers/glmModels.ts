@@ -19,15 +19,47 @@ const GLM_DEFAULT_CAPABILITIES: ModelCapabilities = {
 
 /**
  * Zhipu AI GLM model configurations.
- * Includes GLM-5.2, GLM-5.1, GLM-5V-Turbo, GLM-5, GLM-4.7, GLM-4.6V, and GLM-4.5 series.
+ * Includes GLM-5.3, GLM-5.2, GLM-5.1, GLM-5V-Turbo, GLM-5, GLM-4.7, GLM-4.6V, and GLM-4.5 series.
  *
  * Model name conventions:
  * - fullName: Model name for native Zhipu AI API (e.g., 'glm-5.2', 'glm-5')
  * - openrouterFullName: Model name for OpenRouter API (e.g., 'z-ai/glm-5.2')
  */
 export const GLM_MODELS: Record<string, ModelConfig> = {
+  // GLM-5.3 (Flagship agentic coding model, announced 2026-08-14)
+  // Same base model as GLM-5.2, post-training only. 1M-token context, three
+  // thinking-effort tiers (Low/High/Max, default Max), text-only.
+  glm53: {
+    name: 'glm53',
+    label: 'GLM-5.3',
+    fullName: 'glm-5.3',
+    shortName: 'glm-5.3',
+    openrouterFullName: 'z-ai/glm-5.3',
+    provider: ModelProvider.GLM,
+    maxOutputTokens: 131072,
+    contextWindow: 1000000,
+    inputPrice: 1.4,
+    outputPrice: 4.4,
+    capabilities: {
+      ...GLM_DEFAULT_CAPABILITIES,
+      supportsVision: false,
+      supportsReasoning: true,
+      supportsReasoningEffort: true,
+      reasoningEffort: ReasoningEffort.MAX,
+      supportedReasoningEfforts: [
+        ReasoningEffort.LOW,
+        ReasoningEffort.HIGH,
+        ReasoningEffort.MAX,
+      ],
+      supportsPromptCaching: true,
+      // Cached input $0.26 / 1M vs $1.4 / 1M input.
+      cacheDiscountFactor: 0.186,
+    },
+    openRouterOnly: false,
+  },
   // GLM-5.2 (Flagship agentic coding model, announced 2026-06-13)
   // 744B MoE (40B active), 1M-token context, dual thinking-effort (High/Max), text-only.
+  // Superseded by GLM-5.3 (same base model, post-training-only upgrade).
   glm52: {
     name: 'glm52',
     label: 'GLM-5.2',
@@ -50,6 +82,7 @@ export const GLM_MODELS: Record<string, ModelConfig> = {
       cacheDiscountFactor: 0.186,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   // GLM-5.1 (Agentic coding model, released 2026-04-07)
   glm51: {
