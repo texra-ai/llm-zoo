@@ -20,6 +20,26 @@ const DASHSCOPE_DEFAULT_CAPABILITIES: ModelCapabilities = {
  * Includes Qwen 3 Max, Plus, and Turbo variants.
  */
 export const DASHSCOPE_MODELS: Record<string, ModelConfig> = {
+  // Qwen3.8-Max: flagship successor to Qwen3-Max, released 2026-08-03.
+  // 2.4T-param MoE (95B active), multimodal (text/image/video), thinking mode.
+  qwen38max: {
+    name: 'qwen38max',
+    label: 'Qwen3.8 Max',
+    fullName: 'qwen3.8-max',
+    shortName: 'qwen3.8-max',
+    openrouterFullName: 'qwen/qwen3.8-max',
+    provider: ModelProvider.DASHSCOPE,
+    maxOutputTokens: 131072,
+    contextWindow: 1000000,
+    inputPrice: 2.0,
+    outputPrice: 6.0,
+    capabilities: {
+      ...DASHSCOPE_DEFAULT_CAPABILITIES,
+      supportsVision: true,
+      supportsReasoning: true,
+    },
+    openRouterOnly: false,
+  },
   qwen3max: {
     name: 'qwen3max',
     label: 'Qwen 3 Max',
