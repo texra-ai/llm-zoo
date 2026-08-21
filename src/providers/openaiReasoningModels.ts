@@ -35,7 +35,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     provider: ModelProvider.OPENAI,
     maxOutputTokens: 100000,
     contextWindow: 200000,
-    inputPrice: 1.0,
+    inputPrice: 1.1,
     outputPrice: 4.4,
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
@@ -502,8 +502,10 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     provider: ModelProvider.OPENAI,
     maxOutputTokens: 128000,
     contextWindow: 1050000,
-    inputPrice: 5.0,
-    outputPrice: 30.0,
+    // Promotional pricing (confirmed active through at least November 21,
+    // 2026): $4.00 / $20.00, cut from the $5.00 / $30.00 launch rate.
+    inputPrice: 4.0,
+    outputPrice: 20.0,
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       cacheDiscountFactor: 0.1,
@@ -535,8 +537,10 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     provider: ModelProvider.OPENAI,
     maxOutputTokens: 128000,
     contextWindow: 1050000,
-    inputPrice: 5.0,
-    outputPrice: 30.0,
+    // Same promotional rate as gpt56 — pro mode bills at Sol's standard
+    // token rates (see the comment above).
+    inputPrice: 4.0,
+    outputPrice: 20.0,
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       cacheDiscountFactor: 0.1,
@@ -571,8 +575,9 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     provider: ModelProvider.OPENAI,
     maxOutputTokens: 128000,
     contextWindow: 1050000,
-    inputPrice: 10.0,
-    outputPrice: 60.0,
+    // Twice the current (promotional) standard-tier rate: $4.00 / $20.00.
+    inputPrice: 8.0,
+    outputPrice: 40.0,
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       cacheDiscountFactor: 0.1,
