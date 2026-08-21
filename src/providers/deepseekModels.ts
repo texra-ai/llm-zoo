@@ -83,6 +83,36 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
   },
+  // DeepSeek-V4-Flash-Vision-Exp
+  // Experimental vision-enabled variant of V4-Flash (announced 2026-08-21):
+  // same base model, same non-thinking chat endpoint, now also accepting
+  // image inputs (base64, external URL, or Files API `file_id`) per
+  // DeepSeek's Vision guide. That guide states image tokens "are billed
+  // together with your text tokens" at the model's normal rate — it
+  // publishes no separate image-pricing tier — so this entry mirrors the
+  // `deepseek` (V4-Flash non-thinking) entry's price, context window, and
+  // max output tokens. The guide only documents non-thinking chat usage, so
+  // no thinking-mode variant is listed here.
+  deepseekvision: {
+    name: 'deepseekvision',
+    label: 'DeepSeek V4 Flash Vision (Exp)',
+    fullName: 'deepseek-v4-flash-vision-exp',
+    shortName: 'deepseek-v4-flash-vision-exp',
+    openrouterFullName: 'deepseek/deepseek-v4-flash-vision-exp',
+    provider: ModelProvider.DEEPSEEK,
+    maxOutputTokens: 393216,
+    contextWindow: 1048576,
+    inputPrice: 0.14,
+    outputPrice: 0.28,
+    capabilities: {
+      ...DEEPSEEK_DEFAULT_CAPABILITIES,
+      supportsVision: true,
+      supportsAssistantPrefill: true,
+      supportsFunctionCalling: true,
+      cacheDiscountFactor: 0.02,
+    },
+    openRouterOnly: false,
+  },
   // DeepSeek-V4-Pro (Non-thinking Mode)
   deepseekpro: {
     name: 'deepseekpro',
