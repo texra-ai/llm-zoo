@@ -51,9 +51,9 @@ npm install llm-zoo
 | Model | Input | Output | Reasoning | Provider |
 |-------|-------|--------|-----------|----------|
 | `gpt55pro` | $30 | $180 | ✓ | OpenAI |
-| `gpt56fast` | $10 | $60 | ✓ | OpenAI |
 | `fable5` | $10 | $50 | ✓ | Anthropic |
-| `gpt56` | $5 | $30 | ✓ | OpenAI |
+| `gpt56fast` | $8 | $40 | ✓ | OpenAI |
+| `gpt56` | $4 | $20 | ✓ | OpenAI |
 | `opus5T` | $5 | $25 | ✓ | Anthropic |
 | `opus5` | $5 | $25 | - | Anthropic |
 | `sonnet46T` | $3 | $15 | ✓ | Anthropic |
@@ -96,7 +96,7 @@ npm install llm-zoo
 | **Anthropic** | 34 | Fable 5, Mythos 5, Opus 5, Sonnet 5, 1M context, 90% cache savings, PDF support |
 | **OpenAI** | 40 | GPT-5.x reasoning, Fast mode tier, deep research |
 | **GLM** | 13 | Zhipu GLM-5.3, up to 1M context |
-| **DeepSeek** | 11 | Budget reasoning ($0.14/1M) |
+| **DeepSeek** | 12 | Budget reasoning ($0.14/1M), vision (V4 Flash Vision Exp) |
 | **Moonshot** | 14 | Kimi K3 (1M context), K2.7 Code, K2.6 thinking mode |
 | **Google** | 12 | Gemini 3.7 Flash, 1M context, audio input |
 | **MiniMax** | 6 | M-series reasoning, 1M context |
