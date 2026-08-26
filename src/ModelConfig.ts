@@ -27,6 +27,8 @@ export enum ReasoningEffort {
   MEDIUM = 'medium',
   /** Low reasoning effort - quick analysis */
   LOW = 'low',
+  /** Minimal reasoning effort - near-direct response */
+  MINIMAL = 'minimal',
   /** No explicit reasoning - standard model behavior */
   NONE = 'none',
 }
