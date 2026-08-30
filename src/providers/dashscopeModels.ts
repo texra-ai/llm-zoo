@@ -17,9 +17,26 @@ const DASHSCOPE_DEFAULT_CAPABILITIES: ModelCapabilities = {
 
 /**
  * Alibaba DashScope (Qwen) model configurations.
- * Includes Qwen 3 Max, Plus, and Turbo variants.
+ * Includes Qwen 3.8 Flash, 3 Max, Plus, and Turbo variants.
  */
 export const DASHSCOPE_MODELS: Record<string, ModelConfig> = {
+  qwen38flash: {
+    name: 'qwen38flash',
+    label: 'Qwen 3.8 Flash',
+    fullName: 'qwen3.8-flash',
+    shortName: 'qwen3.8-flash',
+    openrouterFullName: 'qwen/qwen3.8-flash',
+    provider: ModelProvider.DASHSCOPE,
+    maxOutputTokens: 131072,
+    contextWindow: 1000000,
+    inputPrice: 0.15,
+    outputPrice: 0.47,
+    capabilities: {
+      ...DASHSCOPE_DEFAULT_CAPABILITIES,
+      supportsReasoning: true,
+    },
+    openRouterOnly: false,
+  },
   qwen3max: {
     name: 'qwen3max',
     label: 'Qwen 3 Max',
