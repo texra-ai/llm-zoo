@@ -151,6 +151,8 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
       supportsInterleavedThinking: true,
     },
     openRouterOnly: false,
+    // Superseded by Claude Fable 5.1 (same specs/pricing, cheaper cache reads).
+    deprecated: true,
   },
   mythos5: {
     name: 'mythos5',
@@ -180,6 +182,8 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     },
     // Invitation-only via Project Glasswing; no OpenRouter or VS Code LM routing.
     openRouterOnly: false,
+    // Superseded by Claude Mythos 5.1 (same specs/pricing, cheaper cache reads).
+    deprecated: true,
   },
   opus5T: {
     name: 'opus5T',
