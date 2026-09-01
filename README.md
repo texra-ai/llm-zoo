@@ -37,6 +37,7 @@ npm install llm-zoo
 |-------|-------|--------|----------|
 | `qwenturbo` | $0.05 | $0.50 | DashScope |
 | `deepseek` | $0.14 | $0.28 | DeepSeek |
+| `qwen38flash` | $0.15 | $0.47 | DashScope |
 | `gpt56--` | $0.20 | $1.20 | OpenAI |
 | `gemini31f-` | $0.25 | $1.50 | Google |
 | `gemini35f-` | $0.30 | $2.50 | Google |
@@ -44,7 +45,6 @@ npm install llm-zoo
 | `qwenplus` | $0.40 | $1.20 | DashScope |
 | `kimi25` | $0.60 | $3.00 | Moonshot |
 | `gemini37f` | $0.75 | $3.75 | Google |
-| `haiku45` | $1.00 | $5.00 | Anthropic |
 
 ### Premium ($/1M tokens)
 
@@ -102,7 +102,7 @@ npm install llm-zoo
 | **MiniMax** | 6 | M-series reasoning, 1M context |
 | **xAI** | 8 | Grok 4.6, Grok 4.3 with 1M context, configurable reasoning |
 | **Meta** | 1 | Muse Spark 1.1, 1M context, agentic + multimodal |
-| **DashScope** | 3 | Qwen with 1M context |
+| **DashScope** | 4 | Qwen3.8 Flash, 1M context, native vision |
 | **OpenRouter** | 2 | Llama 405B, QVQ-72B |
 | **Copilot** | 1 | Deprecated GPT-4o config; 26 documented names and 7 exact model identifiers |
 
