@@ -55,9 +55,73 @@ const OPUS_5_NON_THINKING_REASONING_EFFORTS = [
 
 /**
  * Anthropic Claude model configurations.
- * Includes Claude Fable 5, Claude Mythos 5, and 4.x/3.x Opus, Sonnet, and Haiku variants.
+ * Includes Claude Fable 5.1, Claude Mythos 5.1, Claude Fable 5, Claude Mythos 5,
+ * and 4.x/3.x Opus, Sonnet, and Haiku variants.
  */
 export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
+  fable51: {
+    name: 'fable51',
+    label: 'Claude Fable 5.1',
+    fullName: 'claude-fable-5-1',
+    shortName: 'claude-fable-5-1',
+    openrouterFullName: 'anthropic/claude-fable-5.1',
+    vscodeLMFullName: 'claude-fable-5.1',
+    provider: ModelProvider.ANTHROPIC,
+    maxOutputTokens: 128000,
+    contextWindow: 1000000,
+    inputPrice: 10.0,
+    outputPrice: 50.0,
+    capabilities: {
+      ...ANTHROPIC_DEFAULT_CAPABILITIES,
+      // Cache reads cost 0.025x base input on Fable 5.1 (a quarter of Fable 5's
+      // 0.1x rate), per Anthropic's Fable 5.1 pricing table.
+      cacheDiscountFactor: 0.025,
+      supportsNativeMCPServer: true,
+      supportsNativeWebSearch: true,
+      supportsDynamicFilteringWebSearch: true,
+      supportsNativeCodeExecution: true,
+      supportsAssistantPrefill: false,
+      // Adaptive thinking is always on for Fable 5.1 and cannot be disabled.
+      supportsReasoning: true,
+      supportsReasoningEffort: true,
+      supportsAdaptiveThinking: true,
+      reasoningEffort: ReasoningEffort.HIGH,
+      maxReasoningEffort: ReasoningEffort.MAX,
+      supportedReasoningEfforts: ANTHROPIC_REASONING_EFFORTS,
+      supportsInterleavedThinking: true,
+    },
+    openRouterOnly: false,
+  },
+  mythos51: {
+    name: 'mythos51',
+    label: 'Mythos 5.1 (Limited Availability)',
+    fullName: 'claude-mythos-5-1',
+    shortName: 'claude-mythos-5-1',
+    provider: ModelProvider.ANTHROPIC,
+    maxOutputTokens: 128000,
+    contextWindow: 1000000,
+    inputPrice: 10.0,
+    outputPrice: 50.0,
+    capabilities: {
+      ...ANTHROPIC_DEFAULT_CAPABILITIES,
+      cacheDiscountFactor: 0.025,
+      supportsNativeMCPServer: true,
+      supportsNativeWebSearch: true,
+      supportsDynamicFilteringWebSearch: true,
+      supportsNativeCodeExecution: true,
+      supportsAssistantPrefill: false,
+      // Adaptive thinking is always on for Mythos 5.1 and cannot be disabled.
+      supportsReasoning: true,
+      supportsReasoningEffort: true,
+      supportsAdaptiveThinking: true,
+      reasoningEffort: ReasoningEffort.HIGH,
+      maxReasoningEffort: ReasoningEffort.MAX,
+      supportedReasoningEfforts: ANTHROPIC_REASONING_EFFORTS,
+      supportsInterleavedThinking: true,
+    },
+    // Invitation-only via Project Glasswing; no OpenRouter or VS Code LM routing.
+    openRouterOnly: false,
+  },
   fable5: {
     name: 'fable5',
     label: 'Claude Fable 5',
@@ -87,6 +151,8 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
       supportsInterleavedThinking: true,
     },
     openRouterOnly: false,
+    // Superseded by Claude Fable 5.1 (same specs/pricing, cheaper cache reads).
+    deprecated: true,
   },
   mythos5: {
     name: 'mythos5',
@@ -116,6 +182,8 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     },
     // Invitation-only via Project Glasswing; no OpenRouter or VS Code LM routing.
     openRouterOnly: false,
+    // Superseded by Claude Mythos 5.1 (same specs/pricing, cheaper cache reads).
+    deprecated: true,
   },
   opus5T: {
     name: 'opus5T',

@@ -48,6 +48,8 @@ const anthropicCapabilityMatrix = [
   ['sonnet46', 'claude-sonnet-4-6', false, true, effortVocabularyWithoutXhigh, ReasoningEffort.MAX],
   ['sonnet5T', 'claude-sonnet-5', true, true, fullEffortVocabulary, ReasoningEffort.MAX],
   ['sonnet5', 'claude-sonnet-5', false, true, fullEffortVocabulary, ReasoningEffort.MAX],
+  ['fable51', 'claude-fable-5-1', true, true, fullEffortVocabulary, ReasoningEffort.MAX],
+  ['mythos51', 'claude-mythos-5-1', true, true, fullEffortVocabulary, ReasoningEffort.MAX],
   ['fable5', 'claude-fable-5', true, true, fullEffortVocabulary, ReasoningEffort.MAX],
   ['mythos5', 'claude-mythos-5', true, true, fullEffortVocabulary, ReasoningEffort.MAX],
   ['opus45T', 'claude-opus-4-5', false, true, opus45EffortVocabulary, undefined],
@@ -108,6 +110,8 @@ test('only the documented Anthropic entries advertise adaptive thinking', () => 
     .filter(([, model]) => model.capabilities.supportsAdaptiveThinking)
     .map(([key]) => key);
   assert.deepEqual(adaptiveKeys, [
+    'fable51',
+    'mythos51',
     'fable5',
     'mythos5',
     'opus5T',

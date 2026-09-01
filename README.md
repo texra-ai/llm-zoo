@@ -51,7 +51,7 @@ npm install llm-zoo
 | Model | Input | Output | Reasoning | Provider |
 |-------|-------|--------|-----------|----------|
 | `gpt55pro` | $30 | $180 | ✓ | OpenAI |
-| `fable5` | $10 | $50 | ✓ | Anthropic |
+| `fable51` | $10 | $50 | ✓ | Anthropic |
 | `gpt56fast` | $8 | $40 | ✓ | OpenAI |
 | `gpt56` | $4 | $20 | ✓ | OpenAI |
 | `opus5T` | $5 | $25 | ✓ | Anthropic |
@@ -93,7 +93,7 @@ npm install llm-zoo
 
 | Provider | Models | Highlights |
 |----------|--------|------------|
-| **Anthropic** | 34 | Fable 5, Mythos 5, Opus 5, Sonnet 5, 1M context, 90% cache savings, PDF support |
+| **Anthropic** | 36 | Fable 5.1, Mythos 5.1, Opus 5, Sonnet 5, 1M context, 97.5% cache savings on Fable/Mythos 5.1, PDF support |
 | **OpenAI** | 40 | GPT-5.x reasoning, Fast mode tier, deep research |
 | **GLM** | 14 | Zhipu GLM-5.3-Flash, native vision, up to 1M context |
 | **DeepSeek** | 12 | Budget reasoning ($0.14/1M), vision (V4 Flash Vision Exp) |
