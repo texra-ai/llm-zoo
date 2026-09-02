@@ -29,6 +29,35 @@ const GOOGLE_DEFAULT_CAPABILITIES: ModelCapabilities = {
  * Includes Gemini 3.x and 2.5 Pro/Flash variants.
  */
 export const GOOGLE_MODELS: Record<string, ModelConfig> = {
+  gemini38f: {
+    name: 'gemini38f',
+    label: 'Gemini 3.8 Flash',
+    fullName: 'gemini-3.8-flash',
+    shortName: 'gemini-3.8-flash',
+    provider: ModelProvider.GOOGLE,
+    maxOutputTokens: 65536,
+    contextWindow: 1048576,
+    inputPrice: 0.75,
+    outputPrice: 3.75,
+    capabilities: {
+      ...GOOGLE_DEFAULT_CAPABILITIES,
+      cacheDiscountFactor: 0.1,
+      supportsPromptCaching: true,
+      supportsAutoPromptCaching: true,
+      supportsReasoning: true,
+      supportsReasoningEffort: true,
+      reasoningEffort: ReasoningEffort.MEDIUM,
+      maxReasoningEffort: ReasoningEffort.HIGH,
+      supportedReasoningEfforts: [
+        ReasoningEffort.LOW,
+        ReasoningEffort.MEDIUM,
+        ReasoningEffort.HIGH,
+      ],
+      supportsNativeCodeExecution: true,
+      supportsNativeMCPServer: true,
+    },
+    openRouterOnly: false,
+  },
   gemini37f: {
     name: 'gemini37f',
     label: 'Gemini 3.7 Flash',
@@ -52,6 +81,7 @@ export const GOOGLE_MODELS: Record<string, ModelConfig> = {
       supportsNativeMCPServer: true,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   gemini36f: {
     name: 'gemini36f',

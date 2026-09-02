@@ -43,7 +43,7 @@ npm install llm-zoo
 | `gpt41-` | $0.40 | $1.60 | OpenAI |
 | `qwenplus` | $0.40 | $1.20 | DashScope |
 | `kimi25` | $0.60 | $3.00 | Moonshot |
-| `gemini37f` | $0.75 | $3.75 | Google |
+| `gemini38f` | $0.75 | $3.75 | Google |
 | `haiku45` | $1.00 | $5.00 | Anthropic |
 
 ### Premium ($/1M tokens)
@@ -70,7 +70,7 @@ npm install llm-zoo
 | `gpt56--` | 1M | OpenAI |
 | `gemini31p` | 1M | Google |
 | `gemini31f-` | 1M | Google |
-| `gemini37f` | 1M | Google |
+| `gemini38f` | 1M | Google |
 | `opus5` | 1M | Anthropic |
 | `sonnet46` | 1M | Anthropic |
 | `qwenplus` | 1M | DashScope |
@@ -85,7 +85,7 @@ npm install llm-zoo
 |------------|-------|----------|
 | Vision | 45+ | `sonnet46`, `gpt41`, `gemini31p` |
 | Reasoning | 30+ | `opus5T`, `gpt56`, `deepseekT`, `grok43` |
-| Code Execution | 20+ | `sonnet46`, `gpt41`, `gemini37f` |
+| Code Execution | 20+ | `sonnet46`, `gpt41`, `gemini38f` |
 | Web Search | 15+ | `opus5`, `gpt41`, `gpt56-` |
 | Prompt Caching | 25+ | All Claude, Gemini, DeepSeek |
 
@@ -98,7 +98,7 @@ npm install llm-zoo
 | **GLM** | 14 | Zhipu GLM-5.3-Flash, native vision, up to 1M context |
 | **DeepSeek** | 12 | Budget reasoning ($0.14/1M), vision (V4 Flash Vision Exp) |
 | **Moonshot** | 14 | Kimi K3 (1M context), K2.7 Code, K2.6 thinking mode |
-| **Google** | 12 | Gemini 3.7 Flash, 1M context, audio input |
+| **Google** | 13 | Gemini 3.8 Flash, 1M context, audio input |
 | **MiniMax** | 6 | M-series reasoning, 1M context |
 | **xAI** | 8 | Grok 4.6, Grok 4.3 with 1M context, configurable reasoning |
 | **Meta** | 1 | Muse Spark 1.1, 1M context, agentic + multimodal |
