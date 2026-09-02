@@ -30,6 +30,29 @@ const META_DEFAULT_CAPABILITIES: ModelCapabilities = {
  * (api.meta.ai/v1). Not available through OpenRouter.
  */
 export const META_MODELS: Record<string, ModelConfig> = {
+  musespark13: {
+    name: 'musespark13',
+    label: 'Muse Spark 1.3',
+    fullName: 'muse-spark-1.3',
+    shortName: 'muse-spark-1.3',
+    provider: ModelProvider.META,
+    maxOutputTokens: 131072,
+    contextWindow: 1048576,
+    inputPrice: 1.25,
+    outputPrice: 4.25,
+    capabilities: {
+      ...META_DEFAULT_CAPABILITIES,
+      maxReasoningEffort: ReasoningEffort.XHIGH,
+      supportedReasoningEfforts: [
+        ReasoningEffort.MINIMAL,
+        ReasoningEffort.LOW,
+        ReasoningEffort.MEDIUM,
+        ReasoningEffort.HIGH,
+        ReasoningEffort.XHIGH,
+      ],
+    },
+    openRouterOnly: false,
+  },
   musespark11: {
     name: 'musespark11',
     label: 'Muse Spark 1.1',
@@ -42,5 +65,6 @@ export const META_MODELS: Record<string, ModelConfig> = {
     outputPrice: 4.25,
     capabilities: META_DEFAULT_CAPABILITIES,
     openRouterOnly: false,
+    deprecated: true,
   },
 };
