@@ -651,6 +651,42 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     openRouterOnly: false,
     codexSubscription: true,
   },
+  // GPT-6 Astra (2026-09-04): OpenAI's flagship. Launched in the Trusted
+  // Access Program, then opened the same day to Pro, Enterprise, and Business
+  // Premium in ChatGPT Work and Codex, plus the API (Plus/Business followed
+  // days later). Rate card: $10.00 input / $1.00 cached input / $12.50 cache
+  // writes / $50.00 output per 1M; prompts over 272K input tokens bill the
+  // full request at 2x input/cache and 1.5x output (the registry has no
+  // long-context tier field, so the standard rates are cataloged here).
+  // `reasoning.effort` accepts low/medium/high/xhigh/max.
+  gpt6: {
+    name: 'gpt6',
+    label: 'GPT-6 Astra',
+    fullName: 'gpt-6-astra',
+    shortName: 'gpt-6-astra',
+    provider: ModelProvider.OPENAI,
+    maxOutputTokens: 128000,
+    contextWindow: 1050000,
+    inputPrice: 10.0,
+    outputPrice: 50.0,
+    capabilities: {
+      ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
+      cacheDiscountFactor: 0.1,
+      reasoningEffort: ReasoningEffort.MEDIUM,
+      maxReasoningEffort: ReasoningEffort.MAX,
+      supportsPromptCaching: true,
+      supportsNativeMCPServer: true,
+      supportsNativeWebSearch: true,
+      supportsNativeCodeExecution: true,
+      supportsVision: true,
+    },
+    // Responses API is required for the xhigh/max effort tiers; also keeps
+    // coauthor's router (which only pattern-matches gpt-5* names) on the
+    // Responses handler.
+    requiresResponsesAPI: true,
+    openRouterOnly: false,
+    codexSubscription: true,
+  },
   gpt54: {
     name: 'gpt54',
     label: 'GPT-5.4',
