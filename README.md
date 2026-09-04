@@ -52,6 +52,7 @@ npm install llm-zoo
 |-------|-------|--------|-----------|----------|
 | `gpt55pro` | $30 | $180 | ✓ | OpenAI |
 | `fable51` | $10 | $50 | ✓ | Anthropic |
+| `gpt6astra` | $10 | $50 | ✓ | OpenAI |
 | `gpt56fast` | $8 | $40 | ✓ | OpenAI |
 | `gpt56` | $4 | $20 | ✓ | OpenAI |
 | `opus5T` | $5 | $25 | ✓ | Anthropic |
@@ -94,7 +95,7 @@ npm install llm-zoo
 | Provider | Models | Highlights |
 |----------|--------|------------|
 | **Anthropic** | 36 | Fable 5.1, Mythos 5.1, Opus 5, Sonnet 5, 1M context, 97.5% cache savings on Fable/Mythos 5.1, PDF support |
-| **OpenAI** | 40 | GPT-5.x reasoning, Fast mode tier, deep research |
+| **OpenAI** | 41 | GPT-6 Astra, GPT-5.x reasoning, Fast mode tier, deep research |
 | **GLM** | 14 | Zhipu GLM-5.3-Flash, native vision, up to 1M context |
 | **DeepSeek** | 12 | Budget reasoning ($0.14/1M), vision (V4 Flash Vision Exp) |
 | **Moonshot** | 14 | Kimi K3 (1M context), K2.7 Code, K2.6 thinking mode |

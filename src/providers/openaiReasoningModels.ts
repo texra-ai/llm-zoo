@@ -25,6 +25,36 @@ const OPENAI_REASONING_DEFAULT_CAPABILITIES: ModelCapabilities = {
  * Includes o1, o3, o4, and GPT-5 reasoning variants.
  */
 export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
+  // GPT-6 Astra: OpenAI's flagship model (released 2026-09-03), built for
+  // complex reasoning, coding, computer use, research, and document creation.
+  // Single snapshot `gpt-6-astra`, served on both Chat Completions and the
+  // Responses API. Chat Completions accepts low/medium/high/xhigh; `max` is
+  // Responses-API only. API default effort is `low`.
+  gpt6astra: {
+    name: 'gpt6astra',
+    label: 'GPT-6 Astra',
+    fullName: 'gpt-6-astra',
+    shortName: 'gpt-6-astra',
+    provider: ModelProvider.OPENAI,
+    maxOutputTokens: 128000,
+    contextWindow: 1050000,
+    inputPrice: 10.0,
+    outputPrice: 50.0,
+    capabilities: {
+      ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
+      cacheDiscountFactor: 0.1,
+      reasoningEffort: ReasoningEffort.LOW,
+      maxReasoningEffort: ReasoningEffort.MAX,
+      supportsPromptCaching: true,
+      supportsNativeMCPServer: true,
+      supportsNativeWebSearch: true,
+      supportsNativeCodeExecution: true,
+      supportsVision: true,
+      supportsNativePdf: true,
+    },
+    openRouterOnly: false,
+    codexSubscription: true,
+  },
   'o4-': {
     name: 'o4-',
     label: 'o4 Mini',
