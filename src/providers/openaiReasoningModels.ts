@@ -687,6 +687,36 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     openRouterOnly: false,
     codexSubscription: true,
   },
+  // gpt6fast: GPT-6 Astra served in Fast mode (`service_tier: 'fast'`) — up to
+  // 2x the speed of Standard processing at exactly 2x the Standard token
+  // rates, per developers.openai.com/api/docs/pricing. Same model id and
+  // effort vocabulary as gpt6, so cacheDiscountFactor (cached input is still
+  // 10% of input) carries over unchanged.
+  gpt6fast: {
+    name: 'gpt6fast',
+    label: 'GPT-6 Astra (Fast)',
+    fullName: 'gpt-6-astra',
+    shortName: 'gpt-6-astra',
+    provider: ModelProvider.OPENAI,
+    maxOutputTokens: 128000,
+    contextWindow: 1050000,
+    inputPrice: 20.0,
+    outputPrice: 100.0,
+    capabilities: {
+      ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
+      cacheDiscountFactor: 0.1,
+      reasoningEffort: ReasoningEffort.MEDIUM,
+      maxReasoningEffort: ReasoningEffort.MAX,
+      supportsPromptCaching: true,
+      supportsNativeMCPServer: true,
+      supportsNativeWebSearch: true,
+      supportsNativeCodeExecution: true,
+      supportsVision: true,
+    },
+    requiresResponsesAPI: true,
+    serviceTier: 'fast',
+    openRouterOnly: false,
+  },
   gpt54: {
     name: 'gpt54',
     label: 'GPT-5.4',

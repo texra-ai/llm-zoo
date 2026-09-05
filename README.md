@@ -51,6 +51,7 @@ npm install llm-zoo
 | Model | Input | Output | Reasoning | Provider |
 |-------|-------|--------|-----------|----------|
 | `gpt55pro` | $30 | $180 | ✓ | OpenAI |
+| `gpt6fast` | $20 | $100 | ✓ | OpenAI |
 | `gpt6` | $10 | $50 | ✓ | OpenAI |
 | `fable51` | $10 | $50 | ✓ | Anthropic |
 | `gpt56fast` | $8 | $40 | ✓ | OpenAI |
@@ -60,7 +61,6 @@ npm install llm-zoo
 | `sonnet46T` | $3 | $15 | ✓ | Anthropic |
 | `gpt56-` | $2 | $12 | ✓ | OpenAI |
 | `gpt41` | $2 | $8 | - | OpenAI |
-| `gpt52` | $1.75 | $14 | ✓ | OpenAI |
 
 ### Largest Context
 
@@ -96,7 +96,7 @@ npm install llm-zoo
 | Provider | Models | Highlights |
 |----------|--------|------------|
 | **Anthropic** | 36 | Fable 5.1, Mythos 5.1, Opus 5, Sonnet 5, 1M context, 97.5% cache savings on Fable/Mythos 5.1, PDF support |
-| **OpenAI** | 41 | GPT-6 Astra, GPT-5.x reasoning, Fast mode tier, deep research |
+| **OpenAI** | 42 | GPT-6 Astra, GPT-5.x reasoning, Fast mode tier, deep research |
 | **GLM** | 14 | Zhipu GLM-5.3-Flash, native vision, up to 1M context |
 | **DeepSeek** | 12 | Budget reasoning ($0.14/1M), vision (V4 Flash Vision Exp) |
 | **Moonshot** | 14 | Kimi K3 (1M context), K2.7 Code, K2.6 thinking mode |
