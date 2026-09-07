@@ -20,6 +20,28 @@ const DASHSCOPE_DEFAULT_CAPABILITIES: ModelCapabilities = {
  * Includes Qwen 3 Max, Plus, and Turbo variants.
  */
 export const DASHSCOPE_MODELS: Record<string, ModelConfig> = {
+  // Qwen3.8-Max (flagship, snapshot 0902 released 2026-09-02): 1M context,
+  // multimodal (image/text/video in, text out), optional thinking mode.
+  // Pricing is flat (not context-length-tiered) and identical across all
+  // regions except Singapore, per Alibaba Cloud's Model Studio docs.
+  qwen38max: {
+    name: 'qwen38max',
+    label: 'Qwen 3.8 Max',
+    fullName: 'qwen3.8-max',
+    shortName: 'qwen3.8-max',
+    openrouterFullName: 'qwen/qwen3.8-max-0902',
+    provider: ModelProvider.DASHSCOPE,
+    maxOutputTokens: 131072,
+    contextWindow: 1000000,
+    inputPrice: 1.65,
+    outputPrice: 4.951,
+    capabilities: {
+      ...DASHSCOPE_DEFAULT_CAPABILITIES,
+      supportsVision: true,
+      supportsReasoning: true,
+    },
+    openRouterOnly: false,
+  },
   qwen3max: {
     name: 'qwen3max',
     label: 'Qwen 3 Max',
