@@ -98,7 +98,9 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
   // Deprecated 2026-09-10 in favor of DeepSeek-V4.1-Flash (`deepseek41`
   // above); the `deepseek-v4-flash` id keeps routing to V4.1-Flash for
   // compatibility rather than failing outright, so this entry is
-  // deprecated, not retired.
+  // deprecated, not retired. Pricing below matches `deepseek41`, not the
+  // historical V4-Flash rate: the pricing page states `deepseek-v4-flash`
+  // requests are now served by V4.1-Flash and billed at its price.
   deepseek: {
     name: 'deepseek',
     label: 'DeepSeek V4 Flash',
@@ -108,8 +110,8 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
     provider: ModelProvider.DEEPSEEK,
     maxOutputTokens: 393216,
     contextWindow: 1048576,
-    inputPrice: 0.14,
-    outputPrice: 0.28,
+    inputPrice: 0.15,
+    outputPrice: 0.6,
     capabilities: {
       ...DEEPSEEK_DEFAULT_CAPABILITIES,
       supportsAssistantPrefill: true,
@@ -125,6 +127,7 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
   // compatibility aliases and both map onto high here, so neither is listed as
   // a distinct level.
   // Deprecated 2026-09-10, see `deepseek` above; superseded by `deepseek41T`.
+  // Pricing matches `deepseek41T`, see `deepseek`'s comment above for why.
   deepseekT: {
     name: 'deepseekT',
     label: 'DeepSeek V4 Flash (Thinking)',
@@ -134,8 +137,8 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
     provider: ModelProvider.DEEPSEEK,
     maxOutputTokens: 393216,
     contextWindow: 1048576,
-    inputPrice: 0.14,
-    outputPrice: 0.28,
+    inputPrice: 0.15,
+    outputPrice: 0.6,
     capabilities: {
       ...DEEPSEEK_DEFAULT_CAPABILITIES,
       supportsReasoning: true,
@@ -167,7 +170,8 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
   // Deprecated 2026-09-10: vision is now native in `deepseek41` above, and
   // the `deepseek-v4-flash-vision-exp` id routes to V4.1-Flash for
   // compatibility rather than failing outright, so this entry is
-  // deprecated, not retired.
+  // deprecated, not retired. Pricing matches `deepseek41`, see `deepseek`'s
+  // comment above for why.
   deepseekvision: {
     name: 'deepseekvision',
     label: 'DeepSeek V4 Flash Vision (Exp)',
@@ -177,8 +181,8 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
     provider: ModelProvider.DEEPSEEK,
     maxOutputTokens: 393216,
     contextWindow: 1048576,
-    inputPrice: 0.14,
-    outputPrice: 0.28,
+    inputPrice: 0.15,
+    outputPrice: 0.6,
     capabilities: {
       ...DEEPSEEK_DEFAULT_CAPABILITIES,
       supportsVision: true,
