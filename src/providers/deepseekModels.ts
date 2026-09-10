@@ -33,9 +33,12 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
   // the separate V4-Flash / V4-Flash-Vision-Exp split below. The canonical
   // model id is `deepseek-flash`; the superseded `deepseek-v4-flash` and
   // `deepseek-v4-flash-vision-exp` ids continue to route here for
-  // compatibility. Pricing reflects the same-day rate cut DeepSeek announced
-  // alongside the release (off-peak; peak, 01:00-04:00 and 06:00-10:00 UTC
-  // weekdays, is 2x). Source: https://api-docs.deepseek.com/quick_start/pricing
+  // compatibility. Prices are the off-peak rate, which the pricing page
+  // presents as the default ("Off-peak rates are half of the peak rates";
+  // peak is 01:00-04:00 and 06:00-10:00 UTC, Mon-Fri). DeepSeek announced an
+  // accompanying price reduction in the changelog, not on the pricing page.
+  // Sources: https://api-docs.deepseek.com/quick_start/pricing and
+  // https://api-docs.deepseek.com/updates/
   deepseek41: {
     name: 'deepseek41',
     label: 'DeepSeek V4.1 Flash',
