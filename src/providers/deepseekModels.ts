@@ -95,9 +95,10 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
   // stays `deepseek-v4-flash`, so this entry covers the official build. The
   // legacy `deepseek-chat` / `deepseek-reasoner` names point at this model's
   // non-thinking / thinking modes until they are discontinued.
-  // Retired 2026-09-10 in favor of DeepSeek-V4.1-Flash (`deepseek41` above);
-  // the `deepseek-v4-flash` id keeps routing to V4.1-Flash for compatibility
-  // rather than failing outright, so this entry is deprecated, not retired.
+  // Deprecated 2026-09-10 in favor of DeepSeek-V4.1-Flash (`deepseek41`
+  // above); the `deepseek-v4-flash` id keeps routing to V4.1-Flash for
+  // compatibility rather than failing outright, so this entry is
+  // deprecated, not retired.
   deepseek: {
     name: 'deepseek',
     label: 'DeepSeek V4 Flash',
@@ -123,7 +124,7 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
   // low, high, max — so all three are listed. xhigh and medium are accepted as
   // compatibility aliases and both map onto high here, so neither is listed as
   // a distinct level.
-  // Retired 2026-09-10, see `deepseek` above; superseded by `deepseek41T`.
+  // Deprecated 2026-09-10, see `deepseek` above; superseded by `deepseek41T`.
   deepseekT: {
     name: 'deepseekT',
     label: 'DeepSeek V4 Flash (Thinking)',
@@ -163,8 +164,10 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
   // `deepseek` (V4-Flash non-thinking) entry's price, context window, and
   // max output tokens. The guide only documents non-thinking chat usage, so
   // no thinking-mode variant is listed here.
-  // Retired 2026-09-10: vision is now native in `deepseek41` above, and the
-  // `deepseek-v4-flash-vision-exp` id routes to V4.1-Flash for compatibility.
+  // Deprecated 2026-09-10: vision is now native in `deepseek41` above, and
+  // the `deepseek-v4-flash-vision-exp` id routes to V4.1-Flash for
+  // compatibility rather than failing outright, so this entry is
+  // deprecated, not retired.
   deepseekvision: {
     name: 'deepseekvision',
     label: 'DeepSeek V4 Flash Vision (Exp)',
