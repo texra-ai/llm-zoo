@@ -60,10 +60,10 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
     openRouterOnly: false,
   },
   // DeepSeek-V4.1-Flash (Thinking Mode)
-  // reasoning_effort defaults to high. Unlike V4-Flash below, V4.1-Flash's
-  // thinking_mode guide now aligns Flash onto the same two-level vocabulary
-  // as Pro (deepseekproT) — low/medium alias onto high, xhigh aliases onto
-  // max — so only high and max are listed as distinct levels.
+  // reasoning_effort defaults to high. Per the thinking_mode guide,
+  // `deepseek-flash` resolves three distinct levels — low, high, max — same
+  // as V4-Flash below. medium and xhigh are compatibility aliases that both
+  // map onto high, so neither is listed as a distinct level.
   deepseek41T: {
     name: 'deepseek41T',
     label: 'DeepSeek V4.1 Flash (Thinking)',
@@ -82,7 +82,11 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
       supportsReasoningEffort: true,
       reasoningEffort: ReasoningEffort.HIGH,
       maxReasoningEffort: ReasoningEffort.MAX,
-      supportedReasoningEfforts: [ReasoningEffort.HIGH, ReasoningEffort.MAX],
+      supportedReasoningEfforts: [
+        ReasoningEffort.LOW,
+        ReasoningEffort.HIGH,
+        ReasoningEffort.MAX,
+      ],
       supportsFunctionCalling: true,
       supportsAssistantPrefill: true,
       cacheDiscountFactor: 0.02,
