@@ -19,18 +19,84 @@ const DEEPSEEK_DEFAULT_CAPABILITIES: ModelCapabilities = {
 
 /**
  * DeepSeek model configurations.
- * Includes V4, V3.2, R1, and thinking variants.
+ * Includes V4.1, V4, V3.2, R1, and thinking variants.
  *
  * Model name conventions:
  * - fullName: Model name for native DeepSeek API (e.g., 'deepseek-chat', 'deepseek-reasoner')
  * - openrouterFullName: Model name for OpenRouter API (e.g., 'deepseek/deepseek-v3.2')
  */
 export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
+  // DeepSeek-V4.1-Flash (Non-thinking Mode)
+  // Released 2026-09-10: a new Causal Encoder-Decoder architecture (the
+  // smallest model in DeepSeek's new architecture family) with native
+  // multimodal visual understanding folded into the base model, replacing
+  // the separate V4-Flash / V4-Flash-Vision-Exp split below. The canonical
+  // model id is `deepseek-flash`; the retired `deepseek-v4-flash` and
+  // `deepseek-v4-flash-vision-exp` ids continue to route here for
+  // compatibility. Pricing reflects the same-day rate cut DeepSeek announced
+  // alongside the release (off-peak; peak, 01:00-04:00 and 06:00-10:00 UTC
+  // weekdays, is 2x). Sourced from launch-day reporting rather than a
+  // directly-fetched primary doc (api-docs.deepseek.com was unreachable from
+  // this environment at write time) — recheck against
+  // https://api-docs.deepseek.com/quick_start/pricing if figures look off.
+  deepseek41: {
+    name: 'deepseek41',
+    label: 'DeepSeek V4.1 Flash',
+    fullName: 'deepseek-flash',
+    shortName: 'deepseek-flash',
+    openrouterFullName: 'deepseek/deepseek-v4.1-flash',
+    provider: ModelProvider.DEEPSEEK,
+    maxOutputTokens: 393216,
+    contextWindow: 1048576,
+    inputPrice: 0.15,
+    outputPrice: 0.6,
+    capabilities: {
+      ...DEEPSEEK_DEFAULT_CAPABILITIES,
+      supportsVision: true,
+      supportsAssistantPrefill: true,
+      supportsFunctionCalling: true,
+      cacheDiscountFactor: 0.02,
+    },
+    openRouterOnly: false,
+  },
+  // DeepSeek-V4.1-Flash (Thinking Mode)
+  // reasoning_effort defaults to high. Unlike V4-Flash below, V4.1-Flash's
+  // thinking_mode guide now aligns Flash onto the same two-level vocabulary
+  // as Pro (deepseekproT) — low/medium alias onto high, xhigh aliases onto
+  // max — so only high and max are listed as distinct levels.
+  deepseek41T: {
+    name: 'deepseek41T',
+    label: 'DeepSeek V4.1 Flash (Thinking)',
+    fullName: 'deepseek-flash',
+    shortName: 'deepseek-flash',
+    openrouterFullName: 'deepseek/deepseek-v4.1-flash',
+    provider: ModelProvider.DEEPSEEK,
+    maxOutputTokens: 393216,
+    contextWindow: 1048576,
+    inputPrice: 0.15,
+    outputPrice: 0.6,
+    capabilities: {
+      ...DEEPSEEK_DEFAULT_CAPABILITIES,
+      supportsVision: true,
+      supportsReasoning: true,
+      supportsReasoningEffort: true,
+      reasoningEffort: ReasoningEffort.HIGH,
+      maxReasoningEffort: ReasoningEffort.MAX,
+      supportedReasoningEfforts: [ReasoningEffort.HIGH, ReasoningEffort.MAX],
+      supportsFunctionCalling: true,
+      supportsAssistantPrefill: true,
+      cacheDiscountFactor: 0.02,
+    },
+    openRouterOnly: false,
+  },
   // DeepSeek-V4-Flash (Non-thinking Mode)
   // Official API release (DeepSeek-V4-Flash-0731, public beta): the model id
   // stays `deepseek-v4-flash`, so this entry covers the official build. The
   // legacy `deepseek-chat` / `deepseek-reasoner` names point at this model's
   // non-thinking / thinking modes until they are discontinued.
+  // Retired 2026-09-10 in favor of DeepSeek-V4.1-Flash (`deepseek41` above);
+  // the `deepseek-v4-flash` id keeps routing to V4.1-Flash for compatibility
+  // rather than failing outright, so this entry is deprecated, not retired.
   deepseek: {
     name: 'deepseek',
     label: 'DeepSeek V4 Flash',
@@ -49,12 +115,14 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
       cacheDiscountFactor: 0.02,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   // DeepSeek-V4-Flash (Thinking Mode)
   // reasoning_effort defaults to high. Flash resolves three distinct levels —
   // low, high, max — so all three are listed. xhigh and medium are accepted as
   // compatibility aliases and both map onto high here, so neither is listed as
   // a distinct level.
+  // Retired 2026-09-10, see `deepseek` above; superseded by `deepseek41T`.
   deepseekT: {
     name: 'deepseekT',
     label: 'DeepSeek V4 Flash (Thinking)',
@@ -82,6 +150,7 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
       cacheDiscountFactor: 0.02,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   // DeepSeek-V4-Flash-Vision-Exp
   // Experimental vision-enabled variant of V4-Flash (announced 2026-08-21):
@@ -93,6 +162,8 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
   // `deepseek` (V4-Flash non-thinking) entry's price, context window, and
   // max output tokens. The guide only documents non-thinking chat usage, so
   // no thinking-mode variant is listed here.
+  // Retired 2026-09-10: vision is now native in `deepseek41` above, and the
+  // `deepseek-v4-flash-vision-exp` id routes to V4.1-Flash for compatibility.
   deepseekvision: {
     name: 'deepseekvision',
     label: 'DeepSeek V4 Flash Vision (Exp)',
@@ -112,6 +183,7 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
       cacheDiscountFactor: 0.02,
     },
     openRouterOnly: false,
+    deprecated: true,
   },
   // DeepSeek-V4-Pro (Non-thinking Mode)
   deepseekpro: {

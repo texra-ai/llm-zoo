@@ -36,6 +36,7 @@ npm install llm-zoo
 | Model | Input | Output | Provider |
 |-------|-------|--------|----------|
 | `qwenturbo` | $0.05 | $0.50 | DashScope |
+| `deepseek41` | $0.15 | $0.60 | DeepSeek |
 | `deepseek` | $0.14 | $0.28 | DeepSeek |
 | `gpt56--` | $0.20 | $1.20 | OpenAI |
 | `gemini31f-` | $0.25 | $1.50 | Google |
@@ -86,7 +87,7 @@ npm install llm-zoo
 | Capability | Count | Examples |
 |------------|-------|----------|
 | Vision | 45+ | `sonnet46`, `gpt41`, `gemini31p` |
-| Reasoning | 30+ | `opus5T`, `gpt56`, `deepseekT`, `grok43` |
+| Reasoning | 30+ | `opus5T`, `gpt56`, `deepseek41T`, `grok43` |
 | Code Execution | 20+ | `sonnet46`, `gpt41`, `gemini38f` |
 | Web Search | 15+ | `opus5`, `gpt41`, `gpt56-` |
 | Prompt Caching | 25+ | All Claude, Gemini, DeepSeek |
@@ -98,7 +99,7 @@ npm install llm-zoo
 | **Anthropic** | 36 | Fable 5.1, Mythos 5.1, Opus 5, Sonnet 5, 1M context, 97.5% cache savings on Fable/Mythos 5.1, PDF support |
 | **OpenAI** | 41 | GPT-6 Astra, GPT-5.x reasoning, Fast mode tier, deep research |
 | **GLM** | 14 | Zhipu GLM-5.3-Flash, native vision, up to 1M context |
-| **DeepSeek** | 12 | Budget reasoning ($0.14/1M), vision (V4 Flash Vision Exp) |
+| **DeepSeek** | 14 | V4.1 Flash (native vision, $0.15/1M), budget reasoning |
 | **Moonshot** | 14 | Kimi K3 (1M context), K2.7 Code, K2.6 thinking mode |
 | **Google** | 13 | Gemini 3.8 Flash, 1M context, audio input |
 | **MiniMax** | 6 | M-series reasoning, 1M context |
