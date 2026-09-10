@@ -31,7 +31,7 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
   // smallest model in DeepSeek's new architecture family) with native
   // multimodal visual understanding folded into the base model, replacing
   // the separate V4-Flash / V4-Flash-Vision-Exp split below. The canonical
-  // model id is `deepseek-flash`; the retired `deepseek-v4-flash` and
+  // model id is `deepseek-flash`; the superseded `deepseek-v4-flash` and
   // `deepseek-v4-flash-vision-exp` ids continue to route here for
   // compatibility. Pricing reflects the same-day rate cut DeepSeek announced
   // alongside the release (off-peak; peak, 01:00-04:00 and 06:00-10:00 UTC
