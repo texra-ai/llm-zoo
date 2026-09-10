@@ -35,10 +35,7 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
   // `deepseek-v4-flash-vision-exp` ids continue to route here for
   // compatibility. Pricing reflects the same-day rate cut DeepSeek announced
   // alongside the release (off-peak; peak, 01:00-04:00 and 06:00-10:00 UTC
-  // weekdays, is 2x). Sourced from launch-day reporting rather than a
-  // directly-fetched primary doc (api-docs.deepseek.com was unreachable from
-  // this environment at write time) — recheck against
-  // https://api-docs.deepseek.com/quick_start/pricing if figures look off.
+  // weekdays, is 2x). Source: https://api-docs.deepseek.com/quick_start/pricing
   deepseek41: {
     name: 'deepseek41',
     label: 'DeepSeek V4.1 Flash',
@@ -60,10 +57,10 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
     openRouterOnly: false,
   },
   // DeepSeek-V4.1-Flash (Thinking Mode)
-  // reasoning_effort defaults to high. Per the thinking_mode guide,
-  // `deepseek-flash` resolves three distinct levels — low, high, max — same
-  // as V4-Flash below. medium and xhigh are compatibility aliases that both
-  // map onto high, so neither is listed as a distinct level.
+  // reasoning_effort defaults to high. Flash resolves three distinct levels —
+  // low, high, max — so all three are listed. minimal also maps onto low,
+  // while medium and xhigh are compatibility aliases that both map onto high
+  // and ultra maps onto max, so none of those are listed as distinct levels.
   deepseek41T: {
     name: 'deepseek41T',
     label: 'DeepSeek V4.1 Flash (Thinking)',

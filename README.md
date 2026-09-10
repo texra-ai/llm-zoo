@@ -37,7 +37,6 @@ npm install llm-zoo
 |-------|-------|--------|----------|
 | `qwenturbo` | $0.05 | $0.50 | DashScope |
 | `deepseek41` | $0.15 | $0.60 | DeepSeek |
-| `deepseek` | $0.14 | $0.28 | DeepSeek |
 | `gpt56--` | $0.20 | $1.20 | OpenAI |
 | `gemini31f-` | $0.25 | $1.50 | Google |
 | `gemini35f-` | $0.30 | $2.50 | Google |
