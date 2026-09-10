@@ -112,6 +112,8 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
     contextWindow: 1048576,
     inputPrice: 0.15,
     outputPrice: 0.6,
+    // capabilities describe V4-Flash (unchanged); pricing above follows the
+    // compat routing to V4.1-Flash.
     capabilities: {
       ...DEEPSEEK_DEFAULT_CAPABILITIES,
       supportsAssistantPrefill: true,
@@ -139,6 +141,8 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
     contextWindow: 1048576,
     inputPrice: 0.15,
     outputPrice: 0.6,
+    // capabilities describe V4-Flash (unchanged); pricing above follows the
+    // compat routing to V4.1-Flash.
     capabilities: {
       ...DEEPSEEK_DEFAULT_CAPABILITIES,
       supportsReasoning: true,
