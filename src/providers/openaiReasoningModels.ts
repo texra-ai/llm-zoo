@@ -687,6 +687,67 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     openRouterOnly: false,
     codexSubscription: true,
   },
+  // GPT-6 Astra Pro: same model id as `gpt6`, requested with
+  // `reasoning.mode: 'pro'`. OpenAI's migration guide confirms pro mode
+  // "is available as an existing capability inherited from GPT-5.6" — that
+  // 5.6 mechanism (see `gpt56pro` above) bills at the model's standard
+  // token rates rather than a separate price, and OpenRouter's listing
+  // (openrouter.ai/openai/gpt-6-astra-pro) corroborates the same $10/$50
+  // rate carrying over unchanged.
+  gpt6pro: {
+    name: 'gpt6pro',
+    label: 'GPT-6 Astra Pro',
+    fullName: 'gpt-6-astra',
+    shortName: 'gpt-6-astra',
+    provider: ModelProvider.OPENAI,
+    maxOutputTokens: 128000,
+    contextWindow: 1050000,
+    inputPrice: 10.0,
+    outputPrice: 50.0,
+    capabilities: {
+      ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
+      cacheDiscountFactor: 0.1,
+      reasoningEffort: ReasoningEffort.MEDIUM,
+      maxReasoningEffort: ReasoningEffort.MAX,
+      reasoningMode: 'pro',
+      supportsPromptCaching: true,
+      supportsNativeMCPServer: true,
+      supportsNativeWebSearch: true,
+      supportsNativeCodeExecution: true,
+      supportsVision: true,
+    },
+    requiresResponsesAPI: true,
+    openRouterOnly: false,
+  },
+  // GPT-6 Astra (Fast mode): `service_tier: 'fast'`, priced at 2x the
+  // standard rate per OpenAI's Fast Mode guide ("Fast mode is priced at 2x
+  // applicable rates"). No latency SLA and unavailable with EU data
+  // residency, per the same guide.
+  gpt6fast: {
+    name: 'gpt6fast',
+    label: 'GPT-6 Astra (Fast)',
+    fullName: 'gpt-6-astra',
+    shortName: 'gpt-6-astra',
+    provider: ModelProvider.OPENAI,
+    maxOutputTokens: 128000,
+    contextWindow: 1050000,
+    inputPrice: 20.0,
+    outputPrice: 100.0,
+    capabilities: {
+      ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
+      cacheDiscountFactor: 0.1,
+      reasoningEffort: ReasoningEffort.MEDIUM,
+      maxReasoningEffort: ReasoningEffort.MAX,
+      supportsPromptCaching: true,
+      supportsNativeMCPServer: true,
+      supportsNativeWebSearch: true,
+      supportsNativeCodeExecution: true,
+      supportsVision: true,
+    },
+    requiresResponsesAPI: true,
+    serviceTier: 'fast',
+    openRouterOnly: false,
+  },
   gpt54: {
     name: 'gpt54',
     label: 'GPT-5.4',

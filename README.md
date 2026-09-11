@@ -96,7 +96,7 @@ npm install llm-zoo
 | Provider | Models | Highlights |
 |----------|--------|------------|
 | **Anthropic** | 36 | Fable 5.1, Mythos 5.1, Opus 5, Sonnet 5, 1M context, 97.5% cache savings on Fable/Mythos 5.1, PDF support |
-| **OpenAI** | 41 | GPT-6 Astra, GPT-5.x reasoning, Fast mode tier, deep research |
+| **OpenAI** | 43 | GPT-6 Astra (base, Pro, Fast mode), GPT-5.x reasoning, deep research |
 | **GLM** | 14 | Zhipu GLM-5.3-Flash, native vision, up to 1M context |
 | **DeepSeek** | 14 | V4.1 Flash (native vision, $0.15/1M), budget reasoning |
 | **Moonshot** | 14 | Kimi K3 (1M context), K2.7 Code, K2.6 thinking mode |
