@@ -339,8 +339,10 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
   // Prices are 0: usage is covered by the membership, not per-token billing.
   // ==========================================================================
   // kimi-for-coding: the coding-plan alias included with every membership
-  // tier (currently K2.7-code-class; Moonshot may repoint it over time).
-  // Thinking enabled by default, like kimi-k2.7-code.
+  // tier. Moonshot repointed it from K2.7-code-class to Kimi K2.8 Preview on
+  // 2026-09-11 (per https://www.kimi.com/code/docs/en/): full 1M context for
+  // all tiers, plus selectable low/high/max reasoning effort (max default).
+  // The wire ID is unchanged, so Moonshot may repoint it again over time.
   kimiCoding: {
     name: 'kimiCoding',
     label: 'Kimi for Coding',
@@ -350,7 +352,7 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
     baseUrl: 'https://api.kimi.com/coding/v1',
     kimiSubscription: true,
     maxOutputTokens: 64000,
-    contextWindow: 262144,
+    contextWindow: 1048576,
     inputPrice: 0,
     outputPrice: 0,
     capabilities: {
@@ -359,6 +361,13 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
       supportsReasoning: true,
       supportsInterleavedThinking: true,
       supportsAutoPromptCaching: true,
+      supportsReasoningEffort: true,
+      supportedReasoningEfforts: [
+        ReasoningEffort.LOW,
+        ReasoningEffort.HIGH,
+        ReasoningEffort.MAX,
+      ],
+      reasoningEffort: ReasoningEffort.MAX,
     },
     openRouterOnly: false,
   },
