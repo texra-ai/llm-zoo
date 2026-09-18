@@ -33,6 +33,9 @@ const GLM_DEFAULT_CAPABILITIES: ModelCapabilities = {
 export const GLM_MODELS: Record<string, ModelConfig> = {
   // GLM-5.3-Flash (Native multimodal model, released 2026-08-26)
   // 1M-token context with mandatory reasoning and GLM-5.3's Low/High/Max tiers.
+  // Launch promo ended 2026-09-09 UTC+8; pricing below is the list rate
+  // confirmed live on docs.z.ai's pricing table as of 2026-09-18: $0.15
+  // input / $0.03 cached input / $0.50 output per 1M tokens.
   glm53flash: {
     name: 'glm53flash',
     label: 'GLM-5.3 Flash',
@@ -42,8 +45,8 @@ export const GLM_MODELS: Record<string, ModelConfig> = {
     provider: ModelProvider.GLM,
     maxOutputTokens: 131072,
     contextWindow: 1000000,
-    inputPrice: 0.075,
-    outputPrice: 0.25,
+    inputPrice: 0.15,
+    outputPrice: 0.5,
     capabilities: {
       ...GLM_DEFAULT_CAPABILITIES,
       supportsVision: true,
@@ -54,9 +57,38 @@ export const GLM_MODELS: Record<string, ModelConfig> = {
         ReasoningEffort.HIGH,
         ReasoningEffort.MAX,
       ],
-      // Promo through 2026-09-09 UTC+8; list prices are $0.15 input / $0.50 output.
-      // Cached input is $0.015 / 1M tokens during the promotion.
-      cacheDiscountFactor: 0.2,
+      cacheDiscountFactor: 0.03 / 0.15,
+    },
+    openRouterOnly: false,
+  },
+  // GLM-5.3-FlashX (High-speed serving tier, live as of 2026-09-18)
+  // Same GLM-5.3-Flash model/weights and capabilities, served at ~200
+  // tokens/s for latency-sensitive coding agents and tool loops, at a
+  // premium token rate. Not on OpenRouter; reachable via the native Z.ai
+  // API (`glm-5.3-flashx`) and Vercel AI Gateway (`zai/glm-5.3-flashx`).
+  // Source: https://docs.z.ai/guides/vlm/glm-5.3-flash and
+  // https://docs.z.ai/guides/overview/pricing
+  glm53flashx: {
+    name: 'glm53flashx',
+    label: 'GLM-5.3 FlashX',
+    fullName: 'glm-5.3-flashx',
+    shortName: 'glm-5.3-flashx',
+    provider: ModelProvider.GLM,
+    maxOutputTokens: 131072,
+    contextWindow: 1000000,
+    inputPrice: 0.37,
+    outputPrice: 1.25,
+    capabilities: {
+      ...GLM_DEFAULT_CAPABILITIES,
+      supportsVision: true,
+      supportsReasoningEffort: true,
+      reasoningEffort: ReasoningEffort.MAX,
+      supportedReasoningEfforts: [
+        ReasoningEffort.LOW,
+        ReasoningEffort.HIGH,
+        ReasoningEffort.MAX,
+      ],
+      cacheDiscountFactor: 0.075 / 0.37,
     },
     openRouterOnly: false,
   },
