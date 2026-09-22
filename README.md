@@ -36,6 +36,7 @@ npm install llm-zoo
 | Model | Input | Output | Provider |
 |-------|-------|--------|----------|
 | `qwenturbo` | $0.05 | $0.50 | DashScope |
+| `gpt6--` | $0.10 | $0.50 | OpenAI |
 | `deepseek41` | $0.15 | $0.60 | DeepSeek |
 | `gpt56--` | $0.20 | $1.20 | OpenAI |
 | `gemini31f-` | $0.25 | $1.50 | Google |
@@ -55,10 +56,12 @@ npm install llm-zoo
 | `fable51` | $10 | $50 | ✓ | Anthropic |
 | `gpt56fast` | $8 | $40 | ✓ | OpenAI |
 | `gpt56` | $4 | $20 | ✓ | OpenAI |
+| `opus55` | $4 | $20 | ✓ | Anthropic |
 | `opus5T` | $5 | $25 | ✓ | Anthropic |
 | `opus5` | $5 | $25 | - | Anthropic |
 | `sonnet46T` | $3 | $15 | ✓ | Anthropic |
 | `gpt56-` | $2 | $12 | ✓ | OpenAI |
+| `gpt6-` | $2 | $10 | ✓ | OpenAI |
 | `gpt41` | $2 | $8 | - | OpenAI |
 | `gpt52` | $1.75 | $14 | ✓ | OpenAI |
 
@@ -67,12 +70,15 @@ npm install llm-zoo
 | Model | Context | Provider |
 |-------|---------|----------|
 | `gpt6` | 1M | OpenAI |
+| `gpt6-` | 1M | OpenAI |
+| `gpt6--` | 1M | OpenAI |
 | `gpt56` | 1M | OpenAI |
 | `gpt56-` | 1M | OpenAI |
 | `gpt56--` | 1M | OpenAI |
 | `gemini31p` | 1M | Google |
 | `gemini31f-` | 1M | Google |
 | `gemini38f` | 1M | Google |
+| `opus55` | 1M | Anthropic |
 | `opus5` | 1M | Anthropic |
 | `sonnet46` | 1M | Anthropic |
 | `qwenplus` | 1M | DashScope |
@@ -95,14 +101,14 @@ npm install llm-zoo
 
 | Provider | Models | Highlights |
 |----------|--------|------------|
-| **Anthropic** | 36 | Fable 5.1, Mythos 5.1, Opus 5, Sonnet 5, 1M context, 97.5% cache savings on Fable/Mythos 5.1, PDF support |
-| **OpenAI** | 41 | GPT-6 Astra, GPT-5.x reasoning, Fast mode tier, deep research |
+| **Anthropic** | 37 | Fable 5.1, Mythos 5.1, Opus 5.5, Opus 5, Sonnet 5, 1M context, 97.5% cache savings on Fable/Mythos 5.1, PDF support |
+| **OpenAI** | 43 | GPT-6 Astra, Sol, and Luna, GPT-5.x reasoning, Fast mode tier, deep research |
 | **GLM** | 14 | Zhipu GLM-5.3-Flash, native vision, up to 1M context |
 | **DeepSeek** | 14 | V4.1 Flash (native vision, $0.15/1M), budget reasoning |
 | **Moonshot** | 14 | Kimi K3 (1M context), K2.7 Code, K2.6 thinking mode |
 | **Google** | 13 | Gemini 3.8 Flash, 1M context, audio input |
 | **MiniMax** | 6 | M-series reasoning, 1M context |
-| **xAI** | 8 | Grok 4.6, Grok 4.3 with 1M context, configurable reasoning |
+| **xAI** | 9 | Grok 4.7, Grok 4.6, Grok 4.3 with 1M context, configurable reasoning |
 | **Meta** | 2 | Muse Spark 1.3, 1M context, agentic + multimodal |
 | **DashScope** | 3 | Qwen with 1M context |
 | **OpenRouter** | 2 | Llama 405B, QVQ-72B |

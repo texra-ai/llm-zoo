@@ -687,6 +687,63 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     openRouterOnly: false,
     codexSubscription: true,
   },
+  // GPT-6 Sol and Luna: smaller GPT-6 models built on Astra, launched at 50%
+  // below GPT-5.6's promotional API rates. Same rate-card shape as Astra:
+  // cached input at 10% of input, cache writes at 1.25x, and prompts over
+  // 272K input tokens bill the full request at 2x input/cache and 1.5x output
+  // (standard rates cataloged). `reasoning.effort` accepts
+  // none/low/medium/high/xhigh/max, default medium.
+  'gpt6-': {
+    name: 'gpt6-',
+    label: 'GPT-6 Sol',
+    fullName: 'gpt-6-sol',
+    shortName: 'gpt-6-sol',
+    provider: ModelProvider.OPENAI,
+    maxOutputTokens: 128000,
+    contextWindow: 1050000,
+    inputPrice: 2.0,
+    outputPrice: 10.0,
+    capabilities: {
+      ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
+      cacheDiscountFactor: 0.1,
+      reasoningEffort: ReasoningEffort.MEDIUM,
+      maxReasoningEffort: ReasoningEffort.MAX,
+      supportsPromptCaching: true,
+      supportsNativeMCPServer: true,
+      supportsNativeWebSearch: true,
+      supportsNativeCodeExecution: true,
+      supportsVision: true,
+    },
+    // Same reason as gpt6: xhigh/max need the Responses API.
+    requiresResponsesAPI: true,
+    openRouterOnly: false,
+    codexSubscription: true,
+  },
+  'gpt6--': {
+    name: 'gpt6--',
+    label: 'GPT-6 Luna',
+    fullName: 'gpt-6-luna',
+    shortName: 'gpt-6-luna',
+    provider: ModelProvider.OPENAI,
+    maxOutputTokens: 128000,
+    contextWindow: 1050000,
+    inputPrice: 0.1,
+    outputPrice: 0.5,
+    capabilities: {
+      ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
+      cacheDiscountFactor: 0.1,
+      reasoningEffort: ReasoningEffort.MEDIUM,
+      maxReasoningEffort: ReasoningEffort.MAX,
+      supportsPromptCaching: true,
+      supportsNativeMCPServer: true,
+      supportsNativeWebSearch: true,
+      supportsNativeCodeExecution: true,
+      supportsVision: true,
+    },
+    requiresResponsesAPI: true,
+    openRouterOnly: false,
+    codexSubscription: true,
+  },
   gpt54: {
     name: 'gpt54',
     label: 'GPT-5.4',

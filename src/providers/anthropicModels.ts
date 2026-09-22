@@ -56,7 +56,7 @@ const OPUS_5_NON_THINKING_REASONING_EFFORTS = [
 /**
  * Anthropic Claude model configurations.
  * Includes Claude Fable 5.1, Claude Mythos 5.1, Claude Fable 5, Claude Mythos 5,
- * and 4.x/3.x Opus, Sonnet, and Haiku variants.
+ * Claude Opus 5.5, and 5.x/4.x/3.x Opus, Sonnet, and Haiku variants.
  */
 export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
   fable51: {
@@ -184,6 +184,39 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     openRouterOnly: false,
     // Superseded by Claude Mythos 5.1 (same specs/pricing, cheaper cache reads).
     deprecated: true,
+  },
+  // Opus 5.5 (2026-09-22): $4 / $20, cache reads $0.20 (0.05x base input).
+  // Adaptive thinking is always on (disabled or budgeted thinking returns a
+  // 400), so there is no non-thinking variant; default effort is `medium`.
+  opus55: {
+    name: 'opus55',
+    label: 'Opus 5.5',
+    fullName: 'claude-opus-5-5',
+    shortName: 'claude-opus-5-5',
+    openrouterFullName: 'anthropic/claude-opus-5.5',
+    vscodeLMFullName: 'claude-opus-5.5',
+    provider: ModelProvider.ANTHROPIC,
+    maxOutputTokens: 128000,
+    contextWindow: 1000000,
+    inputPrice: 4.0,
+    outputPrice: 20.0,
+    capabilities: {
+      ...ANTHROPIC_DEFAULT_CAPABILITIES,
+      cacheDiscountFactor: 0.05,
+      supportsNativeMCPServer: true,
+      supportsNativeWebSearch: true,
+      supportsDynamicFilteringWebSearch: true,
+      supportsNativeCodeExecution: true,
+      supportsAssistantPrefill: false,
+      supportsReasoning: true,
+      supportsReasoningEffort: true,
+      supportsAdaptiveThinking: true,
+      reasoningEffort: ReasoningEffort.MEDIUM,
+      maxReasoningEffort: ReasoningEffort.MAX,
+      supportedReasoningEfforts: ANTHROPIC_REASONING_EFFORTS,
+      supportsInterleavedThinking: true,
+    },
+    openRouterOnly: false,
   },
   opus5T: {
     name: 'opus5T',

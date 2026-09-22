@@ -33,6 +33,7 @@ const opus5NonThinkingEffortVocabulary = [
   ReasoningEffort.HIGH,
 ];
 
+// The optional last column is the documented default effort when it is not `high`.
 // Anthropic effort controls the whole response and does not require thinking.
 // Adaptive thinking is a separate model behavior and is true only for its thinking entries.
 const anthropicCapabilityMatrix = [
@@ -42,6 +43,7 @@ const anthropicCapabilityMatrix = [
   ['opus47', 'claude-opus-4-7', false, true, fullEffortVocabulary, ReasoningEffort.MAX],
   ['opus48T', 'claude-opus-4-8', true, true, fullEffortVocabulary, ReasoningEffort.MAX],
   ['opus48', 'claude-opus-4-8', false, true, fullEffortVocabulary, ReasoningEffort.MAX],
+  ['opus55', 'claude-opus-5-5', true, true, fullEffortVocabulary, ReasoningEffort.MAX, ReasoningEffort.MEDIUM],
   ['opus5T', 'claude-opus-5', true, true, fullEffortVocabulary, ReasoningEffort.MAX],
   ['opus5', 'claude-opus-5', false, true, opus5NonThinkingEffortVocabulary, undefined],
   ['sonnet46T', 'claude-sonnet-4-6', true, true, effortVocabularyWithoutXhigh, ReasoningEffort.MAX],
@@ -66,7 +68,7 @@ const registries = [
 
 test('Anthropic exports distinguish adaptive thinking from effort support', () => {
   for (const [exportName, models] of registries) {
-    for (const [key, fullName, adaptive, supportsEffort, acceptedEfforts, explicitMaximum] of
+    for (const [key, fullName, adaptive, supportsEffort, acceptedEfforts, explicitMaximum, defaultEffort] of
       anthropicCapabilityMatrix) {
       const model = models[key];
       assert.ok(model, `${exportName}: missing Anthropic model ${key}`);
@@ -83,7 +85,7 @@ test('Anthropic exports distinguish adaptive thinking from effort support', () =
       );
       assert.equal(
         model.capabilities.reasoningEffort,
-        supportsEffort ? ReasoningEffort.HIGH : ReasoningEffort.NONE,
+        defaultEffort ?? (supportsEffort ? ReasoningEffort.HIGH : ReasoningEffort.NONE),
         `${exportName}: ${key} reasoningEffort`,
       );
       assert.deepEqual(
@@ -114,6 +116,7 @@ test('only the documented Anthropic entries advertise adaptive thinking', () => 
     'mythos51',
     'fable5',
     'mythos5',
+    'opus55',
     'opus5T',
     'opus48T',
     'opus47T',
