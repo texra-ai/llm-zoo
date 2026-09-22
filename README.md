@@ -8,12 +8,12 @@ LLM pricing and capabilities change weekly. Docs are scattered. There's no singl
 import { lookup, cost, cheapest } from 'llm-zoo';
 
 // Know everything about any model
-const claude = lookup('sonnet46');
+const claude = lookup('sonnet5');
 console.log(claude.contextWindow);  // 1000000
 console.log(claude.inputPrice);     // 3
 
 // Calculate exact costs
-const price = cost('gpt4o', { input: 50000, output: 10000 });
+const price = cost('gpt6-', { input: 50000, output: 10000 });
 
 // Find the right model
 const budget = cheapest({ supportsVision: true, supportsReasoning: true });
@@ -115,9 +115,9 @@ npm install llm-zoo
 ### Lookup
 
 ```typescript
-lookup('sonnet46')              // → ModelConfig | undefined
-resolve('claude-sonnet-4-6')    // → by full API name
-exists('gpt4o')                 // → true
+lookup('sonnet5')               // → ModelConfig | undefined
+resolve('claude-sonnet-5')      // → by full API name
+exists('gpt6-')                 // → true
 ```
 
 ### Filter
@@ -132,10 +132,10 @@ withContext(500000)             // → 500K+ context models
 ### Cost
 
 ```typescript
-cost('sonnet46', { input: 10000, output: 5000 })
-cost('sonnet46', { input: 10000, output: 5000, cached: 8000 })  // with caching
-maxCost('gpt4o', 50000)                                         // worst case
-compareCosts(['sonnet46', 'gpt4o'], { input: 10000, output: 2000 })
+cost('sonnet5', { input: 10000, output: 5000 })
+cost('sonnet5', { input: 10000, output: 5000, cached: 8000 })  // with caching
+maxCost('gpt6-', 50000)                                         // worst case
+compareCosts(['sonnet5', 'gpt6-'], { input: 10000, output: 2000 })
 ```
 
 ### Select
@@ -185,8 +185,8 @@ Available schemas:
 
 ```typescript
 interface ModelConfig {
-  name: string;              // 'sonnet46'
-  fullName: string;          // 'claude-sonnet-4-6'
+  name: string;              // 'sonnet5'
+  fullName: string;          // 'claude-sonnet-5'
   provider: ModelProvider;
   inputPrice: number;        // $/1M tokens
   outputPrice: number;
@@ -269,7 +269,7 @@ const report = Object.entries(usage).map(([model, tokens]) => ({
 ```typescript
 import { MODEL_CONFIGS, MODELS, ANTHROPIC_MODELS } from 'llm-zoo';
 
-MODEL_CONFIGS['sonnet46'].inputPrice;
+MODEL_CONFIGS['sonnet5'].inputPrice;
 MODELS.forEach(name => console.log(name));
 Object.keys(ANTHROPIC_MODELS);
 ```
