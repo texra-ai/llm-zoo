@@ -88,6 +88,9 @@ export const XAI_MODELS: Record<string, ModelConfig> = {
     outputPrice: 6.0,
     capabilities: {
       ...XAI_DEFAULT_CAPABILITIES,
+      // xAI caches prompts automatically; cached input is $0.30 of $2.00.
+      supportsAutoPromptCaching: true,
+      cacheDiscountFactor: 0.15,
       supportsVision: true,
       supportsReasoning: true,
       supportsReasoningEffort: true,
@@ -110,6 +113,9 @@ export const XAI_MODELS: Record<string, ModelConfig> = {
     outputPrice: 2.5,
     capabilities: {
       ...XAI_DEFAULT_CAPABILITIES,
+      // xAI caches prompts automatically; cached input is $0.20 of $1.25.
+      supportsAutoPromptCaching: true,
+      cacheDiscountFactor: 0.16,
       supportsReasoning: true,
       supportsReasoningEffort: true,
       reasoningEffort: ReasoningEffort.LOW,
