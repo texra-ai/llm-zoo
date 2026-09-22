@@ -246,6 +246,8 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
       supportsInterleavedThinking: true,
     },
     openRouterOnly: false,
+    // Superseded by Claude Opus 5.5 (cheaper, same context and output).
+    deprecated: true,
   },
   opus5: {
     name: 'opus5',
@@ -271,6 +273,8 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
       supportedReasoningEfforts: OPUS_5_NON_THINKING_REASONING_EFFORTS,
     },
     openRouterOnly: false,
+    // Superseded by Claude Opus 5.5 (cheaper, same context and output).
+    deprecated: true,
   },
   opus48T: {
     name: 'opus48T',

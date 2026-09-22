@@ -38,7 +38,6 @@ npm install llm-zoo
 | `qwenturbo` | $0.05 | $0.50 | DashScope |
 | `gpt6--` | $0.10 | $0.50 | OpenAI |
 | `deepseek41` | $0.15 | $0.60 | DeepSeek |
-| `gpt56--` | $0.20 | $1.20 | OpenAI |
 | `gemini31f-` | $0.25 | $1.50 | Google |
 | `gemini35f-` | $0.30 | $2.50 | Google |
 | `gpt41-` | $0.40 | $1.60 | OpenAI |
@@ -55,10 +54,7 @@ npm install llm-zoo
 | `gpt6` | $10 | $50 | ✓ | OpenAI |
 | `fable51` | $10 | $50 | ✓ | Anthropic |
 | `gpt56fast` | $8 | $40 | ✓ | OpenAI |
-| `gpt56` | $4 | $20 | ✓ | OpenAI |
 | `opus55` | $4 | $20 | ✓ | Anthropic |
-| `opus5T` | $5 | $25 | ✓ | Anthropic |
-| `opus5` | $5 | $25 | - | Anthropic |
 | `sonnet46T` | $3 | $15 | ✓ | Anthropic |
 | `gpt56-` | $2 | $12 | ✓ | OpenAI |
 | `gpt6-` | $2 | $10 | ✓ | OpenAI |
@@ -72,14 +68,11 @@ npm install llm-zoo
 | `gpt6` | 1M | OpenAI |
 | `gpt6-` | 1M | OpenAI |
 | `gpt6--` | 1M | OpenAI |
-| `gpt56` | 1M | OpenAI |
 | `gpt56-` | 1M | OpenAI |
-| `gpt56--` | 1M | OpenAI |
 | `gemini31p` | 1M | Google |
 | `gemini31f-` | 1M | Google |
 | `gemini38f` | 1M | Google |
 | `opus55` | 1M | Anthropic |
-| `opus5` | 1M | Anthropic |
 | `sonnet46` | 1M | Anthropic |
 | `qwenplus` | 1M | DashScope |
 | `gpt41` | 1M | OpenAI |
@@ -92,23 +85,23 @@ npm install llm-zoo
 | Capability | Count | Examples |
 |------------|-------|----------|
 | Vision | 45+ | `sonnet46`, `gpt41`, `gemini31p` |
-| Reasoning | 30+ | `opus5T`, `gpt56`, `deepseek41T`, `grok43` |
+| Reasoning | 30+ | `opus55`, `gpt6-`, `deepseek41T`, `grok43` |
 | Code Execution | 20+ | `sonnet46`, `gpt41`, `gemini38f` |
-| Web Search | 15+ | `opus5`, `gpt41`, `gpt56-` |
+| Web Search | 15+ | `opus55`, `gpt41`, `gpt56-` |
 | Prompt Caching | 25+ | All Claude, Gemini, DeepSeek |
 
 ### Providers
 
 | Provider | Models | Highlights |
 |----------|--------|------------|
-| **Anthropic** | 37 | Fable 5.1, Mythos 5.1, Opus 5.5, Opus 5, Sonnet 5, 1M context, 97.5% cache savings on Fable/Mythos 5.1, PDF support |
+| **Anthropic** | 37 | Fable 5.1, Mythos 5.1, Opus 5.5, Sonnet 5, 1M context, 97.5% cache savings on Fable/Mythos 5.1, PDF support |
 | **OpenAI** | 43 | GPT-6 Astra, Sol, and Luna, GPT-5.x reasoning, Fast mode tier, deep research |
 | **GLM** | 14 | Zhipu GLM-5.3-Flash, native vision, up to 1M context |
 | **DeepSeek** | 14 | V4.1 Flash (native vision, $0.15/1M), budget reasoning |
 | **Moonshot** | 14 | Kimi K3 (1M context), K2.7 Code, K2.6 thinking mode |
 | **Google** | 13 | Gemini 3.8 Flash, 1M context, audio input |
 | **MiniMax** | 6 | M-series reasoning, 1M context |
-| **xAI** | 9 | Grok 4.7, Grok 4.6, Grok 4.3 with 1M context, configurable reasoning |
+| **xAI** | 9 | Grok 4.7, Grok 4.3 with 1M context, configurable reasoning |
 | **Meta** | 2 | Muse Spark 1.3, 1M context, agentic + multimodal |
 | **DashScope** | 3 | Qwen with 1M context |
 | **OpenRouter** | 2 | Llama 405B, QVQ-72B |

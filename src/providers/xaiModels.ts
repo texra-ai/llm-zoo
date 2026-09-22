@@ -65,6 +65,8 @@ export const XAI_MODELS: Record<string, ModelConfig> = {
       reasoningEffort: ReasoningEffort.HIGH,
     },
     openRouterOnly: false,
+    // Superseded by Grok 4.7 (same price and speed).
+    deprecated: true,
   },
   grok45: {
     name: 'grok45',
@@ -85,6 +87,8 @@ export const XAI_MODELS: Record<string, ModelConfig> = {
       reasoningEffort: ReasoningEffort.HIGH,
     },
     openRouterOnly: false,
+    // Superseded by Grok 4.7 (same price and speed).
+    deprecated: true,
   },
   grok43: {
     name: 'grok43',

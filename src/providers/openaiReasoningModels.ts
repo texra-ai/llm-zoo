@@ -521,6 +521,8 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     codexSubscription: true,
+    // Superseded by GPT-6 Sol (gpt6-).
+    deprecated: true,
   },
   // gpt56pro: GPT-5.6 Sol driven in the Responses API's pro reasoning mode
   // (`reasoning.mode: 'pro'`). Unlike earlier Pro releases this is not a
@@ -650,6 +652,8 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     codexSubscription: true,
+    // Superseded by GPT-6 Luna (gpt6--).
+    deprecated: true,
   },
   // GPT-6 Astra (2026-09-04): OpenAI's flagship. Launched in the Trusted
   // Access Program, then opened the same day to Pro, Enterprise, and Business
