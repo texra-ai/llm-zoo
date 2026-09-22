@@ -16,9 +16,34 @@ const XAI_DEFAULT_CAPABILITIES: ModelCapabilities = {
 
 /**
  * xAI Grok model configurations.
- * Includes Grok 4.6, 4.5, 4.3, 4, 3, and 2 variants.
+ * Includes Grok 4.7, 4.6, 4.5, 4.3, 4, 3, and 2 variants.
  */
 export const XAI_MODELS: Record<string, ModelConfig> = {
+  // Grok 4.7 (released 2026-09-21): 500K context and $2/$6 (<200K tier)
+  // pricing per docs.x.ai/developers/grok-4-7, same base tier as 4.6/4.5.
+  // Reasoning effort accepts low/medium/high (default)/xhigh; xAI publishes
+  // no max output tokens for any Grok model ("no text output limit"), so
+  // this carries over the 128K value used by the other Grok 4.x entries here.
+  grok47: {
+    name: 'grok47',
+    label: 'Grok 4.7',
+    fullName: 'grok-4.7',
+    shortName: 'grok-4.7',
+    openrouterFullName: 'x-ai/grok-4.7',
+    provider: ModelProvider.XAI,
+    maxOutputTokens: 128000,
+    contextWindow: 500000,
+    inputPrice: 2.0,
+    outputPrice: 6.0,
+    capabilities: {
+      ...XAI_DEFAULT_CAPABILITIES,
+      supportsVision: true,
+      supportsReasoning: true,
+      supportsReasoningEffort: true,
+      reasoningEffort: ReasoningEffort.HIGH,
+    },
+    openRouterOnly: false,
+  },
   // Grok 4.6: 500K context and $2/$6 (<200K tier) pricing per docs.x.ai, same
   // as 4.5. xAI publishes no max output tokens for any Grok model ("no text
   // output limit"), so this carries over the 128K value used by the other

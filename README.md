@@ -102,7 +102,7 @@ npm install llm-zoo
 | **Moonshot** | 14 | Kimi K3 (1M context), K2.7 Code, K2.6 thinking mode |
 | **Google** | 13 | Gemini 3.8 Flash, 1M context, audio input |
 | **MiniMax** | 6 | M-series reasoning, 1M context |
-| **xAI** | 8 | Grok 4.6, Grok 4.3 with 1M context, configurable reasoning |
+| **xAI** | 9 | Grok 4.7, Grok 4.3 with 1M context, configurable reasoning |
 | **Meta** | 2 | Muse Spark 1.3, 1M context, agentic + multimodal |
 | **DashScope** | 3 | Qwen with 1M context |
 | **OpenRouter** | 2 | Llama 405B, QVQ-72B |
