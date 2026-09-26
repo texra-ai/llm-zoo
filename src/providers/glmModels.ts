@@ -58,7 +58,8 @@ export const GLM_MODELS: Record<string, ModelConfig> = {
       // Cached input is $0.015 / 1M tokens during the promotion.
       cacheDiscountFactor: 0.2,
     },
-    openRouterOnly: false,
+    // Not served on the vendor's own Responses API.
+    openRouterOnly: true,
   },
   // GLM-5.3 (Flagship agentic coding model, announced 2026-08-14)
   // Same base model as GLM-5.2, post-training only. 1M-token context, three
@@ -121,7 +122,8 @@ export const GLM_MODELS: Record<string, ModelConfig> = {
       // Cached input $0.26 / 1M vs $1.4 / 1M input.
       cacheDiscountFactor: 0.186,
     },
-    openRouterOnly: false,
+    // Not served on the vendor's own Responses API.
+    openRouterOnly: true,
     deprecated: true,
   },
   // GLM-5.1 (Agentic coding model, released 2026-04-07)
@@ -141,7 +143,8 @@ export const GLM_MODELS: Record<string, ModelConfig> = {
       // Cached input $0.26 / 1M vs $1.4 / 1M input.
       cacheDiscountFactor: 0.186,
     },
-    openRouterOnly: false,
+    // Not served on the vendor's own Responses API.
+    openRouterOnly: true,
     deprecated: true,
   },
   // GLM-5V-Turbo (Native multimodal agent for vision-based coding)
@@ -163,7 +166,8 @@ export const GLM_MODELS: Record<string, ModelConfig> = {
       // Cached input $0.24 / 1M vs $1.2 / 1M input.
       cacheDiscountFactor: 0.2,
     },
-    openRouterOnly: false,
+    // Not served on the vendor's own Responses API.
+    openRouterOnly: true,
   },
   // GLM-5 (Flagship open-source model)
   glm5: {
@@ -182,7 +186,8 @@ export const GLM_MODELS: Record<string, ModelConfig> = {
       // Cached input $0.2 / 1M vs $1.0 / 1M input.
       cacheDiscountFactor: 0.2,
     },
-    openRouterOnly: false,
+    // Not served on the vendor's own Responses API.
+    openRouterOnly: true,
     deprecated: true,
   },
   // GLM-5 Turbo (Fast inference, agent-optimized)
@@ -221,7 +226,8 @@ export const GLM_MODELS: Record<string, ModelConfig> = {
       // Cached input $0.11 / 1M vs $0.6 / 1M input.
       cacheDiscountFactor: 0.183,
     },
-    openRouterOnly: false,
+    // Not served on the vendor's own Responses API.
+    openRouterOnly: true,
     deprecated: true,
   },
   // GLM-4.7 Flash (Free efficient 30B-class model)
@@ -239,7 +245,8 @@ export const GLM_MODELS: Record<string, ModelConfig> = {
     capabilities: {
       ...GLM_DEFAULT_CAPABILITIES,
     },
-    openRouterOnly: false,
+    // Not served on the vendor's own Responses API.
+    openRouterOnly: true,
     deprecated: true,
   },
   // GLM-4.6V (Multimodal vision model)
@@ -261,7 +268,8 @@ export const GLM_MODELS: Record<string, ModelConfig> = {
       // Cached input $0.05 / 1M vs $0.3 / 1M input.
       cacheDiscountFactor: 0.167,
     },
-    openRouterOnly: false,
+    // Not served on the vendor's own Responses API.
+    openRouterOnly: true,
     deprecated: true,
   },
   // GLM-4.5 (Hybrid reasoning MoE model, 355B/32B active)
@@ -283,7 +291,8 @@ export const GLM_MODELS: Record<string, ModelConfig> = {
       // Cached input $0.11 / 1M vs $0.6 / 1M input.
       cacheDiscountFactor: 0.183,
     },
-    openRouterOnly: false,
+    // Not served on the vendor's own Responses API.
+    openRouterOnly: true,
     deprecated: true,
   },
   // GLM-4.5V (Vision-language MoE model, 106B/12B active)
@@ -304,7 +313,8 @@ export const GLM_MODELS: Record<string, ModelConfig> = {
       // Cached input $0.11 / 1M vs $0.6 / 1M input.
       cacheDiscountFactor: 0.183,
     },
-    openRouterOnly: false,
+    // Not served on the vendor's own Responses API.
+    openRouterOnly: true,
     deprecated: true,
   },
   // GLM-4.5 Air (Free lightweight agent model)
@@ -322,7 +332,8 @@ export const GLM_MODELS: Record<string, ModelConfig> = {
     capabilities: {
       ...GLM_DEFAULT_CAPABILITIES,
     },
-    openRouterOnly: false,
+    // Not served on the vendor's own Responses API.
+    openRouterOnly: true,
     deprecated: true,
   },
   // GLM-4 32B (Superseded by GLM-4.7 and GLM-5)
@@ -344,7 +355,8 @@ export const GLM_MODELS: Record<string, ModelConfig> = {
       supportsAutoPromptCaching: false,
       supportsVision: false,
     },
-    openRouterOnly: false,
+    // Not served on the vendor's own Responses API.
+    openRouterOnly: true,
     deprecated: true,
   },
 };

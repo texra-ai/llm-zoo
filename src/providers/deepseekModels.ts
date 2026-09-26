@@ -123,7 +123,8 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
       supportsFunctionCalling: true,
       cacheDiscountFactor: 0.02,
     },
-    openRouterOnly: false,
+    // Not served on the vendor's own Responses API.
+    openRouterOnly: true,
     deprecated: true,
   },
   // DeepSeek-V4-Flash (Thinking Mode)
@@ -161,7 +162,8 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
       supportsAssistantPrefill: true,
       cacheDiscountFactor: 0.02,
     },
-    openRouterOnly: false,
+    // Not served on the vendor's own Responses API.
+    openRouterOnly: true,
     deprecated: true,
   },
   // DeepSeek-V4-Flash-Vision-Exp
@@ -197,7 +199,8 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
       supportsFunctionCalling: true,
       cacheDiscountFactor: 0.02,
     },
-    openRouterOnly: false,
+    // Not served on the vendor's own Responses API.
+    openRouterOnly: true,
     deprecated: true,
   },
   // DeepSeek-V4-Pro (Non-thinking Mode)
@@ -267,7 +270,8 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
       supportsAssistantPrefill: true,
       supportsFunctionCalling: true,
     },
-    openRouterOnly: false,
+    // Not served on the vendor's own Responses API.
+    openRouterOnly: true,
     deprecated: true,
     retired: true,
   },
@@ -290,7 +294,8 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
       supportsFunctionCalling: true,
       supportsAssistantPrefill: true,
     },
-    openRouterOnly: false,
+    // Not served on the vendor's own Responses API.
+    openRouterOnly: true,
     deprecated: true,
     retired: true,
   },
@@ -313,7 +318,8 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
       supportsFunctionCalling: false,
       supportsAssistantPrefill: false,
     },
-    openRouterOnly: false,
+    // Not served on the vendor's own Responses API.
+    openRouterOnly: true,
     baseUrl: 'https://api.deepseek.com/v3.2_speciale_expires_on_20251215',
     deprecated: true,
     retired: true,
@@ -333,7 +339,8 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
       ...DEEPSEEK_DEFAULT_CAPABILITIES,
       supportsAssistantPrefill: true,
     },
-    openRouterOnly: false,
+    // Not served on the vendor's own Responses API.
+    openRouterOnly: true,
     deprecated: true,
     retired: true,
   },
@@ -353,7 +360,8 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
       supportsReasoning: true,
       supportsReasoningEffort: false,
     },
-    openRouterOnly: false,
+    // Not served on the vendor's own Responses API.
+    openRouterOnly: true,
     deprecated: true,
     retired: true,
   },
@@ -372,7 +380,8 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
       ...DEEPSEEK_DEFAULT_CAPABILITIES,
       supportsAssistantPrefill: true,
     },
-    openRouterOnly: false,
+    // Not served on the vendor's own Responses API.
+    openRouterOnly: true,
     deprecated: true,
     retired: true,
   },
@@ -392,7 +401,8 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
       supportsReasoning: true,
       supportsReasoningEffort: false,
     },
-    openRouterOnly: false,
+    // Not served on the vendor's own Responses API.
+    openRouterOnly: true,
     deprecated: true,
     retired: true,
   },

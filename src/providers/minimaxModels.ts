@@ -129,7 +129,8 @@ export const MINIMAX_MODELS: Record<string, ModelConfig> = {
     capabilities: {
       ...MINIMAX_DEFAULT_CAPABILITIES,
     },
-    openRouterOnly: false,
+    // Not served on the vendor's own Responses API.
+    openRouterOnly: true,
     deprecated: true,
   },
   minimax01: {
@@ -147,7 +148,8 @@ export const MINIMAX_MODELS: Record<string, ModelConfig> = {
       ...MINIMAX_DEFAULT_CAPABILITIES,
       supportsVision: true,
     },
-    openRouterOnly: false,
+    // Not served on the vendor's own Responses API.
+    openRouterOnly: true,
     deprecated: true,
   },
 };
