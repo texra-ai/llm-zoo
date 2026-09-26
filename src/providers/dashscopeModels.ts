@@ -20,6 +20,38 @@ const DASHSCOPE_DEFAULT_CAPABILITIES: ModelCapabilities = {
  * Includes Qwen 3 Max, Plus, and Turbo variants.
  */
 export const DASHSCOPE_MODELS: Record<string, ModelConfig> = {
+  // Qwen3.8-Omni-Flash (released 2026-09-18): Alibaba's first omni-modal
+  // model built around agentic capabilities, with native audio/image/video
+  // understanding and text output. 1M-token context (max input 991,808
+  // tokens non-thinking / 983,616 thinking; max output 131,072). Thinking is
+  // enabled by default with adjustable reasoning effort. Supports custom tool
+  // calling, a built-in web_search tool, and automatic implicit prompt
+  // caching. Pricing is the international (Singapore) rate; cached input is
+  // $0.016/1M vs $0.15/1M input.
+  // Source: https://www.alibabacloud.com/help/en/model-studio/qwen3-8-omni-flash
+  // and https://www.alibabacloud.com/help/en/model-studio/model-pricing
+  qwen38omniflash: {
+    name: 'qwen38omniflash',
+    label: 'Qwen3.8-Omni-Flash',
+    fullName: 'qwen3.8-omni-flash',
+    shortName: 'qwen3.8-omni-flash',
+    openrouterFullName: 'qwen/qwen3.8-omni-flash',
+    provider: ModelProvider.DASHSCOPE,
+    maxOutputTokens: 131072,
+    contextWindow: 1000000,
+    inputPrice: 0.15,
+    outputPrice: 0.47,
+    capabilities: {
+      ...DASHSCOPE_DEFAULT_CAPABILITIES,
+      supportsVision: true,
+      supportsNativeAudio: true,
+      supportsNativeWebSearch: true,
+      supportsReasoning: true,
+      supportsAutoPromptCaching: true,
+      cacheDiscountFactor: 0.016 / 0.15,
+    },
+    openRouterOnly: false,
+  },
   qwen3max: {
     name: 'qwen3max',
     label: 'Qwen 3 Max',
