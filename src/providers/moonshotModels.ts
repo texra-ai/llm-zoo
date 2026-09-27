@@ -35,7 +35,8 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
       ...MOONSHOT_DEFAULT_CAPABILITIES,
       supportsVision: false,
     },
-    openRouterOnly: false,
+    // Not served on the vendor's own Responses API.
+    openRouterOnly: true,
     deprecated: true,
   },
   kimiv: {
@@ -53,7 +54,8 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
       ...MOONSHOT_DEFAULT_CAPABILITIES,
       supportsVision: true,
     },
-    openRouterOnly: false,
+    // Not served on the vendor's own Responses API.
+    openRouterOnly: true,
     deprecated: true,
   },
   kimit: {
@@ -72,7 +74,8 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
       supportsVision: true,
       supportsReasoning: true,
     },
-    openRouterOnly: false,
+    // Not served on the vendor's own Responses API.
+    openRouterOnly: true,
     deprecated: true,
     retired: true,
   },
@@ -94,7 +97,8 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
       cacheDiscountFactor: 0.25,
       supportsReasoning: false,
     },
-    openRouterOnly: false,
+    // Not served on the vendor's own Responses API.
+    openRouterOnly: true,
     deprecated: true,
     retired: true,
   },
@@ -116,7 +120,8 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
       cacheDiscountFactor: 0.15 / 1.15,
       supportsReasoning: false,
     },
-    openRouterOnly: false,
+    // Not served on the vendor's own Responses API.
+    openRouterOnly: true,
     deprecated: true,
     retired: true,
   },
@@ -140,7 +145,8 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
       cacheDiscountFactor: 0.25,
       reasoningEffort: ReasoningEffort.HIGH,
     },
-    openRouterOnly: false,
+    // Not served on the vendor's own Responses API.
+    openRouterOnly: true,
     deprecated: true,
     retired: true,
   },
@@ -164,7 +170,8 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
       cacheDiscountFactor: 0.15 / 1.15,
       reasoningEffort: ReasoningEffort.HIGH,
     },
-    openRouterOnly: false,
+    // Not served on the vendor's own Responses API.
+    openRouterOnly: true,
     deprecated: true,
     retired: true,
   },
@@ -189,7 +196,8 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
       // Cached input $0.19 / 1M vs $0.95 / 1M input.
       cacheDiscountFactor: 0.19 / 0.95,
     },
-    openRouterOnly: false,
+    // Not served on the vendor's own Responses API.
+    openRouterOnly: true,
   },
   kimi27codeT: {
     name: 'kimi27codeT',
@@ -212,7 +220,8 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
       cacheDiscountFactor: 0.19 / 0.95,
       reasoningEffort: ReasoningEffort.HIGH,
     },
-    openRouterOnly: false,
+    // Not served on the vendor's own Responses API.
+    openRouterOnly: true,
   },
   // kimi-k2.6: A model that can enable or disable thinking capability, enabled by default. You can disable thinking by using {"type": "disabled"}
   kimi26: {
@@ -232,7 +241,8 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
       supportsAutoPromptCaching: true,
       cacheDiscountFactor: 0.2 / 0.6,
     },
-    openRouterOnly: false,
+    // Not served on the vendor's own Responses API.
+    openRouterOnly: true,
   },
   kimi26T: {
     name: 'kimi26T',
@@ -254,7 +264,8 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
       cacheDiscountFactor: 0.2 / 0.6,
       reasoningEffort: ReasoningEffort.HIGH,
     },
-    openRouterOnly: false,
+    // Not served on the vendor's own Responses API.
+    openRouterOnly: true,
   },
   // kimi-k2.5: A model that can enable or disable thinking capability, enabled by default. You can disable thinking by using {"type": "disabled"}
   kimi25: {
@@ -274,7 +285,8 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
       supportsAutoPromptCaching: true,
       cacheDiscountFactor: 0.1 / 0.6,
     },
-    openRouterOnly: false,
+    // Not served on the vendor's own Responses API.
+    openRouterOnly: true,
     deprecated: true,
   },
   kimi25T: {
@@ -297,7 +309,8 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
       cacheDiscountFactor: 0.1 / 0.6,
       reasoningEffort: ReasoningEffort.HIGH,
     },
-    openRouterOnly: false,
+    // Not served on the vendor's own Responses API.
+    openRouterOnly: true,
     deprecated: true,
   },
   // kimi-k3: Moonshot's flagship model (2.8T params), built on Kimi Delta
