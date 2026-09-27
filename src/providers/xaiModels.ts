@@ -20,8 +20,9 @@ const XAI_DEFAULT_CAPABILITIES: ModelCapabilities = {
  */
 export const XAI_MODELS: Record<string, ModelConfig> = {
   // Grok 4.7: a larger base model served at Grok 4.6's price and speed — 500K
-  // context, $2/$6 below 200K prompt tokens on the global endpoint (the US
-  // regional endpoint bills 1.1x). Max output carried over as for grok46.
+  // context, $2 / $0.50 cached / $6 below 200K prompt tokens on the global
+  // endpoint (2x above; the US regional endpoint bills 1.1x). Max output
+  // carried over as for grok46.
   grok47: {
     name: 'grok47',
     label: 'Grok 4.7',
@@ -35,6 +36,9 @@ export const XAI_MODELS: Record<string, ModelConfig> = {
     outputPrice: 6.0,
     capabilities: {
       ...XAI_DEFAULT_CAPABILITIES,
+      // xAI caches prompts automatically; cached input is $0.50 of $2.00.
+      supportsAutoPromptCaching: true,
+      cacheDiscountFactor: 0.25,
       supportsVision: true,
       supportsReasoning: true,
       supportsReasoningEffort: true,
@@ -59,6 +63,9 @@ export const XAI_MODELS: Record<string, ModelConfig> = {
     outputPrice: 6.0,
     capabilities: {
       ...XAI_DEFAULT_CAPABILITIES,
+      // xAI caches prompts automatically; cached input is $0.50 of $2.00.
+      supportsAutoPromptCaching: true,
+      cacheDiscountFactor: 0.25,
       supportsVision: true,
       supportsReasoning: true,
       supportsReasoningEffort: true,
@@ -81,6 +88,9 @@ export const XAI_MODELS: Record<string, ModelConfig> = {
     outputPrice: 6.0,
     capabilities: {
       ...XAI_DEFAULT_CAPABILITIES,
+      // xAI caches prompts automatically; cached input is $0.30 of $2.00.
+      supportsAutoPromptCaching: true,
+      cacheDiscountFactor: 0.15,
       supportsVision: true,
       supportsReasoning: true,
       supportsReasoningEffort: true,
@@ -103,6 +113,9 @@ export const XAI_MODELS: Record<string, ModelConfig> = {
     outputPrice: 2.5,
     capabilities: {
       ...XAI_DEFAULT_CAPABILITIES,
+      // xAI caches prompts automatically; cached input is $0.20 of $1.25.
+      supportsAutoPromptCaching: true,
+      cacheDiscountFactor: 0.16,
       supportsReasoning: true,
       supportsReasoningEffort: true,
       reasoningEffort: ReasoningEffort.LOW,
