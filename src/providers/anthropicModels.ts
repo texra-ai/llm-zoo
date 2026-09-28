@@ -56,7 +56,7 @@ const OPUS_5_NON_THINKING_REASONING_EFFORTS = [
 /**
  * Anthropic Claude model configurations.
  * Includes Claude Fable 5.1, Claude Mythos 5.1, Claude Fable 5, Claude Mythos 5,
- * Claude Opus 5.5, and 5.x/4.x/3.x Opus, Sonnet, and Haiku variants.
+ * Claude Opus 5.5, Claude Sonnet 5.5, and 5.x/4.x/3.x Opus, Sonnet, and Haiku variants.
  */
 export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
   fable51: {
@@ -446,6 +446,39 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+  },
+  // Sonnet 5.5 (2026-09-28): $2 / $10, cache reads $0.20 (0.1x base input).
+  // Adaptive thinking is on by default and cannot be turned off (`disabled`
+  // is replaced by `between_tools`), so there is a single thinking entry;
+  // default effort is `high`.
+  sonnet55: {
+    name: 'sonnet55',
+    label: 'Sonnet 5.5',
+    fullName: 'claude-sonnet-5-5',
+    shortName: 'claude-sonnet-5-5',
+    openrouterFullName: 'anthropic/claude-sonnet-5.5',
+    vscodeLMFullName: 'claude-sonnet-5.5',
+    provider: ModelProvider.ANTHROPIC,
+    maxOutputTokens: 128000,
+    contextWindow: 1000000,
+    inputPrice: 2.0,
+    outputPrice: 10.0,
+    capabilities: {
+      ...ANTHROPIC_DEFAULT_CAPABILITIES,
+      supportsNativeMCPServer: true,
+      supportsNativeWebSearch: true,
+      supportsDynamicFilteringWebSearch: true,
+      supportsNativeCodeExecution: true,
+      supportsAssistantPrefill: false,
+      supportsReasoning: true,
+      supportsReasoningEffort: true,
+      supportsAdaptiveThinking: true,
+      reasoningEffort: ReasoningEffort.HIGH,
+      maxReasoningEffort: ReasoningEffort.MAX,
+      supportedReasoningEfforts: ANTHROPIC_REASONING_EFFORTS,
+      supportsInterleavedThinking: true,
+    },
+    openRouterOnly: false,
   },
   sonnet5T: {
     name: 'sonnet5T',

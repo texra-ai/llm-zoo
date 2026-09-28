@@ -59,7 +59,7 @@ npm install llm-zoo
 | `gpt56-` | $2 | $12 | ✓ | OpenAI |
 | `gemini31p` | $2 | $12 | ✓ | Google |
 | `gpt6-` | $2 | $10 | ✓ | OpenAI |
-| `sonnet5T` | $2 | $10 | ✓ | Anthropic |
+| `sonnet55` | $2 | $10 | ✓ | Anthropic |
 
 ### Largest Context
 
@@ -76,7 +76,7 @@ npm install llm-zoo
 | `minimaxM3` | 1M | MiniMax |
 | `musespark13` | 1M | Meta |
 | `opus55` | 1M | Anthropic |
-| `sonnet5` | 1M | Anthropic |
+| `sonnet55` | 1M | Anthropic |
 | `qwenplus` | 1M | DashScope |
 | `grok47` | 500K | xAI |
 | `kimi26` | 262K | Moonshot |
@@ -95,7 +95,7 @@ npm install llm-zoo
 
 | Provider | Models | Highlights |
 |----------|--------|------------|
-| **Anthropic** | 37 | Fable 5.1, Mythos 5.1, Opus 5.5, Sonnet 5, 1M context, 97.5% cache savings on Fable/Mythos 5.1, PDF support |
+| **Anthropic** | 38 | Fable 5.1, Mythos 5.1, Opus 5.5, Sonnet 5.5, 1M context, 97.5% cache savings on Fable/Mythos 5.1, PDF support |
 | **OpenAI** | 43 | GPT-6 Astra, Sol, and Luna, GPT-5.x reasoning, Fast mode tier, deep research |
 | **GLM** | 14 | Zhipu GLM-5.3-Flash, native vision, up to 1M context |
 | **DeepSeek** | 14 | V4.1 Flash (native vision, $0.15/1M), budget reasoning |

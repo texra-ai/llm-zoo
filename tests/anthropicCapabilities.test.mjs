@@ -48,6 +48,7 @@ const anthropicCapabilityMatrix = [
   ['opus5', 'claude-opus-5', false, true, opus5NonThinkingEffortVocabulary, undefined],
   ['sonnet46T', 'claude-sonnet-4-6', true, true, effortVocabularyWithoutXhigh, ReasoningEffort.MAX],
   ['sonnet46', 'claude-sonnet-4-6', false, true, effortVocabularyWithoutXhigh, ReasoningEffort.MAX],
+  ['sonnet55', 'claude-sonnet-5-5', true, true, fullEffortVocabulary, ReasoningEffort.MAX],
   ['sonnet5T', 'claude-sonnet-5', true, true, fullEffortVocabulary, ReasoningEffort.MAX],
   ['sonnet5', 'claude-sonnet-5', false, true, fullEffortVocabulary, ReasoningEffort.MAX],
   ['fable51', 'claude-fable-5-1', true, true, fullEffortVocabulary, ReasoningEffort.MAX],
@@ -121,6 +122,7 @@ test('only the documented Anthropic entries advertise adaptive thinking', () => 
     'opus48T',
     'opus47T',
     'opus46T',
+    'sonnet55',
     'sonnet5T',
     'sonnet46T',
   ]);
