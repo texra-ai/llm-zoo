@@ -447,6 +447,38 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
     openRouterOnly: false,
     deprecated: true,
   },
+  // Sonnet 5.5 (2026-09-28): $2 / $10, cache reads $0.20 (0.1x). Adaptive
+  // thinking is on by default and `thinking: disabled` returns a 400 (the
+  // lowest setting is `between_tools`), so there is a single thinking entry;
+  // default effort is `high`.
+  sonnet55: {
+    name: 'sonnet55',
+    label: 'Sonnet 5.5',
+    fullName: 'claude-sonnet-5-5',
+    shortName: 'claude-sonnet-5-5',
+    openrouterFullName: 'anthropic/claude-sonnet-5.5',
+    vscodeLMFullName: 'claude-sonnet-5.5',
+    provider: ModelProvider.ANTHROPIC,
+    maxOutputTokens: 128000,
+    contextWindow: 1000000,
+    inputPrice: 2.0,
+    outputPrice: 10.0,
+    capabilities: {
+      ...ANTHROPIC_DEFAULT_CAPABILITIES,
+      supportsNativeWebSearch: true,
+      supportsDynamicFilteringWebSearch: true,
+      supportsNativeCodeExecution: true,
+      supportsAssistantPrefill: false,
+      supportsReasoning: true,
+      supportsReasoningEffort: true,
+      supportsAdaptiveThinking: true,
+      reasoningEffort: ReasoningEffort.HIGH,
+      maxReasoningEffort: ReasoningEffort.MAX,
+      supportedReasoningEfforts: ANTHROPIC_REASONING_EFFORTS,
+      supportsInterleavedThinking: true,
+    },
+    openRouterOnly: false,
+  },
   sonnet5T: {
     name: 'sonnet5T',
     label: 'Sonnet 5 (Thinking)',
@@ -475,6 +507,8 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
       supportsInterleavedThinking: true,
     },
     openRouterOnly: false,
+    // Superseded by Claude Sonnet 5.5 (same price, context and output).
+    deprecated: true,
   },
   sonnet5: {
     name: 'sonnet5',
@@ -502,6 +536,8 @@ export const ANTHROPIC_MODELS: Record<string, ModelConfig> = {
       supportedReasoningEfforts: ANTHROPIC_REASONING_EFFORTS,
     },
     openRouterOnly: false,
+    // Superseded by Claude Sonnet 5.5 (same price, context and output).
+    deprecated: true,
   },
   sonnet46T: {
     name: 'sonnet46T',
