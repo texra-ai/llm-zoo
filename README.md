@@ -36,8 +36,8 @@ npm install llm-zoo
 | Model | Input | Output | Provider |
 |-------|-------|--------|----------|
 | `qwenturbo` | $0.05 | $0.50 | DashScope |
-| `glm53flash` | $0.075 | $0.25 | GLM |
 | `gpt6--` | $0.10 | $0.50 | OpenAI |
+| `glm53flash` | $0.15 | $0.50 | GLM |
 | `deepseek41` | $0.15 | $0.60 | DeepSeek |
 | `gemini35f-` | $0.30 | $2.50 | Google |
 | `minimaxM3` | $0.30 | $1.20 | MiniMax |
