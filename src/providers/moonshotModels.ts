@@ -222,14 +222,16 @@ export const MOONSHOT_MODELS: readonly ModelEntry[] = [
     provider: ModelProvider.MOONSHOT,
     maxOutputTokens: 64000,
     contextWindow: 262144,
-    inputPrice: 0.6,
-    outputPrice: 2.8,
+    inputPrice: 0.95,
+    outputPrice: 4.0,
     capabilities: {
       ...MOONSHOT_DEFAULT_CAPABILITIES,
       supportsVision: true,
       supportsInterleavedThinking: true,
       supportsAutoPromptCaching: true,
-      cacheDiscountFactor: 0.2 / 0.6,
+      // Cached input $0.16 / 1M vs $0.95 / 1M input
+      // (https://platform.kimi.ai/docs/pricing/chat).
+      cacheDiscountFactor: 0.16 / 0.95,
     },
     // `thinking: {type: enabled|disabled}` (default enabled); no effort parameter.
     reasoning: { efforts: [], off: [] },

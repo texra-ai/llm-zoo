@@ -22,7 +22,7 @@ const LOW_TO_XHIGH_EFFORTS = [...LOW_TO_HIGH_EFFORTS, ReasoningEffort.XHIGH] as 
 
 /**
  * xAI Grok model configurations.
- * Includes Grok 4.7, 4.6, 4.5, 4.3, 4, 3, and 2 variants.
+ * Includes Grok 4.7, 4.6, 4.5, 4.3, 4.20, Build 0.1, 4, 3, and 2 variants.
  */
 export const XAI_MODELS: readonly ModelEntry[] = [
   // Grok 4.7: a larger base model served at Grok 4.6's price and speed — 500K
@@ -49,6 +49,34 @@ export const XAI_MODELS: readonly ModelEntry[] = [
     reasoning: { efforts: LOW_TO_XHIGH_EFFORTS, providerDefault: ReasoningEffort.HIGH },
     source: { url: 'https://docs.x.ai/docs/guides/reasoning', verified: '2026-09-30' },
     legacyKeys: { grok47: { effort: ReasoningEffort.HIGH } },
+    openRouterOnly: false,
+  },
+  // Grok Build 0.1: xAI's agentic coding model (successor to grok-code-fast-1,
+  // which has routed here since 2026-05-15). 256K context, text + image
+  // input. $1.00 / $0.20 cached / $2.00 below 200K prompt tokens (2x above).
+  // xAI publishes no max output, so the 128K value of the other Grok entries
+  // is carried over.
+  {
+    label: 'Grok Build 0.1',
+    id: 'grok-build-0.1',
+    shortName: 'grok-build-0.1',
+    openrouterFullName: 'x-ai/grok-build-0.1',
+    provider: ModelProvider.XAI,
+    maxOutputTokens: 128000,
+    contextWindow: 256000,
+    inputPrice: 1.0,
+    outputPrice: 2.0,
+    capabilities: {
+      ...XAI_DEFAULT_CAPABILITIES,
+      // xAI caches prompts automatically; cached input is $0.20 of $1.00.
+      supportsAutoPromptCaching: true,
+      cacheDiscountFactor: 0.2,
+      supportsVision: true,
+    },
+    // Reasons; no documented reasoning_effort control.
+    reasoning: { efforts: [] },
+    source: { url: 'https://docs.x.ai/docs/models/grok-build-0.1', verified: '2026-09-30' },
+    legacyKeys: { grokbuild01: {} },
     openRouterOnly: false,
   },
   // Grok 4.6: 500K context and $2/$6 (<200K tier) pricing per docs.x.ai, same
@@ -124,6 +152,57 @@ export const XAI_MODELS: readonly ModelEntry[] = [
     reasoning: { efforts: LOW_TO_XHIGH_EFFORTS, off: [], providerDefault: ReasoningEffort.LOW },
     source: { url: 'https://docs.x.ai/docs/models/grok-4.3', verified: '2026-09-30' },
     legacyKeys: { grok43: { effort: ReasoningEffort.LOW } },
+    openRouterOnly: false,
+    deprecated: true,
+  },
+  // Grok 4.20 (0309): 1M context, text + image input, $1.25 / $0.20 cached /
+  // $2.50 below 200K prompt tokens (2x above). Served as separate reasoning
+  // and non-reasoning ids; reasoning_effort is not documented for either.
+  // Still listed on docs.x.ai with no retirement notice, but superseded by
+  // Grok 4.3 at the same price, so deprecated like grok-4.3. Max output
+  // carried over from the other Grok entries (xAI publishes none).
+  {
+    label: 'Grok 4.20 (Thinking)',
+    id: 'grok-4.20-0309-reasoning',
+    shortName: 'grok-4.20-reasoning',
+    openrouterFullName: 'x-ai/grok-4.20',
+    provider: ModelProvider.XAI,
+    maxOutputTokens: 128000,
+    contextWindow: 1000000,
+    inputPrice: 1.25,
+    outputPrice: 2.5,
+    capabilities: {
+      ...XAI_DEFAULT_CAPABILITIES,
+      // xAI caches prompts automatically; cached input is $0.20 of $1.25.
+      supportsAutoPromptCaching: true,
+      cacheDiscountFactor: 0.16,
+      supportsVision: true,
+    },
+    reasoning: { efforts: [] },
+    source: { url: 'https://docs.x.ai/docs/models/grok-4.20-0309-reasoning', verified: '2026-09-30' },
+    legacyKeys: { grok420T: {} },
+    openRouterOnly: false,
+    deprecated: true,
+  },
+  {
+    label: 'Grok 4.20',
+    id: 'grok-4.20-0309-non-reasoning',
+    shortName: 'grok-4.20-non-reasoning',
+    openrouterFullName: 'x-ai/grok-4.20',
+    provider: ModelProvider.XAI,
+    maxOutputTokens: 128000,
+    contextWindow: 1000000,
+    inputPrice: 1.25,
+    outputPrice: 2.5,
+    capabilities: {
+      ...XAI_DEFAULT_CAPABILITIES,
+      // xAI caches prompts automatically; cached input is $0.20 of $1.25.
+      supportsAutoPromptCaching: true,
+      cacheDiscountFactor: 0.16,
+      supportsVision: true,
+    },
+    source: { url: 'https://docs.x.ai/docs/models/grok-4.20-0309-non-reasoning', verified: '2026-09-30' },
+    legacyKeys: { grok420: {} },
     openRouterOnly: false,
     deprecated: true,
   },

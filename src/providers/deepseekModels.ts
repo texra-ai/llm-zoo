@@ -156,6 +156,9 @@ export const DEEPSEEK_MODELS: readonly ModelEntry[] = [
   // distinct levels as Flash: "thinking modes of V4-Pro and V4-Flash now
   // support three thinking effort levels: low / high / max"
   // (https://api-docs.deepseek.com/updates/). Default high.
+  // Model version DeepSeek-V4-Pro-0813. Off-peak list price (the pricing
+  // page's default; peak is double): $0.66 input / $0.022 cached input /
+  // $1.98 output. Source: https://api-docs.deepseek.com/quick_start/pricing
   {
     label: 'DeepSeek V4 Pro',
     id: 'deepseek-v4-pro',
@@ -164,13 +167,13 @@ export const DEEPSEEK_MODELS: readonly ModelEntry[] = [
     provider: ModelProvider.DEEPSEEK,
     maxOutputTokens: 393216,
     contextWindow: 1048576,
-    inputPrice: 0.435,
-    outputPrice: 0.87,
+    inputPrice: 0.66,
+    outputPrice: 1.98,
     capabilities: {
       ...DEEPSEEK_DEFAULT_CAPABILITIES,
       supportsFunctionCalling: true,
       supportsAssistantPrefill: true,
-      cacheDiscountFactor: 0.003625 / 0.435,
+      cacheDiscountFactor: 0.022 / 0.66,
     },
     reasoning: { efforts: LOW_HIGH_MAX_EFFORTS, off: [], providerDefault: ReasoningEffort.HIGH },
     legacyKeys: { deepseekpro: { effort: ReasoningEffort.NONE }, deepseekproT: { effort: ReasoningEffort.HIGH } },

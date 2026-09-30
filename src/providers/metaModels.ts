@@ -35,13 +35,14 @@ const MUSE_SPARK_EFFORTS = [
 /**
  * Meta Model API model configurations.
  * Includes Muse Spark, served via Meta's OpenAI-compatible Model API
- * (api.meta.ai/v1). Not available through OpenRouter.
+ * (api.meta.ai/v1) and also listed on OpenRouter.
  */
 export const META_MODELS: readonly ModelEntry[] = [
   {
     label: 'Muse Spark 1.3',
     id: 'muse-spark-1.3',
     shortName: 'muse-spark-1.3',
+    openrouterFullName: 'meta/muse-spark-1.3',
     provider: ModelProvider.META,
     maxOutputTokens: 131072,
     contextWindow: 1048576,
@@ -56,10 +57,36 @@ export const META_MODELS: readonly ModelEntry[] = [
     legacyKeys: { musespark13: { effort: ReasoningEffort.MEDIUM } },
     openRouterOnly: false,
   },
+  // Muse Spark 1.2 (released 2026-08-05): Standard tier $1.25 / $0.15 cached /
+  // $4.25, 1M context, audio input (dev.meta.ai/docs/models,
+  // /docs/pricing-rate-limits). Meta publishes no max output, so 1.1/1.3's
+  // value is carried over. Superseded by 1.3 at the same price.
+  {
+    label: 'Muse Spark 1.2',
+    id: 'muse-spark-1.2',
+    shortName: 'muse-spark-1.2',
+    openrouterFullName: 'meta/muse-spark-1.2',
+    provider: ModelProvider.META,
+    maxOutputTokens: 131072,
+    contextWindow: 1048576,
+    inputPrice: 1.25,
+    outputPrice: 4.25,
+    capabilities: {
+      ...META_DEFAULT_CAPABILITIES,
+      supportsNativeAudio: true,
+    },
+    // "max" is 1.3-only.
+    reasoning: { efforts: MUSE_SPARK_EFFORTS },
+    source: { url: 'https://dev.meta.ai/docs/reasoning', verified: '2026-09-30' },
+    legacyKeys: { musespark12: { effort: ReasoningEffort.MEDIUM } },
+    openRouterOnly: false,
+    deprecated: true,
+  },
   {
     label: 'Muse Spark 1.1',
     id: 'muse-spark-1.1',
     shortName: 'muse-spark-1.1',
+    openrouterFullName: 'meta/muse-spark-1.1',
     provider: ModelProvider.META,
     maxOutputTokens: 131072,
     contextWindow: 1048576,

@@ -26,7 +26,7 @@ const GLM_DEFAULT_CAPABILITIES: ModelCapabilities = {
 
 /**
  * Zhipu AI GLM model configurations.
- * Includes GLM-5.3-Flash, GLM-5.3, GLM-5.2, GLM-5.1, GLM-5V-Turbo, GLM-5, GLM-4.7, GLM-4.6V, and GLM-4.5 series.
+ * Includes GLM-5.3-Flash/FlashX, GLM-5.3, GLM-5.2, GLM-5.1, GLM-5V-Turbo, GLM-5, GLM-4.7, GLM-4.6, GLM-4.6V, and GLM-4.5 series.
  *
  * Model name conventions:
  * - fullName: Model name for native Zhipu AI API (e.g., 'glm-5.2', 'glm-5')
@@ -54,6 +54,33 @@ export const GLM_MODELS: readonly ModelEntry[] = [
     },
     reasoning: { efforts: LOW_HIGH_MAX_EFFORTS, providerDefault: ReasoningEffort.MAX },
     legacyKeys: { glm53flash: { effort: ReasoningEffort.MAX } },
+    source: { url: 'https://docs.z.ai/api-reference/llm/chat-completion', verified: '2026-09-30' },
+    // Not served on the vendor's own Responses API.
+    openRouterOnly: true,
+  },
+  // GLM-5.3-FlashX (High-speed GLM-5.3-Flash, ~200 tokens/s)
+  // Same model family and limits as GLM-5.3-Flash: native multimodal input,
+  // 1M-token context, 128K output, mandatory reasoning with Low/High/Max tiers.
+  // $0.37 input / $0.075 cached input / $1.25 output
+  // (https://docs.z.ai/guides/overview/pricing).
+  {
+    label: 'GLM-5.3 FlashX',
+    id: 'glm-5.3-flashx',
+    shortName: 'glm-5.3-flashx',
+    openrouterFullName: 'z-ai/glm-5.3-flashx',
+    provider: ModelProvider.GLM,
+    maxOutputTokens: 131072,
+    contextWindow: 1000000,
+    inputPrice: 0.37,
+    outputPrice: 1.25,
+    capabilities: {
+      ...GLM_DEFAULT_CAPABILITIES,
+      supportsVision: true,
+      // Cached input $0.075 / 1M vs $0.37 / 1M input.
+      cacheDiscountFactor: 0.203,
+    },
+    reasoning: { efforts: LOW_HIGH_MAX_EFFORTS, providerDefault: ReasoningEffort.MAX },
+    legacyKeys: { glm53flashx: { effort: ReasoningEffort.MAX } },
     source: { url: 'https://docs.z.ai/api-reference/llm/chat-completion', verified: '2026-09-30' },
     // Not served on the vendor's own Responses API.
     openRouterOnly: true,
@@ -254,6 +281,31 @@ export const GLM_MODELS: readonly ModelEntry[] = [
     deprecated: true,
     // No longer listed by OpenRouter (checked 2026-09-30), its only route.
     retired: true,
+  },
+  // GLM-4.6 (Coding model, superseded by GLM-4.7)
+  {
+    label: 'GLM-4.6',
+    id: 'glm-4.6',
+    shortName: 'glm-4.6',
+    openrouterFullName: 'z-ai/glm-4.6',
+    provider: ModelProvider.GLM,
+    maxOutputTokens: 128000,
+    contextWindow: 200000,
+    inputPrice: 0.6,
+    outputPrice: 2.2,
+    capabilities: {
+      ...GLM_DEFAULT_CAPABILITIES,
+      // Cached input $0.11 / 1M vs $0.6 / 1M input.
+      cacheDiscountFactor: 0.183,
+    },
+    // thinking: {type: enabled|disabled} (default enabled, model decides
+    // whether to think); reasoning_effort is GLM-5.2+ only.
+    reasoning: { efforts: [], off: [] },
+    legacyKeys: { glm46: {} },
+    source: { url: 'https://docs.z.ai/api-reference/llm/chat-completion', verified: '2026-09-30' },
+    // Not served on the vendor's own Responses API.
+    openRouterOnly: true,
+    deprecated: true,
   },
   // GLM-4.6V (Multimodal vision model)
   {

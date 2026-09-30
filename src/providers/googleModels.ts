@@ -89,8 +89,10 @@ export const GOOGLE_MODELS: readonly ModelEntry[] = [
     provider: ModelProvider.GOOGLE,
     maxOutputTokens: 65536,
     contextWindow: 1048576,
-    inputPrice: 1.5,
-    outputPrice: 7.5,
+    // Same rates as 3.7/3.8 Flash through 2026-12-31 ($0.75 / $0.075 cached /
+    // $3.75); $1.50 / $0.15 / $7.50 from 2027-01-01 (ai.google.dev pricing).
+    inputPrice: 0.75,
+    outputPrice: 3.75,
     capabilities: {
       ...GOOGLE_DEFAULT_CAPABILITIES,
       cacheDiscountFactor: 0.1,
@@ -232,20 +234,24 @@ export const GOOGLE_MODELS: readonly ModelEntry[] = [
     provider: ModelProvider.GOOGLE,
     maxOutputTokens: 65536,
     contextWindow: 1048576,
-    inputPrice: 0.3,
-    outputPrice: 2.5,
+    // $0.50 / $0.05 cached / $3.00 (text/image/video; ai.google.dev pricing).
+    inputPrice: 0.5,
+    outputPrice: 3.0,
     capabilities: {
       ...GOOGLE_DEFAULT_CAPABILITIES,
+      cacheDiscountFactor: 0.1,
       supportsPromptCaching: true,
       supportsAutoPromptCaching: true,
       supportsNativeCodeExecution: true,
       supportsNativeMCPServer: true,
     },
     reasoning: { efforts: MINIMAL_TO_HIGH_EFFORTS, providerDefault: ReasoningEffort.HIGH },
+    source: { url: 'https://ai.google.dev/gemini-api/docs/thinking', verified: '2026-09-30' },
     legacyKeys: { gemini3f: { effort: ReasoningEffort.HIGH } },
     openRouterOnly: false,
+    // Still served as a preview; the deprecations page announces no shutdown
+    // date (recommended replacement: gemini-3.6-flash), so not retired.
     deprecated: true,
-    retired: true,
   },
   {
     label: 'Gemini 2.5 Pro',
@@ -317,6 +323,34 @@ export const GOOGLE_MODELS: readonly ModelEntry[] = [
     reasoning: { efforts: [], off: [], budget: true },
     source: { url: 'https://ai.google.dev/gemini-api/docs/openai', verified: '2026-09-30' },
     legacyKeys: { gemini25f0617: {} },
+    openRouterOnly: false,
+    deprecated: true,
+  },
+  // Gemini 2.5 Flash-Lite (GA, released 2025-07-22). $0.10 / $0.01 cached /
+  // $0.40 (text/image/video). Google limits 2.5 access to existing users and
+  // points new projects at 3.5 Flash-Lite, so deprecated like its 2.5 siblings.
+  {
+    label: 'Gemini 2.5 Flash-Lite (07-22)',
+    id: 'gemini-2.5-flash-lite',
+    shortName: 'gemini-2.5-flash-lite',
+    openrouterFullName: 'google/gemini-2.5-flash-lite',
+    provider: ModelProvider.GOOGLE,
+    maxOutputTokens: 65536,
+    contextWindow: 1048576,
+    inputPrice: 0.1,
+    outputPrice: 0.4,
+    capabilities: {
+      ...GOOGLE_DEFAULT_CAPABILITIES,
+      cacheDiscountFactor: 0.1,
+      supportsPromptCaching: true,
+      supportsAutoPromptCaching: true,
+      supportsNativeCodeExecution: true,
+    },
+    // 2.5 uses thinking_budget (tokens); thinking is off by default ("Off" in
+    // the thinking page's table) and reasoning_effort 'none' keeps it off.
+    reasoning: { efforts: [], off: [], budget: true, providerDefault: ReasoningEffort.NONE },
+    source: { url: 'https://ai.google.dev/gemini-api/docs/thinking', verified: '2026-09-30' },
+    legacyKeys: { 'gemini25f-0722': {} },
     openRouterOnly: false,
     deprecated: true,
   },
