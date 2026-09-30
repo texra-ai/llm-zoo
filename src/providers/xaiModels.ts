@@ -75,6 +75,13 @@ export const XAI_MODELS: Record<string, ModelConfig> = {
     contextWindow: 256000,
     inputPrice: 1.0,
     outputPrice: 2.0,
+    // Prompts above 200K bill the whole request at the tier (docs.x.ai/developers/models).
+    longContextPricing: {
+      aboveInputTokens: 200_000,
+      inputPrice: 2.0,
+      outputPrice: 4.0,
+      cacheDiscountFactor: 0.2,
+    },
     capabilities: {
       ...XAI_DEFAULT_CAPABILITIES,
       // xAI caches prompts automatically; cached input is $0.20 of $1.00.
@@ -210,6 +217,13 @@ export const XAI_MODELS: Record<string, ModelConfig> = {
     contextWindow: 1000000,
     inputPrice: 1.25,
     outputPrice: 2.5,
+    // Prompts above 200K bill the whole request at the tier (docs.x.ai/developers/models).
+    longContextPricing: {
+      aboveInputTokens: 200_000,
+      inputPrice: 2.5,
+      outputPrice: 5.0,
+      cacheDiscountFactor: 0.16,
+    },
     capabilities: {
       ...XAI_DEFAULT_CAPABILITIES,
       // xAI caches prompts automatically; cached input is $0.20 of $1.25.
@@ -233,6 +247,13 @@ export const XAI_MODELS: Record<string, ModelConfig> = {
     contextWindow: 1000000,
     inputPrice: 1.25,
     outputPrice: 2.5,
+    // Prompts above 200K bill the whole request at the tier (docs.x.ai/developers/models).
+    longContextPricing: {
+      aboveInputTokens: 200_000,
+      inputPrice: 2.5,
+      outputPrice: 5.0,
+      cacheDiscountFactor: 0.16,
+    },
     capabilities: {
       ...XAI_DEFAULT_CAPABILITIES,
       // xAI caches prompts automatically; cached input is $0.20 of $1.25.

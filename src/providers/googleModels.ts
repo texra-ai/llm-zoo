@@ -258,6 +258,8 @@ export const GOOGLE_MODELS: Record<string, ModelConfig> = {
     outputPrice: 3.0,
     capabilities: {
       ...GOOGLE_DEFAULT_CAPABILITIES,
+      // Cached input $0.05 of $0.50 input.
+      cacheDiscountFactor: 0.1,
       supportsPromptCaching: true,
       supportsAutoPromptCaching: true,
       supportsReasoning: true,

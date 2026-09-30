@@ -56,7 +56,9 @@ export const MINIMAX_MODELS: Record<string, ModelConfig> = {
     shortName: 'MiniMax-M2.7',
     openrouterFullName: 'minimax/minimax-m2.7',
     provider: ModelProvider.MINIMAX,
-    maxOutputTokens: 204800,
+    // MiniMax documents no max output; keep headroom for the prompt in the
+    // 204,800-token context.
+    maxOutputTokens: 196608,
     contextWindow: 204800,
     inputPrice: 0.3,
     outputPrice: 1.2,
@@ -66,7 +68,6 @@ export const MINIMAX_MODELS: Record<string, ModelConfig> = {
       cacheDiscountFactor: 0.2,
     },
     openRouterOnly: false,
-    deprecated: true,
   },
   minimaxM27highspeed: {
     name: 'minimaxM27highspeed',
@@ -74,7 +75,9 @@ export const MINIMAX_MODELS: Record<string, ModelConfig> = {
     fullName: 'MiniMax-M2.7-highspeed',
     shortName: 'MiniMax-M2.7-highspeed',
     provider: ModelProvider.MINIMAX,
-    maxOutputTokens: 204800,
+    // MiniMax documents no max output; keep headroom for the prompt in the
+    // 204,800-token context.
+    maxOutputTokens: 196608,
     contextWindow: 204800,
     inputPrice: 0.6,
     outputPrice: 2.4,
@@ -84,7 +87,6 @@ export const MINIMAX_MODELS: Record<string, ModelConfig> = {
       cacheDiscountFactor: 0.1,
     },
     openRouterOnly: false,
-    deprecated: true,
   },
   minimaxM25: {
     name: 'minimaxM25',

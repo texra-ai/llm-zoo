@@ -61,6 +61,13 @@ export const DASHSCOPE_MODELS: Record<string, ModelConfig> = {
     contextWindow: 1000000,
     inputPrice: 0.4,
     outputPrice: 1.6,
+    // Prompts above 256K bill the whole request at the tier (alibabacloud.com/help/en/model-studio/qwen3-7-plus).
+    longContextPricing: {
+      aboveInputTokens: 256_000,
+      inputPrice: 1.2,
+      outputPrice: 4.8,
+      cacheDiscountFactor: 0.24 / 1.2,
+    },
     capabilities: {
       ...DASHSCOPE_DEFAULT_CAPABILITIES,
       supportsReasoning: true,
