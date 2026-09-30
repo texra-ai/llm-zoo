@@ -430,10 +430,12 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
       aboveInputTokens: 272_000,
       inputPrice: 60.0,
       outputPrice: 270.0,
-      cacheDiscountFactor: 0.5,
+      cacheDiscountFactor: 1.0,
     },
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
+      // OpenAI lists no cached-input price for Pro: no cache discount.
+      cacheDiscountFactor: 1.0,
       supportsAutoPromptCaching: false,
       supportsNativeMCPServer: true,
       supportsNativeWebSearch: true,
@@ -490,8 +492,16 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     contextWindow: 1050000,
     inputPrice: 30.0,
     outputPrice: 180.0,
+    longContextPricing: {
+      aboveInputTokens: 272_000,
+      inputPrice: 60.0,
+      outputPrice: 270.0,
+      cacheDiscountFactor: 1.0,
+    },
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
+      // OpenAI lists no cached-input price for Pro: no cache discount.
+      cacheDiscountFactor: 1.0,
       supportsAutoPromptCaching: false,
       supportsNativeMCPServer: true,
       supportsNativeWebSearch: true,
@@ -604,6 +614,12 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     // Twice the current (promotional) standard-tier rate: $4.00 / $20.00.
     inputPrice: 8.0,
     outputPrice: 40.0,
+    longContextPricing: {
+      aboveInputTokens: 272_000,
+      inputPrice: 16.0,
+      outputPrice: 60.0,
+      cacheDiscountFactor: 0.1,
+    },
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       cacheDiscountFactor: 0.1,
@@ -667,6 +683,12 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     // 2026-07-30 price cut: 80% off the launch rates ($1 / $6).
     inputPrice: 0.2,
     outputPrice: 1.2,
+    longContextPricing: {
+      aboveInputTokens: 272_000,
+      inputPrice: 0.4,
+      outputPrice: 1.8,
+      cacheDiscountFactor: 0.1,
+    },
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       cacheDiscountFactor: 0.1,
