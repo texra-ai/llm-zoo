@@ -38,6 +38,8 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
     // Not served on the vendor's own Responses API.
     openRouterOnly: true,
     deprecated: true,
+    // Discontinued 2026-08-31 (platform.kimi.ai/docs/models).
+    retired: true,
   },
   kimiv: {
     name: 'kimi128kv',
@@ -57,6 +59,8 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
     // Not served on the vendor's own Responses API.
     openRouterOnly: true,
     deprecated: true,
+    // Discontinued 2026-08-31 (platform.kimi.ai/docs/models).
+    retired: true,
   },
   kimit: {
     name: 'kimit',
@@ -233,13 +237,15 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
     provider: ModelProvider.MOONSHOT,
     maxOutputTokens: 64000,
     contextWindow: 262144,
-    inputPrice: 0.6,
-    outputPrice: 2.8,
+    inputPrice: 0.95,
+    outputPrice: 4.0,
     capabilities: {
       ...MOONSHOT_DEFAULT_CAPABILITIES,
       supportsVision: true,
       supportsAutoPromptCaching: true,
-      cacheDiscountFactor: 0.2 / 0.6,
+      // Cached input $0.16 / 1M vs $0.95 / 1M input
+      // (https://platform.kimi.ai/docs/pricing/chat).
+      cacheDiscountFactor: 0.16 / 0.95,
     },
     // Not served on the vendor's own Responses API.
     openRouterOnly: true,
@@ -253,15 +259,17 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
     provider: ModelProvider.MOONSHOT,
     maxOutputTokens: 64000,
     contextWindow: 262144,
-    inputPrice: 0.6,
-    outputPrice: 2.8,
+    inputPrice: 0.95,
+    outputPrice: 4.0,
     capabilities: {
       ...MOONSHOT_DEFAULT_CAPABILITIES,
       supportsVision: true,
       supportsReasoning: true,
       supportsInterleavedThinking: true,
       supportsAutoPromptCaching: true,
-      cacheDiscountFactor: 0.2 / 0.6,
+      // Cached input $0.16 / 1M vs $0.95 / 1M input
+      // (https://platform.kimi.ai/docs/pricing/chat).
+      cacheDiscountFactor: 0.16 / 0.95,
       reasoningEffort: ReasoningEffort.HIGH,
     },
     // Not served on the vendor's own Responses API.
@@ -288,6 +296,8 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
     // Not served on the vendor's own Responses API.
     openRouterOnly: true,
     deprecated: true,
+    // Discontinued 2026-08-31 (platform.kimi.ai/docs/models).
+    retired: true,
   },
   kimi25T: {
     name: 'kimi25T',
@@ -312,10 +322,13 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
     // Not served on the vendor's own Responses API.
     openRouterOnly: true,
     deprecated: true,
+    // Discontinued 2026-08-31 (platform.kimi.ai/docs/models).
+    retired: true,
   },
   // kimi-k3: Moonshot's flagship model (2.8T params), built on Kimi Delta
   // Attention with native visual understanding and a 1M-token context window.
-  // Always reasons; reasoning_effort currently supports only "max".
+  // Always reasons; reasoning_effort accepts "low" / "high" / "max" (default
+  // "max"). Source: https://platform.kimi.ai/docs/api/models-overview
   kimi3: {
     name: 'kimi3',
     label: 'Kimi K3',
@@ -337,6 +350,11 @@ export const MOONSHOT_MODELS: Record<string, ModelConfig> = {
       supportsReasoning: true,
       supportsReasoningEffort: true,
       reasoningEffort: ReasoningEffort.MAX,
+      supportedReasoningEfforts: [
+        ReasoningEffort.LOW,
+        ReasoningEffort.HIGH,
+        ReasoningEffort.MAX,
+      ],
       supportsInterleavedThinking: true,
       supportsAutoPromptCaching: true,
       // Cached input $0.30 / 1M vs $3.00 / 1M input (cache miss).

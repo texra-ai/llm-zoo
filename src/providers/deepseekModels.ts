@@ -204,6 +204,9 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
     deprecated: true,
   },
   // DeepSeek-V4-Pro (Non-thinking Mode)
+  // Model version DeepSeek-V4-Pro-0813. Off-peak list price (the pricing
+  // page's default; peak is double): $0.66 input / $0.022 cached input /
+  // $1.98 output. Source: https://api-docs.deepseek.com/quick_start/pricing
   deepseekpro: {
     name: 'deepseekpro',
     label: 'DeepSeek V4 Pro',
@@ -213,22 +216,21 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
     provider: ModelProvider.DEEPSEEK,
     maxOutputTokens: 393216,
     contextWindow: 1048576,
-    inputPrice: 0.435,
-    outputPrice: 0.87,
+    inputPrice: 0.66,
+    outputPrice: 1.98,
     capabilities: {
       ...DEEPSEEK_DEFAULT_CAPABILITIES,
       supportsAssistantPrefill: true,
       supportsFunctionCalling: true,
-      cacheDiscountFactor: 0.003625 / 0.435,
+      cacheDiscountFactor: 0.022 / 0.66,
     },
     openRouterOnly: false,
   },
   // DeepSeek-V4-Pro (Thinking Mode)
-  // Same reasoning_effort vocabulary as Flash (low/high/max), but Pro
-  // currently resolves low onto high, so only two distinct levels are listed.
-  // The compatibility alias xhigh maps to max here, so it is not a level of
-  // its own. DeepSeek says Pro is expected to support all three levels in
-  // early August 2026; recheck then.
+  // Since the 2026-08-13 V4-Pro update, Pro resolves the same three distinct
+  // levels as Flash (low/high/max, default high). minimal maps onto low;
+  // medium and xhigh map onto high; ultra maps onto max.
+  // Source: https://api-docs.deepseek.com/guides/thinking_mode
   deepseekproT: {
     name: 'deepseekproT',
     label: 'DeepSeek V4 Pro (Thinking)',
@@ -238,18 +240,22 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
     provider: ModelProvider.DEEPSEEK,
     maxOutputTokens: 393216,
     contextWindow: 1048576,
-    inputPrice: 0.435,
-    outputPrice: 0.87,
+    inputPrice: 0.66,
+    outputPrice: 1.98,
     capabilities: {
       ...DEEPSEEK_DEFAULT_CAPABILITIES,
       supportsReasoning: true,
       supportsReasoningEffort: true,
       reasoningEffort: ReasoningEffort.HIGH,
       maxReasoningEffort: ReasoningEffort.MAX,
-      supportedReasoningEfforts: [ReasoningEffort.HIGH, ReasoningEffort.MAX],
+      supportedReasoningEfforts: [
+        ReasoningEffort.LOW,
+        ReasoningEffort.HIGH,
+        ReasoningEffort.MAX,
+      ],
       supportsFunctionCalling: true,
       supportsAssistantPrefill: true,
-      cacheDiscountFactor: 0.003625 / 0.435,
+      cacheDiscountFactor: 0.022 / 0.66,
     },
     openRouterOnly: false,
   },

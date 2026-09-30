@@ -16,7 +16,7 @@ const XAI_DEFAULT_CAPABILITIES: ModelCapabilities = {
 
 /**
  * xAI Grok model configurations.
- * Includes Grok 4.7, 4.6, 4.5, 4.3, 4, 3, and 2 variants.
+ * Includes Grok 4.7, 4.6, 4.5, 4.3, 4.20, Build 0.1, 4, 3, and 2 variants.
  */
 export const XAI_MODELS: Record<string, ModelConfig> = {
   // Grok 4.7: a larger base model served at Grok 4.6's price and speed — 500K
@@ -49,6 +49,40 @@ export const XAI_MODELS: Record<string, ModelConfig> = {
       supportsReasoning: true,
       supportsReasoningEffort: true,
       reasoningEffort: ReasoningEffort.HIGH,
+      maxReasoningEffort: ReasoningEffort.XHIGH,
+      supportedReasoningEfforts: [
+        ReasoningEffort.LOW,
+        ReasoningEffort.MEDIUM,
+        ReasoningEffort.HIGH,
+        ReasoningEffort.XHIGH,
+      ],
+    },
+    openRouterOnly: false,
+  },
+  // Grok Build 0.1: xAI's agentic coding model (successor to grok-code-fast-1,
+  // which has routed here since 2026-05-15). 256K context, text + image
+  // input, reasoning without a documented reasoning_effort control. $1.00 /
+  // $0.20 cached / $2.00 below 200K prompt tokens (2x above). xAI publishes
+  // no max output, so the 128K value of the other Grok entries is carried over.
+  grokbuild01: {
+    name: 'grokbuild01',
+    label: 'Grok Build 0.1',
+    fullName: 'grok-build-0.1',
+    shortName: 'grok-build-0.1',
+    openrouterFullName: 'x-ai/grok-build-0.1',
+    provider: ModelProvider.XAI,
+    maxOutputTokens: 128000,
+    contextWindow: 256000,
+    inputPrice: 1.0,
+    outputPrice: 2.0,
+    capabilities: {
+      ...XAI_DEFAULT_CAPABILITIES,
+      // xAI caches prompts automatically; cached input is $0.20 of $1.00.
+      supportsAutoPromptCaching: true,
+      cacheDiscountFactor: 0.2,
+      supportsVision: true,
+      supportsReasoning: true,
+      supportsReasoningEffort: false,
     },
     openRouterOnly: false,
   },
@@ -82,6 +116,13 @@ export const XAI_MODELS: Record<string, ModelConfig> = {
       supportsReasoning: true,
       supportsReasoningEffort: true,
       reasoningEffort: ReasoningEffort.HIGH,
+      maxReasoningEffort: ReasoningEffort.XHIGH,
+      supportedReasoningEfforts: [
+        ReasoningEffort.LOW,
+        ReasoningEffort.MEDIUM,
+        ReasoningEffort.HIGH,
+        ReasoningEffort.XHIGH,
+      ],
     },
     openRouterOnly: false,
     // Superseded by Grok 4.7 (same price and speed).
@@ -113,6 +154,11 @@ export const XAI_MODELS: Record<string, ModelConfig> = {
       supportsReasoning: true,
       supportsReasoningEffort: true,
       reasoningEffort: ReasoningEffort.HIGH,
+      supportedReasoningEfforts: [
+        ReasoningEffort.LOW,
+        ReasoningEffort.MEDIUM,
+        ReasoningEffort.HIGH,
+      ],
     },
     openRouterOnly: false,
     // Superseded by Grok 4.7 (same price and speed).
@@ -143,6 +189,58 @@ export const XAI_MODELS: Record<string, ModelConfig> = {
       supportsReasoning: true,
       supportsReasoningEffort: true,
       reasoningEffort: ReasoningEffort.LOW,
+    },
+    openRouterOnly: false,
+    deprecated: true,
+  },
+  // Grok 4.20 (0309): 1M context, text + image input, $1.25 / $0.20 cached /
+  // $2.50 below 200K prompt tokens (2x above). Served as separate reasoning
+  // and non-reasoning ids; reasoning_effort is not documented for either.
+  // Still listed on docs.x.ai with no retirement notice, but superseded by
+  // Grok 4.3 at the same price, so deprecated like grok43. Max output carried
+  // over from the other Grok entries (xAI publishes none).
+  grok420T: {
+    name: 'grok420T',
+    label: 'Grok 4.20 (Thinking)',
+    fullName: 'grok-4.20-0309-reasoning',
+    shortName: 'grok-4.20-reasoning',
+    openrouterFullName: 'x-ai/grok-4.20',
+    provider: ModelProvider.XAI,
+    maxOutputTokens: 128000,
+    contextWindow: 1000000,
+    inputPrice: 1.25,
+    outputPrice: 2.5,
+    capabilities: {
+      ...XAI_DEFAULT_CAPABILITIES,
+      // xAI caches prompts automatically; cached input is $0.20 of $1.25.
+      supportsAutoPromptCaching: true,
+      cacheDiscountFactor: 0.16,
+      supportsVision: true,
+      supportsReasoning: true,
+      supportsReasoningEffort: false,
+    },
+    openRouterOnly: false,
+    deprecated: true,
+  },
+  grok420: {
+    name: 'grok420',
+    label: 'Grok 4.20',
+    fullName: 'grok-4.20-0309-non-reasoning',
+    shortName: 'grok-4.20-non-reasoning',
+    openrouterFullName: 'x-ai/grok-4.20',
+    provider: ModelProvider.XAI,
+    maxOutputTokens: 128000,
+    contextWindow: 1000000,
+    inputPrice: 1.25,
+    outputPrice: 2.5,
+    capabilities: {
+      ...XAI_DEFAULT_CAPABILITIES,
+      // xAI caches prompts automatically; cached input is $0.20 of $1.25.
+      supportsAutoPromptCaching: true,
+      cacheDiscountFactor: 0.16,
+      supportsVision: true,
+      supportsReasoning: false,
+      supportsReasoningEffort: false,
     },
     openRouterOnly: false,
     deprecated: true,

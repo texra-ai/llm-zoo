@@ -27,7 +27,7 @@ const MINIMAX_DEFAULT_CAPABILITIES: ModelCapabilities = {
 
 /**
  * MiniMax model configurations.
- * Includes the M-series models: M3, M2.7, M2.5, M2.1, M2, M1, and MiniMax-01.
+ * Includes the M-series models: M3, M2.7 (and M2.7-highspeed), M2.5, M2.1, M2, M1, and MiniMax-01.
  */
 export const MINIMAX_MODELS: Record<string, ModelConfig> = {
   minimaxM3: {
@@ -37,13 +37,15 @@ export const MINIMAX_MODELS: Record<string, ModelConfig> = {
     shortName: 'MiniMax-M3',
     openrouterFullName: 'minimax/minimax-m3',
     provider: ModelProvider.MINIMAX,
-    maxOutputTokens: 512000,
+    maxOutputTokens: 524288,
     contextWindow: 1048576,
     inputPrice: 0.3,
     outputPrice: 1.2,
     capabilities: {
       ...MINIMAX_DEFAULT_CAPABILITIES,
       supportsVision: true,
+      // Cache read $0.06 / 1M vs $0.30 / 1M input (≤ 512K input tier).
+      cacheDiscountFactor: 0.2,
     },
     openRouterOnly: false,
   },
@@ -54,12 +56,32 @@ export const MINIMAX_MODELS: Record<string, ModelConfig> = {
     shortName: 'MiniMax-M2.7',
     openrouterFullName: 'minimax/minimax-m2.7',
     provider: ModelProvider.MINIMAX,
-    maxOutputTokens: 196608,
+    maxOutputTokens: 204800,
     contextWindow: 204800,
     inputPrice: 0.3,
     outputPrice: 1.2,
     capabilities: {
       ...MINIMAX_DEFAULT_CAPABILITIES,
+      // Cache read $0.06 / 1M vs $0.30 / 1M input.
+      cacheDiscountFactor: 0.2,
+    },
+    openRouterOnly: false,
+    deprecated: true,
+  },
+  minimaxM27highspeed: {
+    name: 'minimaxM27highspeed',
+    label: 'MiniMax M2.7 Highspeed',
+    fullName: 'MiniMax-M2.7-highspeed',
+    shortName: 'MiniMax-M2.7-highspeed',
+    provider: ModelProvider.MINIMAX,
+    maxOutputTokens: 204800,
+    contextWindow: 204800,
+    inputPrice: 0.6,
+    outputPrice: 2.4,
+    capabilities: {
+      ...MINIMAX_DEFAULT_CAPABILITIES,
+      // Cache read $0.06 / 1M vs $0.60 / 1M input.
+      cacheDiscountFactor: 0.1,
     },
     openRouterOnly: false,
     deprecated: true,

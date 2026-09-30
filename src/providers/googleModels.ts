@@ -94,8 +94,10 @@ export const GOOGLE_MODELS: Record<string, ModelConfig> = {
     provider: ModelProvider.GOOGLE,
     maxOutputTokens: 65536,
     contextWindow: 1048576,
-    inputPrice: 1.5,
-    outputPrice: 7.5,
+    // Same rates as 3.7/3.8 Flash through 2026-12-31 ($0.75 / $0.075 cached /
+    // $3.75); $1.50 / $0.15 / $7.50 from 2027-01-01 (ai.google.dev pricing).
+    inputPrice: 0.75,
+    outputPrice: 3.75,
     capabilities: {
       ...GOOGLE_DEFAULT_CAPABILITIES,
       cacheDiscountFactor: 0.1,
@@ -264,8 +266,9 @@ export const GOOGLE_MODELS: Record<string, ModelConfig> = {
       supportsNativeMCPServer: true,
     },
     openRouterOnly: false,
+    // Still served as a preview; the deprecations page announces no shutdown
+    // date (recommended replacement: gemini-3.6-flash), so not retired.
     deprecated: true,
-    retired: true,
   },
   gemini25p: {
     name: 'gemini25p',
@@ -342,6 +345,32 @@ export const GOOGLE_MODELS: Record<string, ModelConfig> = {
       supportsReasoningEffort: false,
       supportsNativeCodeExecution: true,
       supportsNativeMCPServer: true,
+    },
+    openRouterOnly: false,
+    deprecated: true,
+  },
+  // Gemini 2.5 Flash-Lite (GA, released 2025-07-22). $0.10 / $0.01 cached /
+  // $0.40 (text/image/video). Google limits 2.5 access to existing users and
+  // points new projects at 3.5 Flash-Lite, so deprecated like its 2.5 siblings.
+  'gemini25f-0722': {
+    name: 'gemini25f-0722',
+    label: 'Gemini 2.5 Flash-Lite (07-22)',
+    fullName: 'gemini-2.5-flash-lite',
+    shortName: 'gemini-2.5-flash-lite',
+    openrouterFullName: 'google/gemini-2.5-flash-lite',
+    provider: ModelProvider.GOOGLE,
+    maxOutputTokens: 65536,
+    contextWindow: 1048576,
+    inputPrice: 0.1,
+    outputPrice: 0.4,
+    capabilities: {
+      ...GOOGLE_DEFAULT_CAPABILITIES,
+      cacheDiscountFactor: 0.1,
+      supportsPromptCaching: true,
+      supportsAutoPromptCaching: true,
+      supportsReasoning: true,
+      supportsReasoningEffort: false,
+      supportsNativeCodeExecution: true,
     },
     openRouterOnly: false,
     deprecated: true,

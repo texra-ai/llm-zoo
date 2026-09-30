@@ -35,15 +35,15 @@ npm install llm-zoo
 
 | Model | Input | Output | Provider |
 |-------|-------|--------|----------|
-| `qwenturbo` | $0.05 | $0.50 | DashScope |
 | `gpt6--` | $0.10 | $0.50 | OpenAI |
+| `qwen38flash` | $0.15 | $0.47 | DashScope |
 | `glm53flash` | $0.15 | $0.50 | GLM |
 | `deepseek41` | $0.15 | $0.60 | DeepSeek |
 | `gemini35f-` | $0.30 | $2.50 | Google |
 | `minimaxM3` | $0.30 | $1.20 | MiniMax |
+| `glm53flashx` | $0.37 | $1.25 | GLM |
 | `qwenplus` | $0.40 | $1.20 | DashScope |
-| `deepseekpro` | $0.435 | $0.87 | DeepSeek |
-| `kimi26` | $0.60 | $2.80 | Moonshot |
+| `deepseekpro` | $0.66 | $1.98 | DeepSeek |
 | `gemini38f` | $0.75 | $3.75 | Google |
 
 ### Premium ($/1M tokens)
@@ -77,7 +77,7 @@ npm install llm-zoo
 | `musespark13` | 1M | Meta |
 | `opus55` | 1M | Anthropic |
 | `sonnet55` | 1M | Anthropic |
-| `qwenplus` | 1M | DashScope |
+| `qwen38max` | 1M | DashScope |
 | `grok47` | 500K | xAI |
 | `kimi26` | 262K | Moonshot |
 
@@ -96,15 +96,15 @@ npm install llm-zoo
 | Provider | Models | Highlights |
 |----------|--------|------------|
 | **Anthropic** | 38 | Fable 5.1, Mythos 5.1, Opus 5.5, Sonnet 5.5, 1M context, 97.5% cache savings on Fable/Mythos 5.1, PDF support |
-| **OpenAI** | 44 | GPT-6 Astra, GPT-6.1 Sol, GPT-6 Luna, GPT-5.x reasoning, Fast mode tier, deep research |
-| **GLM** | 14 | Zhipu GLM-5.3-Flash, native vision, up to 1M context |
+| **OpenAI** | 45 | GPT-6 Astra, GPT-6.1 Sol, GPT-6 Luna, GPT-5.x reasoning, Chat Latest, Fast mode tier, deep research |
+| **GLM** | 16 | Zhipu GLM-5.3-Flash / FlashX, native vision, up to 1M context |
 | **DeepSeek** | 14 | V4.1 Flash (native vision, $0.15/1M), budget reasoning |
 | **Moonshot** | 16 | Kimi K3 (1M context), K2.7 Code, K2.6 thinking mode |
-| **Google** | 13 | Gemini 3.8 Flash, 1M context, audio input |
-| **MiniMax** | 7 | M-series reasoning, 1M context |
-| **xAI** | 9 | Grok 4.7 (500K context), configurable reasoning, vision |
-| **Meta** | 2 | Muse Spark 1.3, 1M context, agentic + multimodal |
-| **DashScope** | 3 | Qwen with 1M context |
+| **Google** | 14 | Gemini 3.8 Flash, 1M context, audio input |
+| **MiniMax** | 8 | M-series reasoning, M2.7 Highspeed, 1M context |
+| **xAI** | 12 | Grok 4.7 (500K context), Grok Build 0.1, configurable reasoning, vision |
+| **Meta** | 3 | Muse Spark 1.3, 1M context, agentic + multimodal |
+| **DashScope** | 6 | Qwen3.8 Max / Flash, Qwen3.7 Plus, 1M context |
 | **OpenRouter** | 2 | Llama 405B, QVQ-72B |
 | **Copilot** | 1 | Deprecated GPT-4o config; 26 documented names and 7 exact model identifiers |
 

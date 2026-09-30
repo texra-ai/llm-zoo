@@ -23,7 +23,7 @@ const OPENAI_DEFAULT_CAPABILITIES: ModelCapabilities = {
 
 /**
  * OpenAI GPT model configurations.
- * Includes GPT-4.x, GPT-4o, and GPT-4.5 variants.
+ * Includes GPT-4.x, GPT-4o, GPT-4.5, and Chat Latest variants.
  */
 export const OPENAI_MODELS: Record<string, ModelConfig> = {
   gpt41: {
@@ -152,8 +152,8 @@ export const OPENAI_MODELS: Record<string, ModelConfig> = {
       supportsReasoning: false,
     },
     openRouterOnly: false,
+    // Deprecated; OpenAI shuts it down on 2026-10-23.
     deprecated: true,
-    retired: true,
   },
   'gpt4o-': {
     name: 'gpt4o-',
@@ -173,6 +173,31 @@ export const OPENAI_MODELS: Record<string, ModelConfig> = {
     },
     openRouterOnly: false,
     deprecated: true,
+  },
+  // Chat Latest (`chat-latest`): moving alias for the latest Instant model
+  // used in ChatGPT; OpenAI recommends GPT-6 Astra for production API use.
+  // $5 / $30, cached input $0.50 (0.1x). Text + image input; no reasoning
+  // token support listed. Responses tools: web search, file search, code
+  // interpreter, MCP.
+  chatlatest: {
+    name: 'chatlatest',
+    label: 'Chat Latest',
+    fullName: 'chat-latest',
+    shortName: 'chat-latest',
+    openrouterFullName: 'openai/gpt-chat-latest',
+    provider: ModelProvider.OPENAI,
+    maxOutputTokens: 128000,
+    contextWindow: 400000,
+    inputPrice: 5.0,
+    outputPrice: 30.0,
+    capabilities: {
+      ...OPENAI_DEFAULT_CAPABILITIES,
+      cacheDiscountFactor: 0.1,
+      supportsNativeMCPServer: true,
+      supportsNativeWebSearch: true,
+      supportsNativeCodeExecution: true,
+    },
+    openRouterOnly: false,
   },
   gpt4ol: {
     name: 'gpt4ol',
