@@ -8,12 +8,12 @@ LLM pricing and capabilities change weekly. Docs are scattered. There's no singl
 import { lookup, cost, cheapest } from 'llm-zoo';
 
 // Know everything about any model
-const claude = lookup('sonnet5');
+const claude = lookup('sonnet55');
 console.log(claude.contextWindow);  // 1000000
 console.log(claude.inputPrice);     // 3
 
 // Calculate exact costs
-const price = cost('gpt6-', { input: 50000, output: 10000 });
+const price = cost('gpt61-', { input: 50000, output: 10000 });
 
 // Find the right model
 const budget = cheapest({ supportsVision: true, supportsReasoning: true });
@@ -36,8 +36,8 @@ npm install llm-zoo
 | Model | Input | Output | Provider |
 |-------|-------|--------|----------|
 | `qwenturbo` | $0.05 | $0.50 | DashScope |
-| `glm53flash` | $0.075 | $0.25 | GLM |
 | `gpt6--` | $0.10 | $0.50 | OpenAI |
+| `glm53flash` | $0.15 | $0.50 | GLM |
 | `deepseek41` | $0.15 | $0.60 | DeepSeek |
 | `gemini35f-` | $0.30 | $2.50 | Google |
 | `minimaxM3` | $0.30 | $1.20 | MiniMax |
@@ -58,15 +58,15 @@ npm install llm-zoo
 | `kimi3` | $3 | $15 | ✓ | Moonshot |
 | `gpt56-` | $2 | $12 | ✓ | OpenAI |
 | `gemini31p` | $2 | $12 | ✓ | Google |
-| `gpt6-` | $2 | $10 | ✓ | OpenAI |
-| `sonnet5T` | $2 | $10 | ✓ | Anthropic |
+| `gpt61-` | $2 | $10 | ✓ | OpenAI |
+| `sonnet55` | $2 | $10 | ✓ | Anthropic |
 
 ### Largest Context
 
 | Model | Context | Provider |
 |-------|---------|----------|
 | `gpt6` | 1M | OpenAI |
-| `gpt6-` | 1M | OpenAI |
+| `gpt61-` | 1M | OpenAI |
 | `gpt6--` | 1M | OpenAI |
 | `gpt56-` | 1M | OpenAI |
 | `gemini31p` | 1M | Google |
@@ -76,7 +76,7 @@ npm install llm-zoo
 | `minimaxM3` | 1M | MiniMax |
 | `musespark13` | 1M | Meta |
 | `opus55` | 1M | Anthropic |
-| `sonnet5` | 1M | Anthropic |
+| `sonnet55` | 1M | Anthropic |
 | `qwenplus` | 1M | DashScope |
 | `grok47` | 500K | xAI |
 | `kimi26` | 262K | Moonshot |
@@ -85,18 +85,18 @@ npm install llm-zoo
 
 | Capability | Count | Examples |
 |------------|-------|----------|
-| Vision | 45+ | `sonnet5`, `gpt6-`, `gemini31p` |
-| Reasoning | 30+ | `opus55`, `gpt6-`, `deepseek41T`, `grok47` |
-| Code Execution | 20+ | `sonnet5`, `gpt6-`, `gemini38f` |
-| Web Search | 15+ | `opus55`, `gpt6-`, `musespark13` |
+| Vision | 45+ | `sonnet55`, `gpt61-`, `gemini31p` |
+| Reasoning | 30+ | `opus55`, `gpt61-`, `deepseek41T`, `grok47` |
+| Code Execution | 20+ | `sonnet55`, `gpt61-`, `gemini38f` |
+| Web Search | 15+ | `opus55`, `gpt61-`, `musespark13` |
 | Prompt Caching | 25+ | All Claude, Gemini, DeepSeek |
 
 ### Providers
 
 | Provider | Models | Highlights |
 |----------|--------|------------|
-| **Anthropic** | 37 | Fable 5.1, Mythos 5.1, Opus 5.5, Sonnet 5, 1M context, 97.5% cache savings on Fable/Mythos 5.1, PDF support |
-| **OpenAI** | 43 | GPT-6 Astra, Sol, and Luna, GPT-5.x reasoning, Fast mode tier, deep research |
+| **Anthropic** | 38 | Fable 5.1, Mythos 5.1, Opus 5.5, Sonnet 5.5, 1M context, 97.5% cache savings on Fable/Mythos 5.1, PDF support |
+| **OpenAI** | 44 | GPT-6 Astra, GPT-6.1 Sol, GPT-6 Luna, GPT-5.x reasoning, Fast mode tier, deep research |
 | **GLM** | 14 | Zhipu GLM-5.3-Flash, native vision, up to 1M context |
 | **DeepSeek** | 14 | V4.1 Flash (native vision, $0.15/1M), budget reasoning |
 | **Moonshot** | 16 | Kimi K3 (1M context), K2.7 Code, K2.6 thinking mode |
@@ -115,9 +115,9 @@ npm install llm-zoo
 ### Lookup
 
 ```typescript
-lookup('sonnet5')               // → ModelConfig | undefined
+lookup('sonnet55')               // → ModelConfig | undefined
 resolve('claude-sonnet-5')      // → by full API name
-exists('gpt6-')                 // → true
+exists('gpt61-')                 // → true
 ```
 
 ### Filter
@@ -132,10 +132,10 @@ withContext(500000)             // → 500K+ context models
 ### Cost
 
 ```typescript
-cost('sonnet5', { input: 10000, output: 5000 })
-cost('sonnet5', { input: 10000, output: 5000, cached: 8000 })  // with caching
-maxCost('gpt6-', 50000)                                         // worst case
-compareCosts(['sonnet5', 'gpt6-'], { input: 10000, output: 2000 })
+cost('sonnet55', { input: 10000, output: 5000 })
+cost('sonnet55', { input: 10000, output: 5000, cached: 8000 })  // with caching
+maxCost('gpt61-', 50000)                                         // worst case
+compareCosts(['sonnet55', 'gpt61-'], { input: 10000, output: 2000 })
 ```
 
 ### Select
@@ -185,7 +185,7 @@ Available schemas:
 
 ```typescript
 interface ModelConfig {
-  name: string;              // 'sonnet5'
+  name: string;              // 'sonnet55'
   fullName: string;          // 'claude-sonnet-5'
   provider: ModelProvider;
   inputPrice: number;        // $/1M tokens
@@ -269,7 +269,7 @@ const report = Object.entries(usage).map(([model, tokens]) => ({
 ```typescript
 import { MODEL_CONFIGS, MODELS, ANTHROPIC_MODELS } from 'llm-zoo';
 
-MODEL_CONFIGS['sonnet5'].inputPrice;
+MODEL_CONFIGS['sonnet55'].inputPrice;
 MODELS.forEach(name => console.log(name));
 Object.keys(ANTHROPIC_MODELS);
 ```

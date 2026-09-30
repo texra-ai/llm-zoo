@@ -42,8 +42,8 @@ export const GLM_MODELS: Record<string, ModelConfig> = {
     provider: ModelProvider.GLM,
     maxOutputTokens: 131072,
     contextWindow: 1000000,
-    inputPrice: 0.075,
-    outputPrice: 0.25,
+    inputPrice: 0.15,
+    outputPrice: 0.5,
     capabilities: {
       ...GLM_DEFAULT_CAPABILITIES,
       supportsVision: true,
@@ -54,8 +54,8 @@ export const GLM_MODELS: Record<string, ModelConfig> = {
         ReasoningEffort.HIGH,
         ReasoningEffort.MAX,
       ],
-      // Promo through 2026-09-09 UTC+8; list prices are $0.15 input / $0.50 output.
-      // Cached input is $0.015 / 1M tokens during the promotion.
+      // List price after the promo ended 2026-09-09: $0.15 input / $0.03 cached
+      // input / $0.50 output.
       cacheDiscountFactor: 0.2,
     },
     // Not served on the vendor's own Responses API.

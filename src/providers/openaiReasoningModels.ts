@@ -697,6 +697,36 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
   // 272K input tokens bill the full request at 2x input/cache and 1.5x output
   // (standard rates cataloged). `reasoning.effort` accepts
   // none/low/medium/high/xhigh/max, default medium.
+  // GPT-6.1 Sol (`gpt-6.1-sol`): $2 / $10, cached input $0.10 (5% of input),
+  // prompts over 272K input tokens bill 2x input/cache and 1.5x output
+  // (standard rates cataloged). `reasoning.effort` accepts
+  // low/medium/high/xhigh/max, default medium (`none`/`minimal` unavailable).
+  'gpt61-': {
+    name: 'gpt61-',
+    label: 'GPT-6.1 Sol',
+    fullName: 'gpt-6.1-sol',
+    shortName: 'gpt-6.1-sol',
+    provider: ModelProvider.OPENAI,
+    maxOutputTokens: 128000,
+    contextWindow: 1050000,
+    inputPrice: 2.0,
+    outputPrice: 10.0,
+    capabilities: {
+      ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
+      cacheDiscountFactor: 0.05,
+      reasoningEffort: ReasoningEffort.MEDIUM,
+      maxReasoningEffort: ReasoningEffort.MAX,
+      supportsPromptCaching: true,
+      supportsNativeMCPServer: true,
+      supportsNativeWebSearch: true,
+      supportsNativeCodeExecution: true,
+      supportsVision: true,
+    },
+    // Same reason as gpt6: xhigh/max need the Responses API.
+    requiresResponsesAPI: true,
+    openRouterOnly: false,
+    codexSubscription: true,
+  },
   'gpt6-': {
     name: 'gpt6-',
     label: 'GPT-6 Sol',
@@ -722,6 +752,8 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     requiresResponsesAPI: true,
     openRouterOnly: false,
     codexSubscription: true,
+    // Superseded by GPT-6.1 Sol (gpt61-): same price, cheaper cached input.
+    deprecated: true,
   },
   'gpt6--': {
     name: 'gpt6--',
