@@ -610,6 +610,7 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     openRouterOnly: false,
     codexSubscription: true,
     // Superseded by GPT-6 Sol (gpt6-).
+    deprecated: true,
   },
   {
     label: 'GPT-5.6 Terra',
