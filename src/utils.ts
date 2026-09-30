@@ -27,7 +27,7 @@ import { LEGACY_KEYS, MODEL_CONFIGS } from './ModelRegistry';
  * ```
  */
 export function lookup(ref: string): ModelConfig | undefined {
-  return MODEL_CONFIGS[ref as ModelRef];
+  return Object.hasOwn(MODEL_CONFIGS, ref) ? MODEL_CONFIGS[ref as ModelRef] : undefined;
 }
 
 /**
@@ -48,7 +48,7 @@ export function resolve(id: string): ModelConfig | undefined {
  * Check if a model reference exists.
  */
 export function exists(ref: string): boolean {
-  return ref in MODEL_CONFIGS;
+  return Object.hasOwn(MODEL_CONFIGS, ref);
 }
 
 const EFFORTS = new Set<string>(Object.values(ReasoningEffort));
@@ -71,12 +71,11 @@ const EFFORTS = new Set<string>(Object.values(ReasoningEffort));
  */
 export function parseModelRef(input: string): ModelSelection | undefined {
   const text = input.trim();
-  const legacy = LEGACY_KEYS[text];
-  if (legacy) return legacy;
+  if (Object.hasOwn(LEGACY_KEYS, text)) return LEGACY_KEYS[text];
   const match = /^([^@+]+?)(?:@([a-z]+))?(\+pro)?$/.exec(text);
   if (!match) return undefined;
   const [, ref = '', effort, pro] = match;
-  if (!(ref in MODEL_CONFIGS)) return undefined;
+  if (!exists(ref)) return undefined;
   if (effort !== undefined && !EFFORTS.has(effort)) return undefined;
   return {
     ref: ref as ModelRef,
@@ -231,7 +230,10 @@ export function cost(
     throw new Error(`Unknown model: ${model}`);
   }
 
-  const prices = (options.tier && config.tiers?.[options.tier]) || config;
+  const prices = options.tier ? config.tiers?.[options.tier] : config;
+  if (!prices) {
+    throw new Error(`${config.ref} has no ${options.tier} tier`);
+  }
   const { input, output, cached = 0 } = tokens;
   const uncached = input - cached;
 

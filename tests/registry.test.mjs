@@ -103,3 +103,29 @@ test('tier prices are used only when a tier is asked for', () => {
   assert.equal(rootEsm.cost(model, tokens), model.inputPrice);
   assert.equal(rootEsm.cost(model, tokens, { tier: 'fast' }), model.tiers.fast.inputPrice);
 });
+
+test('lookups ignore Object.prototype keys', () => {
+  for (const key of ['toString', 'constructor', '__proto__', 'hasOwnProperty']) {
+    assert.equal(parseModelRef(key), undefined, key);
+    assert.equal(rootEsm.lookup(key), undefined, key);
+    assert.equal(rootEsm.exists(key), false, key);
+  }
+});
+
+test('pricing a tier the model does not offer is an error, not a silent standard price', () => {
+  assert.throws(() => rootEsm.cost('anthropic/claude-opus-5', { input: 1, output: 1 }, { tier: 'fast' }), /no fast tier/);
+});
+
+test('1.x thinking keys of budget-thinking models still ask for thinking', () => {
+  for (const key of ['sonnet45T', 'haiku45T', 'sonnet4T']) {
+    assert.equal(LEGACY_KEYS[key].thinking, true, key);
+  }
+  assert.equal(LEGACY_KEYS.sonnet45.effort, 'none');
+});
+
+test('a merged entry keeps the routing names of its plain (non-thinking) variant', () => {
+  const sonnet45 = MODEL_CONFIGS['anthropic/claude-sonnet-4-5'];
+  assert.equal(sonnet45.openrouterFullName, 'anthropic/claude-sonnet-4.5');
+  assert.equal(sonnet45.vscodeLMFullName, 'claude-sonnet-4.5');
+  assert.equal(sonnet45.capabilities.supportsAssistantPrefill, true);
+});

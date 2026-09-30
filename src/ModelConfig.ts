@@ -190,7 +190,7 @@ export interface ModelCapabilities {
   /** Whether the model can process audio input natively */
   supportsNativeAudio: boolean;
 
-  /** Whether the model supports assistant message prefilling */
+  /** Whether the model supports assistant message prefilling (on requests without thinking, where thinking can be turned off) */
   supportsAssistantPrefill: boolean;
 
   /** Whether the model supports predictive/speculative output */
@@ -276,7 +276,7 @@ export interface ModelConfig {
   /** How the model reasons; absent when it never thinks. */
   reasoning?: ReasoningSpec;
 
-  /** Request modes the model accepts beyond the default. */
+  /** Request modes the model accepts beyond the default. OpenAI's `pro` exists only in the Responses API. */
   modes?: readonly ReasoningMode[];
 
   /**
@@ -292,7 +292,9 @@ export interface ModelConfig {
   /**
    * Registry keys from llm-zoo 1.x that meant this model, each with the
    * selection it stood for (e.g. `opus5T` → effort high). Kept so old
-   * configurations can be read; new code uses `ref`.
+   * configurations can be read; new code uses `ref`. A selection carries no
+   * service tier, so a 1.x fast-tier key maps to the standard selection and
+   * the caller chooses the tier.
    */
   legacyKeys?: Readonly<Record<string, Omit<ModelSelection, 'ref'>>>;
 
