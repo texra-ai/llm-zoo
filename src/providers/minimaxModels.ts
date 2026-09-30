@@ -1,9 +1,8 @@
 import {
   DEFAULT_MODEL_CAPABILITIES,
   ModelCapabilities,
-  ModelConfig,
+  ModelEntry,
   ModelProvider,
-  ReasoningEffort,
 } from '../ModelConfig';
 
 /**
@@ -19,55 +18,86 @@ const MINIMAX_DEFAULT_CAPABILITIES: ModelCapabilities = {
   supportsVision: false,
   supportsAssistantPrefill: true,
   supportsSystemPrompt: true,
-  supportsReasoning: true,
   supportsInterleavedThinking: true,
-  supportsReasoningEffort: false,
-  reasoningEffort: ReasoningEffort.NONE,
 };
 
 /**
  * MiniMax model configurations.
- * Includes the M-series models: M3, M2.7, M2.5, M2.1, M2, M1, and MiniMax-01.
+ * Includes the M-series models: M3, M2.7 (and M2.7-highspeed), M2.5, M2.1, M2, M1, and MiniMax-01.
  */
-export const MINIMAX_MODELS: Record<string, ModelConfig> = {
-  minimaxM3: {
-    name: 'minimaxM3',
+export const MINIMAX_MODELS: readonly ModelEntry[] = [
+  {
     label: 'MiniMax M3',
-    fullName: 'MiniMax-M3',
+    id: 'MiniMax-M3',
     shortName: 'MiniMax-M3',
     openrouterFullName: 'minimax/minimax-m3',
     provider: ModelProvider.MINIMAX,
-    maxOutputTokens: 512000,
+    // max_completion_tokens maximum 524288 for M3; 204800 for M2.x.
+    maxOutputTokens: 524288,
     contextWindow: 1048576,
     inputPrice: 0.3,
     outputPrice: 1.2,
     capabilities: {
       ...MINIMAX_DEFAULT_CAPABILITIES,
       supportsVision: true,
+      // Cache read $0.06 / 1M vs $0.30 / 1M input (<= 512K input tier).
+      cacheDiscountFactor: 0.2,
     },
+    // thinking: {type: 'disabled'} skips thinking; reasoning_effort is ignored
+    // (only M3.1-Flash-Preview tunes depth). M2.x always think.
+    reasoning: { efforts: [], off: [] },
+    legacyKeys: { minimaxM3: {} },
+    source: { url: 'https://platform.minimax.io/docs/api-reference/text-chat-openai', verified: '2026-09-30' },
     openRouterOnly: false,
   },
-  minimaxM27: {
-    name: 'minimaxM27',
+  {
     label: 'MiniMax M2.7',
-    fullName: 'MiniMax-M2.7',
+    id: 'MiniMax-M2.7',
     shortName: 'MiniMax-M2.7',
     openrouterFullName: 'minimax/minimax-m2.7',
     provider: ModelProvider.MINIMAX,
+    // MiniMax documents no max output; keep headroom for the prompt in the
+    // 204,800-token context.
     maxOutputTokens: 196608,
     contextWindow: 204800,
     inputPrice: 0.3,
     outputPrice: 1.2,
     capabilities: {
       ...MINIMAX_DEFAULT_CAPABILITIES,
+      // Cache read $0.06 / 1M vs $0.30 / 1M input.
+      cacheDiscountFactor: 0.2,
     },
+    reasoning: { efforts: [] },
+    legacyKeys: { minimaxM27: {} },
+    source: { url: 'https://platform.minimax.io/docs/api-reference/text-chat-openai', verified: '2026-09-30' },
     openRouterOnly: false,
-    deprecated: true,
   },
-  minimaxM25: {
-    name: 'minimaxM25',
+  // M2.7 at ~100 tps, same limits; $0.60 / $0.06 cache read / $2.40
+  // (platform.minimax.io/docs/guides/pricing-paygo).
+  {
+    label: 'MiniMax M2.7 Highspeed',
+    id: 'MiniMax-M2.7-highspeed',
+    shortName: 'MiniMax-M2.7-highspeed',
+    provider: ModelProvider.MINIMAX,
+    // MiniMax documents no max output; keep headroom for the prompt in the
+    // 204,800-token context.
+    maxOutputTokens: 196608,
+    contextWindow: 204800,
+    inputPrice: 0.6,
+    outputPrice: 2.4,
+    capabilities: {
+      ...MINIMAX_DEFAULT_CAPABILITIES,
+      // Cache read $0.06 / 1M vs $0.60 / 1M input.
+      cacheDiscountFactor: 0.1,
+    },
+    reasoning: { efforts: [] },
+    legacyKeys: { minimaxM27highspeed: {} },
+    source: { url: 'https://platform.minimax.io/docs/api-reference/text-chat-openai', verified: '2026-09-30' },
+    openRouterOnly: false,
+  },
+  {
     label: 'MiniMax M2.5',
-    fullName: 'MiniMax-M2.5',
+    id: 'MiniMax-M2.5',
     shortName: 'MiniMax-M2.5',
     openrouterFullName: 'minimax/minimax-m2.5',
     provider: ModelProvider.MINIMAX,
@@ -78,13 +108,15 @@ export const MINIMAX_MODELS: Record<string, ModelConfig> = {
     capabilities: {
       ...MINIMAX_DEFAULT_CAPABILITIES,
     },
+    reasoning: { efforts: [] },
+    legacyKeys: { minimaxM25: {} },
+    source: { url: 'https://platform.minimax.io/docs/api-reference/text-chat-openai', verified: '2026-09-30' },
     openRouterOnly: false,
     deprecated: true,
   },
-  minimaxM21: {
-    name: 'minimaxM21',
+  {
     label: 'MiniMax M2.1',
-    fullName: 'MiniMax-M2.1',
+    id: 'MiniMax-M2.1',
     shortName: 'MiniMax-M2.1',
     openrouterFullName: 'minimax/minimax-m2.1',
     provider: ModelProvider.MINIMAX,
@@ -95,13 +127,15 @@ export const MINIMAX_MODELS: Record<string, ModelConfig> = {
     capabilities: {
       ...MINIMAX_DEFAULT_CAPABILITIES,
     },
+    reasoning: { efforts: [] },
+    legacyKeys: { minimaxM21: {} },
+    source: { url: 'https://platform.minimax.io/docs/api-reference/text-chat-openai', verified: '2026-09-30' },
     openRouterOnly: false,
     deprecated: true,
   },
-  minimaxM2: {
-    name: 'minimaxM2',
+  {
     label: 'MiniMax M2',
-    fullName: 'MiniMax-M2',
+    id: 'MiniMax-M2',
     shortName: 'MiniMax-M2',
     openrouterFullName: 'minimax/minimax-m2',
     provider: ModelProvider.MINIMAX,
@@ -112,13 +146,15 @@ export const MINIMAX_MODELS: Record<string, ModelConfig> = {
     capabilities: {
       ...MINIMAX_DEFAULT_CAPABILITIES,
     },
+    reasoning: { efforts: [] },
+    legacyKeys: { minimaxM2: {} },
+    source: { url: 'https://platform.minimax.io/docs/api-reference/text-chat-openai', verified: '2026-09-30' },
     openRouterOnly: false,
     deprecated: true,
   },
-  minimaxM1: {
-    name: 'minimaxM1',
+  {
     label: 'MiniMax M1',
-    fullName: 'MiniMax-M1',
+    id: 'MiniMax-M1',
     shortName: 'MiniMax-M1',
     openrouterFullName: 'minimax/minimax-m1',
     provider: ModelProvider.MINIMAX,
@@ -129,14 +165,16 @@ export const MINIMAX_MODELS: Record<string, ModelConfig> = {
     capabilities: {
       ...MINIMAX_DEFAULT_CAPABILITIES,
     },
+    reasoning: { efforts: [] },
+    source: { url: 'https://openrouter.ai/minimax/minimax-m1', verified: '2026-09-30' },
+    legacyKeys: { minimaxM1: {} },
     // Not served on the vendor's own Responses API.
     openRouterOnly: true,
     deprecated: true,
   },
-  minimax01: {
-    name: 'minimax01',
+  {
     label: 'MiniMax-01',
-    fullName: 'MiniMax-01',
+    id: 'MiniMax-01',
     shortName: 'MiniMax-01',
     openrouterFullName: 'minimax/minimax-01',
     provider: ModelProvider.MINIMAX,
@@ -148,8 +186,11 @@ export const MINIMAX_MODELS: Record<string, ModelConfig> = {
       ...MINIMAX_DEFAULT_CAPABILITIES,
       supportsVision: true,
     },
+    // Not a reasoning model: OpenRouter lists no reasoning parameter for it.
+    source: { url: 'https://openrouter.ai/minimax/minimax-01', verified: '2026-09-30' },
+    legacyKeys: { minimax01: {} },
     // Not served on the vendor's own Responses API.
     openRouterOnly: true,
     deprecated: true,
   },
-};
+];

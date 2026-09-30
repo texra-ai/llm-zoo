@@ -34,13 +34,7 @@ export const ModelCapabilitiesSchema = z.object({
   supportsPromptCaching: z.boolean(),
   supportsAutoPromptCaching: z.boolean(),
   cacheDiscountFactor: z.number(),
-  supportsReasoning: z.boolean(),
   supportsInterleavedThinking: z.boolean(),
-  supportsAdaptiveThinking: z.boolean().default(false),
-  reasoningEffort: ReasoningEffortSchema,
-  maxReasoningEffort: ReasoningEffortSchema.optional(),
-  supportedReasoningEfforts: z.array(ReasoningEffortSchema).readonly().optional(),
-  reasoningMode: z.literal('pro').optional(),
   supportsVision: z.boolean(),
   supportsNativePdf: z.boolean(),
   supportsAssistantPrefill: z.boolean(),
@@ -48,9 +42,20 @@ export const ModelCapabilitiesSchema = z.object({
   supportsTokenCounting: z.boolean(),
   supportsSystemPrompt: z.boolean(),
   supportsIntermDevMsgs: z.boolean(),
-  supportsReasoningEffort: z.boolean(),
   supportsNativeAudio: z.boolean(),
 });
+
+const EffortListSchema = z.array(ReasoningEffortSchema).readonly();
+
+/** How a model reasons; see `ReasoningSpec`. */
+export const ReasoningSpecSchema = z.object({
+  efforts: EffortListSchema,
+  off: EffortListSchema.optional(),
+  budget: z.boolean().optional(),
+  providerDefault: ReasoningEffortSchema.optional(),
+});
+
+const TokenPricesSchema = z.object({ inputPrice: z.number(), outputPrice: z.number() });
 
 /** Rates billed for a whole request whose prompt is above the threshold. */
 export const LongContextPricingSchema = z.object({
@@ -60,10 +65,22 @@ export const LongContextPricingSchema = z.object({
   cacheDiscountFactor: z.number(),
 });
 
+/** A model reference, `provider/id`. */
+export const ModelRefSchema = z.templateLiteral([ModelProviderSchema, '/', z.string()]);
+
+/** A model plus how to run it; see `ModelSelection`. */
+export const ModelSelectionSchema = z.object({
+  ref: ModelRefSchema,
+  effort: ReasoningEffortSchema.optional(),
+  thinking: z.boolean().optional(),
+  mode: z.literal('pro').optional(),
+});
+
 /** Complete configuration for a language model instance. */
 export const ModelConfigSchema = z.object({
-  name: z.string(),
-  fullName: z.string(),
+  ref: ModelRefSchema,
+  id: z.string(),
+  label: z.string(),
   shortName: z.string(),
   provider: ModelProviderSchema,
   maxOutputTokens: z.number(),
@@ -71,15 +88,22 @@ export const ModelConfigSchema = z.object({
   outputPrice: z.number(),
   contextWindow: z.number(),
   capabilities: ModelCapabilitiesSchema,
+  reasoning: ReasoningSpecSchema.optional(),
+  modes: z.array(z.literal('pro')).readonly().optional(),
+  tiers: z
+    .object({
+      fast: TokenPricesSchema.extend({ longContextPricing: LongContextPricingSchema.optional() }).optional(),
+    })
+    .optional(),
+  longContextPricing: LongContextPricingSchema.optional(),
+  source: z.object({ url: z.string(), verified: z.string().regex(/^\d{4}-\d{2}-\d{2}$/) }).optional(),
+  legacyKeys: z.record(z.string(), ModelSelectionSchema.omit({ ref: true })).optional(),
   openRouterOnly: z.boolean(),
   openrouterFullName: z.string().optional(),
   vscodeLMFullName: z.string().optional(),
   copilotFullName: z.string().optional(),
   baseUrl: z.string().optional(),
   requiresResponsesAPI: z.boolean().optional(),
-  serviceTier: z.literal('fast').optional(),
-  longContextPricing: LongContextPricingSchema.optional(),
-  description: z.string().optional(),
   codexSubscription: z.boolean().optional(),
   kimiSubscription: z.boolean().optional(),
   deprecated: z.boolean().optional(),
@@ -87,9 +111,10 @@ export const ModelConfigSchema = z.object({
 });
 
 /** Registry of all model configurations. */
-export const ModelRegistrySchema = z.record(z.string(), ModelConfigSchema);
+export const ModelRegistrySchema = z.record(ModelRefSchema, ModelConfigSchema);
 
 // Export inferred types for convenience
 export type ModelCapabilitiesSchemaType = z.infer<typeof ModelCapabilitiesSchema>;
 export type ModelConfigSchemaType = z.infer<typeof ModelConfigSchema>;
 export type ModelRegistrySchemaType = z.infer<typeof ModelRegistrySchema>;
+export type ModelSelectionSchemaType = z.infer<typeof ModelSelectionSchema>;

@@ -1,7 +1,7 @@
 import {
   DEFAULT_MODEL_CAPABILITIES,
   ModelCapabilities,
-  ModelConfig,
+  ModelEntry,
   ModelProvider,
   ReasoningEffort,
 } from '../ModelConfig';
@@ -14,21 +14,27 @@ const OPENAI_REASONING_DEFAULT_CAPABILITIES: ModelCapabilities = {
   ...DEFAULT_MODEL_CAPABILITIES,
   supportsAutoPromptCaching: true,
   cacheDiscountFactor: 0.5,
-  supportsReasoning: true,
   supportsIntermDevMsgs: true,
-  reasoningEffort: ReasoningEffort.HIGH,
-  supportsReasoningEffort: true,
 };
+
+// `reasoning.effort` lists from each model page (developers.openai.com/api/docs/models/<id>).
+// Models that accept `none` turn thinking off with it (`off: []`). Pro mode
+// (`reasoning.mode: 'pro'`) is documented for GPT-5.6 and GPT-6 models only;
+// fast-tier prices are from the pricing page's Fast table.
+const LOW_TO_HIGH_EFFORTS = [ReasoningEffort.LOW, ReasoningEffort.MEDIUM, ReasoningEffort.HIGH] as const;
+const MINIMAL_TO_HIGH_EFFORTS = [ReasoningEffort.MINIMAL, ...LOW_TO_HIGH_EFFORTS] as const;
+const LOW_TO_XHIGH_EFFORTS = [...LOW_TO_HIGH_EFFORTS, ReasoningEffort.XHIGH] as const;
+const MEDIUM_TO_XHIGH_EFFORTS = [ReasoningEffort.MEDIUM, ReasoningEffort.HIGH, ReasoningEffort.XHIGH] as const;
+const LOW_TO_MAX_EFFORTS = [...LOW_TO_XHIGH_EFFORTS, ReasoningEffort.MAX] as const;
 
 /**
  * OpenAI reasoning model configurations.
  * Includes o1, o3, o4, and GPT-5 reasoning variants.
  */
-export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
-  'o4-': {
-    name: 'o4-',
+export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
+  {
     label: 'o4 Mini',
-    fullName: 'o4-mini-2025-04-16',
+    id: 'o4-mini-2025-04-16',
     shortName: 'o4-mini',
     openrouterFullName: 'openai/o4-mini-high',
     vscodeLMFullName: 'o4-mini',
@@ -46,13 +52,17 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
       supportsNativePdf: true,
       supportsVision: true,
     },
+    // o-series efforts: the GPT-5.4 guide notes earlier reasoning models like o3 accepted only low/medium/high; no default is documented.
+    reasoning: { efforts: LOW_TO_HIGH_EFFORTS },
+    tiers: { fast: { inputPrice: 2, outputPrice: 8 } },
+    source: { url: 'https://developers.openai.com/api/docs/models/o4-mini', verified: '2026-09-30' },
+    legacyKeys: { 'o4-': { effort: ReasoningEffort.HIGH } },
     openRouterOnly: false,
     deprecated: true,
   },
-  o3pro: {
-    name: 'o3pro',
+  {
     label: 'o3 Pro',
-    fullName: 'o3-pro-2025-06-10',
+    id: 'o3-pro-2025-06-10',
     shortName: 'o3-pro',
     openrouterFullName: 'openai/o3-pro',
     vscodeLMFullName: 'o3-pro',
@@ -69,13 +79,16 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
       supportsNativePdf: true,
       supportsVision: true,
     },
+    // o-series efforts: the GPT-5.4 guide notes earlier reasoning models like o3 accepted only low/medium/high; no default is documented.
+    reasoning: { efforts: LOW_TO_HIGH_EFFORTS },
+    source: { url: 'https://developers.openai.com/api/docs/models/o3-pro', verified: '2026-09-30' },
+    legacyKeys: { o3pro: { effort: ReasoningEffort.HIGH } },
     openRouterOnly: false,
     deprecated: true,
   },
-  o3: {
-    name: 'o3',
+  {
     label: 'o3',
-    fullName: 'o3-2025-04-16',
+    id: 'o3-2025-04-16',
     shortName: 'o3',
     openrouterFullName: 'openai/o3',
     vscodeLMFullName: 'o3',
@@ -93,13 +106,17 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
       supportsNativePdf: true,
       supportsVision: true,
     },
+    // o-series efforts: the GPT-5.4 guide notes earlier reasoning models like o3 accepted only low/medium/high; no default is documented.
+    reasoning: { efforts: LOW_TO_HIGH_EFFORTS },
+    tiers: { fast: { inputPrice: 3.5, outputPrice: 14 } },
+    source: { url: 'https://developers.openai.com/api/docs/models/o3', verified: '2026-09-30' },
+    legacyKeys: { o3: { effort: ReasoningEffort.HIGH } },
     openRouterOnly: false,
     deprecated: true,
   },
-  'o3-': {
-    name: 'o3-',
+  {
     label: 'o3 Mini',
-    fullName: 'o3-mini-2025-01-31',
+    id: 'o3-mini-2025-01-31',
     shortName: 'o3-mini',
     openrouterFullName: 'openai/o3-mini-2025-01-31',
     vscodeLMFullName: 'o3-mini',
@@ -114,13 +131,16 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
       supportsNativeCodeExecution: true,
       supportsVision: false,
     },
+    // o-series efforts: the GPT-5.4 guide notes earlier reasoning models like o3 accepted only low/medium/high; no default is documented.
+    reasoning: { efforts: LOW_TO_HIGH_EFFORTS },
+    source: { url: 'https://developers.openai.com/api/docs/models/o3-mini', verified: '2026-09-30' },
+    legacyKeys: { 'o3-': { effort: ReasoningEffort.HIGH } },
     openRouterOnly: false,
     deprecated: true,
   },
-  o1pro: {
-    name: 'o1pro',
+  {
     label: 'o1 Pro',
-    fullName: 'o1-pro-2025-03-19',
+    id: 'o1-pro-2025-03-19',
     shortName: 'o1-pro',
     openrouterFullName: 'openai/o1-pro-2025-03-19',
     provider: ModelProvider.OPENAI,
@@ -133,13 +153,16 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
       supportsNativeMCPServer: true,
       supportsVision: true,
     },
+    // o-series efforts: the GPT-5.4 guide notes earlier reasoning models like o3 accepted only low/medium/high; no default is documented.
+    reasoning: { efforts: LOW_TO_HIGH_EFFORTS },
+    source: { url: 'https://developers.openai.com/api/docs/models/o1-pro', verified: '2026-09-30' },
+    legacyKeys: { o1pro: { effort: ReasoningEffort.HIGH } },
     openRouterOnly: false,
     deprecated: true,
   },
-  o1: {
-    name: 'o1',
+  {
     label: 'o1',
-    fullName: 'o1-2024-12-17',
+    id: 'o1-2024-12-17',
     shortName: 'o1',
     openrouterFullName: 'openai/o1-2024-12-17',
     vscodeLMFullName: 'o1',
@@ -154,13 +177,16 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
       supportsVision: true,
       supportsNativePdf: true,
     },
+    // o-series efforts: the GPT-5.4 guide notes earlier reasoning models like o3 accepted only low/medium/high; no default is documented.
+    reasoning: { efforts: LOW_TO_HIGH_EFFORTS },
+    source: { url: 'https://developers.openai.com/api/docs/models/o1', verified: '2026-09-30' },
+    legacyKeys: { o1: { effort: ReasoningEffort.HIGH } },
     openRouterOnly: false,
     deprecated: true,
   },
-  o1preview: {
-    name: 'o1preview',
+  {
     label: 'o1 Preview',
-    fullName: 'o1-preview-2024-09-12',
+    id: 'o1-preview-2024-09-12',
     shortName: 'o1-preview',
     openrouterFullName: 'openai/o1-preview-2024-09-12',
     vscodeLMFullName: 'o1-preview',
@@ -174,14 +200,16 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
       supportsVision: false,
       supportsSystemPrompt: false,
     },
+    // Retired before its effort levels were recorded; they can no longer be checked.
+    reasoning: { efforts: [] },
+    legacyKeys: { o1preview: {} },
     openRouterOnly: false,
     deprecated: true,
     retired: true,
   },
-  'o1-': {
-    name: 'o1-',
+  {
     label: 'o1 Mini',
-    fullName: 'o1-mini-2024-09-12',
+    id: 'o1-mini-2024-09-12',
     shortName: 'o1-mini',
     openrouterFullName: 'openai/o1-mini-2024-09-12',
     vscodeLMFullName: 'o1-mini',
@@ -195,14 +223,16 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
       supportsVision: false,
       supportsSystemPrompt: false,
     },
+    // Retired before its effort levels were recorded; they can no longer be checked.
+    reasoning: { efforts: [] },
+    legacyKeys: { 'o1-': {} },
     openRouterOnly: false,
     deprecated: true,
     retired: true,
   },
-  gptoss: {
-    name: 'gptoss',
+  {
     label: 'GPT-OSS 120B',
-    fullName: 'gpt-oss-120b',
+    id: 'gpt-oss-120b',
     shortName: 'gpt-oss-120b',
     openrouterFullName: 'openai/gpt-oss-120b',
     provider: ModelProvider.OPENAI,
@@ -214,13 +244,15 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       supportsVision: false,
     },
+    reasoning: { efforts: LOW_TO_HIGH_EFFORTS },
+    source: { url: 'https://developers.openai.com/api/docs/models/gpt-oss-120b', verified: '2026-09-30' },
+    legacyKeys: { gptoss: { effort: ReasoningEffort.HIGH } },
     openRouterOnly: true,
     deprecated: true,
   },
-  'gptoss-': {
-    name: 'gptoss-',
+  {
     label: 'GPT-OSS 20B',
-    fullName: 'gpt-oss-20b',
+    id: 'gpt-oss-20b',
     shortName: 'gpt-oss-20b',
     openrouterFullName: 'openai/gpt-oss-20b',
     provider: ModelProvider.OPENAI,
@@ -232,13 +264,15 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       supportsVision: false,
     },
+    reasoning: { efforts: LOW_TO_HIGH_EFFORTS },
+    source: { url: 'https://developers.openai.com/api/docs/models/gpt-oss-20b', verified: '2026-09-30' },
+    legacyKeys: { 'gptoss-': { effort: ReasoningEffort.HIGH } },
     openRouterOnly: true,
     deprecated: true,
   },
-  gpt5pro: {
-    name: 'gpt5pro',
+  {
     label: 'GPT-5 Pro',
-    fullName: 'gpt-5-pro-2025-10-06',
+    id: 'gpt-5-pro-2025-10-06',
     shortName: 'gpt-5-pro',
     openrouterFullName: 'openai/gpt-5-pro-2025-10-06',
     vscodeLMFullName: 'gpt-5-pro',
@@ -257,13 +291,15 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
       supportsVision: true,
       supportsNativePdf: true,
     },
+    reasoning: { efforts: [ReasoningEffort.HIGH], providerDefault: ReasoningEffort.HIGH },
+    source: { url: 'https://developers.openai.com/api/docs/models/gpt-5-pro', verified: '2026-09-30' },
+    legacyKeys: { gpt5pro: { effort: ReasoningEffort.HIGH } },
     openRouterOnly: false,
     deprecated: true,
   },
-  gpt5: {
-    name: 'gpt5',
+  {
     label: 'GPT-5',
-    fullName: 'gpt-5-2025-08-07',
+    id: 'gpt-5-2025-08-07',
     shortName: 'gpt-5',
     openrouterFullName: 'openai/gpt-5-2025-08-07',
     vscodeLMFullName: 'gpt-5',
@@ -282,13 +318,16 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
       supportsVision: true,
       supportsNativePdf: true,
     },
+    reasoning: { efforts: MINIMAL_TO_HIGH_EFFORTS, providerDefault: ReasoningEffort.MEDIUM },
+    tiers: { fast: { inputPrice: 2.5, outputPrice: 20 } },
+    source: { url: 'https://developers.openai.com/api/docs/guides/latest-model/gpt-5', verified: '2026-09-30' },
+    legacyKeys: { gpt5: { effort: ReasoningEffort.HIGH } },
     openRouterOnly: false,
     deprecated: true,
   },
-  gpt51: {
-    name: 'gpt51',
+  {
     label: 'GPT-5.1',
-    fullName: 'gpt-5.1-2025-11-13',
+    id: 'gpt-5.1-2025-11-13',
     shortName: 'gpt-5.1',
     openrouterFullName: 'openai/gpt-5.1-2025-11-13',
     vscodeLMFullName: 'gpt-5.1',
@@ -300,7 +339,6 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       cacheDiscountFactor: 0.1,
-      reasoningEffort: ReasoningEffort.HIGH,
       supportsNativeMCPServer: true,
       supportsNativeWebSearch: true,
       supportsNativeCodeExecution: true,
@@ -308,13 +346,16 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
       supportsVision: true,
       supportsNativePdf: true,
     },
+    reasoning: { efforts: LOW_TO_HIGH_EFFORTS, off: [], providerDefault: ReasoningEffort.NONE },
+    tiers: { fast: { inputPrice: 2.5, outputPrice: 20 } },
+    source: { url: 'https://developers.openai.com/api/docs/models/gpt-5.1', verified: '2026-09-30' },
+    legacyKeys: { gpt51: { effort: ReasoningEffort.HIGH } },
     openRouterOnly: false,
     deprecated: true,
   },
-  gpt52pro: {
-    name: 'gpt52pro',
+  {
     label: 'GPT-5.2 Pro',
-    fullName: 'gpt-5.2-pro-2025-12-11',
+    id: 'gpt-5.2-pro-2025-12-11',
     shortName: 'gpt-5.2-pro',
     openrouterFullName: 'openai/gpt-5.2-pro',
     vscodeLMFullName: 'gpt-5.2-pro',
@@ -331,16 +372,17 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
       supportsNativeCodeExecution: true,
       supportsVision: true,
       supportsNativePdf: true,
-      reasoningEffort: ReasoningEffort.XHIGH,
     },
+    reasoning: { efforts: MEDIUM_TO_XHIGH_EFFORTS },
+    source: { url: 'https://developers.openai.com/api/docs/models/gpt-5.2-pro', verified: '2026-09-30' },
+    legacyKeys: { gpt52pro: { effort: ReasoningEffort.XHIGH } },
     requiresResponsesAPI: true,
     openRouterOnly: false,
     deprecated: true,
   },
-  gpt52: {
-    name: 'gpt52',
+  {
     label: 'GPT-5.2',
-    fullName: 'gpt-5.2-2025-12-11',
+    id: 'gpt-5.2-2025-12-11',
     shortName: 'gpt-5.2',
     openrouterFullName: 'openai/gpt-5.2',
     vscodeLMFullName: 'gpt-5.2',
@@ -352,20 +394,22 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       cacheDiscountFactor: 0.1,
-      reasoningEffort: ReasoningEffort.XHIGH,
       supportsNativeMCPServer: true,
       supportsNativeWebSearch: true,
       supportsNativeCodeExecution: true,
       supportsVision: true,
       supportsNativePdf: true,
     },
+    reasoning: { efforts: LOW_TO_XHIGH_EFFORTS, off: [], providerDefault: ReasoningEffort.NONE },
+    tiers: { fast: { inputPrice: 3.5, outputPrice: 28 } },
+    source: { url: 'https://developers.openai.com/api/docs/models/gpt-5.2', verified: '2026-09-30' },
+    legacyKeys: { gpt52: { effort: ReasoningEffort.XHIGH } },
     openRouterOnly: false,
     deprecated: true,
   },
-  gpt52codex: {
-    name: 'gpt52codex',
+  {
     label: 'GPT-5.2 Codex',
-    fullName: 'gpt-5.2-codex',
+    id: 'gpt-5.2-codex',
     shortName: 'gpt-5.2-codex',
     openrouterFullName: 'openai/gpt-5.2-codex',
     vscodeLMFullName: 'gpt-5.2-codex',
@@ -377,21 +421,22 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       cacheDiscountFactor: 0.1,
-      reasoningEffort: ReasoningEffort.XHIGH,
       supportsNativeMCPServer: true,
       supportsNativeWebSearch: true,
       supportsNativeCodeExecution: true,
       supportsVision: true,
       supportsNativePdf: true,
     },
+    // Retired before its effort levels were recorded; they can no longer be checked.
+    reasoning: { efforts: [] },
+    legacyKeys: { gpt52codex: {} },
     openRouterOnly: false,
     deprecated: true,
     retired: true,
   },
-  gpt53codex: {
-    name: 'gpt53codex',
+  {
     label: 'GPT-5.3 Codex',
-    fullName: 'gpt-5.3-codex',
+    id: 'gpt-5.3-codex',
     shortName: 'gpt-5.3-codex',
     openrouterFullName: 'openai/gpt-5.3-codex',
     vscodeLMFullName: 'gpt-5.3-codex',
@@ -404,20 +449,21 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       cacheDiscountFactor: 0.1,
-      reasoningEffort: ReasoningEffort.XHIGH,
       supportsNativeMCPServer: true,
       supportsNativeWebSearch: true,
       supportsNativeCodeExecution: true,
       supportsVision: true,
       supportsNativePdf: true,
     },
+    reasoning: { efforts: LOW_TO_XHIGH_EFFORTS },
+    source: { url: 'https://developers.openai.com/api/docs/models/gpt-5.3-codex', verified: '2026-09-30' },
+    legacyKeys: { gpt53codex: { effort: ReasoningEffort.XHIGH } },
     openRouterOnly: false,
     deprecated: true,
   },
-  gpt54pro: {
-    name: 'gpt54pro',
+  {
     label: 'GPT-5.4 Pro',
-    fullName: 'gpt-5.4-pro-2026-03-05',
+    id: 'gpt-5.4-pro-2026-03-05',
     shortName: 'gpt-5.4-pro',
     openrouterFullName: 'openai/gpt-5.4-pro',
     vscodeLMFullName: 'gpt-5.4-pro',
@@ -441,16 +487,17 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
       supportsNativeWebSearch: true,
       supportsVision: true,
       supportsNativePdf: true,
-      reasoningEffort: ReasoningEffort.XHIGH,
     },
+    reasoning: { efforts: MEDIUM_TO_XHIGH_EFFORTS, providerDefault: ReasoningEffort.MEDIUM },
+    source: { url: 'https://developers.openai.com/api/docs/models/gpt-5.4-pro', verified: '2026-09-30' },
+    legacyKeys: { gpt54pro: { effort: ReasoningEffort.XHIGH } },
     requiresResponsesAPI: true,
     openRouterOnly: false,
     deprecated: true,
   },
-  gpt55: {
-    name: 'gpt55',
+  {
     label: 'GPT-5.5',
-    fullName: 'gpt-5.5-2026-04-23',
+    id: 'gpt-5.5-2026-04-23',
     shortName: 'gpt-5.5',
     openrouterFullName: 'openai/gpt-5.5',
     vscodeLMFullName: 'gpt-5.5',
@@ -468,7 +515,6 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       cacheDiscountFactor: 0.1,
-      reasoningEffort: ReasoningEffort.XHIGH,
       supportsNativeMCPServer: true,
       supportsNativeWebSearch: true,
       supportsNativeCodeExecution: true,
@@ -476,14 +522,17 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
       supportsVision: true,
       supportsNativePdf: true,
     },
+    reasoning: { efforts: LOW_TO_XHIGH_EFFORTS, off: [], providerDefault: ReasoningEffort.MEDIUM },
+    tiers: { fast: { inputPrice: 12.5, outputPrice: 75 } },
+    source: { url: 'https://developers.openai.com/api/docs/models/gpt-5.5', verified: '2026-09-30' },
+    legacyKeys: { gpt55: { effort: ReasoningEffort.XHIGH } },
     openRouterOnly: false,
     codexSubscription: true,
     deprecated: true,
   },
-  gpt55pro: {
-    name: 'gpt55pro',
+  {
     label: 'GPT-5.5 Pro',
-    fullName: 'gpt-5.5-pro-2026-04-23',
+    id: 'gpt-5.5-pro-2026-04-23',
     shortName: 'gpt-5.5-pro',
     openrouterFullName: 'openai/gpt-5.5-pro',
     vscodeLMFullName: 'gpt-5.5-pro',
@@ -508,16 +557,17 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
       supportsNativeCodeExecution: true,
       supportsVision: true,
       supportsNativePdf: true,
-      reasoningEffort: ReasoningEffort.XHIGH,
     },
+    reasoning: { efforts: MEDIUM_TO_XHIGH_EFFORTS, providerDefault: ReasoningEffort.HIGH },
+    source: { url: 'https://developers.openai.com/api/docs/models/gpt-5.5-pro', verified: '2026-09-30' },
+    legacyKeys: { gpt55pro: { effort: ReasoningEffort.XHIGH } },
     requiresResponsesAPI: true,
     openRouterOnly: false,
     deprecated: true,
   },
-  gpt56: {
-    name: 'gpt56',
+  {
     label: 'GPT-5.6 Sol',
-    fullName: 'gpt-5.6-sol',
+    id: 'gpt-5.6-sol',
     shortName: 'gpt-5.6',
     openrouterFullName: 'openai/gpt-5.6',
     vscodeLMFullName: 'gpt-5.6',
@@ -537,8 +587,6 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       cacheDiscountFactor: 0.1,
-      reasoningEffort: ReasoningEffort.MEDIUM,
-      maxReasoningEffort: ReasoningEffort.MAX,
       supportsPromptCaching: true,
       supportsNativeMCPServer: true,
       supportsNativeWebSearch: true,
@@ -547,99 +595,26 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
       supportsVision: true,
       supportsNativePdf: true,
     },
+    reasoning: { efforts: LOW_TO_MAX_EFFORTS, off: [], providerDefault: ReasoningEffort.MEDIUM },
+    modes: ['pro'],
+    tiers: {
+      fast: {
+        inputPrice: 8,
+        outputPrice: 40,
+        // Fast mode has its own long-context rates (pricing page, fast map).
+        longContextPricing: { aboveInputTokens: 272_000, inputPrice: 16.0, outputPrice: 60.0, cacheDiscountFactor: 0.1 },
+      },
+    },
+    source: { url: 'https://developers.openai.com/api/docs/models/gpt-5.6-sol', verified: '2026-09-30' },
+    legacyKeys: { gpt56: { effort: ReasoningEffort.MEDIUM }, gpt56pro: { effort: ReasoningEffort.MEDIUM, mode: 'pro' }, gpt56fast: { effort: ReasoningEffort.MEDIUM } },
     openRouterOnly: false,
     codexSubscription: true,
     // Superseded by GPT-6 Sol (gpt6-).
     deprecated: true,
   },
-  // gpt56pro: GPT-5.6 Sol driven in the Responses API's pro reasoning mode
-  // (`reasoning.mode: 'pro'`). Unlike earlier Pro releases this is not a
-  // separate model id — the request targets gpt-5.6-sol, and pro mode bills
-  // the aggregated work at the model's standard token rates, so pricing
-  // matches the gpt56 entry. Responses-API only.
-  gpt56pro: {
-    name: 'gpt56pro',
-    label: 'GPT-5.6 Pro',
-    fullName: 'gpt-5.6-sol',
-    // Not `gpt-5.6-pro`: pro mode is a request parameter, not a model id, so
-    // the unpinned API name is the same one fullName targets.
-    shortName: 'gpt-5.6-sol',
-    provider: ModelProvider.OPENAI,
-    maxOutputTokens: 128000,
-    contextWindow: 1050000,
-    // Same promotional rate as gpt56 — pro mode bills at Sol's standard
-    // token rates (see the comment above).
-    inputPrice: 4.0,
-    outputPrice: 20.0,
-    longContextPricing: {
-      aboveInputTokens: 272_000,
-      inputPrice: 8.0,
-      outputPrice: 30.0,
-      cacheDiscountFactor: 0.1,
-    },
-    capabilities: {
-      ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
-      cacheDiscountFactor: 0.1,
-      reasoningEffort: ReasoningEffort.MEDIUM,
-      maxReasoningEffort: ReasoningEffort.MAX,
-      reasoningMode: 'pro',
-      supportsPromptCaching: true,
-      supportsNativeMCPServer: true,
-      supportsNativeWebSearch: true,
-      supportsNativeCodeExecution: true,
-      supportsPredictiveOutput: true,
-      supportsVision: true,
-      supportsNativePdf: true,
-    },
-    requiresResponsesAPI: true,
-    openRouterOnly: false,
-  },
-  // gpt56fast: GPT-5.6 Sol served in Fast mode (`service_tier: 'fast'`, the
-  // 2026-07-30 rename of `'priority'`, which both remain accepted). Same model
-  // id and same intelligence as gpt56 — up to 2.5x faster than Standard
-  // processing at twice the Standard token rates. Cached-input discounts still
-  // apply, so cacheDiscountFactor matches the standard-tier entry.
-  // Fast mode is not Sol-only — the tier also serves Terra and Luna, whose
-  // fast rates are published at a flat 2x like Sol's. Cataloging Sol alone is
-  // a scoping choice (it is the tier that got the 2.5x speed-up), not a gap in
-  // the source data.
-  gpt56fast: {
-    name: 'gpt56fast',
-    label: 'GPT-5.6 Sol (Fast)',
-    fullName: 'gpt-5.6-sol',
-    shortName: 'gpt-5.6-sol',
-    provider: ModelProvider.OPENAI,
-    maxOutputTokens: 128000,
-    contextWindow: 1050000,
-    // Twice the current (promotional) standard-tier rate: $4.00 / $20.00.
-    inputPrice: 8.0,
-    outputPrice: 40.0,
-    longContextPricing: {
-      aboveInputTokens: 272_000,
-      inputPrice: 16.0,
-      outputPrice: 60.0,
-      cacheDiscountFactor: 0.1,
-    },
-    capabilities: {
-      ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
-      cacheDiscountFactor: 0.1,
-      reasoningEffort: ReasoningEffort.MEDIUM,
-      maxReasoningEffort: ReasoningEffort.MAX,
-      supportsPromptCaching: true,
-      supportsNativeMCPServer: true,
-      supportsNativeWebSearch: true,
-      supportsNativeCodeExecution: true,
-      supportsPredictiveOutput: true,
-      supportsVision: true,
-      supportsNativePdf: true,
-    },
-    serviceTier: 'fast',
-    openRouterOnly: false,
-  },
-  'gpt56-': {
-    name: 'gpt56-',
+  {
     label: 'GPT-5.6 Terra',
-    fullName: 'gpt-5.6-terra',
+    id: 'gpt-5.6-terra',
     shortName: 'gpt-5.6-terra',
     openrouterFullName: 'openai/gpt-5.6-terra',
     vscodeLMFullName: 'gpt-5.6-terra',
@@ -658,8 +633,6 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       cacheDiscountFactor: 0.1,
-      reasoningEffort: ReasoningEffort.MEDIUM,
-      maxReasoningEffort: ReasoningEffort.MAX,
       supportsPromptCaching: true,
       supportsNativeMCPServer: true,
       supportsNativeWebSearch: true,
@@ -668,13 +641,17 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
       supportsVision: true,
       supportsNativePdf: true,
     },
+    reasoning: { efforts: LOW_TO_MAX_EFFORTS, off: [], providerDefault: ReasoningEffort.MEDIUM },
+    modes: ['pro'],
+    tiers: { fast: { inputPrice: 4, outputPrice: 24 } },
+    source: { url: 'https://developers.openai.com/api/docs/models/gpt-5.6-terra', verified: '2026-09-30' },
+    legacyKeys: { 'gpt56-': { effort: ReasoningEffort.MEDIUM } },
     openRouterOnly: false,
     codexSubscription: true,
   },
-  'gpt56--': {
-    name: 'gpt56--',
+  {
     label: 'GPT-5.6 Luna',
-    fullName: 'gpt-5.6-luna',
+    id: 'gpt-5.6-luna',
     shortName: 'gpt-5.6-luna',
     openrouterFullName: 'openai/gpt-5.6-luna',
     provider: ModelProvider.OPENAI,
@@ -692,8 +669,6 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       cacheDiscountFactor: 0.1,
-      reasoningEffort: ReasoningEffort.MEDIUM,
-      maxReasoningEffort: ReasoningEffort.MAX,
       supportsPromptCaching: true,
       supportsNativeMCPServer: true,
       supportsNativeWebSearch: true,
@@ -702,6 +677,11 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
       supportsVision: true,
       supportsNativePdf: true,
     },
+    reasoning: { efforts: LOW_TO_MAX_EFFORTS, off: [], providerDefault: ReasoningEffort.MEDIUM },
+    modes: ['pro'],
+    tiers: { fast: { inputPrice: 0.4, outputPrice: 2.4 } },
+    source: { url: 'https://developers.openai.com/api/docs/models/gpt-5.6-luna', verified: '2026-09-30' },
+    legacyKeys: { 'gpt56--': { effort: ReasoningEffort.MEDIUM } },
     openRouterOnly: false,
     codexSubscription: true,
     // Superseded by GPT-6 Luna (gpt6--).
@@ -714,10 +694,9 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
   // writes / $50.00 output per 1M; prompts over 272K input tokens bill the
   // full request at 2x input/cache and 1.5x output (`longContextPricing`).
   // `reasoning.effort` accepts low/medium/high/xhigh/max.
-  gpt6: {
-    name: 'gpt6',
+  {
     label: 'GPT-6 Astra',
-    fullName: 'gpt-6-astra',
+    id: 'gpt-6-astra',
     shortName: 'gpt-6-astra',
     provider: ModelProvider.OPENAI,
     maxOutputTokens: 128000,
@@ -733,16 +712,21 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       cacheDiscountFactor: 0.1,
-      reasoningEffort: ReasoningEffort.MEDIUM,
-      maxReasoningEffort: ReasoningEffort.MAX,
       supportsPromptCaching: true,
       supportsNativeMCPServer: true,
       supportsNativeWebSearch: true,
       supportsNativeCodeExecution: true,
       supportsVision: true,
     },
-    // Responses API is required for the xhigh/max effort tiers; also keeps
-    // coauthor's router (which only pattern-matches gpt-5* names) on the
+    // `none` returns HTTP 400; no default effort is documented for Astra.
+    reasoning: { efforts: LOW_TO_MAX_EFFORTS },
+    modes: ['pro'],
+    tiers: { fast: { inputPrice: 20, outputPrice: 100 } },
+    source: { url: 'https://developers.openai.com/api/docs/models/gpt-6-astra', verified: '2026-09-30' },
+    legacyKeys: { gpt6: { effort: ReasoningEffort.MEDIUM } },
+    // Tool calling and pro mode need the Responses API (Chat Completions works
+    // only without tools; every effort level is accepted in both APIs); also
+    // keeps coauthor's router (which only pattern-matches gpt-5* names) on the
     // Responses handler.
     requiresResponsesAPI: true,
     openRouterOnly: false,
@@ -758,10 +742,9 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
   // prompts over 272K input tokens bill 2x input/cache and 1.5x output
   // (`longContextPricing`). `reasoning.effort` accepts
   // low/medium/high/xhigh/max, default medium (`none`/`minimal` unavailable).
-  'gpt61-': {
-    name: 'gpt61-',
+  {
     label: 'GPT-6.1 Sol',
-    fullName: 'gpt-6.1-sol',
+    id: 'gpt-6.1-sol',
     shortName: 'gpt-6.1-sol',
     provider: ModelProvider.OPENAI,
     maxOutputTokens: 128000,
@@ -777,23 +760,25 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       cacheDiscountFactor: 0.05,
-      reasoningEffort: ReasoningEffort.MEDIUM,
-      maxReasoningEffort: ReasoningEffort.MAX,
       supportsPromptCaching: true,
       supportsNativeMCPServer: true,
       supportsNativeWebSearch: true,
       supportsNativeCodeExecution: true,
       supportsVision: true,
     },
-    // Same reason as gpt6: xhigh/max need the Responses API.
+    reasoning: { efforts: LOW_TO_MAX_EFFORTS, providerDefault: ReasoningEffort.MEDIUM },
+    modes: ['pro'],
+    tiers: { fast: { inputPrice: 4, outputPrice: 20 } },
+    source: { url: 'https://developers.openai.com/api/docs/models/gpt-6.1-sol', verified: '2026-09-30' },
+    legacyKeys: { 'gpt61-': { effort: ReasoningEffort.MEDIUM } },
+    // Same reason as gpt6: tool calling and pro mode need the Responses API.
     requiresResponsesAPI: true,
     openRouterOnly: false,
     codexSubscription: true,
   },
-  'gpt6-': {
-    name: 'gpt6-',
+  {
     label: 'GPT-6 Sol',
-    fullName: 'gpt-6-sol',
+    id: 'gpt-6-sol',
     shortName: 'gpt-6-sol',
     provider: ModelProvider.OPENAI,
     maxOutputTokens: 128000,
@@ -809,25 +794,27 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       cacheDiscountFactor: 0.1,
-      reasoningEffort: ReasoningEffort.MEDIUM,
-      maxReasoningEffort: ReasoningEffort.MAX,
       supportsPromptCaching: true,
       supportsNativeMCPServer: true,
       supportsNativeWebSearch: true,
       supportsNativeCodeExecution: true,
       supportsVision: true,
     },
-    // Same reason as gpt6: xhigh/max need the Responses API.
+    reasoning: { efforts: LOW_TO_MAX_EFFORTS, off: [], providerDefault: ReasoningEffort.MEDIUM },
+    modes: ['pro'],
+    tiers: { fast: { inputPrice: 4, outputPrice: 20 } },
+    source: { url: 'https://developers.openai.com/api/docs/models/gpt-6-sol', verified: '2026-09-30' },
+    legacyKeys: { 'gpt6-': { effort: ReasoningEffort.MEDIUM } },
+    // Same reason as gpt6: tool calling and pro mode need the Responses API.
     requiresResponsesAPI: true,
     openRouterOnly: false,
     codexSubscription: true,
     // Superseded by GPT-6.1 Sol (gpt61-): same price, cheaper cached input.
     deprecated: true,
   },
-  'gpt6--': {
-    name: 'gpt6--',
+  {
     label: 'GPT-6 Luna',
-    fullName: 'gpt-6-luna',
+    id: 'gpt-6-luna',
     shortName: 'gpt-6-luna',
     provider: ModelProvider.OPENAI,
     maxOutputTokens: 128000,
@@ -843,22 +830,24 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       cacheDiscountFactor: 0.1,
-      reasoningEffort: ReasoningEffort.MEDIUM,
-      maxReasoningEffort: ReasoningEffort.MAX,
       supportsPromptCaching: true,
       supportsNativeMCPServer: true,
       supportsNativeWebSearch: true,
       supportsNativeCodeExecution: true,
       supportsVision: true,
     },
+    reasoning: { efforts: LOW_TO_MAX_EFFORTS, off: [], providerDefault: ReasoningEffort.MEDIUM },
+    modes: ['pro'],
+    tiers: { fast: { inputPrice: 0.2, outputPrice: 1 } },
+    source: { url: 'https://developers.openai.com/api/docs/models/gpt-6-luna', verified: '2026-09-30' },
+    legacyKeys: { 'gpt6--': { effort: ReasoningEffort.MEDIUM } },
     requiresResponsesAPI: true,
     openRouterOnly: false,
     codexSubscription: true,
   },
-  gpt54: {
-    name: 'gpt54',
+  {
     label: 'GPT-5.4',
-    fullName: 'gpt-5.4-2026-03-05',
+    id: 'gpt-5.4-2026-03-05',
     shortName: 'gpt-5.4',
     openrouterFullName: 'openai/gpt-5.4',
     vscodeLMFullName: 'gpt-5.4',
@@ -877,7 +866,6 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       cacheDiscountFactor: 0.1,
-      reasoningEffort: ReasoningEffort.XHIGH,
       supportsNativeMCPServer: true,
       supportsNativeWebSearch: true,
       supportsNativeCodeExecution: true,
@@ -885,14 +873,17 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
       supportsVision: true,
       supportsNativePdf: true,
     },
+    reasoning: { efforts: LOW_TO_XHIGH_EFFORTS, off: [], providerDefault: ReasoningEffort.NONE },
+    tiers: { fast: { inputPrice: 5, outputPrice: 30 } },
+    source: { url: 'https://developers.openai.com/api/docs/models/gpt-5.4', verified: '2026-09-30' },
+    legacyKeys: { gpt54: { effort: ReasoningEffort.XHIGH } },
     openRouterOnly: false,
     codexSubscription: true,
     deprecated: true,
   },
-  'gpt54-': {
-    name: 'gpt54-',
+  {
     label: 'GPT-5.4 Mini',
-    fullName: 'gpt-5.4-mini-2026-03-17',
+    id: 'gpt-5.4-mini-2026-03-17',
     shortName: 'gpt-5.4-mini',
     openrouterFullName: 'openai/gpt-5.4-mini',
     vscodeLMFullName: 'gpt-5.4-mini',
@@ -904,7 +895,6 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       cacheDiscountFactor: 0.1,
-      reasoningEffort: ReasoningEffort.XHIGH,
       supportsNativeMCPServer: true,
       supportsNativeWebSearch: true,
       supportsNativeCodeExecution: true,
@@ -912,14 +902,17 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
       supportsVision: true,
       supportsNativePdf: true,
     },
+    reasoning: { efforts: LOW_TO_XHIGH_EFFORTS, off: [], providerDefault: ReasoningEffort.NONE },
+    tiers: { fast: { inputPrice: 1.5, outputPrice: 9 } },
+    source: { url: 'https://developers.openai.com/api/docs/models/gpt-5.4-mini', verified: '2026-09-30' },
+    legacyKeys: { 'gpt54-': { effort: ReasoningEffort.XHIGH } },
     openRouterOnly: false,
     codexSubscription: true,
     deprecated: true,
   },
-  'gpt54--': {
-    name: 'gpt54--',
+  {
     label: 'GPT-5.4 Nano',
-    fullName: 'gpt-5.4-nano-2026-03-17',
+    id: 'gpt-5.4-nano-2026-03-17',
     shortName: 'gpt-5.4-nano',
     openrouterFullName: 'openai/gpt-5.4-nano',
     provider: ModelProvider.OPENAI,
@@ -930,20 +923,21 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       cacheDiscountFactor: 0.1,
-      reasoningEffort: ReasoningEffort.XHIGH,
       supportsNativeMCPServer: true,
       supportsNativeWebSearch: true,
       supportsNativeCodeExecution: true,
       supportsVision: true,
       supportsNativePdf: true,
     },
+    reasoning: { efforts: LOW_TO_XHIGH_EFFORTS, off: [], providerDefault: ReasoningEffort.NONE },
+    source: { url: 'https://developers.openai.com/api/docs/models/gpt-5.4-nano', verified: '2026-09-30' },
+    legacyKeys: { 'gpt54--': { effort: ReasoningEffort.XHIGH } },
     openRouterOnly: false,
     deprecated: true,
   },
-  'gpt5-': {
-    name: 'gpt5-',
+  {
     label: 'GPT-5 Mini',
-    fullName: 'gpt-5-mini-2025-08-07',
+    id: 'gpt-5-mini-2025-08-07',
     shortName: 'gpt-5-mini',
     openrouterFullName: 'openai/gpt-5-mini-2025-08-07',
     vscodeLMFullName: 'gpt-5-mini',
@@ -962,13 +956,17 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
       supportsVision: true,
       supportsNativePdf: true,
     },
+    // GPT-5 family efforts and default (medium) from the Using GPT-5 guide.
+    reasoning: { efforts: MINIMAL_TO_HIGH_EFFORTS, providerDefault: ReasoningEffort.MEDIUM },
+    tiers: { fast: { inputPrice: 0.45, outputPrice: 3.6 } },
+    source: { url: 'https://developers.openai.com/api/docs/guides/latest-model/gpt-5', verified: '2026-09-30' },
+    legacyKeys: { 'gpt5-': { effort: ReasoningEffort.HIGH } },
     openRouterOnly: false,
     deprecated: true,
   },
-  'gpt5--': {
-    name: 'gpt5--',
+  {
     label: 'GPT-5 Nano',
-    fullName: 'gpt-5-nano-2025-08-07',
+    id: 'gpt-5-nano-2025-08-07',
     shortName: 'gpt-5-nano',
     openrouterFullName: 'openai/gpt-5-nano-2025-08-07',
     provider: ModelProvider.OPENAI,
@@ -986,7 +984,11 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
       supportsVision: true,
       supportsNativePdf: true,
     },
+    // GPT-5 family efforts and default (medium) from the Using GPT-5 guide.
+    reasoning: { efforts: MINIMAL_TO_HIGH_EFFORTS, providerDefault: ReasoningEffort.MEDIUM },
+    source: { url: 'https://developers.openai.com/api/docs/guides/latest-model/gpt-5', verified: '2026-09-30' },
+    legacyKeys: { 'gpt5--': { effort: ReasoningEffort.HIGH } },
     openRouterOnly: false,
     deprecated: true,
   },
-};
+];

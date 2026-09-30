@@ -1,9 +1,8 @@
 import {
   DEFAULT_MODEL_CAPABILITIES,
   ModelCapabilities,
-  ModelConfig,
+  ModelEntry,
   ModelProvider,
-  ReasoningEffort,
 } from '../ModelConfig';
 
 /**
@@ -82,11 +81,10 @@ const COPILOT_DEFAULT_CAPABILITIES: ModelCapabilities = {
  * Copilot integrations should use the per-model route identifiers plus runtime
  * discovery; COPILOT_MODEL_NAMES retains models without a ModelConfig entry.
  */
-export const COPILOT_MODELS: Record<string, ModelConfig> = {
-  copilot4o: {
-    name: 'copilot4o',
+export const COPILOT_MODELS: readonly ModelEntry[] = [
+  {
     label: 'Copilot GPT-4o',
-    fullName: 'copilot-gpt-4o',
+    id: 'copilot-gpt-4o',
     shortName: 'copilot-gpt-4o',
     provider: ModelProvider.COPILOT,
     maxOutputTokens: 8192,
@@ -95,10 +93,10 @@ export const COPILOT_MODELS: Record<string, ModelConfig> = {
     outputPrice: 0,
     capabilities: {
       ...COPILOT_DEFAULT_CAPABILITIES,
-      reasoningEffort: ReasoningEffort.MEDIUM,
     },
+    legacyKeys: { copilot4o: {} },
     openRouterOnly: false,
     deprecated: true,
     retired: true,
   },
-};
+];

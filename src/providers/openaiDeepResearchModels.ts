@@ -1,7 +1,7 @@
 import {
   DEFAULT_MODEL_CAPABILITIES,
   ModelCapabilities,
-  ModelConfig,
+  ModelEntry,
   ModelProvider,
 } from '../ModelConfig';
 
@@ -17,7 +17,6 @@ const OPENAI_DEEP_RESEARCH_DEFAULT_CAPABILITIES: ModelCapabilities = {
   supportsFunctionCalling: false,
   supportsAutoPromptCaching: true,
   cacheDiscountFactor: 0.25,
-  supportsReasoning: true,
   supportsIntermDevMsgs: false,
   supportsVision: true,
   supportsNativeWebSearch: true,
@@ -30,11 +29,10 @@ const OPENAI_DEEP_RESEARCH_DEFAULT_CAPABILITIES: ModelCapabilities = {
  * OpenAI deep research model configurations.
  * These models require the Responses API and are optimized for research tasks.
  */
-export const OPENAI_DEEP_RESEARCH_MODELS: Record<string, ModelConfig> = {
-  'o3-deep-research': {
-    name: 'o3-deep-research',
+export const OPENAI_DEEP_RESEARCH_MODELS: readonly ModelEntry[] = [
+  {
     label: 'o3 Deep Research',
-    fullName: 'o3-deep-research',
+    id: 'o3-deep-research',
     shortName: 'o3-deep-research',
     openrouterFullName: 'openai/o3-deep-research',
     provider: ModelProvider.OPENAI,
@@ -45,15 +43,16 @@ export const OPENAI_DEEP_RESEARCH_MODELS: Record<string, ModelConfig> = {
     capabilities: {
       ...OPENAI_DEEP_RESEARCH_DEFAULT_CAPABILITIES,
     },
+    reasoning: { efforts: [] },
+    legacyKeys: { 'o3-deep-research': {} },
     openRouterOnly: false,
     requiresResponsesAPI: true,
     deprecated: true,
     retired: true,
   },
-  'o4-mini-deep-research': {
-    name: 'o4-mini-deep-research',
+  {
     label: 'o4 Mini Deep Research',
-    fullName: 'o4-mini-deep-research',
+    id: 'o4-mini-deep-research',
     shortName: 'o4-mini-deep-research',
     openrouterFullName: 'openai/o4-mini-deep-research',
     provider: ModelProvider.OPENAI,
@@ -64,9 +63,11 @@ export const OPENAI_DEEP_RESEARCH_MODELS: Record<string, ModelConfig> = {
     capabilities: {
       ...OPENAI_DEEP_RESEARCH_DEFAULT_CAPABILITIES,
     },
+    reasoning: { efforts: [] },
+    legacyKeys: { 'o4-mini-deep-research': {} },
     openRouterOnly: false,
     requiresResponsesAPI: true,
     deprecated: true,
     retired: true,
   },
-};
+];

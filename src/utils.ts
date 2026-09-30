@@ -3,44 +3,93 @@
  * @packageDocumentation
  */
 
-import { ModelConfig, ModelProvider, ModelCapabilities } from './ModelConfig';
-import { MODEL_CONFIGS } from './ModelRegistry';
+import {
+  ModelConfig,
+  ModelProvider,
+  ModelCapabilities,
+  ModelRef,
+  ModelSelection,
+  ReasoningEffort,
+} from './ModelConfig';
+import { LEGACY_KEYS, MODEL_CONFIGS } from './ModelRegistry';
 
 // ============================================================================
 // Lookup
 // ============================================================================
 
 /**
- * Get a model by short name.
+ * Get a model by its reference (`provider/id`).
  *
  * @example
  * ```typescript
- * const claude = lookup('sonnet45');
- * const gpt = lookup('gpt4o');
+ * const opus = lookup('anthropic/claude-opus-5');
+ * const gpt = lookup('openai/gpt-4o-2024-11-20');
  * ```
  */
-export function lookup(name: string): ModelConfig | undefined {
-  return MODEL_CONFIGS[name];
+export function lookup(ref: string): ModelConfig | undefined {
+  return Object.hasOwn(MODEL_CONFIGS, ref) ? MODEL_CONFIGS[ref as ModelRef] : undefined;
 }
 
 /**
- * Resolve a model by its full API identifier.
+ * Find a model by the ID its provider's API takes. IDs can repeat across
+ * providers (e.g. a Copilot or OpenRouter listing), so prefer `lookup` with a
+ * full reference when the provider is known.
  *
  * @example
  * ```typescript
  * const model = resolve('claude-sonnet-4-5');
- * const model2 = resolve('gpt-4o-2024-11-20');
  * ```
  */
-export function resolve(fullName: string): ModelConfig | undefined {
-  return Object.values(MODEL_CONFIGS).find((m) => m.fullName === fullName);
+export function resolve(id: string): ModelConfig | undefined {
+  return Object.values(MODEL_CONFIGS).find((m) => m.id === id);
 }
 
 /**
- * Check if a model exists.
+ * Check if a model reference exists.
  */
-export function exists(name: string): boolean {
-  return name in MODEL_CONFIGS;
+export function exists(ref: string): boolean {
+  return Object.hasOwn(MODEL_CONFIGS, ref);
+}
+
+const EFFORTS = new Set<string>(Object.values(ReasoningEffort));
+
+/**
+ * Read a model selection written as `provider/id[@effort][+pro]`, or an
+ * llm-zoo 1.x key such as `opus5T`. Returns `undefined` when the model is not
+ * in the registry or the effort is not a known level. Whether the model
+ * accepts that effort is left to the caller, which knows its own defaults.
+ *
+ * @example
+ * ```typescript
+ * parseModelRef('anthropic/claude-opus-5@high');
+ * // → { ref: 'anthropic/claude-opus-5', effort: 'high' }
+ * parseModelRef('openai/gpt-5.6-sol@xhigh+pro');
+ * // → { ref: 'openai/gpt-5.6-sol', effort: 'xhigh', mode: 'pro' }
+ * parseModelRef('opus5T');
+ * // → { ref: 'anthropic/claude-opus-5', effort: 'high' }
+ * ```
+ */
+export function parseModelRef(input: string): ModelSelection | undefined {
+  const text = input.trim();
+  if (Object.hasOwn(LEGACY_KEYS, text)) return LEGACY_KEYS[text];
+  const match = /^([^@+]+?)(?:@([a-z]+))?(\+pro)?$/.exec(text);
+  if (!match) return undefined;
+  const [, ref = '', effort, pro] = match;
+  if (!exists(ref)) return undefined;
+  if (effort !== undefined && !EFFORTS.has(effort)) return undefined;
+  return {
+    ref: ref as ModelRef,
+    ...(effort !== undefined && { effort: effort as ReasoningEffort }),
+    ...(pro !== undefined && { mode: 'pro' as const }),
+  };
+}
+
+/**
+ * Write a model selection in its string form, `provider/id[@effort][+pro]`.
+ * `thinking: false` has no string form and is omitted.
+ */
+export function formatModelRef(selection: ModelSelection): string {
+  return `${selection.ref}${selection.effort ? `@${selection.effort}` : ''}${selection.mode === 'pro' ? '+pro' : ''}`;
 }
 
 // ============================================================================
@@ -66,16 +115,16 @@ export function from(provider: ModelProvider): ModelConfig[] {
  * @example
  * ```typescript
  * // Vision + reasoning models
- * const smart = where(c => c.supportsVision && c.supportsReasoning);
+ * const smart = where((c, m) => c.supportsVision && m.reasoning !== undefined);
  *
  * // Models with great caching
  * const cached = where(c => c.cacheDiscountFactor <= 0.1);
  * ```
  */
 export function where(
-  predicate: (capabilities: ModelCapabilities) => boolean,
+  predicate: (capabilities: ModelCapabilities, model: ModelConfig) => boolean,
 ): ModelConfig[] {
-  return Object.values(MODEL_CONFIGS).filter((m) => predicate(m.capabilities));
+  return Object.values(MODEL_CONFIGS).filter((m) => predicate(m.capabilities, m));
 }
 
 /**
@@ -83,7 +132,6 @@ export function where(
  *
  * @example
  * ```typescript
- * const reasoners = supporting('supportsReasoning');
  * const visionaries = supporting('supportsVision');
  * const coders = supporting('supportsNativeCodeExecution');
  * ```
@@ -159,32 +207,42 @@ export function active(): ModelConfig[] {
 /**
  * The rates one request bills at, given its prompt size (input tokens, cached
  * tokens included). A model with a documented long-context tier switches its
- * whole rate tuple above the threshold; every other model bills flat.
+ * whole rate tuple above the threshold; every other model bills flat. With
+ * `tier`, the service tier's rates are used, and that tier's own long-context
+ * rates above its threshold; a model without that tier is an error.
  *
  * @example
  * ```typescript
- * requestRates('gpt61-', 300_000); // { inputPrice: 4, outputPrice: 15, cacheDiscountFactor: 0.05 }
+ * requestRates('openai/gpt-6.1-sol', 300_000);
+ * // → { inputPrice: 4, outputPrice: 15, cacheDiscountFactor: 0.05 }
+ * requestRates('openai/gpt-5.6-sol', 300_000, { tier: 'fast' });
+ * // → { inputPrice: 16, outputPrice: 60, cacheDiscountFactor: 0.1 }
  * ```
  */
 export function requestRates(
   model: ModelConfig | string,
   promptTokens: number,
+  options: { tier?: 'fast' } = {},
 ): { inputPrice: number; outputPrice: number; cacheDiscountFactor: number } {
   const config = typeof model === 'string' ? lookup(model) : model;
   if (!config) {
     throw new Error(`Unknown model: ${model}`);
   }
-  const tier = config.longContextPricing;
-  if (tier !== undefined && promptTokens > tier.aboveInputTokens) {
+  const prices = options.tier ? config.tiers?.[options.tier] : config;
+  if (!prices) {
+    throw new Error(`${config.ref} has no ${options.tier} tier`);
+  }
+  const long = prices.longContextPricing;
+  if (long !== undefined && promptTokens > long.aboveInputTokens) {
     return {
-      inputPrice: tier.inputPrice,
-      outputPrice: tier.outputPrice,
-      cacheDiscountFactor: tier.cacheDiscountFactor,
+      inputPrice: long.inputPrice,
+      outputPrice: long.outputPrice,
+      cacheDiscountFactor: long.cacheDiscountFactor,
     };
   }
   return {
-    inputPrice: config.inputPrice,
-    outputPrice: config.outputPrice,
+    inputPrice: prices.inputPrice,
+    outputPrice: prices.outputPrice,
     cacheDiscountFactor: config.capabilities.cacheDiscountFactor,
   };
 }
@@ -196,30 +254,28 @@ export function requestRates(
  * @example
  * ```typescript
  * // Basic usage
- * const price = cost('sonnet45', { input: 10000, output: 5000 });
+ * const price = cost('anthropic/claude-sonnet-4-5', { input: 10000, output: 5000 });
  *
  * // With prompt caching
- * const cached = cost('sonnet45', {
+ * const cached = cost('anthropic/claude-sonnet-4-5', {
  *   input: 10000,
  *   output: 5000,
  *   cached: 8000  // 8K tokens were cache hits
  * });
+ *
+ * // At a service tier's prices
+ * const fast = cost('openai/gpt-5.6-sol', { input: 10000, output: 5000 }, { tier: 'fast' });
  * ```
  */
 export function cost(
   model: ModelConfig | string,
   tokens: { input: number; output: number; cached?: number },
+  options: { tier?: 'fast' } = {},
 ): number {
-  const config = typeof model === 'string' ? lookup(model) : model;
-  if (!config) {
-    throw new Error(`Unknown model: ${model}`);
-  }
-
   const { input, output, cached = 0 } = tokens;
-  const uncached = input - cached;
-  const rates = requestRates(config, input);
+  const rates = requestRates(model, input, options);
 
-  const inputCost = (uncached / 1_000_000) * rates.inputPrice;
+  const inputCost = ((input - cached) / 1_000_000) * rates.inputPrice;
   const cacheCost = (cached / 1_000_000) * rates.inputPrice * rates.cacheDiscountFactor;
   const outputCost = (output / 1_000_000) * rates.outputPrice;
 
@@ -231,7 +287,7 @@ export function cost(
  *
  * @example
  * ```typescript
- * const worst = maxCost('gpt4o', 50000);
+ * const worst = maxCost('openai/gpt-4o-2024-11-20', 50000);
  * console.log(`Budget up to $${worst.toFixed(2)}`);
  * ```
  */
@@ -249,7 +305,7 @@ export function maxCost(model: ModelConfig | string, inputTokens: number): numbe
  * @example
  * ```typescript
  * const comparison = compareCosts(
- *   ['sonnet45', 'gpt4o', 'gemini25p'],
+ *   ['anthropic/claude-sonnet-4-5', 'openai/gpt-4o-2024-11-20', 'google/gemini-2.5-pro'],
  *   { input: 10000, output: 2000 }
  * );
  * // Returns sorted by cost: [{ model, cost }, ...]
@@ -282,7 +338,7 @@ export function compareCosts(
  *
  * // Cheapest reasoning model with 100K+ context
  * const thinker = cheapest(
- *   { supportsReasoning: true },
+ *   { supportsVision: true },
  *   { minContext: 100000 }
  * );
  * ```
@@ -323,7 +379,7 @@ export function cheapest(
  * const best = smartpick(5);
  *
  * // Best reasoning model under $10
- * const bestReasoner = smartpick(10, { supportsReasoning: true });
+ * const bestReasoner = smartpick(10, { supportsVision: true });
  * ```
  */
 export function smartpick(
@@ -417,14 +473,14 @@ function formatPrice(price: number): string {
  *
  * @example
  * ```typescript
- * hint('sonnet45');
+ * hint('anthropic/claude-sonnet-4-5');
  * // → "200K context, $3/$15 per 1M tokens"
  *
- * hint('gpt4o');
+ * hint('openai/gpt-4o-2024-11-20');
  * // → "128K context, $2.50/$10 per 1M tokens"
  *
  * // Also accepts a ModelConfig directly
- * const model = lookup('opus46T');
+ * const model = lookup('anthropic/claude-opus-4-6');
  * hint(model);
  * // → "200K context, $15/$75 per 1M tokens"
  * ```
@@ -473,7 +529,6 @@ export function insights(): {
   // Count by capability
   const capabilityKeys = [
     'supportsFunctionCalling',
-    'supportsReasoning',
     'supportsVision',
     'supportsNativeCodeExecution',
     'supportsNativeWebSearch',
@@ -483,7 +538,9 @@ export function insights(): {
     'supportsNativeAudio',
   ];
 
-  const capabilities: Record<string, number> = {};
+  const capabilities: Record<string, number> = {
+    Reasoning: models.filter((m) => m.reasoning !== undefined).length,
+  };
   for (const key of capabilityKeys) {
     const shortKey = key.replace('supports', '').replace('Native', '');
     capabilities[shortKey] = models.filter(

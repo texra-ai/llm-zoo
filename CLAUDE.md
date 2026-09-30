@@ -10,21 +10,32 @@ pricing, context windows, capabilities, and provider / OpenRouter routing names.
 It is a **data package**, not an application or framework: there is no UI,
 server, or platform layer.
 
-- Models live in `src/providers/<provider>Models.ts` as typed `ModelConfig`
-  entries.
+- Models live in `src/providers/<provider>Models.ts` as typed `ModelEntry`
+  lists, one entry per API model ID. The registry keys each model by its
+  reference, `provider/id` (e.g. `anthropic/claude-opus-5`).
+- How a model thinks is data on its entry: `reasoning.efforts` (levels
+  accepted while thinking), `reasoning.off` (present when thinking can be
+  turned off), `modes` (OpenAI pro) and `tiers` (service-tier prices).
+  Never add a separate entry for a thinking, pro, fast or other variant of
+  the same API model ID.
+- Choosing what to send (default effort, what to do with a level a model
+  lacks) is the caller's policy, not this package's.
 - Shared types and schemas are in `src/ModelConfig.ts` and `src/schemas.ts`.
 - The aggregate registry and lookups are assembled in `src/providers/index.ts`.
 
 ## Core rules
 
 1. **Model data are facts.** Pricing, context windows, max output tokens, and
-   API model IDs (`fullName`, `shortName`, `openrouterFullName`) must come from
+   API model IDs (`id`, `shortName`, `openrouterFullName`), reasoning
+   controls (`reasoning`, `modes`, `tiers`) and long-prompt rates
+   (`longContextPricing`, on the entry or on a tier) must come from
    the provider's **official documentation** — not memory, and not aggregator
-   blogs (they routinely hallucinate version numbers and prices). If you cannot
-   confirm a field from a primary source, do not guess it; leave the model out.
+   blogs (they routinely hallucinate version numbers and prices). Record the
+   page in `source` with the date you read it. If you cannot confirm a field
+   from a primary source, do not guess it; leave the model out.
 2. **Match the existing shape.** Before adding an entry, read neighboring
    entries for that provider and copy their structure exactly: capability flags,
-   price fields, the base-vs-`(Thinking)` variant pattern, and
+   price fields, the `reasoning` spec, and
    `cacheDiscountFactor` (which must equal cached price ÷ input price).
 3. **Keep things consistent.** A change that adds models must also:
    - bump the `version` in `package.json` (minor bump for new models), and
