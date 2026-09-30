@@ -253,8 +253,9 @@ export const GOOGLE_MODELS: Record<string, ModelConfig> = {
     provider: ModelProvider.GOOGLE,
     maxOutputTokens: 65536,
     contextWindow: 1048576,
-    inputPrice: 0.3,
-    outputPrice: 2.5,
+    // $0.50 / $0.05 cached / $3.00 (text/image/video; ai.google.dev pricing).
+    inputPrice: 0.5,
+    outputPrice: 3.0,
     capabilities: {
       ...GOOGLE_DEFAULT_CAPABILITIES,
       supportsPromptCaching: true,
