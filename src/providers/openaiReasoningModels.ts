@@ -426,6 +426,12 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     contextWindow: 1050000,
     inputPrice: 30.0,
     outputPrice: 180.0,
+    longContextPricing: {
+      aboveInputTokens: 272_000,
+      inputPrice: 60.0,
+      outputPrice: 270.0,
+      cacheDiscountFactor: 0.5,
+    },
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       supportsAutoPromptCaching: false,
@@ -451,6 +457,12 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     contextWindow: 1050000,
     inputPrice: 5.0,
     outputPrice: 30.0,
+    longContextPricing: {
+      aboveInputTokens: 272_000,
+      inputPrice: 10.0,
+      outputPrice: 45.0,
+      cacheDiscountFactor: 0.1,
+    },
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       cacheDiscountFactor: 0.1,
@@ -506,6 +518,12 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     // 2026): $4.00 / $20.00, cut from the $5.00 / $30.00 launch rate.
     inputPrice: 4.0,
     outputPrice: 20.0,
+    longContextPricing: {
+      aboveInputTokens: 272_000,
+      inputPrice: 8.0,
+      outputPrice: 30.0,
+      cacheDiscountFactor: 0.1,
+    },
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       cacheDiscountFactor: 0.1,
@@ -543,6 +561,12 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     // token rates (see the comment above).
     inputPrice: 4.0,
     outputPrice: 20.0,
+    longContextPricing: {
+      aboveInputTokens: 272_000,
+      inputPrice: 8.0,
+      outputPrice: 30.0,
+      cacheDiscountFactor: 0.1,
+    },
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       cacheDiscountFactor: 0.1,
@@ -609,6 +633,12 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     // 2026-07-30 price cut: 20% off the launch rates ($2.50 / $15).
     inputPrice: 2.0,
     outputPrice: 12.0,
+    longContextPricing: {
+      aboveInputTokens: 272_000,
+      inputPrice: 4.0,
+      outputPrice: 18.0,
+      cacheDiscountFactor: 0.1,
+    },
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       cacheDiscountFactor: 0.1,
@@ -660,8 +690,7 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
   // Premium in ChatGPT Work and Codex, plus the API (Plus/Business followed
   // days later). Rate card: $10.00 input / $1.00 cached input / $12.50 cache
   // writes / $50.00 output per 1M; prompts over 272K input tokens bill the
-  // full request at 2x input/cache and 1.5x output (the registry has no
-  // long-context tier field, so the standard rates are cataloged here).
+  // full request at 2x input/cache and 1.5x output (`longContextPricing`).
   // `reasoning.effort` accepts low/medium/high/xhigh/max.
   gpt6: {
     name: 'gpt6',
@@ -673,6 +702,12 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     contextWindow: 1050000,
     inputPrice: 10.0,
     outputPrice: 50.0,
+    longContextPricing: {
+      aboveInputTokens: 272_000,
+      inputPrice: 20.0,
+      outputPrice: 75.0,
+      cacheDiscountFactor: 0.1,
+    },
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       cacheDiscountFactor: 0.1,
@@ -695,11 +730,11 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
   // below GPT-5.6's promotional API rates. Same rate-card shape as Astra:
   // cached input at 10% of input, cache writes at 1.25x, and prompts over
   // 272K input tokens bill the full request at 2x input/cache and 1.5x output
-  // (standard rates cataloged). `reasoning.effort` accepts
+  // (`longContextPricing`). `reasoning.effort` accepts
   // none/low/medium/high/xhigh/max, default medium.
   // GPT-6.1 Sol (`gpt-6.1-sol`): $2 / $10, cached input $0.10 (5% of input),
   // prompts over 272K input tokens bill 2x input/cache and 1.5x output
-  // (standard rates cataloged). `reasoning.effort` accepts
+  // (`longContextPricing`). `reasoning.effort` accepts
   // low/medium/high/xhigh/max, default medium (`none`/`minimal` unavailable).
   'gpt61-': {
     name: 'gpt61-',
@@ -711,6 +746,12 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     contextWindow: 1050000,
     inputPrice: 2.0,
     outputPrice: 10.0,
+    longContextPricing: {
+      aboveInputTokens: 272_000,
+      inputPrice: 4.0,
+      outputPrice: 15.0,
+      cacheDiscountFactor: 0.05,
+    },
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       cacheDiscountFactor: 0.05,
@@ -737,6 +778,12 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     contextWindow: 1050000,
     inputPrice: 2.0,
     outputPrice: 10.0,
+    longContextPricing: {
+      aboveInputTokens: 272_000,
+      inputPrice: 4.0,
+      outputPrice: 15.0,
+      cacheDiscountFactor: 0.1,
+    },
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       cacheDiscountFactor: 0.1,
@@ -765,6 +812,12 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     contextWindow: 1050000,
     inputPrice: 0.1,
     outputPrice: 0.5,
+    longContextPricing: {
+      aboveInputTokens: 272_000,
+      inputPrice: 0.2,
+      outputPrice: 0.75,
+      cacheDiscountFactor: 0.1,
+    },
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       cacheDiscountFactor: 0.1,
@@ -793,6 +846,12 @@ export const OPENAI_REASONING_MODELS: Record<string, ModelConfig> = {
     contextWindow: 1050000,
     inputPrice: 2.5,
     outputPrice: 15.0,
+    longContextPricing: {
+      aboveInputTokens: 272_000,
+      inputPrice: 5.0,
+      outputPrice: 22.5,
+      cacheDiscountFactor: 0.1,
+    },
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
       cacheDiscountFactor: 0.1,

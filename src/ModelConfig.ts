@@ -198,6 +198,29 @@ export const DEFAULT_MODEL_CAPABILITIES: ModelCapabilities = {
 };
 
 /**
+ * Rates a provider bills for a whole request once its prompt is long. Output
+ * is included: the tier applies to every token of that request, not only the
+ * tokens past the threshold.
+ */
+export interface LongContextPricing {
+  /**
+   * The tier applies when the prompt (input tokens, cached tokens included)
+   * is above this many tokens. OpenAI documents "more than 272K", xAI and
+   * Google "more than 200K".
+   */
+  aboveInputTokens: number;
+
+  /** Cost per million input tokens in USD within the tier */
+  inputPrice: number;
+
+  /** Cost per million output tokens in USD within the tier */
+  outputPrice: number;
+
+  /** Cached-token multiplier within the tier, as `cacheDiscountFactor` */
+  cacheDiscountFactor: number;
+}
+
+/**
  * Complete configuration for a language model.
  * Contains all metadata needed to work with the model including
  * pricing, capabilities, and provider-specific settings.
@@ -284,6 +307,12 @@ export interface ModelConfig {
    * the provider default (standard).
    */
   serviceTier?: 'fast';
+
+  /**
+   * Long-prompt pricing tier, when the provider documents one. Absent means
+   * the flat rates apply at every prompt size. Read through `requestRates`.
+   */
+  longContextPricing?: LongContextPricing;
 
   /**
    * Human-friendly display name for the model.

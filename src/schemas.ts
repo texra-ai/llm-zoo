@@ -52,6 +52,14 @@ export const ModelCapabilitiesSchema = z.object({
   supportsNativeAudio: z.boolean(),
 });
 
+/** Rates billed for a whole request whose prompt is above the threshold. */
+export const LongContextPricingSchema = z.object({
+  aboveInputTokens: z.number(),
+  inputPrice: z.number(),
+  outputPrice: z.number(),
+  cacheDiscountFactor: z.number(),
+});
+
 /** Complete configuration for a language model instance. */
 export const ModelConfigSchema = z.object({
   name: z.string(),
@@ -70,6 +78,7 @@ export const ModelConfigSchema = z.object({
   baseUrl: z.string().optional(),
   requiresResponsesAPI: z.boolean().optional(),
   serviceTier: z.literal('fast').optional(),
+  longContextPricing: LongContextPricingSchema.optional(),
   description: z.string().optional(),
   codexSubscription: z.boolean().optional(),
   kimiSubscription: z.boolean().optional(),
