@@ -99,9 +99,10 @@ test('model references parse and format symmetrically', () => {
 
 test('tier prices are used only when a tier is asked for', () => {
   const model = MODEL_CONFIGS['openai/gpt-5.6-sol'];
-  const tokens = { input: 1_000_000, output: 0 };
-  assert.equal(rootEsm.cost(model, tokens), model.inputPrice);
-  assert.equal(rootEsm.cost(model, tokens, { tier: 'fast' }), model.tiers.fast.inputPrice);
+  // 100K input: below the long-context threshold, so the flat rates apply.
+  const tokens = { input: 100_000, output: 0 };
+  assert.equal(rootEsm.cost(model, tokens), model.inputPrice / 10);
+  assert.equal(rootEsm.cost(model, tokens, { tier: 'fast' }), model.tiers.fast.inputPrice / 10);
 });
 
 test('lookups ignore Object.prototype keys', () => {

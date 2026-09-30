@@ -26,8 +26,9 @@ server, or platform layer.
 ## Core rules
 
 1. **Model data are facts.** Pricing, context windows, max output tokens, and
-   API model IDs (`id`, `shortName`, `openrouterFullName`) and reasoning
-   controls (`reasoning`, `modes`, `tiers`) must come from
+   API model IDs (`id`, `shortName`, `openrouterFullName`), reasoning
+   controls (`reasoning`, `modes`, `tiers`) and long-prompt rates
+   (`longContextPricing`, on the entry or on a tier) must come from
    the provider's **official documentation** — not memory, and not aggregator
    blogs (they routinely hallucinate version numbers and prices). Record the
    page in `source` with the date you read it. If you cannot confirm a field

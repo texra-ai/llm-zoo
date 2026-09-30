@@ -234,6 +234,29 @@ export const DEFAULT_MODEL_CAPABILITIES: ModelCapabilities = {
 export type ModelEntry = Omit<ModelConfig, 'ref'>;
 
 /**
+ * Rates a provider bills for a whole request once its prompt is long. Output
+ * is included: the tier applies to every token of that request, not only the
+ * tokens past the threshold.
+ */
+export interface LongContextPricing {
+  /**
+   * The tier applies when the prompt (input tokens, cached tokens included)
+   * is above this many tokens. OpenAI documents "more than 272K", xAI and
+   * Google "more than 200K".
+   */
+  aboveInputTokens: number;
+
+  /** Cost per million input tokens in USD within the tier */
+  inputPrice: number;
+
+  /** Cost per million output tokens in USD within the tier */
+  outputPrice: number;
+
+  /** Cached-token multiplier within the tier, as `cacheDiscountFactor` */
+  cacheDiscountFactor: number;
+}
+
+/**
  * Complete configuration for a language model.
  * Contains all metadata needed to work with the model including
  * pricing, capabilities, and provider-specific settings.
@@ -282,9 +305,16 @@ export interface ModelConfig {
   /**
    * Service tiers beyond standard, with their prices (e.g. OpenAI
    * `service_tier: 'fast'`). Choosing a tier is a routing decision of the
-   * caller, never part of a model selection.
+   * caller, never part of a model selection. A tier can carry its own
+   * long-context rates; read them through `requestRates` with that tier.
    */
-  tiers?: { fast?: TokenPrices };
+  tiers?: { fast?: TokenPrices & { longContextPricing?: LongContextPricing } };
+
+  /**
+   * Long-prompt pricing tier, when the provider documents one. Absent means
+   * the flat rates apply at every prompt size. Read through `requestRates`.
+   */
+  longContextPricing?: LongContextPricing;
 
   /** Where these facts were checked. Required for every model that is not retired. */
   source?: ModelSource;

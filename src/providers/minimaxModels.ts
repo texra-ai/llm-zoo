@@ -56,7 +56,9 @@ export const MINIMAX_MODELS: readonly ModelEntry[] = [
     shortName: 'MiniMax-M2.7',
     openrouterFullName: 'minimax/minimax-m2.7',
     provider: ModelProvider.MINIMAX,
-    maxOutputTokens: 204800,
+    // MiniMax documents no max output; keep headroom for the prompt in the
+    // 204,800-token context.
+    maxOutputTokens: 196608,
     contextWindow: 204800,
     inputPrice: 0.3,
     outputPrice: 1.2,
@@ -69,7 +71,6 @@ export const MINIMAX_MODELS: readonly ModelEntry[] = [
     legacyKeys: { minimaxM27: {} },
     source: { url: 'https://platform.minimax.io/docs/api-reference/text-chat-openai', verified: '2026-09-30' },
     openRouterOnly: false,
-    deprecated: true,
   },
   // M2.7 at ~100 tps, same limits; $0.60 / $0.06 cache read / $2.40
   // (platform.minimax.io/docs/guides/pricing-paygo).
@@ -78,7 +79,9 @@ export const MINIMAX_MODELS: readonly ModelEntry[] = [
     id: 'MiniMax-M2.7-highspeed',
     shortName: 'MiniMax-M2.7-highspeed',
     provider: ModelProvider.MINIMAX,
-    maxOutputTokens: 204800,
+    // MiniMax documents no max output; keep headroom for the prompt in the
+    // 204,800-token context.
+    maxOutputTokens: 196608,
     contextWindow: 204800,
     inputPrice: 0.6,
     outputPrice: 2.4,
@@ -91,7 +94,6 @@ export const MINIMAX_MODELS: readonly ModelEntry[] = [
     legacyKeys: { minimaxM27highspeed: {} },
     source: { url: 'https://platform.minimax.io/docs/api-reference/text-chat-openai', verified: '2026-09-30' },
     openRouterOnly: false,
-    deprecated: true,
   },
   {
     label: 'MiniMax M2.5',

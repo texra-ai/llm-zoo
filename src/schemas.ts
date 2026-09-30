@@ -57,6 +57,14 @@ export const ReasoningSpecSchema = z.object({
 
 const TokenPricesSchema = z.object({ inputPrice: z.number(), outputPrice: z.number() });
 
+/** Rates billed for a whole request whose prompt is above the threshold. */
+export const LongContextPricingSchema = z.object({
+  aboveInputTokens: z.number(),
+  inputPrice: z.number(),
+  outputPrice: z.number(),
+  cacheDiscountFactor: z.number(),
+});
+
 /** A model reference, `provider/id`. */
 export const ModelRefSchema = z.templateLiteral([ModelProviderSchema, '/', z.string()]);
 
@@ -82,7 +90,12 @@ export const ModelConfigSchema = z.object({
   capabilities: ModelCapabilitiesSchema,
   reasoning: ReasoningSpecSchema.optional(),
   modes: z.array(z.literal('pro')).readonly().optional(),
-  tiers: z.object({ fast: TokenPricesSchema.optional() }).optional(),
+  tiers: z
+    .object({
+      fast: TokenPricesSchema.extend({ longContextPricing: LongContextPricingSchema.optional() }).optional(),
+    })
+    .optional(),
+  longContextPricing: LongContextPricingSchema.optional(),
   source: z.object({ url: z.string(), verified: z.string().regex(/^\d{4}-\d{2}-\d{2}$/) }).optional(),
   legacyKeys: z.record(z.string(), ModelSelectionSchema.omit({ ref: true })).optional(),
   openRouterOnly: z.boolean(),

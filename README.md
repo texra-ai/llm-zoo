@@ -202,7 +202,16 @@ cost('anthropic/claude-sonnet-5-5', { input: 10000, output: 5000, cached: 8000 }
 cost('openai/gpt-6.1-sol', { input: 10000, output: 5000 }, { tier: 'fast' })       // fast tier
 maxCost('openai/gpt-6.1-sol', 50000)                                                // worst case
 compareCosts(['anthropic/claude-sonnet-5-5', 'openai/gpt-6.1-sol'], { input: 10000, output: 2000 })
+requestRates('openai/gpt-6.1-sol', 300_000)                                         // rates for a 300K-token prompt
+requestRates('openai/gpt-5.6-sol', 300_000, { tier: 'fast' })                       // same, at the fast tier
 ```
+
+Some models bill a whole request at higher rates once its prompt is long
+(OpenAI above 272K input tokens, xAI and Gemini Pro above 200K, Qwen3.7-Plus
+above 256K). Those models carry `longContextPricing`, and `cost` and
+`requestRates` apply it automatically. A service tier can have its own
+long-context rates (`tiers.fast.longContextPricing`, e.g. GPT-5.6 Sol fast);
+with `{ tier }`, the tier's rates and its long-context tier are used.
 
 ### Select
 
@@ -244,6 +253,7 @@ Available schemas:
 - `ModelRegistrySchema` — The whole registry, keyed by reference
 - `ModelCapabilitiesSchema` — Capability flags
 - `ReasoningSpecSchema` — A model's `reasoning` spec
+- `LongContextPricingSchema` — A long-context pricing tier
 - `ModelRefSchema` — A `provider/id` reference
 - `ModelSelectionSchema` — A reference plus effort / thinking / mode
 - `ModelProviderSchema` — Provider enum
@@ -269,7 +279,8 @@ interface ModelConfig {
   capabilities: ModelCapabilities;
   reasoning?: ReasoningSpec;          // absent = never thinks
   modes?: readonly 'pro'[];           // OpenAI reasoning.mode
-  tiers?: { fast?: { inputPrice: number; outputPrice: number } };
+  tiers?: { fast?: { inputPrice: number; outputPrice: number; longContextPricing?: LongContextPricing } };
+  longContextPricing?: LongContextPricing;  // rates for a whole request above a prompt size
   source?: { url: string; verified: string };  // official page + date read
   legacyKeys?: Record<string, { effort?: ReasoningEffort; thinking?: boolean; mode?: 'pro' }>;
   openRouterOnly: boolean;
@@ -277,6 +288,13 @@ interface ModelConfig {
   deprecated?: boolean;
   retired?: boolean;         // no longer served
   // ... and more (vscodeLMFullName, copilotFullName, baseUrl, ...)
+}
+
+interface LongContextPricing {
+  aboveInputTokens: number;  // applies when the prompt (cached included) is above this
+  inputPrice: number;
+  outputPrice: number;
+  cacheDiscountFactor: number;
 }
 
 interface ReasoningSpec {

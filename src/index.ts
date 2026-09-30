@@ -26,6 +26,7 @@ export type {
   ModelConfig,
   ModelEntry,
   ModelCapabilities,
+  LongContextPricing,
   ModelRef,
   ModelSelection,
   ModelSource,
@@ -82,6 +83,7 @@ export {
   active,
   // Cost
   cost,
+  requestRates,
   maxCost,
   compareCosts,
   // Smart Selection

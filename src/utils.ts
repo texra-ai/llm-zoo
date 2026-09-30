@@ -205,7 +205,51 @@ export function active(): ModelConfig[] {
 // ============================================================================
 
 /**
- * Calculate exact cost for a request.
+ * The rates one request bills at, given its prompt size (input tokens, cached
+ * tokens included). A model with a documented long-context tier switches its
+ * whole rate tuple above the threshold; every other model bills flat. With
+ * `tier`, the service tier's rates are used, and that tier's own long-context
+ * rates above its threshold; a model without that tier is an error.
+ *
+ * @example
+ * ```typescript
+ * requestRates('openai/gpt-6.1-sol', 300_000);
+ * // → { inputPrice: 4, outputPrice: 15, cacheDiscountFactor: 0.05 }
+ * requestRates('openai/gpt-5.6-sol', 300_000, { tier: 'fast' });
+ * // → { inputPrice: 16, outputPrice: 60, cacheDiscountFactor: 0.1 }
+ * ```
+ */
+export function requestRates(
+  model: ModelConfig | string,
+  promptTokens: number,
+  options: { tier?: 'fast' } = {},
+): { inputPrice: number; outputPrice: number; cacheDiscountFactor: number } {
+  const config = typeof model === 'string' ? lookup(model) : model;
+  if (!config) {
+    throw new Error(`Unknown model: ${model}`);
+  }
+  const prices = options.tier ? config.tiers?.[options.tier] : config;
+  if (!prices) {
+    throw new Error(`${config.ref} has no ${options.tier} tier`);
+  }
+  const long = prices.longContextPricing;
+  if (long !== undefined && promptTokens > long.aboveInputTokens) {
+    return {
+      inputPrice: long.inputPrice,
+      outputPrice: long.outputPrice,
+      cacheDiscountFactor: long.cacheDiscountFactor,
+    };
+  }
+  return {
+    inputPrice: prices.inputPrice,
+    outputPrice: prices.outputPrice,
+    cacheDiscountFactor: config.capabilities.cacheDiscountFactor,
+  };
+}
+
+/**
+ * Calculate exact cost for a request. A prompt above the model's long-context
+ * threshold bills the whole request at the tier (see `requestRates`).
  *
  * @example
  * ```typescript
@@ -218,6 +262,9 @@ export function active(): ModelConfig[] {
  *   output: 5000,
  *   cached: 8000  // 8K tokens were cache hits
  * });
+ *
+ * // At a service tier's prices
+ * const fast = cost('openai/gpt-5.6-sol', { input: 10000, output: 5000 }, { tier: 'fast' });
  * ```
  */
 export function cost(
@@ -225,22 +272,12 @@ export function cost(
   tokens: { input: number; output: number; cached?: number },
   options: { tier?: 'fast' } = {},
 ): number {
-  const config = typeof model === 'string' ? lookup(model) : model;
-  if (!config) {
-    throw new Error(`Unknown model: ${model}`);
-  }
-
-  const prices = options.tier ? config.tiers?.[options.tier] : config;
-  if (!prices) {
-    throw new Error(`${config.ref} has no ${options.tier} tier`);
-  }
   const { input, output, cached = 0 } = tokens;
-  const uncached = input - cached;
+  const rates = requestRates(model, input, options);
 
-  const inputCost = (uncached / 1_000_000) * prices.inputPrice;
-  const cacheCost =
-    (cached / 1_000_000) * prices.inputPrice * config.capabilities.cacheDiscountFactor;
-  const outputCost = (output / 1_000_000) * prices.outputPrice;
+  const inputCost = ((input - cached) / 1_000_000) * rates.inputPrice;
+  const cacheCost = (cached / 1_000_000) * rates.inputPrice * rates.cacheDiscountFactor;
+  const outputCost = (output / 1_000_000) * rates.outputPrice;
 
   return inputCost + cacheCost + outputCost;
 }
