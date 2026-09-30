@@ -173,8 +173,15 @@ export const GOOGLE_MODELS: Record<string, ModelConfig> = {
     contextWindow: 1048576,
     inputPrice: 2.0,
     outputPrice: 12.0,
+    longContextPricing: {
+      aboveInputTokens: 200_000,
+      inputPrice: 4.0,
+      outputPrice: 18.0,
+      cacheDiscountFactor: 0.1,
+    },
     capabilities: {
       ...GOOGLE_DEFAULT_CAPABILITIES,
+      cacheDiscountFactor: 0.1,
       supportsPromptCaching: true,
       supportsAutoPromptCaching: true,
       supportsReasoning: true,
@@ -198,6 +205,7 @@ export const GOOGLE_MODELS: Record<string, ModelConfig> = {
     outputPrice: 1.5,
     capabilities: {
       ...GOOGLE_DEFAULT_CAPABILITIES,
+      cacheDiscountFactor: 0.1,
       supportsPromptCaching: true,
       supportsAutoPromptCaching: true,
       supportsReasoning: true,
@@ -271,8 +279,15 @@ export const GOOGLE_MODELS: Record<string, ModelConfig> = {
     contextWindow: 1048576,
     inputPrice: 1.25,
     outputPrice: 10.0,
+    longContextPricing: {
+      aboveInputTokens: 200_000,
+      inputPrice: 2.5,
+      outputPrice: 15.0,
+      cacheDiscountFactor: 0.1,
+    },
     capabilities: {
       ...GOOGLE_DEFAULT_CAPABILITIES,
+      cacheDiscountFactor: 0.1,
       supportsPromptCaching: true,
       supportsAutoPromptCaching: true,
       supportsReasoning: true,
@@ -296,6 +311,7 @@ export const GOOGLE_MODELS: Record<string, ModelConfig> = {
     outputPrice: 2.5,
     capabilities: {
       ...GOOGLE_DEFAULT_CAPABILITIES,
+      cacheDiscountFactor: 0.1,
       supportsPromptCaching: true,
       supportsAutoPromptCaching: true,
       supportsReasoning: true,
@@ -319,6 +335,7 @@ export const GOOGLE_MODELS: Record<string, ModelConfig> = {
     outputPrice: 2.5,
     capabilities: {
       ...GOOGLE_DEFAULT_CAPABILITIES,
+      cacheDiscountFactor: 0.1,
       supportsPromptCaching: true,
       supportsAutoPromptCaching: true,
       supportsReasoning: true,

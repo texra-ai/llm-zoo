@@ -136,7 +136,13 @@ cost('sonnet55', { input: 10000, output: 5000 })
 cost('sonnet55', { input: 10000, output: 5000, cached: 8000 })  // with caching
 maxCost('gpt61-', 50000)                                         // worst case
 compareCosts(['sonnet55', 'gpt61-'], { input: 10000, output: 2000 })
+requestRates('gpt61-', 300_000)                                  // rates for a 300K-token prompt
 ```
+
+Some models bill a whole request at higher rates once its prompt is long
+(OpenAI above 272K input tokens, xAI and Gemini Pro above 200K). Those models
+carry `longContextPricing`, and `cost` and `requestRates` apply it
+automatically.
 
 ### Select
 

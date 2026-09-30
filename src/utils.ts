@@ -157,7 +157,41 @@ export function active(): ModelConfig[] {
 // ============================================================================
 
 /**
- * Calculate exact cost for a request.
+ * The rates one request bills at, given its prompt size (input tokens, cached
+ * tokens included). A model with a documented long-context tier switches its
+ * whole rate tuple above the threshold; every other model bills flat.
+ *
+ * @example
+ * ```typescript
+ * requestRates('gpt61-', 300_000); // { inputPrice: 4, outputPrice: 15, cacheDiscountFactor: 0.05 }
+ * ```
+ */
+export function requestRates(
+  model: ModelConfig | string,
+  promptTokens: number,
+): { inputPrice: number; outputPrice: number; cacheDiscountFactor: number } {
+  const config = typeof model === 'string' ? lookup(model) : model;
+  if (!config) {
+    throw new Error(`Unknown model: ${model}`);
+  }
+  const tier = config.longContextPricing;
+  if (tier !== undefined && promptTokens > tier.aboveInputTokens) {
+    return {
+      inputPrice: tier.inputPrice,
+      outputPrice: tier.outputPrice,
+      cacheDiscountFactor: tier.cacheDiscountFactor,
+    };
+  }
+  return {
+    inputPrice: config.inputPrice,
+    outputPrice: config.outputPrice,
+    cacheDiscountFactor: config.capabilities.cacheDiscountFactor,
+  };
+}
+
+/**
+ * Calculate exact cost for a request. A prompt above the model's long-context
+ * threshold bills the whole request at the tier (see `requestRates`).
  *
  * @example
  * ```typescript
@@ -183,11 +217,11 @@ export function cost(
 
   const { input, output, cached = 0 } = tokens;
   const uncached = input - cached;
+  const rates = requestRates(config, input);
 
-  const inputCost = (uncached / 1_000_000) * config.inputPrice;
-  const cacheCost =
-    (cached / 1_000_000) * config.inputPrice * config.capabilities.cacheDiscountFactor;
-  const outputCost = (output / 1_000_000) * config.outputPrice;
+  const inputCost = (uncached / 1_000_000) * rates.inputPrice;
+  const cacheCost = (cached / 1_000_000) * rates.inputPrice * rates.cacheDiscountFactor;
+  const outputCost = (output / 1_000_000) * rates.outputPrice;
 
   return inputCost + cacheCost + outputCost;
 }

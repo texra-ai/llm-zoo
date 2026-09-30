@@ -22,7 +22,7 @@
  */
 
 // Core types (use `export type` for isolatedModules compatibility)
-export type { ModelConfig, ModelCapabilities } from './ModelConfig';
+export type { ModelConfig, ModelCapabilities, LongContextPricing } from './ModelConfig';
 export { ModelProvider, ReasoningEffort, DEFAULT_MODEL_CAPABILITIES, DEFAULT_CONTEXT_WINDOW } from './ModelConfig';
 
 // Registry
@@ -63,6 +63,7 @@ export {
   active,
   // Cost
   cost,
+  requestRates,
   maxCost,
   compareCosts,
   // Smart Selection
