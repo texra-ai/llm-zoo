@@ -14,19 +14,27 @@ scope for an automated PR.
 ## Process
 1. Read every file in `src/providers/` to learn the current models
    and the exact entry shape for each provider (capabilities,
-   pricing fields, `fullName`/`openrouterFullName`, thinking/base
-   variant pattern, etc.). Match the existing style exactly.
+   pricing fields, `id`/`openrouterFullName`, the `reasoning` spec,
+   `source`, etc.). Match the existing style exactly. One entry per
+   API model ID: thinking on/off, effort levels, pro mode and service
+   tiers are fields of that entry (`reasoning`, `modes`, `tiers`),
+   never separate entries.
 2. Research recent releases with WebSearch. Treat aggregator/blog
    sites as leads only — they frequently hallucinate version numbers.
 3. For each candidate, VERIFY against a primary/official source
    (the provider's own pricing or model docs) before adding it:
    exact API model ID, context window, max output tokens, input /
-   output / cached-input prices, and capabilities (vision,
-   reasoning/thinking, prompt caching). If you cannot confirm a
-   field from an official source, do not invent it — skip the model.
+   output / cached-input prices, capabilities (vision, prompt
+   caching), and the reasoning controls: the exact effort levels
+   accepted while thinking (`reasoning.efforts`), whether thinking
+   can be turned off and which levels still apply then
+   (`reasoning.off`), and the documented default
+   (`reasoning.providerDefault`). Record the page in `source` with
+   today's date. If you cannot confirm a field from an official
+   source, do not invent it — skip the model.
 4. Add only models that are (a) verified, (b) from an in-scope
-   provider, and (c) not already present (check `fullName` and
-   labels — mind base vs. thinking variants).
+   provider, and (c) not already present (check `id` and labels).
+   New models get no `legacyKeys`; those exist only for 1.x keys.
 5. If you add anything: bump the `version` in `package.json` (minor
    bump), update any provider model counts / highlights in
    `README.md`, then run `npm run typecheck` and `npm run build` and

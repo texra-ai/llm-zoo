@@ -1,7 +1,7 @@
 import {
   DEFAULT_MODEL_CAPABILITIES,
   ModelCapabilities,
-  ModelConfig,
+  ModelEntry,
   ModelProvider,
 } from '../ModelConfig';
 
@@ -19,11 +19,10 @@ const DASHSCOPE_DEFAULT_CAPABILITIES: ModelCapabilities = {
  * Alibaba DashScope (Qwen) model configurations.
  * Includes Qwen 3 Max, Plus, and Turbo variants.
  */
-export const DASHSCOPE_MODELS: Record<string, ModelConfig> = {
-  qwen3max: {
-    name: 'qwen3max',
+export const DASHSCOPE_MODELS: readonly ModelEntry[] = [
+  {
     label: 'Qwen 3 Max',
-    fullName: 'qwen3-max',
+    id: 'qwen3-max',
     shortName: 'qwen3-max',
     openrouterFullName: 'qwen/qwen-max',
     provider: ModelProvider.DASHSCOPE,
@@ -35,13 +34,16 @@ export const DASHSCOPE_MODELS: Record<string, ModelConfig> = {
       ...DASHSCOPE_DEFAULT_CAPABILITIES,
       supportsVision: false,
     },
+    // Hybrid thinking: enable_thinking toggles it (off by default); thinking_budget caps its length.
+    reasoning: { efforts: [], off: [], budget: true },
+    legacyKeys: { qwen3max: {} },
+    source: { url: 'https://www.alibabacloud.com/help/en/model-studio/deep-thinking', verified: '2026-09-30' },
     openRouterOnly: false,
     deprecated: true,
   },
-  qwenplus: {
-    name: 'qwenplus',
+  {
     label: 'Qwen Plus',
-    fullName: 'qwen-plus',
+    id: 'qwen-plus',
     shortName: 'qwen-plus',
     openrouterFullName: 'qwen/qwen-plus',
     provider: ModelProvider.DASHSCOPE,
@@ -52,14 +54,16 @@ export const DASHSCOPE_MODELS: Record<string, ModelConfig> = {
     capabilities: {
       ...DASHSCOPE_DEFAULT_CAPABILITIES,
       supportsVision: false,
-      supportsReasoning: true,
     },
+    // Hybrid thinking: enable_thinking toggles it (off by default); thinking_budget caps its length.
+    reasoning: { efforts: [], off: [], budget: true },
+    legacyKeys: { qwenplus: {} },
+    source: { url: 'https://www.alibabacloud.com/help/en/model-studio/deep-thinking', verified: '2026-09-30' },
     openRouterOnly: false,
   },
-  qwenturbo: {
-    name: 'qwenturbo',
+  {
     label: 'Qwen Turbo',
-    fullName: 'qwen-turbo-latest',
+    id: 'qwen-turbo-latest',
     shortName: 'qwen-turbo-latest',
     openrouterFullName: 'qwen/qwen-turbo',
     provider: ModelProvider.DASHSCOPE,
@@ -70,8 +74,11 @@ export const DASHSCOPE_MODELS: Record<string, ModelConfig> = {
     capabilities: {
       ...DASHSCOPE_DEFAULT_CAPABILITIES,
       supportsVision: false,
-      supportsReasoning: true,
     },
+    // Hybrid thinking: enable_thinking toggles it (off by default); thinking_budget caps its length.
+    reasoning: { efforts: [], off: [], budget: true },
+    legacyKeys: { qwenturbo: {} },
+    source: { url: 'https://www.alibabacloud.com/help/en/model-studio/deep-thinking', verified: '2026-09-30' },
     openRouterOnly: false,
   },
-};
+];

@@ -34,6 +34,62 @@ export enum ReasoningEffort {
 }
 
 /**
+ * The shared effort scale, lowest first. Every model's accepted levels are a
+ * subset of it, so a requested level can be compared with any model's list.
+ * `none` means "do not think".
+ */
+export const EFFORT_SCALE: readonly ReasoningEffort[] = [
+  ReasoningEffort.NONE,
+  ReasoningEffort.MINIMAL,
+  ReasoningEffort.LOW,
+  ReasoningEffort.MEDIUM,
+  ReasoningEffort.HIGH,
+  ReasoningEffort.XHIGH,
+  ReasoningEffort.MAX,
+];
+
+/**
+ * How a model reasons, as the provider documents it. A model without a
+ * `reasoning` spec never thinks.
+ *
+ * - Always thinks, with effort levels: `{ efforts: [...] }` (no `off`).
+ * - Always thinks, no control: `{ efforts: [] }`.
+ * - Thinking can be turned off: add `off`, listing the effort levels the
+ *   provider still accepts while thinking is off (`[]` when none).
+ */
+export interface ReasoningSpec {
+  /** Effort levels accepted while thinking, in scale order; empty when the provider offers no effort control. */
+  efforts: readonly ReasoningEffort[];
+  /** Present when thinking can be turned off: the effort levels still accepted with thinking off. */
+  off?: readonly ReasoningEffort[];
+  /** Thinking length is set with a token budget (e.g. Anthropic `budget_tokens`) instead of adaptively. */
+  budget?: boolean;
+  /**
+   * The provider's documented default level when a request names none; `none`
+   * when the model thinks only if asked. A fact, not a recommendation.
+   */
+  providerDefault?: ReasoningEffort;
+}
+
+/** Request modes beyond the provider default. OpenAI's Responses API accepts `reasoning.mode: 'pro'`. */
+export type ReasoningMode = 'pro';
+
+/** Per-token prices, USD per million tokens. */
+export interface TokenPrices {
+  inputPrice: number;
+  outputPrice: number;
+}
+
+/**
+ * Where a model's facts were checked: the provider's official page and the
+ * date (YYYY-MM-DD) it was last read.
+ */
+export interface ModelSource {
+  url: string;
+  verified: string;
+}
+
+/**
  * Supported language model providers.
  * Each provider has specific API formats, capabilities, and pricing structures.
  */
@@ -62,6 +118,26 @@ export enum ModelProvider {
   META = 'meta',
   /** Other providers (OpenRouter-only models, etc.) */
   OTHERS = 'others',
+}
+
+/**
+ * A model's identity: its provider and the model ID that provider's API takes,
+ * e.g. `anthropic/claude-opus-5`. This is the registry key.
+ */
+export type ModelRef = `${ModelProvider}/${string}`;
+
+/**
+ * A model plus how to run it. Written as a string: `provider/id[@effort][+pro]`,
+ * e.g. `anthropic/claude-opus-5@high`. `effort: 'none'` turns thinking off;
+ * `thinking: false` with another effort is for models whose `reasoning.off`
+ * lists that level. Service tiers are not part of a selection: they are a
+ * routing choice of the caller.
+ */
+export interface ModelSelection {
+  ref: ModelRef;
+  effort?: ReasoningEffort;
+  thinking?: boolean;
+  mode?: ReasoningMode;
 }
 
 /**
@@ -102,47 +178,8 @@ export interface ModelCapabilities {
    */
   cacheDiscountFactor: number;
 
-  /** Whether the model supports extended reasoning/thinking */
-  supportsReasoning: boolean;
-
-  /** Whether reasoning can be interleaved with regular output */
+  /** Whether reasoning can be interleaved with tool calls and regular output */
   supportsInterleavedThinking: boolean;
-
-  /**
-   * Whether requests accept a configurable reasoning or response effort.
-   * Independent of whether reasoning or adaptive thinking is enabled.
-   */
-  supportsReasoningEffort: boolean;
-
-  /**
-   * Whether this registry entry's request shape supports adaptive thinking
-   * rather than a fixed token budget.
-   */
-  supportsAdaptiveThinking: boolean;
-
-  /** Default reasoning effort level when effort is supported */
-  reasoningEffort: ReasoningEffort;
-
-  /**
-   * Highest reasoning effort level the model accepts, when it differs from
-   * the default. Read as `maxReasoningEffort ?? reasoningEffort`.
-   * This does not imply that every lower enum tier is accepted; use
-   * `supportedReasoningEfforts` when a model has a non-contiguous vocabulary.
-   * Example: GPT-5.6 defaults to `medium` but accepts up to `max`.
-   */
-  maxReasoningEffort?: ReasoningEffort;
-
-  /** Exact reasoning effort values accepted by the model, when known */
-  supportedReasoningEfforts?: readonly ReasoningEffort[];
-
-  /**
-   * Reasoning mode the request must send for this registry entry, when the
-   * provider exposes one beyond the default. OpenAI's Responses API accepts
-   * `reasoning.mode: 'standard' | 'pro'` on GPT-5.6 models; entries that
-   * represent the pro-mode variant set `'pro'` here, and absence means the
-   * provider default (standard). Orthogonal to `reasoningEffort`.
-   */
-  reasoningMode?: 'pro';
 
   /** Whether the model can process images */
   supportsVision: boolean;
@@ -182,10 +219,7 @@ export const DEFAULT_MODEL_CAPABILITIES: ModelCapabilities = {
   supportsPromptCaching: false,
   supportsAutoPromptCaching: false,
   cacheDiscountFactor: 1.0,
-  supportsReasoning: false,
   supportsInterleavedThinking: false,
-  supportsAdaptiveThinking: false,
-  reasoningEffort: ReasoningEffort.NONE,
   supportsVision: true,
   supportsNativePdf: false,
   supportsAssistantPrefill: false,
@@ -193,9 +227,11 @@ export const DEFAULT_MODEL_CAPABILITIES: ModelCapabilities = {
   supportsTokenCounting: false,
   supportsSystemPrompt: true,
   supportsIntermDevMsgs: false,
-  supportsReasoningEffort: false,
   supportsNativeAudio: false,
 };
+
+/** A provider file's entry: a `ModelConfig` whose `ref` the registry derives from `provider` and `id`. */
+export type ModelEntry = Omit<ModelConfig, 'ref'>;
 
 /**
  * Complete configuration for a language model.
@@ -203,21 +239,18 @@ export const DEFAULT_MODEL_CAPABILITIES: ModelCapabilities = {
  * pricing, capabilities, and provider-specific settings.
  */
 export interface ModelConfig {
-  /**
-   * Short identifier for the model (e.g., "sonnet45", "gpt4o").
-   * Used as the key in the registry and for quick reference.
-   */
-  name: string;
+  /** Registry key: `${provider}/${id}`. */
+  ref: ModelRef;
 
   /**
-   * Full API model identifier (e.g., "claude-sonnet-4-5", "gpt-4o-2024-11-20").
-   * This is the actual string sent to the provider's API.
+   * The model ID the provider's API takes (e.g. "claude-opus-5", "gpt-4o-2024-11-20").
+   * This is the string sent to the provider.
    */
-  fullName: string;
+  id: string;
 
   /**
    * Unpinned API model name without date suffix (e.g., "gpt-5.4", "claude-opus-4-1").
-   * Equals fullName when the model has no date-pinned variant.
+   * Equals `id` when the model has no date-pinned variant.
    * Useful for providers/clients that prefer non-date-pinned model identifiers.
    */
   shortName: string;
@@ -239,6 +272,29 @@ export interface ModelConfig {
 
   /** Model capability flags */
   capabilities: ModelCapabilities;
+
+  /** How the model reasons; absent when it never thinks. */
+  reasoning?: ReasoningSpec;
+
+  /** Request modes the model accepts beyond the default. */
+  modes?: readonly ReasoningMode[];
+
+  /**
+   * Service tiers beyond standard, with their prices (e.g. OpenAI
+   * `service_tier: 'fast'`). Choosing a tier is a routing decision of the
+   * caller, never part of a model selection.
+   */
+  tiers?: { fast?: TokenPrices };
+
+  /** Where these facts were checked. Required for every model that is not retired. */
+  source?: ModelSource;
+
+  /**
+   * Registry keys from llm-zoo 1.x that meant this model, each with the
+   * selection it stood for (e.g. `opus5T` → effort high). Kept so old
+   * configurations can be read; new code uses `ref`.
+   */
+  legacyKeys?: Readonly<Record<string, Omit<ModelSelection, 'ref'>>>;
 
   /**
    * Whether this model is only available through OpenRouter.
@@ -272,18 +328,6 @@ export interface ModelConfig {
    * Used for special models like deep research that bypass standard chat completions.
    */
   requiresResponsesAPI?: boolean;
-
-  /**
-   * Processing tier the request must send for this registry entry, when it
-   * differs from the provider default. OpenAI's `service_tier: 'fast'`
-   * (Priority Processing, renamed Fast mode on 2026-07-30) serves a request
-   * faster than Standard processing for a per-token premium; how much faster
-   * is model-specific. Entries that represent the fast-tier variant of a model
-   * set `'fast'` here
-   * and carry the premium rates in `inputPrice` / `outputPrice`. Absence means
-   * the provider default (standard).
-   */
-  serviceTier?: 'fast';
 
   /**
    * Human-friendly display name for the model.

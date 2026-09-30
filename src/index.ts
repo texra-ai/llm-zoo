@@ -11,24 +11,41 @@
  * import { lookup, cost, cheapest } from 'llm-zoo';
  *
  * // Lookup any model
- * const claude = lookup('sonnet45');
+ * const claude = lookup('anthropic/claude-sonnet-4-5');
  *
  * // Calculate costs
- * const price = cost('gpt4o', { input: 10000, output: 2000 });
+ * const price = cost('openai/gpt-4o-2024-11-20', { input: 10000, output: 2000 });
  *
  * // Find the perfect model
- * const budget = cheapest({ supportsVision: true, supportsReasoning: true });
+ * const budget = cheapest({ supportsVision: true });
  * ```
  */
 
 // Core types (use `export type` for isolatedModules compatibility)
-export type { ModelConfig, ModelCapabilities } from './ModelConfig';
-export { ModelProvider, ReasoningEffort, DEFAULT_MODEL_CAPABILITIES, DEFAULT_CONTEXT_WINDOW } from './ModelConfig';
+export type {
+  ModelConfig,
+  ModelEntry,
+  ModelCapabilities,
+  ModelRef,
+  ModelSelection,
+  ModelSource,
+  ReasoningMode,
+  ReasoningSpec,
+  TokenPrices,
+} from './ModelConfig';
+export {
+  ModelProvider,
+  ReasoningEffort,
+  EFFORT_SCALE,
+  DEFAULT_MODEL_CAPABILITIES,
+  DEFAULT_CONTEXT_WINDOW,
+} from './ModelConfig';
 
 // Registry
 export {
   MODEL_CONFIGS,
   MODELS,
+  LEGACY_KEYS,
   ANTHROPIC_MODELS,
   OPENAI_MODELS,
   OPENAI_REASONING_MODELS,
@@ -52,6 +69,8 @@ export {
   lookup,
   resolve,
   exists,
+  parseModelRef,
+  formatModelRef,
   // Filtering
   from,
   where,

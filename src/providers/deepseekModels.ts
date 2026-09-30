@@ -1,10 +1,13 @@
 import {
   DEFAULT_MODEL_CAPABILITIES,
   ModelCapabilities,
-  ModelConfig,
+  ModelEntry,
   ModelProvider,
   ReasoningEffort,
 } from '../ModelConfig';
+
+/** Distinct reasoning_effort levels while thinking (other names are aliases). */
+const LOW_HIGH_MAX_EFFORTS = [ReasoningEffort.LOW, ReasoningEffort.HIGH, ReasoningEffort.MAX] as const;
 
 /**
  * Default capabilities for DeepSeek models.
@@ -25,7 +28,7 @@ const DEEPSEEK_DEFAULT_CAPABILITIES: ModelCapabilities = {
  * - fullName: Model name for native DeepSeek API (e.g., 'deepseek-chat', 'deepseek-reasoner')
  * - openrouterFullName: Model name for OpenRouter API (e.g., 'deepseek/deepseek-v3.2')
  */
-export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
+export const DEEPSEEK_MODELS: readonly ModelEntry[] = [
   // DeepSeek-V4.1-Flash (Non-thinking Mode)
   // Released 2026-09-10: a new Causal Encoder-Decoder architecture (the
   // smallest model in DeepSeek's new architecture family) with native
@@ -39,35 +42,14 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
   // accompanying price reduction in the changelog, not on the pricing page.
   // Sources: https://api-docs.deepseek.com/quick_start/pricing and
   // https://api-docs.deepseek.com/updates/
-  deepseek41: {
-    name: 'deepseek41',
-    label: 'DeepSeek V4.1 Flash',
-    fullName: 'deepseek-flash',
-    shortName: 'deepseek-flash',
-    openrouterFullName: 'deepseek/deepseek-v4.1-flash',
-    provider: ModelProvider.DEEPSEEK,
-    maxOutputTokens: 393216,
-    contextWindow: 1048576,
-    inputPrice: 0.15,
-    outputPrice: 0.6,
-    capabilities: {
-      ...DEEPSEEK_DEFAULT_CAPABILITIES,
-      supportsVision: true,
-      supportsAssistantPrefill: true,
-      supportsFunctionCalling: true,
-      cacheDiscountFactor: 0.02,
-    },
-    openRouterOnly: false,
-  },
   // DeepSeek-V4.1-Flash (Thinking Mode)
   // reasoning_effort defaults to high. Flash resolves three distinct levels —
   // low, high, max — so all three are listed. minimal also maps onto low,
   // while medium and xhigh are compatibility aliases that both map onto high
   // and ultra maps onto max, so none of those are listed as distinct levels.
-  deepseek41T: {
-    name: 'deepseek41T',
-    label: 'DeepSeek V4.1 Flash (Thinking)',
-    fullName: 'deepseek-flash',
+  {
+    label: 'DeepSeek V4.1 Flash',
+    id: 'deepseek-flash',
     shortName: 'deepseek-flash',
     openrouterFullName: 'deepseek/deepseek-v4.1-flash',
     provider: ModelProvider.DEEPSEEK,
@@ -78,19 +60,13 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
     capabilities: {
       ...DEEPSEEK_DEFAULT_CAPABILITIES,
       supportsVision: true,
-      supportsReasoning: true,
-      supportsReasoningEffort: true,
-      reasoningEffort: ReasoningEffort.HIGH,
-      maxReasoningEffort: ReasoningEffort.MAX,
-      supportedReasoningEfforts: [
-        ReasoningEffort.LOW,
-        ReasoningEffort.HIGH,
-        ReasoningEffort.MAX,
-      ],
       supportsFunctionCalling: true,
       supportsAssistantPrefill: true,
       cacheDiscountFactor: 0.02,
     },
+    reasoning: { efforts: LOW_HIGH_MAX_EFFORTS, off: [], providerDefault: ReasoningEffort.HIGH },
+    legacyKeys: { deepseek41: { effort: ReasoningEffort.NONE }, deepseek41T: { effort: ReasoningEffort.HIGH } },
+    source: { url: 'https://api-docs.deepseek.com/guides/thinking_mode', verified: '2026-09-30' },
     openRouterOnly: false,
   },
   // DeepSeek-V4-Flash (Non-thinking Mode)
@@ -104,29 +80,6 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
   // deprecated, not retired. Pricing below matches `deepseek41`, not the
   // historical V4-Flash rate: the pricing page states `deepseek-v4-flash`
   // requests are now served by V4.1-Flash and billed at its price.
-  deepseek: {
-    name: 'deepseek',
-    label: 'DeepSeek V4 Flash',
-    fullName: 'deepseek-v4-flash',
-    shortName: 'deepseek-v4-flash',
-    openrouterFullName: 'deepseek/deepseek-v4-flash',
-    provider: ModelProvider.DEEPSEEK,
-    maxOutputTokens: 393216,
-    contextWindow: 1048576,
-    inputPrice: 0.15,
-    outputPrice: 0.6,
-    // capabilities describe V4-Flash (unchanged); pricing above follows the
-    // compat routing to V4.1-Flash.
-    capabilities: {
-      ...DEEPSEEK_DEFAULT_CAPABILITIES,
-      supportsAssistantPrefill: true,
-      supportsFunctionCalling: true,
-      cacheDiscountFactor: 0.02,
-    },
-    // Not served on the vendor's own Responses API.
-    openRouterOnly: true,
-    deprecated: true,
-  },
   // DeepSeek-V4-Flash (Thinking Mode)
   // reasoning_effort defaults to high. Flash resolves three distinct levels —
   // low, high, max — so all three are listed. xhigh and medium are accepted as
@@ -134,10 +87,9 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
   // a distinct level.
   // Deprecated 2026-09-10, see `deepseek` above; superseded by `deepseek41T`.
   // Pricing matches `deepseek41T`, see `deepseek`'s comment above for why.
-  deepseekT: {
-    name: 'deepseekT',
-    label: 'DeepSeek V4 Flash (Thinking)',
-    fullName: 'deepseek-v4-flash',
+  {
+    label: 'DeepSeek V4 Flash',
+    id: 'deepseek-v4-flash',
     shortName: 'deepseek-v4-flash',
     openrouterFullName: 'deepseek/deepseek-v4-flash',
     provider: ModelProvider.DEEPSEEK,
@@ -149,19 +101,13 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
     // compat routing to V4.1-Flash.
     capabilities: {
       ...DEEPSEEK_DEFAULT_CAPABILITIES,
-      supportsReasoning: true,
-      supportsReasoningEffort: true,
-      reasoningEffort: ReasoningEffort.HIGH,
-      maxReasoningEffort: ReasoningEffort.MAX,
-      supportedReasoningEfforts: [
-        ReasoningEffort.LOW,
-        ReasoningEffort.HIGH,
-        ReasoningEffort.MAX,
-      ],
       supportsFunctionCalling: true,
       supportsAssistantPrefill: true,
       cacheDiscountFactor: 0.02,
     },
+    reasoning: { efforts: LOW_HIGH_MAX_EFFORTS, off: [], providerDefault: ReasoningEffort.HIGH },
+    legacyKeys: { deepseek: { effort: ReasoningEffort.NONE }, deepseekT: { effort: ReasoningEffort.HIGH } },
+    source: { url: 'https://api-docs.deepseek.com/quick_start/pricing', verified: '2026-09-30' },
     // Not served on the vendor's own Responses API.
     openRouterOnly: true,
     deprecated: true,
@@ -181,10 +127,9 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
   // compatibility rather than failing outright, so this entry is
   // deprecated, not retired. Pricing matches `deepseek41`, see `deepseek`'s
   // comment above for why.
-  deepseekvision: {
-    name: 'deepseekvision',
+  {
     label: 'DeepSeek V4 Flash Vision (Exp)',
-    fullName: 'deepseek-v4-flash-vision-exp',
+    id: 'deepseek-v4-flash-vision-exp',
     shortName: 'deepseek-v4-flash-vision-exp',
     openrouterFullName: 'deepseek/deepseek-v4-flash-vision-exp',
     provider: ModelProvider.DEEPSEEK,
@@ -199,40 +144,21 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
       supportsFunctionCalling: true,
       cacheDiscountFactor: 0.02,
     },
+    legacyKeys: { deepseekvision: {} },
+    source: { url: 'https://api-docs.deepseek.com/quick_start/pricing', verified: '2026-09-30' },
     // Not served on the vendor's own Responses API.
     openRouterOnly: true,
     deprecated: true,
   },
   // DeepSeek-V4-Pro (Non-thinking Mode)
-  deepseekpro: {
-    name: 'deepseekpro',
-    label: 'DeepSeek V4 Pro',
-    fullName: 'deepseek-v4-pro',
-    shortName: 'deepseek-v4-pro',
-    openrouterFullName: 'deepseek/deepseek-v4-pro',
-    provider: ModelProvider.DEEPSEEK,
-    maxOutputTokens: 393216,
-    contextWindow: 1048576,
-    inputPrice: 0.435,
-    outputPrice: 0.87,
-    capabilities: {
-      ...DEEPSEEK_DEFAULT_CAPABILITIES,
-      supportsAssistantPrefill: true,
-      supportsFunctionCalling: true,
-      cacheDiscountFactor: 0.003625 / 0.435,
-    },
-    openRouterOnly: false,
-  },
   // DeepSeek-V4-Pro (Thinking Mode)
-  // Same reasoning_effort vocabulary as Flash (low/high/max), but Pro
-  // currently resolves low onto high, so only two distinct levels are listed.
-  // The compatibility alias xhigh maps to max here, so it is not a level of
-  // its own. DeepSeek says Pro is expected to support all three levels in
-  // early August 2026; recheck then.
-  deepseekproT: {
-    name: 'deepseekproT',
-    label: 'DeepSeek V4 Pro (Thinking)',
-    fullName: 'deepseek-v4-pro',
+  // Since the V4-Pro GA release (2026-08-13) Pro resolves the same three
+  // distinct levels as Flash: "thinking modes of V4-Pro and V4-Flash now
+  // support three thinking effort levels: low / high / max"
+  // (https://api-docs.deepseek.com/updates/). Default high.
+  {
+    label: 'DeepSeek V4 Pro',
+    id: 'deepseek-v4-pro',
     shortName: 'deepseek-v4-pro',
     openrouterFullName: 'deepseek/deepseek-v4-pro',
     provider: ModelProvider.DEEPSEEK,
@@ -242,22 +168,19 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
     outputPrice: 0.87,
     capabilities: {
       ...DEEPSEEK_DEFAULT_CAPABILITIES,
-      supportsReasoning: true,
-      supportsReasoningEffort: true,
-      reasoningEffort: ReasoningEffort.HIGH,
-      maxReasoningEffort: ReasoningEffort.MAX,
-      supportedReasoningEfforts: [ReasoningEffort.HIGH, ReasoningEffort.MAX],
       supportsFunctionCalling: true,
       supportsAssistantPrefill: true,
       cacheDiscountFactor: 0.003625 / 0.435,
     },
+    reasoning: { efforts: LOW_HIGH_MAX_EFFORTS, off: [], providerDefault: ReasoningEffort.HIGH },
+    legacyKeys: { deepseekpro: { effort: ReasoningEffort.NONE }, deepseekproT: { effort: ReasoningEffort.HIGH } },
+    source: { url: 'https://api-docs.deepseek.com/guides/thinking_mode', verified: '2026-09-30' },
     openRouterOnly: false,
   },
   // DeepSeek-V3.2 (Non-thinking Mode)
-  dsv32: {
-    name: 'dsv32',
+  {
     label: 'DeepSeek V3.2',
-    fullName: 'deepseek-chat',
+    id: 'deepseek-chat',
     shortName: 'deepseek-chat',
     openrouterFullName: 'deepseek/deepseek-v3.2',
     provider: ModelProvider.DEEPSEEK,
@@ -270,16 +193,16 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
       supportsAssistantPrefill: true,
       supportsFunctionCalling: true,
     },
+    legacyKeys: { dsv32: {}, dsv3: {}, dsv3o: {} },
     // Not served on the vendor's own Responses API.
     openRouterOnly: true,
     deprecated: true,
     retired: true,
   },
   // DeepSeek-V3.2 (Thinking Mode)
-  dsv32T: {
-    name: 'dsv32T',
-    label: 'DeepSeek V3.2 (Thinking)',
-    fullName: 'deepseek-reasoner',
+  {
+    label: 'DeepSeek V3.2',
+    id: 'deepseek-reasoner',
     shortName: 'deepseek-reasoner',
     openrouterFullName: 'deepseek/deepseek-v3.2',
     provider: ModelProvider.DEEPSEEK,
@@ -289,121 +212,14 @@ export const DEEPSEEK_MODELS: Record<string, ModelConfig> = {
     outputPrice: 0.42,
     capabilities: {
       ...DEEPSEEK_DEFAULT_CAPABILITIES,
-      supportsReasoning: true,
-      supportsReasoningEffort: false,
       supportsFunctionCalling: true,
       supportsAssistantPrefill: true,
     },
+    reasoning: { efforts: [] },
+    legacyKeys: { dsv32T: {}, 'deepseekT+': {}, dsr1: {}, dsr1o: {} },
     // Not served on the vendor's own Responses API.
     openRouterOnly: true,
     deprecated: true,
     retired: true,
   },
-  // DeepSeek-V3.2-Speciale (Extended Thinking)
-  'deepseekT+': {
-    name: 'deepseekT+',
-    label: 'DeepSeek Speciale (Thinking)',
-    fullName: 'deepseek-reasoner',
-    shortName: 'deepseek-reasoner',
-    openrouterFullName: 'deepseek/deepseek-v3.2-speciale',
-    provider: ModelProvider.DEEPSEEK,
-    maxOutputTokens: 131072,
-    contextWindow: 163840,
-    inputPrice: 0.28,
-    outputPrice: 0.42,
-    capabilities: {
-      ...DEEPSEEK_DEFAULT_CAPABILITIES,
-      supportsReasoning: true,
-      supportsReasoningEffort: false,
-      supportsFunctionCalling: false,
-      supportsAssistantPrefill: false,
-    },
-    // Not served on the vendor's own Responses API.
-    openRouterOnly: true,
-    baseUrl: 'https://api.deepseek.com/v3.2_speciale_expires_on_20251215',
-    deprecated: true,
-    retired: true,
-  },
-  dsv3: {
-    name: 'dsv3',
-    label: 'DeepSeek V3',
-    fullName: 'deepseek-chat',
-    shortName: 'deepseek-chat',
-    openrouterFullName: 'deepseek/deepseek-chat-v3-0324',
-    provider: ModelProvider.DEEPSEEK,
-    maxOutputTokens: 64000,
-    contextWindow: 128000,
-    inputPrice: 0.14,
-    outputPrice: 0.28,
-    capabilities: {
-      ...DEEPSEEK_DEFAULT_CAPABILITIES,
-      supportsAssistantPrefill: true,
-    },
-    // Not served on the vendor's own Responses API.
-    openRouterOnly: true,
-    deprecated: true,
-    retired: true,
-  },
-  dsr1: {
-    name: 'dsr1',
-    label: 'DeepSeek R1',
-    fullName: 'deepseek-reasoner',
-    shortName: 'deepseek-reasoner',
-    openrouterFullName: 'deepseek/deepseek-r1-0528',
-    provider: ModelProvider.DEEPSEEK,
-    maxOutputTokens: 65536,
-    contextWindow: 128000,
-    inputPrice: 4,
-    outputPrice: 4,
-    capabilities: {
-      ...DEEPSEEK_DEFAULT_CAPABILITIES,
-      supportsReasoning: true,
-      supportsReasoningEffort: false,
-    },
-    // Not served on the vendor's own Responses API.
-    openRouterOnly: true,
-    deprecated: true,
-    retired: true,
-  },
-  dsv3o: {
-    name: 'dsv3o',
-    label: 'DeepSeek V3 (Old)',
-    fullName: 'deepseek-chat',
-    shortName: 'deepseek-chat',
-    openrouterFullName: 'deepseek/deepseek-chat-v3-0324',
-    provider: ModelProvider.DEEPSEEK,
-    maxOutputTokens: 8192,
-    contextWindow: 64000,
-    inputPrice: 0.27,
-    outputPrice: 1.1,
-    capabilities: {
-      ...DEEPSEEK_DEFAULT_CAPABILITIES,
-      supportsAssistantPrefill: true,
-    },
-    // Not served on the vendor's own Responses API.
-    openRouterOnly: true,
-    deprecated: true,
-    retired: true,
-  },
-  dsr1o: {
-    name: 'dsr1o',
-    label: 'DeepSeek R1 (Old)',
-    fullName: 'deepseek-reasoner',
-    shortName: 'deepseek-reasoner',
-    openrouterFullName: 'deepseek/deepseek-r1-0528',
-    provider: ModelProvider.DEEPSEEK,
-    maxOutputTokens: 64000,
-    contextWindow: 64000,
-    inputPrice: 0.55,
-    outputPrice: 2.19,
-    capabilities: {
-      ...DEEPSEEK_DEFAULT_CAPABILITIES,
-      supportsReasoning: true,
-      supportsReasoningEffort: false,
-    },
-    // Not served on the vendor's own Responses API.
-    openRouterOnly: true,
-    deprecated: true,
-    retired: true,
-  },
-};
+];

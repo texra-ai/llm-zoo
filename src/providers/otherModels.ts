@@ -1,7 +1,7 @@
 import {
   DEFAULT_MODEL_CAPABILITIES,
   ModelCapabilities,
-  ModelConfig,
+  ModelEntry,
   ModelProvider,
 } from '../ModelConfig';
 
@@ -16,11 +16,10 @@ const OTHER_DEFAULT_CAPABILITIES: ModelCapabilities = {
  * Other model configurations (OpenRouter-only models).
  * Includes models that are only available through OpenRouter proxy.
  */
-export const OTHER_MODELS: Record<string, ModelConfig> = {
-  llama31: {
-    name: 'llama31',
+export const OTHER_MODELS: readonly ModelEntry[] = [
+  {
     label: 'Llama 3.1 405B',
-    fullName: 'meta-llama/llama-3.1-405b-instruct',
+    id: 'meta-llama/llama-3.1-405b-instruct',
     shortName: 'meta-llama/llama-3.1-405b-instruct',
     openrouterFullName: 'meta-llama/llama-3.1-405b-instruct',
     provider: ModelProvider.OTHERS,
@@ -29,13 +28,16 @@ export const OTHER_MODELS: Record<string, ModelConfig> = {
     inputPrice: 3.0,
     outputPrice: 3.0,
     capabilities: OTHER_DEFAULT_CAPABILITIES,
+    legacyKeys: { llama31: {} },
     openRouterOnly: true,
     deprecated: true,
+    // Absent from OpenRouter's model list, and its endpoints list is empty
+    // (openrouter.ai/api/v1/models, checked 2026-09-30).
+    retired: true,
   },
-  'qvq-72b': {
-    name: 'qvq-72b',
+  {
     label: 'QVQ 72B',
-    fullName: 'qwen/qvq-72b-preview',
+    id: 'qwen/qvq-72b-preview',
     shortName: 'qwen/qvq-72b-preview',
     openrouterFullName: 'qwen/qvq-72b-preview',
     provider: ModelProvider.OTHERS,
@@ -46,8 +48,9 @@ export const OTHER_MODELS: Record<string, ModelConfig> = {
     capabilities: {
       ...OTHER_DEFAULT_CAPABILITIES,
     },
+    legacyKeys: { 'qvq-72b': {} },
     openRouterOnly: true,
     deprecated: true,
     retired: true,
   },
-};
+];

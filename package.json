@@ -1,6 +1,6 @@
 {
   "name": "llm-zoo",
-  "version": "1.40.1",
+  "version": "2.0.0",
   "description": "100+ LLM models. Pricing, capabilities, context windows. Always current.",
   "keywords": [
     "llm",
@@ -91,7 +91,7 @@
   "devDependencies": {
     "tsup": "^8.0.0",
     "typescript": "^5.3.0",
-    "zod": "^4.0.0"
+    "zod": "^4.4.3"
   },
   "engines": {
     "node": ">=18.0.0"
