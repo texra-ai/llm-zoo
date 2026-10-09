@@ -326,6 +326,34 @@ export const ANTHROPIC_MODELS: readonly ModelEntry[] = [
     legacyKeys: { sonnet55: { effort: ReasoningEffort.HIGH } },
     openRouterOnly: false,
   },
+  // Haiku 5.5 (2026-10-07): $0.10 / $0.50 for prompts up to 100K tokens,
+  // $0.50 / $2.50 above; cache reads $0.01 / $0.05 (0.1x). Adaptive thinking
+  // is on by default; `thinking: disabled` is accepted at `high` effort or
+  // below (400 at `xhigh`/`max`). Default effort is `medium`.
+  {
+    label: 'Haiku 5.5',
+    id: 'claude-haiku-5-5',
+    shortName: 'claude-haiku-5-5',
+    openrouterFullName: 'anthropic/claude-haiku-5.5',
+    provider: ModelProvider.ANTHROPIC,
+    maxOutputTokens: 128000,
+    contextWindow: 1000000,
+    inputPrice: 0.1,
+    outputPrice: 0.5,
+    longContextPricing: {
+      aboveInputTokens: 100_000,
+      inputPrice: 0.5,
+      outputPrice: 2.5,
+      cacheDiscountFactor: 0.1,
+    },
+    capabilities: {
+      ...ANTHROPIC_DEFAULT_CAPABILITIES,
+      supportsAssistantPrefill: false,
+    },
+    reasoning: { efforts: ANTHROPIC_REASONING_EFFORTS, off: LOW_TO_HIGH_EFFORTS, providerDefault: ReasoningEffort.MEDIUM },
+    source: { url: 'https://platform.claude.com/docs/en/models/haiku-5-5/overview', verified: '2026-10-09' },
+    openRouterOnly: false,
+  },
   {
     label: 'Sonnet 5',
     id: 'claude-sonnet-5',
