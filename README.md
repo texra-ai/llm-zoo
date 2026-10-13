@@ -101,6 +101,7 @@ Current models only (retired and deprecated models excluded).
 | Model | Input | Output | Provider |
 |-------|-------|--------|----------|
 | `openai/gpt-6-luna` | $0.10 | $0.50 | OpenAI |
+| `anthropic/claude-haiku-5-5` | $0.10 | $0.50 | Anthropic |
 | `dashscope/qwen3.8-flash` | $0.15 | $0.47 | DashScope |
 | `glm/glm-5.3-flash` | $0.15 | $0.50 | GLM |
 | `deepseek/deepseek-flash` | $0.15 | $0.60 | DeepSeek |
@@ -134,21 +135,21 @@ OpenAI's fast tier doubles these (`openai/gpt-6-astra`: $20 / $100; `openai/gpt-
 |------------------|--------|
 | 1,050,000 | `openai/gpt-6-astra`, `openai/gpt-6.1-sol`, `openai/gpt-6-luna`, `openai/gpt-5.6-sol`, `openai/gpt-5.6-terra` |
 | 1,048,576 | `google/gemini-3.8-flash`, `google/gemini-3.5-flash-lite`, `google/gemini-3.1-pro-preview`, `deepseek/deepseek-flash`, `deepseek/deepseek-v4-pro`, `moonshot/kimi-k3`, `minimax/MiniMax-M3`, `meta/muse-spark-1.3` |
-| 1,000,000 | `anthropic/claude-fable-5-1`, `anthropic/claude-mythos-5-1`, `anthropic/claude-opus-5-5`, `anthropic/claude-sonnet-5-5`, `glm/glm-5.3`, `glm/glm-5.3-flash`, `glm/glm-5.3-flashx`, `dashscope/qwen3.8-max`, `dashscope/qwen3.8-flash`, `dashscope/qwen3.7-plus`, `dashscope/qwen-plus` |
+| 1,000,000 | `anthropic/claude-fable-5-1`, `anthropic/claude-mythos-5-1`, `anthropic/claude-opus-5-5`, `anthropic/claude-sonnet-5-5`, `anthropic/claude-haiku-5-5`, `glm/glm-5.3`, `glm/glm-5.3-flash`, `glm/glm-5.3-flashx`, `dashscope/qwen3.8-max`, `dashscope/qwen3.8-flash`, `dashscope/qwen3.7-plus`, `dashscope/qwen-plus` |
 | 500,000 | `xai/grok-4.7` |
 
 ### Capabilities
 
-Of the 34 current models:
+Of the 35 current models:
 
 | Capability | Count | Examples |
 |------------|-------|----------|
-| Reasoning | 33 | `anthropic/claude-opus-5-5`, `openai/gpt-6.1-sol`, `deepseek/deepseek-flash`, `xai/grok-4.7` |
-| Prompt caching | 33 | `anthropic/claude-opus-5-5`, `google/gemini-3.8-flash`, `deepseek/deepseek-flash`, `glm/glm-5.3` |
-| Vision | 30 | `anthropic/claude-sonnet-5-5`, `openai/gpt-6.1-sol`, `google/gemini-3.1-pro-preview` |
-| Effort levels | 21 | `anthropic/claude-sonnet-5-5`, `openai/gpt-6.1-sol`, `glm/glm-5.3`, `moonshot/kimi-k3` |
+| Reasoning | 34 | `anthropic/claude-opus-5-5`, `openai/gpt-6.1-sol`, `deepseek/deepseek-flash`, `xai/grok-4.7` |
+| Prompt caching | 34 | `anthropic/claude-opus-5-5`, `google/gemini-3.8-flash`, `deepseek/deepseek-flash`, `glm/glm-5.3` |
+| Vision | 31 | `anthropic/claude-sonnet-5-5`, `openai/gpt-6.1-sol`, `google/gemini-3.1-pro-preview` |
+| Effort levels | 22 | `anthropic/claude-sonnet-5-5`, `openai/gpt-6.1-sol`, `glm/glm-5.3`, `moonshot/kimi-k3` |
 | Code execution | 14 | `anthropic/claude-sonnet-5-5`, `openai/gpt-6.1-sol`, `google/gemini-3.8-flash` |
-| Thinking can be turned off | 13 | `openai/gpt-6-luna`, `deepseek/deepseek-flash`, `dashscope/qwen3.8-max`, `moonshot/kimi-k2.6` |
+| Thinking can be turned off | 14 | `openai/gpt-6-luna`, `deepseek/deepseek-flash`, `dashscope/qwen3.8-max`, `moonshot/kimi-k2.6` |
 | Web search | 12 | `anthropic/claude-opus-5-5`, `openai/gpt-6.1-sol`, `meta/muse-spark-1.3` |
 | Fast tier + pro mode | 5 | `openai/gpt-6-astra`, `openai/gpt-6.1-sol`, `openai/gpt-6-luna`, `openai/gpt-5.6-sol`, `openai/gpt-5.6-terra` |
 
@@ -157,7 +158,7 @@ Of the 34 current models:
 | Provider | Models | Current | Highlights |
 |----------|--------|---------|------------|
 | **OpenAI** | 43 | 6 | GPT-6 Astra, GPT-6.1 Sol, GPT-6 Luna, GPT-5.6, Chat Latest; fast tier and pro mode |
-| **Anthropic** | 25 | 5 | Fable 5.1, Mythos 5.1, Opus 5.5, Sonnet 5.5, 1M context, 97.5% cache savings on Fable/Mythos 5.1, PDF support |
+| **Anthropic** | 26 | 6 | Fable 5.1, Mythos 5.1, Opus 5.5, Sonnet 5.5, Haiku 5.5, 1M context, 97.5% cache savings on Fable/Mythos 5.1, PDF support |
 | **GLM** | 16 | 5 | Zhipu GLM-5.3 / Flash / FlashX, native vision, 1M context |
 | **Google** | 14 | 3 | Gemini 3.8 Flash, 3.1 Pro, 1M context, audio input |
 | **Moonshot** | 13 | 5 | Kimi K3 (1M context), K2.7 Code, K2.6, Kimi Code subscription |
