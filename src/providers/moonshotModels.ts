@@ -332,8 +332,9 @@ export const MOONSHOT_MODELS: readonly ModelEntry[] = [
   // ==========================================================================
   // kimi-for-coding: the coding-plan alias included with every membership
   // tier (currently K2.8 Preview; Moonshot may repoint it over time).
-  // reasoning_effort low | high | max, default max. Up to 1M context. With
-  // thinking disabled the request is served by K2.8 Preview without thinking.
+  // reasoning_effort low | high | max, default max. With thinking disabled the
+  // request is served by K2.8 Preview without thinking. 262,144 is the base
+  // context; higher membership tiers get up to 1,048,576 (no tier field).
   {
     label: 'Kimi for Coding',
     id: 'kimi-for-coding',
@@ -342,7 +343,7 @@ export const MOONSHOT_MODELS: readonly ModelEntry[] = [
     baseUrl: 'https://api.kimi.com/coding/v1',
     kimiSubscription: true,
     maxOutputTokens: 64000,
-    contextWindow: 1048576,
+    contextWindow: 262144,
     inputPrice: 0,
     outputPrice: 0,
     capabilities: {

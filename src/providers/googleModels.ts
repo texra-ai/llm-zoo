@@ -90,6 +90,7 @@ export const GOOGLE_MODELS: readonly ModelEntry[] = [
     id: 'gemini-3.7-flash',
     shortName: 'gemini-3.7-flash',
     openrouterFullName: 'google/gemini-3.7-flash',
+    copilotFullName: 'gemini-3.7-flash',
     provider: ModelProvider.GOOGLE,
     maxOutputTokens: 65536,
     contextWindow: 1048576,

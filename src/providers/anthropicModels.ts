@@ -395,7 +395,6 @@ export const ANTHROPIC_MODELS: readonly ModelEntry[] = [
     shortName: 'claude-sonnet-4-6',
     openrouterFullName: 'anthropic/claude-sonnet-4.6',
     vscodeLMFullName: 'claude-sonnet-4.6',
-    copilotFullName: 'claude-sonnet-4.6',
     provider: ModelProvider.ANTHROPIC,
     maxOutputTokens: 64000,
     contextWindow: 1000000,
@@ -538,8 +537,6 @@ export const ANTHROPIC_MODELS: readonly ModelEntry[] = [
     source: { url: 'https://platform.claude.com/docs/en/models/haiku-4-5/overview', verified: '2026-09-30' },
     legacyKeys: { haiku45T: { thinking: true }, haiku45: { effort: ReasoningEffort.NONE } },
     openRouterOnly: false,
-    // Superseded by Claude Haiku 5.5 (cheaper, 1M context, effort control).
-    deprecated: true,
   },
   {
     label: 'Sonnet 4',

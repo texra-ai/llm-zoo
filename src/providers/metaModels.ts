@@ -45,7 +45,7 @@ export const META_MODELS: readonly ModelEntry[] = [
   // default). Meta publishes no max output, so Muse Spark's value is carried
   // over as for 1.2.
   {
-    label: 'Muse Wonder 1.0',
+    label: 'Muse Wonder 1.0 Preview',
     id: 'muse-wonder-1.0',
     shortName: 'muse-wonder-1.0',
     openrouterFullName: 'meta/muse-wonder',
