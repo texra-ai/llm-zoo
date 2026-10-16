@@ -33,10 +33,40 @@ const MINIMAL_TO_HIGH_EFFORTS = [ReasoningEffort.MINIMAL, ...LOW_TO_HIGH_EFFORTS
  * Includes Gemini 3.x and 2.5 Pro/Flash variants.
  */
 export const GOOGLE_MODELS: readonly ModelEntry[] = [
+  // Gemini 4 Argon (GA 2026-10-13): introductory $2 / $10, cached $0.10
+  // (0.05x) through 2026-11-30, then $4 / $20 / $0.20 from 2026-12-01 (no
+  // prompt-size tier). Implicit caching only; explicit caching is not
+  // supported. Thinking levels low / medium / high, default medium; thinking
+  // cannot be turned off. Default max output 65,536 (more only with long
+  // decode).
+  {
+    label: 'Gemini 4 Argon',
+    id: 'gemini-4-argon',
+    shortName: 'gemini-4-argon',
+    openrouterFullName: 'google/gemini-4-argon',
+    provider: ModelProvider.GOOGLE,
+    maxOutputTokens: 65536,
+    contextWindow: 1048576,
+    inputPrice: 2.0,
+    outputPrice: 10.0,
+    capabilities: {
+      ...GOOGLE_DEFAULT_CAPABILITIES,
+      cacheDiscountFactor: 0.05,
+      supportsPromptCaching: false,
+      supportsAutoPromptCaching: true,
+      supportsNativeCodeExecution: true,
+      supportsNativeMCPServer: true,
+    },
+    reasoning: { efforts: LOW_TO_HIGH_EFFORTS, providerDefault: ReasoningEffort.MEDIUM },
+    source: { url: 'https://ai.google.dev/gemini-api/docs/models/gemini-4-argon', verified: '2026-10-15' },
+    openRouterOnly: false,
+  },
   {
     label: 'Gemini 3.8 Flash',
     id: 'gemini-3.8-flash',
     shortName: 'gemini-3.8-flash',
+    openrouterFullName: 'google/gemini-3.8-flash',
+    copilotFullName: 'gemini-3.8-flash',
     provider: ModelProvider.GOOGLE,
     maxOutputTokens: 65536,
     contextWindow: 1048576,
@@ -85,7 +115,6 @@ export const GOOGLE_MODELS: readonly ModelEntry[] = [
     shortName: 'gemini-3.6-flash',
     openrouterFullName: 'google/gemini-3.6-flash',
     vscodeLMFullName: 'gemini-3.6-flash',
-    copilotFullName: 'gemini-3.6-flash',
     provider: ModelProvider.GOOGLE,
     maxOutputTokens: 65536,
     contextWindow: 1048576,
@@ -135,7 +164,6 @@ export const GOOGLE_MODELS: readonly ModelEntry[] = [
     shortName: 'gemini-3.5-flash',
     openrouterFullName: 'google/gemini-3.5-flash',
     vscodeLMFullName: 'gemini-3.5-flash',
-    copilotFullName: 'gemini-3.5-flash',
     provider: ModelProvider.GOOGLE,
     maxOutputTokens: 65536,
     contextWindow: 1048576,
@@ -161,7 +189,6 @@ export const GOOGLE_MODELS: readonly ModelEntry[] = [
     shortName: 'gemini-3.1-pro-preview',
     openrouterFullName: 'google/gemini-3.1-pro-preview',
     vscodeLMFullName: 'gemini-3.1-pro-preview',
-    copilotFullName: 'gemini-3.1-pro-preview',
     provider: ModelProvider.GOOGLE,
     maxOutputTokens: 65536,
     contextWindow: 1048576,

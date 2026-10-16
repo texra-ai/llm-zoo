@@ -14,8 +14,9 @@ import {
  * account-specific model response at runtime because availability depends on
  * the user's plan, policy, and client.
  *
- * Source (verified 2026-07-12):
+ * Source (verified 2026-10-15):
  * https://docs.github.com/en/copilot/reference/ai-models/supported-models
+ * (data: github/docs `data/tables/copilot/model-release-status.yml`)
  */
 export const COPILOT_MODEL_NAMES = [
   'GPT-5 mini',
@@ -27,23 +28,29 @@ export const COPILOT_MODEL_NAMES = [
   'GPT-5.6 Luna',
   'GPT-5.6 Sol',
   'GPT-5.6 Terra',
+  'GPT-6 Astra',
+  'GPT-6 Luna',
+  'GPT-6 Sol',
+  'GPT-6.1 Sol',
   'Claude Fable 5',
+  'Claude Fable 5.1',
   'Claude Haiku 4.5',
-  'Claude Opus 4.5',
-  'Claude Opus 4.6',
-  'Claude Opus 4.7',
+  'Claude Haiku 5.5',
   'Claude Opus 4.8',
   'Claude Opus 4.8 (fast mode) (preview)',
-  'Claude Sonnet 4.5',
+  'Claude Opus 5',
+  'Claude Opus 5.5',
   'Claude Sonnet 4.6',
   'Claude Sonnet 5',
-  'Gemini 2.5 Pro',
-  'Gemini 3 Flash',
-  'Gemini 3.1 Pro',
-  'Gemini 3.5 Flash',
-  'MAI-Code-1-Flash',
-  'Raptor mini',
-  'Kimi-K2.7-Code',
+  'Claude Sonnet 5.5',
+  'Gemini 3.7 Flash',
+  'Gemini 3.8 Flash',
+  'Gemini 4 Argon',
+  'MAI-Code-1.1-Flash',
+  'Kimi K3',
+  'Grok 4.5',
+  'Grok 4.6',
+  'Grok 4.7',
 ] as const;
 
 export type CopilotModelName = (typeof COPILOT_MODEL_NAMES)[number];
@@ -51,17 +58,21 @@ export type CopilotModelName = (typeof COPILOT_MODEL_NAMES)[number];
 /**
  * Exact identifiers documented for GitHub Copilot's `--model` option.
  *
- * Source (verified 2026-07-13):
- * https://github.com/github/docs/blob/f19a0135b2fe88a1ca17efbadb1d2bf14eb332b4/content/copilot/reference/copilot-cli-reference/cli-command-reference.md#L365-L377
+ * Source (verified 2026-10-15):
+ * https://github.com/github/docs/blob/main/content/copilot/reference/copilot-cli-reference/cli-command-reference.md#supported-models
  */
 export const COPILOT_MODEL_IDS = [
-  'claude-sonnet-4.6',
+  'claude-sonnet-5.5',
   'gpt-5.4',
+  'gpt-6.1-sol',
+  'gpt-6-astra',
+  'gpt-6-luna',
+  'claude-opus-5.5',
+  'claude-haiku-5.5',
   'claude-haiku-4.5',
   'gpt-5.3-codex',
-  'gemini-3.1-pro-preview',
-  'gemini-3.5-flash',
-  'mai-code-1-flash',
+  'gemini-3.7-flash',
+  'gemini-3.8-flash',
 ] as const;
 
 export type CopilotModelId = (typeof COPILOT_MODEL_IDS)[number];

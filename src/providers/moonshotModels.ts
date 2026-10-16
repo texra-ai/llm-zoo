@@ -213,6 +213,31 @@ export const MOONSHOT_MODELS: readonly ModelEntry[] = [
     // Not served on the vendor's own Responses API.
     openRouterOnly: true,
   },
+  // kimi-k2.7-code-highspeed: the same model as kimi-k2.7-code with the same
+  // parameter constraints, at ~180-260 tokens/s. $1.90 / $0.38 cache hit /
+  // $8.00. Thinking is always on; no effort parameter. No OpenRouter listing.
+  {
+    label: 'Kimi K2.7 Code HighSpeed',
+    id: 'kimi-k2.7-code-highspeed',
+    shortName: 'kimi-k2.7-code-highspeed',
+    provider: ModelProvider.MOONSHOT,
+    maxOutputTokens: 64000,
+    contextWindow: 262144,
+    inputPrice: 1.9,
+    outputPrice: 8.0,
+    capabilities: {
+      ...MOONSHOT_DEFAULT_CAPABILITIES,
+      supportsVision: true,
+      supportsInterleavedThinking: true,
+      supportsAutoPromptCaching: true,
+      // Cached input $0.38 / 1M vs $1.90 / 1M input.
+      cacheDiscountFactor: 0.38 / 1.9,
+    },
+    reasoning: { efforts: [] },
+    source: { url: 'https://platform.kimi.ai/docs/pricing/chat', verified: '2026-10-15' },
+    // Same routing as kimi-k2.7-code: not served on the vendor's own Responses API.
+    openRouterOnly: true,
+  },
   // kimi-k2.6: A model that can enable or disable thinking capability, enabled by default. You can disable thinking by using {"type": "disabled"}
   {
     label: 'Kimi K2.6',
@@ -307,7 +332,8 @@ export const MOONSHOT_MODELS: readonly ModelEntry[] = [
   // ==========================================================================
   // kimi-for-coding: the coding-plan alias included with every membership
   // tier (currently K2.8 Preview; Moonshot may repoint it over time).
-  // reasoning_effort low | high | max, default max.
+  // reasoning_effort low | high | max, default max. Up to 1M context. With
+  // thinking disabled the request is served by K2.8 Preview without thinking.
   {
     label: 'Kimi for Coding',
     id: 'kimi-for-coding',
@@ -316,7 +342,7 @@ export const MOONSHOT_MODELS: readonly ModelEntry[] = [
     baseUrl: 'https://api.kimi.com/coding/v1',
     kimiSubscription: true,
     maxOutputTokens: 64000,
-    contextWindow: 262144,
+    contextWindow: 1048576,
     inputPrice: 0,
     outputPrice: 0,
     capabilities: {
@@ -325,8 +351,8 @@ export const MOONSHOT_MODELS: readonly ModelEntry[] = [
       supportsInterleavedThinking: true,
       supportsAutoPromptCaching: true,
     },
-    reasoning: { efforts: KIMI_EFFORTS, providerDefault: ReasoningEffort.MAX },
-    source: { url: KIMI_CODE_MODELS_URL, verified: '2026-09-30' },
+    reasoning: { efforts: KIMI_EFFORTS, off: [], providerDefault: ReasoningEffort.MAX },
+    source: { url: KIMI_CODE_MODELS_URL, verified: '2026-10-15' },
     legacyKeys: { kimiCoding: {} },
     openRouterOnly: false,
   },
