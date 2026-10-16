@@ -527,7 +527,6 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     source: { url: 'https://developers.openai.com/api/docs/models/gpt-5.5', verified: '2026-09-30' },
     legacyKeys: { gpt55: { effort: ReasoningEffort.XHIGH } },
     openRouterOnly: false,
-    codexSubscription: true,
     deprecated: true,
   },
   {
@@ -698,6 +697,7 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     label: 'GPT-6 Astra',
     id: 'gpt-6-astra',
     shortName: 'gpt-6-astra',
+    copilotFullName: 'gpt-6-astra',
     provider: ModelProvider.OPENAI,
     maxOutputTokens: 128000,
     contextWindow: 1050000,
@@ -746,6 +746,7 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     label: 'GPT-6.1 Sol',
     id: 'gpt-6.1-sol',
     shortName: 'gpt-6.1-sol',
+    copilotFullName: 'gpt-6.1-sol',
     provider: ModelProvider.OPENAI,
     maxOutputTokens: 128000,
     contextWindow: 1050000,
@@ -816,6 +817,7 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     label: 'GPT-6 Luna',
     id: 'gpt-6-luna',
     shortName: 'gpt-6-luna',
+    copilotFullName: 'gpt-6-luna',
     provider: ModelProvider.OPENAI,
     maxOutputTokens: 128000,
     contextWindow: 1050000,
@@ -878,7 +880,6 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     source: { url: 'https://developers.openai.com/api/docs/models/gpt-5.4', verified: '2026-09-30' },
     legacyKeys: { gpt54: { effort: ReasoningEffort.XHIGH } },
     openRouterOnly: false,
-    codexSubscription: true,
     deprecated: true,
   },
   {
@@ -907,7 +908,6 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     source: { url: 'https://developers.openai.com/api/docs/models/gpt-5.4-mini', verified: '2026-09-30' },
     legacyKeys: { 'gpt54-': { effort: ReasoningEffort.XHIGH } },
     openRouterOnly: false,
-    codexSubscription: true,
     deprecated: true,
   },
   {

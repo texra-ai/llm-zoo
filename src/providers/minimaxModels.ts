@@ -69,8 +69,10 @@ export const MINIMAX_MODELS: readonly ModelEntry[] = [
     },
     reasoning: { efforts: [] },
     legacyKeys: { minimaxM27: {} },
-    source: { url: 'https://platform.minimax.io/docs/api-reference/text-chat-openai', verified: '2026-09-30' },
+    source: { url: 'https://platform.minimax.io/docs/guides/models-intro', verified: '2026-10-15' },
     openRouterOnly: false,
+    // Closed to new users 2026-10-19; retires 2026-11-18.
+    deprecated: true,
   },
   // M2.7 at ~100 tps, same limits; $0.60 / $0.06 cache read / $2.40
   // (platform.minimax.io/docs/guides/pricing-paygo).
@@ -92,8 +94,10 @@ export const MINIMAX_MODELS: readonly ModelEntry[] = [
     },
     reasoning: { efforts: [] },
     legacyKeys: { minimaxM27highspeed: {} },
-    source: { url: 'https://platform.minimax.io/docs/api-reference/text-chat-openai', verified: '2026-09-30' },
+    source: { url: 'https://platform.minimax.io/docs/guides/models-intro', verified: '2026-10-15' },
     openRouterOnly: false,
+    // Closed to new users 2026-10-19; retires 2026-11-18.
+    deprecated: true,
   },
   {
     label: 'MiniMax M2.5',
