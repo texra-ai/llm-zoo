@@ -137,23 +137,23 @@ Gemini 4 Argon's $2 / $10 is introductory through 2026-11-30; Google lists $4 / 
 | Context (tokens) | Models |
 |------------------|--------|
 | 1,050,000 | `openai/gpt-6-astra`, `openai/gpt-6.1-sol`, `openai/gpt-6-luna`, `openai/gpt-5.6-terra` |
-| 1,048,576 | `google/gemini-4-argon`, `google/gemini-3.8-flash`, `google/gemini-3.5-flash-lite`, `google/gemini-3.1-pro-preview`, `deepseek/deepseek-flash`, `deepseek/deepseek-v4-pro`, `moonshot/kimi-k3`, `minimax/MiniMax-M3`, `meta/muse-spark-1.3` |
+| 1,048,576 | `google/gemini-4-argon`, `google/gemini-3.8-flash`, `google/gemini-3.5-flash-lite`, `google/gemini-3.1-pro-preview`, `deepseek/deepseek-flash`, `deepseek/deepseek-v4-pro`, `moonshot/kimi-k3`, `minimax/MiniMax-M3`, `meta/muse-wonder-1.0`, `meta/muse-spark-1.3` |
 | 1,000,000 | `anthropic/claude-fable-5-1`, `anthropic/claude-mythos-5-1`, `anthropic/claude-opus-5-5`, `anthropic/claude-sonnet-5-5`, `anthropic/claude-haiku-5-5`, `glm/glm-5.3`, `glm/glm-5.3-flash`, `glm/glm-5.3-flashx`, `dashscope/qwen3.8-max`, `dashscope/qwen3.8-flash`, `dashscope/qwen3.7-plus`, `dashscope/qwen-plus` |
 | 500,000 | `xai/grok-4.7` |
 
 ### Capabilities
 
-Of the 36 current models:
+Of the 37 current models:
 
 | Capability | Count | Examples |
 |------------|-------|----------|
-| Reasoning | 35 | `anthropic/claude-opus-5-5`, `openai/gpt-6.1-sol`, `deepseek/deepseek-flash`, `xai/grok-4.7` |
-| Prompt caching | 35 | `anthropic/claude-opus-5-5`, `google/gemini-4-argon`, `deepseek/deepseek-flash`, `glm/glm-5.3` |
-| Vision | 30 | `anthropic/claude-sonnet-5-5`, `openai/gpt-6.1-sol`, `google/gemini-3.1-pro-preview` |
-| Effort levels | 22 | `anthropic/claude-sonnet-5-5`, `openai/gpt-6.1-sol`, `glm/glm-5.3`, `moonshot/kimi-k3` |
+| Reasoning | 36 | `anthropic/claude-opus-5-5`, `openai/gpt-6.1-sol`, `deepseek/deepseek-flash`, `xai/grok-4.7` |
+| Prompt caching | 36 | `anthropic/claude-opus-5-5`, `google/gemini-4-argon`, `deepseek/deepseek-flash`, `glm/glm-5.3` |
+| Vision | 31 | `anthropic/claude-sonnet-5-5`, `openai/gpt-6.1-sol`, `google/gemini-3.1-pro-preview` |
+| Effort levels | 23 | `anthropic/claude-sonnet-5-5`, `openai/gpt-6.1-sol`, `glm/glm-5.3`, `moonshot/kimi-k3` |
 | Code execution | 14 | `anthropic/claude-sonnet-5-5`, `openai/gpt-6.1-sol`, `google/gemini-3.8-flash` |
 | Thinking can be turned off | 12 | `anthropic/claude-haiku-5-5`, `openai/gpt-6-luna`, `deepseek/deepseek-flash`, `dashscope/qwen3.8-max`, `moonshot/kimi-k2.6` |
-| Web search | 11 | `anthropic/claude-opus-5-5`, `openai/gpt-6.1-sol`, `meta/muse-spark-1.3` |
+| Web search | 12 | `anthropic/claude-opus-5-5`, `openai/gpt-6.1-sol`, `meta/muse-wonder-1.0` |
 | Fast tier + pro mode | 4 | `openai/gpt-6-astra`, `openai/gpt-6.1-sol`, `openai/gpt-6-luna`, `openai/gpt-5.6-terra` |
 
 ### Providers
@@ -169,7 +169,7 @@ Of the 36 current models:
 | **MiniMax** | 8 | 3 | M3 (1M context, thinking can be turned off, long-context tier above 512K), M2.7, M2.7 Highspeed |
 | **DeepSeek** | 6 | 2 | V4.1 Flash (native vision, $0.15/1M), V4 Pro, three effort levels |
 | **DashScope** | 6 | 4 | Qwen3.8 Max / Flash, Qwen3.7 Plus, 1M context, thinking budget |
-| **Meta** | 3 | 1 | Muse Spark 1.3, 1M context, agentic + multimodal |
+| **Meta** | 4 | 2 | Muse Wonder 1.0 (preview), Muse Spark 1.3, 1M context, agentic + multimodal |
 | **OpenRouter** | 2 | 0 | Llama 405B, QVQ-72B (retired) |
 | **Copilot** | 1 | 0 | Deprecated GPT-4o config; 26 documented names and 7 exact model identifiers |
 

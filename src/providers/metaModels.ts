@@ -38,6 +38,31 @@ const MUSE_SPARK_EFFORTS = [
  * (api.meta.ai/v1) and also listed on OpenRouter.
  */
 export const META_MODELS: readonly ModelEntry[] = [
+  // Muse Wonder 1.0 (preview, released 2026-10-12): Standard tier $4 / $0.20
+  // cached / $20, 1M context, text/image/video/audio/PDF input, effort
+  // minimal..max (dev.meta.ai/docs/models, /docs/pricing-rate-limits,
+  // /docs/reasoning). Meta publishes no max output; Muse Spark 1.3's 131072
+  // is carried over by owner decision. OpenRouter lists it as meta/muse-wonder.
+  // muse-wonder-full-1.0 is Muse Code only (no API price), so it is not listed.
+  {
+    label: 'Muse Wonder 1.0',
+    id: 'muse-wonder-1.0',
+    shortName: 'muse-wonder-1.0',
+    openrouterFullName: 'meta/muse-wonder',
+    provider: ModelProvider.META,
+    maxOutputTokens: 131072,
+    contextWindow: 1048576,
+    inputPrice: 4.0,
+    outputPrice: 20.0,
+    capabilities: {
+      ...META_DEFAULT_CAPABILITIES,
+      cacheDiscountFactor: 0.05,
+      supportsNativeAudio: true,
+    },
+    reasoning: { efforts: [...MUSE_SPARK_EFFORTS, ReasoningEffort.MAX] },
+    source: { url: 'https://dev.meta.ai/models/muse-wonder', verified: '2026-10-16' },
+    openRouterOnly: false,
+  },
   {
     label: 'Muse Spark 1.3',
     id: 'muse-spark-1.3',
