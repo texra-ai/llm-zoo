@@ -30,9 +30,40 @@ const MINIMAL_TO_HIGH_EFFORTS = [ReasoningEffort.MINIMAL, ...LOW_TO_HIGH_EFFORTS
 
 /**
  * Google Gemini model configurations.
- * Includes Gemini 3.x and 2.5 Pro/Flash variants.
+ * Includes Gemini 4 Argon, Gemini 3.x and 2.5 Pro/Flash variants.
  */
 export const GOOGLE_MODELS: readonly ModelEntry[] = [
+  // Gemini 4 Argon (GA 2026-10-13). Introductory pricing through 2026-11-30:
+  // $2 input / $0.10 cached / $10 output (thinking included), one rate at any
+  // prompt size; from 2026-12-01 $4 / $0.20 / $20 (ai.google.dev pricing).
+  // Implicit caching only (explicit cachedContents is not supported), 95% off
+  // cached input. Input, thinking and output share a unified 1,048,576-token
+  // window; synchronous requests cap max_output_tokens at 65,536 (more is a
+  // 400), and long decode up to 1,048,576 needs `background: true`.
+  // thinking_level low / medium (default) / high; temperature, top_p and
+  // top_k are ignored. Not on the Free tier.
+  {
+    label: 'Gemini 4 Argon',
+    id: 'gemini-4-argon',
+    shortName: 'gemini-4-argon',
+    openrouterFullName: 'google/gemini-4-argon',
+    provider: ModelProvider.GOOGLE,
+    maxOutputTokens: 65536,
+    contextWindow: 1048576,
+    inputPrice: 2.0,
+    outputPrice: 10.0,
+    capabilities: {
+      ...GOOGLE_DEFAULT_CAPABILITIES,
+      cacheDiscountFactor: 0.05,
+      supportsPromptCaching: false,
+      supportsAutoPromptCaching: true,
+      supportsNativeCodeExecution: true,
+      supportsNativeMCPServer: true,
+    },
+    reasoning: { efforts: LOW_TO_HIGH_EFFORTS, providerDefault: ReasoningEffort.MEDIUM },
+    source: { url: 'https://ai.google.dev/gemini-api/docs/models/gemini-4-argon', verified: '2026-10-16' },
+    openRouterOnly: false,
+  },
   {
     label: 'Gemini 3.8 Flash',
     id: 'gemini-3.8-flash',

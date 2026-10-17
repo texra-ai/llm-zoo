@@ -104,7 +104,7 @@ export const ModelConfigSchema = z.object({
   copilotFullName: z.string().optional(),
   baseUrl: z.string().optional(),
   requiresResponsesAPI: z.boolean().optional(),
-  codexSubscription: z.boolean().optional(),
+  codexSubscription: z.object({ contextWindow: z.number().int().positive() }).optional(),
   kimiSubscription: z.boolean().optional(),
   deprecated: z.boolean().optional(),
   retired: z.boolean().optional(),

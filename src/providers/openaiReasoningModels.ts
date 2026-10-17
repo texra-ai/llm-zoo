@@ -527,7 +527,8 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     source: { url: 'https://developers.openai.com/api/docs/models/gpt-5.5', verified: '2026-09-30' },
     legacyKeys: { gpt55: { effort: ReasoningEffort.XHIGH } },
     openRouterOnly: false,
-    codexSubscription: true,
+    // Retired from Codex with ChatGPT sign-in on 2026-10-14
+    // (https://developers.openai.com/codex/models).
     deprecated: true,
   },
   {
@@ -608,7 +609,7 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     source: { url: 'https://developers.openai.com/api/docs/models/gpt-5.6-sol', verified: '2026-09-30' },
     legacyKeys: { gpt56: { effort: ReasoningEffort.MEDIUM }, gpt56pro: { effort: ReasoningEffort.MEDIUM, mode: 'pro' }, gpt56fast: { effort: ReasoningEffort.MEDIUM } },
     openRouterOnly: false,
-    codexSubscription: true,
+    codexSubscription: { contextWindow: 272000 },
     // Superseded by GPT-6 Sol (gpt6-).
     deprecated: true,
   },
@@ -647,7 +648,7 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     source: { url: 'https://developers.openai.com/api/docs/models/gpt-5.6-terra', verified: '2026-09-30' },
     legacyKeys: { 'gpt56-': { effort: ReasoningEffort.MEDIUM } },
     openRouterOnly: false,
-    codexSubscription: true,
+    codexSubscription: { contextWindow: 272000 },
   },
   {
     label: 'GPT-5.6 Luna',
@@ -683,7 +684,7 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     source: { url: 'https://developers.openai.com/api/docs/models/gpt-5.6-luna', verified: '2026-09-30' },
     legacyKeys: { 'gpt56--': { effort: ReasoningEffort.MEDIUM } },
     openRouterOnly: false,
-    codexSubscription: true,
+    codexSubscription: { contextWindow: 272000 },
     // Superseded by GPT-6 Luna (gpt6--).
     deprecated: true,
   },
@@ -730,7 +731,7 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     // Responses handler.
     requiresResponsesAPI: true,
     openRouterOnly: false,
-    codexSubscription: true,
+    codexSubscription: { contextWindow: 272000 },
   },
   // GPT-6 Sol and Luna: smaller GPT-6 models built on Astra, launched at 50%
   // below GPT-5.6's promotional API rates. Same rate-card shape as Astra:
@@ -774,7 +775,12 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     // Same reason as gpt6: tool calling and pro mode need the Responses API.
     requiresResponsesAPI: true,
     openRouterOnly: false,
-    codexSubscription: true,
+    // The Codex backend's catalog (chatgpt.com/backend-api/codex/models, as
+    // cached by Codex CLI 0.161.0 on 2026-10-16) lists context_window 500000;
+    // the manifest bundled in openai/codex still lists 272000. opencode applies
+    // the same 500K input window: sst/opencode@07bbd0f
+    // packages/core/src/plugin/provider/openai.ts#L302.
+    codexSubscription: { contextWindow: 500000 },
   },
   {
     label: 'GPT-6 Sol',
@@ -808,7 +814,7 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     // Same reason as gpt6: tool calling and pro mode need the Responses API.
     requiresResponsesAPI: true,
     openRouterOnly: false,
-    codexSubscription: true,
+    codexSubscription: { contextWindow: 272000 },
     // Superseded by GPT-6.1 Sol (gpt61-): same price, cheaper cached input.
     deprecated: true,
   },
@@ -843,7 +849,7 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     legacyKeys: { 'gpt6--': { effort: ReasoningEffort.MEDIUM } },
     requiresResponsesAPI: true,
     openRouterOnly: false,
-    codexSubscription: true,
+    codexSubscription: { contextWindow: 272000 },
   },
   {
     label: 'GPT-5.4',
@@ -878,7 +884,6 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     source: { url: 'https://developers.openai.com/api/docs/models/gpt-5.4', verified: '2026-09-30' },
     legacyKeys: { gpt54: { effort: ReasoningEffort.XHIGH } },
     openRouterOnly: false,
-    codexSubscription: true,
     deprecated: true,
   },
   {
@@ -907,7 +912,6 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     source: { url: 'https://developers.openai.com/api/docs/models/gpt-5.4-mini', verified: '2026-09-30' },
     legacyKeys: { 'gpt54-': { effort: ReasoningEffort.XHIGH } },
     openRouterOnly: false,
-    codexSubscription: true,
     deprecated: true,
   },
   {

@@ -37,6 +37,15 @@ export const MINIMAX_MODELS: readonly ModelEntry[] = [
     contextWindow: 1048576,
     inputPrice: 0.3,
     outputPrice: 1.2,
+    // Standard tier above 512K input tokens: $0.60 / $0.12 cache read / $2.40
+    // (platform.minimax.io/docs/pricing/overview; both tiers carry the
+    // "permanent 50% off" rates).
+    longContextPricing: {
+      aboveInputTokens: 512_000,
+      inputPrice: 0.6,
+      outputPrice: 2.4,
+      cacheDiscountFactor: 0.2,
+    },
     capabilities: {
       ...MINIMAX_DEFAULT_CAPABILITIES,
       supportsVision: true,
@@ -47,7 +56,7 @@ export const MINIMAX_MODELS: readonly ModelEntry[] = [
     // (only M3.1-Flash-Preview tunes depth). M2.x always think.
     reasoning: { efforts: [], off: [] },
     legacyKeys: { minimaxM3: {} },
-    source: { url: 'https://platform.minimax.io/docs/api-reference/text-chat-openai', verified: '2026-09-30' },
+    source: { url: 'https://platform.minimax.io/docs/api-reference/text-chat-openai', verified: '2026-10-16' },
     openRouterOnly: false,
   },
   {
@@ -103,14 +112,15 @@ export const MINIMAX_MODELS: readonly ModelEntry[] = [
     provider: ModelProvider.MINIMAX,
     maxOutputTokens: 196608,
     contextWindow: 196608,
-    inputPrice: 0.2,
+    // Legacy table of the pricing overview: $0.30 / $0.03 cache read / $1.20.
+    inputPrice: 0.3,
     outputPrice: 1.2,
     capabilities: {
       ...MINIMAX_DEFAULT_CAPABILITIES,
     },
     reasoning: { efforts: [] },
     legacyKeys: { minimaxM25: {} },
-    source: { url: 'https://platform.minimax.io/docs/api-reference/text-chat-openai', verified: '2026-09-30' },
+    source: { url: 'https://platform.minimax.io/docs/pricing/overview', verified: '2026-10-16' },
     openRouterOnly: false,
     deprecated: true,
   },
@@ -129,9 +139,12 @@ export const MINIMAX_MODELS: readonly ModelEntry[] = [
     },
     reasoning: { efforts: [] },
     legacyKeys: { minimaxM21: {} },
-    source: { url: 'https://platform.minimax.io/docs/api-reference/text-chat-openai', verified: '2026-09-30' },
+    source: { url: 'https://platform.minimax.io/docs/faq/models', verified: '2026-10-16' },
     openRouterOnly: false,
     deprecated: true,
+    // Listed as Retired in MiniMax's model list; OpenRouter's only route for
+    // it is MiniMax itself.
+    retired: true,
   },
   {
     label: 'MiniMax M2',
@@ -148,8 +161,10 @@ export const MINIMAX_MODELS: readonly ModelEntry[] = [
     },
     reasoning: { efforts: [] },
     legacyKeys: { minimaxM2: {} },
-    source: { url: 'https://platform.minimax.io/docs/api-reference/text-chat-openai', verified: '2026-09-30' },
-    openRouterOnly: false,
+    source: { url: 'https://platform.minimax.io/docs/faq/models', verified: '2026-10-16' },
+    // Listed as Retired in MiniMax's model list; OpenRouter still routes it
+    // to a Google-hosted endpoint.
+    openRouterOnly: true,
     deprecated: true,
   },
   {
