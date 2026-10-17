@@ -2,7 +2,7 @@
 
 LLM pricing and capabilities change weekly. Docs are scattered. There's no single source of truth.
 
-**One package. 140+ models. Every fact sourced from the provider's own docs.**
+**One package. 150+ models. Every fact sourced from the provider's own docs.**
 
 ```typescript
 import { lookup, cost, cheapest } from 'llm-zoo';
@@ -101,15 +101,17 @@ Current models only (retired and deprecated models excluded).
 | Model | Input | Output | Provider |
 |-------|-------|--------|----------|
 | `openai/gpt-6-luna` | $0.10 | $0.50 | OpenAI |
+| `anthropic/claude-haiku-5-5` | $0.10 | $0.50 | Anthropic |
 | `dashscope/qwen3.8-flash` | $0.15 | $0.47 | DashScope |
 | `glm/glm-5.3-flash` | $0.15 | $0.50 | GLM |
 | `deepseek/deepseek-flash` | $0.15 | $0.60 | DeepSeek |
 | `minimax/MiniMax-M3` | $0.30 | $1.20 | MiniMax |
+| `minimax/MiniMax-M2.7` | $0.30 | $1.20 | MiniMax |
 | `google/gemini-3.5-flash-lite` | $0.30 | $2.50 | Google |
 | `glm/glm-5.3-flashx` | $0.37 | $1.25 | GLM |
 | `dashscope/qwen-plus` | $0.40 | $1.20 | DashScope |
-| `dashscope/qwen3.7-plus` | $0.40 | $1.60 | DashScope |
-| `deepseek/deepseek-v4-pro` | $0.66 | $1.98 | DeepSeek |
+
+Claude Haiku 5.5 bills prompts over 100K tokens at $0.50 / $2.50.
 
 ### Premium ($/1M tokens)
 
@@ -120,49 +122,51 @@ Current models only (retired and deprecated models excluded).
 | `openai/gpt-6-astra` | $10 | $50 | ✓ | OpenAI |
 | `openai/chat-latest` | $5 | $30 | | OpenAI |
 | `anthropic/claude-opus-5-5` | $4 | $20 | ✓ | Anthropic |
-| `openai/gpt-5.6-sol` | $4 | $20 | ✓ | OpenAI |
 | `moonshot/kimi-k3` | $3 | $15 | ✓ | Moonshot |
 | `openai/gpt-5.6-terra` | $2 | $12 | ✓ | OpenAI |
 | `google/gemini-3.1-pro-preview` | $2 | $12 | ✓ | Google |
+| `google/gemini-4-argon` | $2 | $10 | ✓ | Google |
 | `anthropic/claude-sonnet-5-5` | $2 | $10 | ✓ | Anthropic |
+| `openai/gpt-6.1-sol` | $2 | $10 | ✓ | OpenAI |
 
-OpenAI's fast tier doubles these (`openai/gpt-6-astra`: $20 / $100; `openai/gpt-5.6-sol`: $8 / $40).
+OpenAI's fast tier doubles these (`openai/gpt-6-astra`: $20 / $100; `openai/gpt-6.1-sol`: $4 / $20).
+Gemini 4 Argon's $2 / $10 is introductory through 2026-11-30; Google lists $4 / $20 from 2026-12-01.
 
 ### Largest Context
 
 | Context (tokens) | Models |
 |------------------|--------|
-| 1,050,000 | `openai/gpt-6-astra`, `openai/gpt-6.1-sol`, `openai/gpt-6-luna`, `openai/gpt-5.6-sol`, `openai/gpt-5.6-terra` |
-| 1,048,576 | `google/gemini-3.8-flash`, `google/gemini-3.5-flash-lite`, `google/gemini-3.1-pro-preview`, `deepseek/deepseek-flash`, `deepseek/deepseek-v4-pro`, `moonshot/kimi-k3`, `minimax/MiniMax-M3`, `meta/muse-spark-1.3` |
-| 1,000,000 | `anthropic/claude-fable-5-1`, `anthropic/claude-mythos-5-1`, `anthropic/claude-opus-5-5`, `anthropic/claude-sonnet-5-5`, `glm/glm-5.3`, `glm/glm-5.3-flash`, `glm/glm-5.3-flashx`, `dashscope/qwen3.8-max`, `dashscope/qwen3.8-flash`, `dashscope/qwen3.7-plus`, `dashscope/qwen-plus` |
+| 1,050,000 | `openai/gpt-6-astra`, `openai/gpt-6.1-sol`, `openai/gpt-6-luna`, `openai/gpt-5.6-terra` |
+| 1,048,576 | `google/gemini-4-argon`, `google/gemini-3.8-flash`, `google/gemini-3.5-flash-lite`, `google/gemini-3.1-pro-preview`, `deepseek/deepseek-flash`, `deepseek/deepseek-v4-pro`, `moonshot/kimi-k3`, `minimax/MiniMax-M3`, `meta/muse-spark-1.3` |
+| 1,000,000 | `anthropic/claude-fable-5-1`, `anthropic/claude-mythos-5-1`, `anthropic/claude-opus-5-5`, `anthropic/claude-sonnet-5-5`, `anthropic/claude-haiku-5-5`, `glm/glm-5.3`, `glm/glm-5.3-flash`, `glm/glm-5.3-flashx`, `dashscope/qwen3.8-max`, `dashscope/qwen3.8-flash`, `dashscope/qwen3.7-plus`, `dashscope/qwen-plus` |
 | 500,000 | `xai/grok-4.7` |
 
 ### Capabilities
 
-Of the 34 current models:
+Of the 36 current models:
 
 | Capability | Count | Examples |
 |------------|-------|----------|
-| Reasoning | 33 | `anthropic/claude-opus-5-5`, `openai/gpt-6.1-sol`, `deepseek/deepseek-flash`, `xai/grok-4.7` |
-| Prompt caching | 33 | `anthropic/claude-opus-5-5`, `google/gemini-3.8-flash`, `deepseek/deepseek-flash`, `glm/glm-5.3` |
+| Reasoning | 35 | `anthropic/claude-opus-5-5`, `openai/gpt-6.1-sol`, `deepseek/deepseek-flash`, `xai/grok-4.7` |
+| Prompt caching | 35 | `anthropic/claude-opus-5-5`, `google/gemini-4-argon`, `deepseek/deepseek-flash`, `glm/glm-5.3` |
 | Vision | 30 | `anthropic/claude-sonnet-5-5`, `openai/gpt-6.1-sol`, `google/gemini-3.1-pro-preview` |
-| Effort levels | 21 | `anthropic/claude-sonnet-5-5`, `openai/gpt-6.1-sol`, `glm/glm-5.3`, `moonshot/kimi-k3` |
+| Effort levels | 22 | `anthropic/claude-sonnet-5-5`, `openai/gpt-6.1-sol`, `glm/glm-5.3`, `moonshot/kimi-k3` |
 | Code execution | 14 | `anthropic/claude-sonnet-5-5`, `openai/gpt-6.1-sol`, `google/gemini-3.8-flash` |
-| Thinking can be turned off | 13 | `openai/gpt-6-luna`, `deepseek/deepseek-flash`, `dashscope/qwen3.8-max`, `moonshot/kimi-k2.6` |
-| Web search | 12 | `anthropic/claude-opus-5-5`, `openai/gpt-6.1-sol`, `meta/muse-spark-1.3` |
-| Fast tier + pro mode | 5 | `openai/gpt-6-astra`, `openai/gpt-6.1-sol`, `openai/gpt-6-luna`, `openai/gpt-5.6-sol`, `openai/gpt-5.6-terra` |
+| Thinking can be turned off | 12 | `anthropic/claude-haiku-5-5`, `openai/gpt-6-luna`, `deepseek/deepseek-flash`, `dashscope/qwen3.8-max`, `moonshot/kimi-k2.6` |
+| Web search | 11 | `anthropic/claude-opus-5-5`, `openai/gpt-6.1-sol`, `meta/muse-spark-1.3` |
+| Fast tier + pro mode | 4 | `openai/gpt-6-astra`, `openai/gpt-6.1-sol`, `openai/gpt-6-luna`, `openai/gpt-5.6-terra` |
 
 ### Providers
 
 | Provider | Models | Current | Highlights |
 |----------|--------|---------|------------|
-| **OpenAI** | 43 | 6 | GPT-6 Astra, GPT-6.1 Sol, GPT-6 Luna, GPT-5.6, Chat Latest; fast tier and pro mode |
-| **Anthropic** | 25 | 5 | Fable 5.1, Mythos 5.1, Opus 5.5, Sonnet 5.5, 1M context, 97.5% cache savings on Fable/Mythos 5.1, PDF support |
+| **OpenAI** | 43 | 5 | GPT-6 Astra, GPT-6.1 Sol, GPT-6 Luna, GPT-5.6 Terra, Chat Latest; fast tier and pro mode; Codex subscription windows |
+| **Anthropic** | 26 | 5 | Fable 5.1, Mythos 5.1, Opus 5.5, Sonnet 5.5, Haiku 5.5, 1M context, 97.5% cache savings on Fable/Mythos 5.1, PDF support |
 | **GLM** | 16 | 5 | Zhipu GLM-5.3 / Flash / FlashX, native vision, 1M context |
-| **Google** | 14 | 3 | Gemini 3.8 Flash, 3.1 Pro, 1M context, audio input |
+| **Google** | 15 | 4 | Gemini 4 Argon, 3.8 Flash, 3.1 Pro, 1M context, audio input |
 | **Moonshot** | 13 | 5 | Kimi K3 (1M context), K2.7 Code, K2.6, Kimi Code subscription |
 | **xAI** | 12 | 2 | Grok 4.7 (500K context), Grok Build 0.1, effort levels, vision |
-| **MiniMax** | 8 | 1 | M3 (1M context, thinking can be turned off), M2.7 Highspeed |
+| **MiniMax** | 8 | 3 | M3 (1M context, thinking can be turned off, long-context tier above 512K), M2.7, M2.7 Highspeed |
 | **DeepSeek** | 6 | 2 | V4.1 Flash (native vision, $0.15/1M), V4 Pro, three effort levels |
 | **DashScope** | 6 | 4 | Qwen3.8 Max / Flash, Qwen3.7 Plus, 1M context, thinking budget |
 | **Meta** | 3 | 1 | Muse Spark 1.3, 1M context, agentic + multimodal |
@@ -285,6 +289,7 @@ interface ModelConfig {
   legacyKeys?: Record<string, { effort?: ReasoningEffort; thinking?: boolean; mode?: 'pro' }>;
   openRouterOnly: boolean;
   openrouterFullName?: string;
+  codexSubscription?: { contextWindow: number };  // served by the ChatGPT Codex backend, with its input window
   deprecated?: boolean;
   retired?: boolean;         // no longer served
   // ... and more (vscodeLMFullName, copilotFullName, baseUrl, ...)
@@ -390,6 +395,14 @@ ANTHROPIC_MODELS.map(m => m.id);           // provider lists are arrays of entri
 
 ---
 
+## Upgrading from 2.x
+
+- **`codexSubscription` is an object.** It was `true` when the ChatGPT Codex
+  backend served a model; it is now `{ contextWindow }`, the input window that
+  backend grants (smaller than the API's `contextWindow`). Test
+  `m.codexSubscription !== undefined` and read
+  `m.codexSubscription.contextWindow`.
+
 ## Upgrading from 1.x
 
 - **Keys → references.** Registry keys are now `provider/id`. Convert stored 1.x
@@ -416,7 +429,7 @@ This package is part of a growing collection of open-source projects by [texra-a
 
 | Project | Description | Links |
 |---------|-------------|-------|
-| **llm-zoo** | 140+ LLM models — pricing, capabilities, and context windows in one package | [GitHub](https://github.com/texra-ai/llm-zoo) · [npm](https://www.npmjs.com/package/llm-zoo) |
+| **llm-zoo** | 150+ LLM models — pricing, capabilities, and context windows in one package | [GitHub](https://github.com/texra-ai/llm-zoo) · [npm](https://www.npmjs.com/package/llm-zoo) |
 | **mcp-server-mathematica** | MCP server that executes Mathematica code via `wolframscript` and verifies mathematical derivations | [GitHub](https://github.com/texra-ai/mcp-server-mathematica) |
 
 ---
