@@ -372,8 +372,10 @@ export interface ModelConfig {
    * this model, with the input context window that backend grants it, which
    * is smaller than the API's. Source of truth: the backend's model catalog
    * (`chatgpt.com/backend-api/codex/models`, the `context_window` the Codex
-   * CLI caches) cross-checked against the manifest embedded in the Codex CLI
-   * (`models-manager`) and https://developers.openai.com/codex/models —
+   * CLI caches in `~/.codex/models_cache.json`; it needs a ChatGPT sign-in)
+   * cross-checked against the manifest embedded in the Codex CLI
+   * (`codex-rs/models-manager/models.json`) and
+   * https://developers.openai.com/codex/models —
    * serving status is not derivable from the model name, reasoning tier, or
    * deprecation status.
    */

@@ -527,7 +527,8 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     source: { url: 'https://developers.openai.com/api/docs/models/gpt-5.5', verified: '2026-09-30' },
     legacyKeys: { gpt55: { effort: ReasoningEffort.XHIGH } },
     openRouterOnly: false,
-    codexSubscription: { contextWindow: 272000 },
+    // Retired from Codex with ChatGPT sign-in on 2026-10-14
+    // (https://developers.openai.com/codex/models).
     deprecated: true,
   },
   {
@@ -774,6 +775,11 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     // Same reason as gpt6: tool calling and pro mode need the Responses API.
     requiresResponsesAPI: true,
     openRouterOnly: false,
+    // The Codex backend's catalog (chatgpt.com/backend-api/codex/models, as
+    // cached by Codex CLI 0.161.0 on 2026-10-16) lists context_window 500000;
+    // the manifest bundled in openai/codex still lists 272000. opencode applies
+    // the same 500K input window: sst/opencode@07bbd0f
+    // packages/core/src/plugin/provider/openai.ts#L302.
     codexSubscription: { contextWindow: 500000 },
   },
   {
