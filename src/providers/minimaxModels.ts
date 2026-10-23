@@ -3,6 +3,7 @@ import {
   ModelCapabilities,
   ModelEntry,
   ModelProvider,
+  ReasoningEffort,
 } from '../ModelConfig';
 
 /**
@@ -23,9 +24,42 @@ const MINIMAX_DEFAULT_CAPABILITIES: ModelCapabilities = {
 
 /**
  * MiniMax model configurations.
- * Includes the M-series models: M3, M2.7 (and M2.7-highspeed), M2.5, M2.1, M2, M1, and MiniMax-01.
+ * Includes the M-series models: M3.1 Flash, M3, M2.7 (and M2.7-highspeed), M2.5, M2.1, M2, M1, and MiniMax-01.
  */
 export const MINIMAX_MODELS: readonly ModelEntry[] = [
+  {
+    label: 'MiniMax M3.1 Flash',
+    id: 'MiniMax-M3.1-Flash',
+    shortName: 'MiniMax-M3.1-Flash',
+    openrouterFullName: 'minimax/minimax-m3.1-flash',
+    provider: ModelProvider.MINIMAX,
+    // max_completion_tokens maximum 524288 (recommended 131072); "1M long
+    // context" per the API reference, matching M3's 1,048,576.
+    maxOutputTokens: 524288,
+    contextWindow: 1048576,
+    inputPrice: 0.15,
+    outputPrice: 0.6,
+    capabilities: {
+      ...MINIMAX_DEFAULT_CAPABILITIES,
+      supportsVision: true,
+      // Cache read $0.015 / 1M vs $0.15 / 1M input.
+      cacheDiscountFactor: 0.1,
+    },
+    // Always thinks: reasoning_effort 'none' and thinking.type 'disabled' both
+    // return HTTP 400. Accepts low..max; default max. No service_tier support.
+    reasoning: {
+      efforts: [
+        ReasoningEffort.LOW,
+        ReasoningEffort.MEDIUM,
+        ReasoningEffort.HIGH,
+        ReasoningEffort.XHIGH,
+        ReasoningEffort.MAX,
+      ],
+      providerDefault: ReasoningEffort.MAX,
+    },
+    source: { url: 'https://platform.minimax.io/docs/api-reference/text-chat-openai', verified: '2026-10-23' },
+    openRouterOnly: false,
+  },
   {
     label: 'MiniMax M3',
     id: 'MiniMax-M3',
