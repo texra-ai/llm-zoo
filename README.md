@@ -253,7 +253,7 @@ if (Result.isFailure(result)) {
 const selection = Schema.decodeUnknownSync(ModelSelectionSchema)({ ref: 'openai/gpt-6.1-sol', effort: 'high' });
 ```
 
-Since 4.0.0 these are Effect Schema values; 3.x shipped Zod schemas under the same names. Like `effect` 4, the `llm-zoo/schemas` entry is ESM-only: a CommonJS caller needs Node 20.19+ or 22.12+ (`require` of ESM). The root and `llm-zoo/providers` entries still ship CommonJS.
+Since 4.0.0 these are Effect Schema values; 3.x shipped Zod schemas under the same names. Like `effect` 4, the `llm-zoo/schemas` entry is ESM-only: a CommonJS caller needs Node 20.19+ or 22.12+ (`require` of ESM), and a CommonJS TypeScript project needs TypeScript 5.8+ with `module: nodenext`. The root and `llm-zoo/providers` entries still ship CommonJS.
 
 Available schemas:
 - `ModelConfigSchema` — Full model configuration
