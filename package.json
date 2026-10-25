@@ -63,8 +63,7 @@
     },
     "./schemas": {
       "types": "./dist/schemas.d.ts",
-      "import": "./dist/schemas.js",
-      "require": "./dist/schemas.cjs"
+      "default": "./dist/schemas.js"
     }
   },
   "files": [
@@ -73,7 +72,7 @@
     "LICENSE"
   ],
   "scripts": {
-    "build": "tsup",
+    "build": "rm -rf dist && tsup",
     "dev": "tsup --watch",
     "typecheck": "tsc --noEmit",
     "clean": "rm -rf dist",

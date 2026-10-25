@@ -115,8 +115,18 @@ export const ModelConfigSchema = Schema.Struct({
   retired: Schema.optional(Schema.Boolean),
 });
 
-/** Registry of all model configurations. */
-export const ModelRegistrySchema = Schema.Record(ModelRefSchema, ModelConfigSchema);
+const isModelRef = Schema.is(ModelRefSchema);
+
+/** Registry of all model configurations. Keys decode as strings and are then
+ *  checked: a record keyed by `ModelRefSchema` would drop an entry whose key
+ *  names an unknown provider instead of refusing it. */
+export const ModelRegistrySchema = Schema.Record(Schema.String, ModelConfigSchema).pipe(
+  Schema.refine(
+    (registry): registry is Record<typeof ModelRefSchema.Type, typeof ModelConfigSchema.Type> =>
+      Object.keys(registry).every(isModelRef),
+    { message: 'Every registry key is a model reference, provider/id.' },
+  ),
+);
 
 // Export inferred types for convenience
 export type ModelCapabilitiesSchemaType = typeof ModelCapabilitiesSchema.Type;

@@ -27,11 +27,17 @@ test('ESM and CJS builds expose the same registry', () => {
   assert.deepEqual(rootCjs.LEGACY_KEYS, LEGACY_KEYS);
 });
 
+test('a CommonJS caller requires the ESM-only schemas entry', () => {
+  assert.equal(require('llm-zoo/schemas').ModelRegistrySchema, ModelRegistrySchema);
+});
+
 test('the registry satisfies its schema', () => {
   const data = JSON.parse(JSON.stringify(MODEL_CONFIGS));
   assert.deepEqual(Schema.decodeUnknownSync(ModelRegistrySchema)(data), data);
   const decodeSelection = Schema.decodeUnknownSync(ModelSelectionSchema);
   assert.throws(() => decodeSelection({ ref: 'nobody/gpt-6' }), 'a reference names a known provider');
+  const [first] = Object.values(data);
+  assert.throws(() => Schema.decodeUnknownSync(ModelRegistrySchema)({ 'nobody/gpt-6': first }), 'an unknown key is refused, not dropped');
 });
 
 test('effort lists are on the shared scale, in order, without none', () => {
