@@ -108,4 +108,4 @@ export {
   getRegistryStats,
 } from './utils';
 
-// Note: Zod schemas are available via 'llm-zoo/schemas' (requires zod peer dependency)
+// Note: Effect schemas are available via 'llm-zoo/schemas' (requires effect peer dependency)

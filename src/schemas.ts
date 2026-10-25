@@ -1,120 +1,135 @@
 /**
- * Zod v4 validation schemas for llm-zoo types.
- * Requires zod ^4.0.0 as peer dependency.
+ * Effect Schema validation schemas for llm-zoo types.
+ * Requires effect ^4.0.0 as peer dependency.
  *
  * @example
  * ```typescript
+ * import { Result, Schema } from 'effect';
  * import { ModelConfigSchema } from 'llm-zoo/schemas';
  *
- * const result = ModelConfigSchema.safeParse(myConfig);
- * if (!result.success) {
- *   console.error(result.error);
+ * const result = Schema.decodeUnknownResult(ModelConfigSchema)(myConfig);
+ * if (Result.isFailure(result)) {
+ *   console.error(result.failure.message);
  * }
  * ```
  */
 
-import { z } from 'zod';
+import { Schema } from 'effect';
 import { ModelProvider, ReasoningEffort } from './ModelConfig';
 
-// ============================================================================
-// Zod v4 Schemas
-// ============================================================================
+export const ReasoningEffortSchema = Schema.Enum(ReasoningEffort);
 
-export const ReasoningEffortSchema = z.nativeEnum(ReasoningEffort);
-
-export const ModelProviderSchema = z.nativeEnum(ModelProvider);
+export const ModelProviderSchema = Schema.Enum(ModelProvider);
 
 /** Feature flags defining model's supported capabilities and behaviors. */
-export const ModelCapabilitiesSchema = z.object({
-  supportsFunctionCalling: z.boolean(),
-  supportsNativeMCPServer: z.boolean(),
-  supportsNativeWebSearch: z.boolean(),
-  supportsDynamicFilteringWebSearch: z.boolean(),
-  supportsNativeCodeExecution: z.boolean(),
-  supportsPromptCaching: z.boolean(),
-  supportsAutoPromptCaching: z.boolean(),
-  cacheDiscountFactor: z.number(),
-  supportsInterleavedThinking: z.boolean(),
-  supportsVision: z.boolean(),
-  supportsNativePdf: z.boolean(),
-  supportsAssistantPrefill: z.boolean(),
-  supportsPredictiveOutput: z.boolean(),
-  supportsTokenCounting: z.boolean(),
-  supportsSystemPrompt: z.boolean(),
-  supportsIntermDevMsgs: z.boolean(),
-  supportsNativeAudio: z.boolean(),
+export const ModelCapabilitiesSchema = Schema.Struct({
+  supportsFunctionCalling: Schema.Boolean,
+  supportsNativeMCPServer: Schema.Boolean,
+  supportsNativeWebSearch: Schema.Boolean,
+  supportsDynamicFilteringWebSearch: Schema.Boolean,
+  supportsNativeCodeExecution: Schema.Boolean,
+  supportsPromptCaching: Schema.Boolean,
+  supportsAutoPromptCaching: Schema.Boolean,
+  cacheDiscountFactor: Schema.Finite,
+  supportsInterleavedThinking: Schema.Boolean,
+  supportsVision: Schema.Boolean,
+  supportsNativePdf: Schema.Boolean,
+  supportsAssistantPrefill: Schema.Boolean,
+  supportsPredictiveOutput: Schema.Boolean,
+  supportsTokenCounting: Schema.Boolean,
+  supportsSystemPrompt: Schema.Boolean,
+  supportsIntermDevMsgs: Schema.Boolean,
+  supportsNativeAudio: Schema.Boolean,
 });
 
-const EffortListSchema = z.array(ReasoningEffortSchema).readonly();
+const EffortListSchema = Schema.Array(ReasoningEffortSchema);
 
 /** How a model reasons; see `ReasoningSpec`. */
-export const ReasoningSpecSchema = z.object({
+export const ReasoningSpecSchema = Schema.Struct({
   efforts: EffortListSchema,
-  off: EffortListSchema.optional(),
-  budget: z.boolean().optional(),
-  providerDefault: ReasoningEffortSchema.optional(),
+  off: Schema.optional(EffortListSchema),
+  budget: Schema.optional(Schema.Boolean),
+  providerDefault: Schema.optional(ReasoningEffortSchema),
 });
-
-const TokenPricesSchema = z.object({ inputPrice: z.number(), outputPrice: z.number() });
 
 /** Rates billed for a whole request whose prompt is above the threshold. */
-export const LongContextPricingSchema = z.object({
-  aboveInputTokens: z.number(),
-  inputPrice: z.number(),
-  outputPrice: z.number(),
-  cacheDiscountFactor: z.number(),
+export const LongContextPricingSchema = Schema.Struct({
+  aboveInputTokens: Schema.Finite,
+  inputPrice: Schema.Finite,
+  outputPrice: Schema.Finite,
+  cacheDiscountFactor: Schema.Finite,
 });
 
-/** A model reference, `provider/id`. */
-export const ModelRefSchema = z.templateLiteral([ModelProviderSchema, '/', z.string()]);
+/** A model reference, `provider/id`. A template literal takes no enum part,
+ *  so the provider is its literal values. */
+export const ModelRefSchema = Schema.TemplateLiteral([Schema.Literals(Object.values(ModelProvider)), '/', Schema.String]);
+
+const selectionFields = {
+  effort: Schema.optional(ReasoningEffortSchema),
+  thinking: Schema.optional(Schema.Boolean),
+  mode: Schema.optional(Schema.Literal('pro')),
+};
 
 /** A model plus how to run it; see `ModelSelection`. */
-export const ModelSelectionSchema = z.object({
-  ref: ModelRefSchema,
-  effort: ReasoningEffortSchema.optional(),
-  thinking: z.boolean().optional(),
-  mode: z.literal('pro').optional(),
-});
+export const ModelSelectionSchema = Schema.Struct({ ref: ModelRefSchema, ...selectionFields });
 
 /** Complete configuration for a language model instance. */
-export const ModelConfigSchema = z.object({
+export const ModelConfigSchema = Schema.Struct({
   ref: ModelRefSchema,
-  id: z.string(),
-  label: z.string(),
-  shortName: z.string(),
+  id: Schema.String,
+  label: Schema.String,
+  shortName: Schema.String,
   provider: ModelProviderSchema,
-  maxOutputTokens: z.number(),
-  inputPrice: z.number(),
-  outputPrice: z.number(),
-  contextWindow: z.number(),
+  maxOutputTokens: Schema.Finite,
+  inputPrice: Schema.Finite,
+  outputPrice: Schema.Finite,
+  contextWindow: Schema.Finite,
   capabilities: ModelCapabilitiesSchema,
-  reasoning: ReasoningSpecSchema.optional(),
-  modes: z.array(z.literal('pro')).readonly().optional(),
-  tiers: z
-    .object({
-      fast: TokenPricesSchema.extend({ longContextPricing: LongContextPricingSchema.optional() }).optional(),
-    })
-    .optional(),
-  longContextPricing: LongContextPricingSchema.optional(),
-  source: z.object({ url: z.string(), verified: z.string().regex(/^\d{4}-\d{2}-\d{2}$/) }).optional(),
-  legacyKeys: z.record(z.string(), ModelSelectionSchema.omit({ ref: true })).optional(),
-  openRouterOnly: z.boolean(),
-  openrouterFullName: z.string().optional(),
-  vscodeLMFullName: z.string().optional(),
-  copilotFullName: z.string().optional(),
-  baseUrl: z.string().optional(),
-  requiresResponsesAPI: z.boolean().optional(),
-  codexSubscription: z.object({ contextWindow: z.number().int().positive() }).optional(),
-  kimiSubscription: z.boolean().optional(),
-  deprecated: z.boolean().optional(),
-  retired: z.boolean().optional(),
+  reasoning: Schema.optional(ReasoningSpecSchema),
+  modes: Schema.optional(Schema.Array(Schema.Literal('pro'))),
+  tiers: Schema.optional(
+    Schema.Struct({
+      fast: Schema.optional(
+        Schema.Struct({
+          inputPrice: Schema.Finite,
+          outputPrice: Schema.Finite,
+          longContextPricing: Schema.optional(LongContextPricingSchema),
+        }),
+      ),
+    }),
+  ),
+  longContextPricing: Schema.optional(LongContextPricingSchema),
+  source: Schema.optional(
+    Schema.Struct({ url: Schema.String, verified: Schema.String.check(Schema.isPattern(/^\d{4}-\d{2}-\d{2}$/)) }),
+  ),
+  legacyKeys: Schema.optional(Schema.Record(Schema.String, Schema.Struct(selectionFields))),
+  openRouterOnly: Schema.Boolean,
+  openrouterFullName: Schema.optional(Schema.String),
+  vscodeLMFullName: Schema.optional(Schema.String),
+  copilotFullName: Schema.optional(Schema.String),
+  baseUrl: Schema.optional(Schema.String),
+  requiresResponsesAPI: Schema.optional(Schema.Boolean),
+  codexSubscription: Schema.optional(Schema.Struct({ contextWindow: Schema.Int.check(Schema.isGreaterThan(0)) })),
+  kimiSubscription: Schema.optional(Schema.Boolean),
+  deprecated: Schema.optional(Schema.Boolean),
+  retired: Schema.optional(Schema.Boolean),
 });
 
-/** Registry of all model configurations. */
-export const ModelRegistrySchema = z.record(ModelRefSchema, ModelConfigSchema);
+const isModelRef = Schema.is(ModelRefSchema);
+
+/** Registry of all model configurations. Keys decode as strings and are then
+ *  checked: a record keyed by `ModelRefSchema` would drop an entry whose key
+ *  names an unknown provider instead of refusing it. */
+export const ModelRegistrySchema = Schema.Record(Schema.String, ModelConfigSchema).pipe(
+  Schema.refine(
+    (registry): registry is Record<typeof ModelRefSchema.Type, typeof ModelConfigSchema.Type> =>
+      Object.keys(registry).every(isModelRef),
+    { message: 'Every registry key is a model reference, provider/id.' },
+  ),
+);
 
 // Export inferred types for convenience
-export type ModelCapabilitiesSchemaType = z.infer<typeof ModelCapabilitiesSchema>;
-export type ModelConfigSchemaType = z.infer<typeof ModelConfigSchema>;
-export type ModelRegistrySchemaType = z.infer<typeof ModelRegistrySchema>;
-export type ModelSelectionSchemaType = z.infer<typeof ModelSelectionSchema>;
+export type ModelCapabilitiesSchemaType = typeof ModelCapabilitiesSchema.Type;
+export type ModelConfigSchemaType = typeof ModelConfigSchema.Type;
+export type ModelRegistrySchemaType = typeof ModelRegistrySchema.Type;
+export type ModelSelectionSchemaType = typeof ModelSelectionSchema.Type;

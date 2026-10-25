@@ -1,6 +1,6 @@
 {
   "name": "llm-zoo",
-  "version": "3.2.0",
+  "version": "4.0.0",
   "description": "150+ LLM models. Pricing, capabilities, context windows. Always current.",
   "keywords": [
     "llm",
@@ -63,8 +63,7 @@
     },
     "./schemas": {
       "types": "./dist/schemas.d.ts",
-      "import": "./dist/schemas.js",
-      "require": "./dist/schemas.cjs"
+      "default": "./dist/schemas.js"
     }
   },
   "files": [
@@ -73,7 +72,7 @@
     "LICENSE"
   ],
   "scripts": {
-    "build": "tsup",
+    "build": "rm -rf dist && tsup",
     "dev": "tsup --watch",
     "typecheck": "tsc --noEmit",
     "clean": "rm -rf dist",
@@ -81,17 +80,17 @@
     "test": "npm run build && node --test tests/*.test.mjs"
   },
   "peerDependencies": {
-    "zod": "^4.0.0"
+    "effect": "^4.0.0"
   },
   "peerDependenciesMeta": {
-    "zod": {
+    "effect": {
       "optional": true
     }
   },
   "devDependencies": {
+    "effect": "^4.0.6",
     "tsup": "^8.0.0",
-    "typescript": "^5.3.0",
-    "zod": "^4.4.3"
+    "typescript": "^5.3.0"
   },
   "engines": {
     "node": ">=18.0.0"
