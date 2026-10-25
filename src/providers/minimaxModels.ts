@@ -78,8 +78,11 @@ export const MINIMAX_MODELS: readonly ModelEntry[] = [
     },
     reasoning: { efforts: [] },
     legacyKeys: { minimaxM27: {} },
-    source: { url: 'https://platform.minimax.io/docs/api-reference/text-chat-openai', verified: '2026-09-30' },
+    source: { url: 'https://platform.minimax.io/docs/guides/models-intro', verified: '2026-10-25' },
     openRouterOnly: false,
+    // Dropped from MiniMax's API model list, pay-as-you-go pricing and chat
+    // API reference (only M3 and M3.1-Flash remain).
+    deprecated: true,
   },
   // M2.7 at ~100 tps, same limits; $0.60 / $0.06 cache read / $2.40
   // (platform.minimax.io/docs/guides/pricing-paygo).
@@ -101,8 +104,11 @@ export const MINIMAX_MODELS: readonly ModelEntry[] = [
     },
     reasoning: { efforts: [] },
     legacyKeys: { minimaxM27highspeed: {} },
-    source: { url: 'https://platform.minimax.io/docs/api-reference/text-chat-openai', verified: '2026-09-30' },
+    source: { url: 'https://platform.minimax.io/docs/guides/models-intro', verified: '2026-10-25' },
     openRouterOnly: false,
+    // Dropped from MiniMax's API model list, pay-as-you-go pricing and chat
+    // API reference (only M3 and M3.1-Flash remain).
+    deprecated: true,
   },
   {
     label: 'MiniMax M2.5',

@@ -16,7 +16,8 @@ const MOONSHOT_DEFAULT_CAPABILITIES: ModelCapabilities = {
 };
 
 // Kimi K3 and the Kimi Code `kimi-for-coding` alias take top-level
-// `reasoning_effort` low | high | max and always reason.
+// `reasoning_effort` low | high | max. K3 always reasons; `kimi-for-coding`
+// can turn thinking off.
 const KIMI_EFFORTS = [ReasoningEffort.LOW, ReasoningEffort.HIGH, ReasoningEffort.MAX] as const;
 
 const KIMI_CODE_MODELS_URL = 'https://www.kimi.com/code/docs/en/kimi-code/models.html';
@@ -307,7 +308,8 @@ export const MOONSHOT_MODELS: readonly ModelEntry[] = [
   // ==========================================================================
   // kimi-for-coding: the coding-plan alias included with every membership
   // tier (currently K2.8 Preview; Moonshot may repoint it over time).
-  // reasoning_effort low | high | max, default max.
+  // reasoning_effort low | high | max, default max. With thinking disabled the
+  // request is served by K2.8 Preview without thinking.
   {
     label: 'Kimi for Coding',
     id: 'kimi-for-coding',
@@ -325,8 +327,8 @@ export const MOONSHOT_MODELS: readonly ModelEntry[] = [
       supportsInterleavedThinking: true,
       supportsAutoPromptCaching: true,
     },
-    reasoning: { efforts: KIMI_EFFORTS, providerDefault: ReasoningEffort.MAX },
-    source: { url: KIMI_CODE_MODELS_URL, verified: '2026-09-30' },
+    reasoning: { efforts: KIMI_EFFORTS, off: [], providerDefault: ReasoningEffort.MAX },
+    source: { url: KIMI_CODE_MODELS_URL, verified: '2026-10-25' },
     legacyKeys: { kimiCoding: {} },
     openRouterOnly: false,
   },

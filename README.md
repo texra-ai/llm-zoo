@@ -106,10 +106,10 @@ Current models only (retired and deprecated models excluded).
 | `glm/glm-5.3-flash` | $0.15 | $0.50 | GLM |
 | `deepseek/deepseek-flash` | $0.15 | $0.60 | DeepSeek |
 | `minimax/MiniMax-M3` | $0.30 | $1.20 | MiniMax |
-| `minimax/MiniMax-M2.7` | $0.30 | $1.20 | MiniMax |
 | `google/gemini-3.5-flash-lite` | $0.30 | $2.50 | Google |
 | `glm/glm-5.3-flashx` | $0.37 | $1.25 | GLM |
 | `dashscope/qwen-plus` | $0.40 | $1.20 | DashScope |
+| `dashscope/qwen3.7-plus` | $0.40 | $1.60 | DashScope |
 
 Claude Haiku 5.5 bills prompts over 100K tokens at $0.50 / $2.50.
 
@@ -143,16 +143,16 @@ Gemini 4 Argon's $2 / $10 is introductory through 2026-11-30; Google lists $4 / 
 
 ### Capabilities
 
-Of the 37 current models:
+Of the 35 current models:
 
 | Capability | Count | Examples |
 |------------|-------|----------|
-| Reasoning | 36 | `anthropic/claude-opus-5-5`, `openai/gpt-6.1-sol`, `deepseek/deepseek-flash`, `xai/grok-4.7` |
-| Prompt caching | 36 | `anthropic/claude-opus-5-5`, `google/gemini-4-argon`, `deepseek/deepseek-flash`, `glm/glm-5.3` |
+| Reasoning | 34 | `anthropic/claude-opus-5-5`, `openai/gpt-6.1-sol`, `deepseek/deepseek-flash`, `xai/grok-4.7` |
+| Prompt caching | 34 | `anthropic/claude-opus-5-5`, `google/gemini-4-argon`, `deepseek/deepseek-flash`, `glm/glm-5.3` |
 | Vision | 31 | `anthropic/claude-sonnet-5-5`, `openai/gpt-6.1-sol`, `google/gemini-3.1-pro-preview` |
 | Effort levels | 23 | `anthropic/claude-sonnet-5-5`, `openai/gpt-6.1-sol`, `glm/glm-5.3`, `moonshot/kimi-k3` |
 | Code execution | 14 | `anthropic/claude-sonnet-5-5`, `openai/gpt-6.1-sol`, `google/gemini-3.8-flash` |
-| Thinking can be turned off | 12 | `anthropic/claude-haiku-5-5`, `openai/gpt-6-luna`, `deepseek/deepseek-flash`, `dashscope/qwen3.8-max`, `moonshot/kimi-k2.6` |
+| Thinking can be turned off | 13 | `anthropic/claude-haiku-5-5`, `openai/gpt-6-luna`, `deepseek/deepseek-flash`, `dashscope/qwen3.8-max`, `moonshot/kimi-k2.6` |
 | Web search | 12 | `anthropic/claude-opus-5-5`, `openai/gpt-6.1-sol`, `meta/muse-wonder-1.0` |
 | Fast tier + pro mode | 4 | `openai/gpt-6-astra`, `openai/gpt-6.1-sol`, `openai/gpt-6-luna`, `openai/gpt-5.6-terra` |
 
@@ -166,12 +166,12 @@ Of the 37 current models:
 | **Google** | 15 | 4 | Gemini 4 Argon, 3.8 Flash, 3.1 Pro, 1M context, audio input |
 | **Moonshot** | 13 | 5 | Kimi K3 (1M context), K2.7 Code, K2.6, Kimi Code subscription |
 | **xAI** | 12 | 2 | Grok 4.7 (500K context), Grok Build 0.1, effort levels, vision |
-| **MiniMax** | 8 | 3 | M3 (1M context, thinking can be turned off, long-context tier above 512K), M2.7, M2.7 Highspeed |
+| **MiniMax** | 8 | 1 | M3 (1M context, thinking can be turned off, long-context tier above 512K) |
 | **DeepSeek** | 6 | 2 | V4.1 Flash (native vision, $0.15/1M), V4 Pro, three effort levels |
 | **DashScope** | 6 | 4 | Qwen3.8 Max / Flash, Qwen3.7 Plus, 1M context, thinking budget |
 | **Meta** | 4 | 2 | Muse Wonder 1.0 (preview), Muse Spark 1.3, 1M context, agentic + multimodal |
 | **OpenRouter** | 2 | 0 | Llama 405B, QVQ-72B (retired) |
-| **Copilot** | 1 | 0 | Deprecated GPT-4o config; 26 documented names and 7 exact model identifiers |
+| **Copilot** | 1 | 0 | Deprecated GPT-4o config; 27 documented names and 9 exact model identifiers |
 
 "Models" counts every entry, including retired ones kept so old configurations still resolve; "Current" excludes retired and deprecated models.
 
