@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 
+import { Schema } from 'effect';
+
 import { MODEL_CONFIGS, cost, requestRates } from '../dist/index.js';
 import { ModelConfigSchema } from '../dist/schemas.js';
 
@@ -24,7 +26,7 @@ test('every long-context tier is reachable, never cheaper than its flat rates, a
     assert.ok(tier.outputPrice >= prices.outputPrice, `${label}: tier output below flat`);
     assert.ok(tier.cacheDiscountFactor > 0 && tier.cacheDiscountFactor <= 1, label);
     const data = JSON.parse(JSON.stringify(model));
-    assert.deepEqual(ModelConfigSchema.parse(data), data, label);
+    assert.deepEqual(Schema.decodeUnknownSync(ModelConfigSchema)(data), data, label);
   }
 });
 

@@ -6,7 +6,7 @@ export default defineConfig({
     'providers/index': 'src/providers/index.ts',
     schemas: 'src/schemas.ts',
   },
-  external: ['zod'],
+  external: ['effect'],
   format: ['esm', 'cjs'],
   dts: true,
   splitting: false,

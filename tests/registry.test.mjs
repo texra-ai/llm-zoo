@@ -3,6 +3,8 @@ import { readFileSync, readdirSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import test from 'node:test';
 
+import { Schema } from 'effect';
+
 import * as rootEsm from '../dist/index.js';
 import { ModelRegistrySchema, ModelSelectionSchema } from '../dist/schemas.js';
 
@@ -25,9 +27,11 @@ test('ESM and CJS builds expose the same registry', () => {
   assert.deepEqual(rootCjs.LEGACY_KEYS, LEGACY_KEYS);
 });
 
-test('the registry satisfies its Zod schema', () => {
+test('the registry satisfies its schema', () => {
   const data = JSON.parse(JSON.stringify(MODEL_CONFIGS));
-  assert.deepEqual(ModelRegistrySchema.parse(data), data);
+  assert.deepEqual(Schema.decodeUnknownSync(ModelRegistrySchema)(data), data);
+  const decodeSelection = Schema.decodeUnknownSync(ModelSelectionSchema);
+  assert.throws(() => decodeSelection({ ref: 'nobody/gpt-6' }), 'a reference names a known provider');
 });
 
 test('effort lists are on the shared scale, in order, without none', () => {
@@ -66,7 +70,7 @@ test('no provider file has an unresolved effort list', () => {
 
 test('each legacy key selects something its model accepts', () => {
   for (const [key, selection] of Object.entries(LEGACY_KEYS)) {
-    ModelSelectionSchema.parse(selection);
+    Schema.decodeUnknownSync(ModelSelectionSchema)(selection);
     const { reasoning, modes = [], ref } = MODEL_CONFIGS[selection.ref];
     const { effort, thinking, mode } = selection;
     if (mode) assert.ok(modes.includes(mode), `${key}: ${ref} has no ${mode} mode`);

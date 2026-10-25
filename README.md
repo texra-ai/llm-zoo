@@ -20,7 +20,7 @@ const price = cost('openai/gpt-6.1-sol', { input: 50000, output: 10000 });  // 0
 const budget = cheapest({ supportsVision: true, supportsNativeCodeExecution: true });
 ```
 
-**Zero dependencies. Full TypeScript. Tree-shakeable. Zod schemas included.**
+**Zero dependencies. Full TypeScript. Tree-shakeable. Effect schemas included.**
 
 ## Install
 
@@ -235,22 +235,25 @@ const { totalModels, providers, pricing, context } = insights();
 
 ---
 
-## Zod Schemas (v4)
+## Effect Schemas
 
-Validate model configs at runtime (requires `zod@^4.0.0`):
+Validate model configs at runtime (requires `effect@^4.0.0`):
 
 ```typescript
+import { Result, Schema } from 'effect';
 import { ModelConfigSchema, ModelSelectionSchema } from 'llm-zoo/schemas';
 
 // Validate custom model config
-const result = ModelConfigSchema.safeParse(myConfig);
-if (!result.success) {
-  console.error(result.error);
+const result = Schema.decodeUnknownResult(ModelConfigSchema)(myConfig);
+if (Result.isFailure(result)) {
+  console.error(result.failure.message);
 }
 
 // Validate a stored selection
-const selection = ModelSelectionSchema.parse({ ref: 'openai/gpt-6.1-sol', effort: 'high' });
+const selection = Schema.decodeUnknownSync(ModelSelectionSchema)({ ref: 'openai/gpt-6.1-sol', effort: 'high' });
 ```
+
+Since 4.0.0 these are Effect Schema values; 3.x shipped Zod schemas under the same names.
 
 Available schemas:
 - `ModelConfigSchema` — Full model configuration
