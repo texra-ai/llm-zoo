@@ -11,7 +11,7 @@ import {
   ModelSelection,
   ReasoningEffort,
 } from './ModelConfig';
-import { LEGACY_KEYS, MODEL_CONFIGS } from './ModelRegistry';
+import { MODEL_CONFIGS } from './ModelRegistry';
 
 // ============================================================================
 // Lookup
@@ -54,8 +54,7 @@ export function exists(ref: string): boolean {
 const EFFORTS = new Set<string>(Object.values(ReasoningEffort));
 
 /**
- * Read a model selection written as `provider/id[@effort][+pro]`, or an
- * llm-zoo 1.x key such as `opus5T`. Returns `undefined` when the model is not
+ * Read a model selection written as `provider/id[@effort][+pro]`. Returns `undefined` when the model is not
  * in the registry or the effort is not a known level. Whether the model
  * accepts that effort is left to the caller, which knows its own defaults.
  *
@@ -65,13 +64,10 @@ const EFFORTS = new Set<string>(Object.values(ReasoningEffort));
  * // → { ref: 'anthropic/claude-opus-5', effort: 'high' }
  * parseModelRef('openai/gpt-5.6-sol@xhigh+pro');
  * // → { ref: 'openai/gpt-5.6-sol', effort: 'xhigh', mode: 'pro' }
- * parseModelRef('opus5T');
- * // → { ref: 'anthropic/claude-opus-5', effort: 'high' }
  * ```
  */
 export function parseModelRef(input: string): ModelSelection | undefined {
   const text = input.trim();
-  if (Object.hasOwn(LEGACY_KEYS, text)) return LEGACY_KEYS[text];
   const match = /^([^@+]+?)(?:@([a-z]+))?(\+pro)?$/.exec(text);
   if (!match) return undefined;
   const [, ref = '', effort, pro] = match;
@@ -86,7 +82,6 @@ export function parseModelRef(input: string): ModelSelection | undefined {
 
 /**
  * Write a model selection in its string form, `provider/id[@effort][+pro]`.
- * `thinking: false` has no string form and is omitted.
  */
 export function formatModelRef(selection: ModelSelection): string {
   return `${selection.ref}${selection.effort ? `@${selection.effort}` : ''}${selection.mode === 'pro' ? '+pro' : ''}`;

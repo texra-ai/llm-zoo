@@ -65,7 +65,6 @@ export const DEEPSEEK_MODELS: readonly ModelEntry[] = [
       cacheDiscountFactor: 0.02,
     },
     reasoning: { efforts: LOW_HIGH_MAX_EFFORTS, off: [], providerDefault: ReasoningEffort.HIGH },
-    legacyKeys: { deepseek41: { effort: ReasoningEffort.NONE }, deepseek41T: { effort: ReasoningEffort.HIGH } },
     source: { url: 'https://api-docs.deepseek.com/guides/thinking_mode', verified: '2026-09-30' },
     openRouterOnly: false,
   },
@@ -74,10 +73,9 @@ export const DEEPSEEK_MODELS: readonly ModelEntry[] = [
   // stays `deepseek-v4-flash`, so this entry covers the official build. The
   // legacy `deepseek-chat` / `deepseek-reasoner` names point at this model's
   // non-thinking / thinking modes until they are discontinued.
-  // Deprecated 2026-09-10 in favor of DeepSeek-V4.1-Flash (`deepseek41`
-  // above); the `deepseek-v4-flash` id keeps routing to V4.1-Flash for
+  // Deprecated 2026-09-10 in favor of DeepSeek-V4.1-Flash (above); the `deepseek-v4-flash` id keeps routing to V4.1-Flash for
   // compatibility rather than failing outright, so this entry is
-  // deprecated, not retired. Pricing below matches `deepseek41`, not the
+  // deprecated, not retired. Pricing below matches `deepseek-flash`, not the
   // historical V4-Flash rate: the pricing page states `deepseek-v4-flash`
   // requests are now served by V4.1-Flash and billed at its price.
   // DeepSeek-V4-Flash (Thinking Mode)
@@ -85,8 +83,8 @@ export const DEEPSEEK_MODELS: readonly ModelEntry[] = [
   // low, high, max — so all three are listed. xhigh and medium are accepted as
   // compatibility aliases and both map onto high here, so neither is listed as
   // a distinct level.
-  // Deprecated 2026-09-10, see `deepseek` above; superseded by `deepseek41T`.
-  // Pricing matches `deepseek41T`, see `deepseek`'s comment above for why.
+  // Deprecated 2026-09-10, see the non-thinking comment above; superseded by `deepseek-flash`.
+  // Pricing matches `deepseek-flash`; see the comment above for why.
   {
     label: 'DeepSeek V4 Flash',
     id: 'deepseek-v4-flash',
@@ -106,7 +104,6 @@ export const DEEPSEEK_MODELS: readonly ModelEntry[] = [
       cacheDiscountFactor: 0.02,
     },
     reasoning: { efforts: LOW_HIGH_MAX_EFFORTS, off: [], providerDefault: ReasoningEffort.HIGH },
-    legacyKeys: { deepseek: { effort: ReasoningEffort.NONE }, deepseekT: { effort: ReasoningEffort.HIGH } },
     source: { url: 'https://api-docs.deepseek.com/quick_start/pricing', verified: '2026-09-30' },
     // Not served on the vendor's own Responses API.
     openRouterOnly: true,
@@ -119,13 +116,13 @@ export const DEEPSEEK_MODELS: readonly ModelEntry[] = [
   // DeepSeek's Vision guide. That guide states image tokens "are billed
   // together with your text tokens" at the model's normal rate — it
   // publishes no separate image-pricing tier — so this entry mirrors the
-  // `deepseek` (V4-Flash non-thinking) entry's price, context window, and
+  // `deepseek-v4-flash` (non-thinking) entry's price, context window, and
   // max output tokens. The guide only documents non-thinking chat usage, so
   // no thinking-mode variant is listed here.
-  // Deprecated 2026-09-10: vision is now native in `deepseek41` above, and
+  // Deprecated 2026-09-10: vision is now native in `deepseek-flash` above, and
   // the `deepseek-v4-flash-vision-exp` id routes to V4.1-Flash for
   // compatibility rather than failing outright, so this entry is
-  // deprecated, not retired. Pricing matches `deepseek41`, see `deepseek`'s
+  // deprecated, not retired. Pricing matches `deepseek-flash`, see `deepseek-v4-flash`'s
   // comment above for why.
   {
     label: 'DeepSeek V4 Flash Vision (Exp)',
@@ -144,7 +141,6 @@ export const DEEPSEEK_MODELS: readonly ModelEntry[] = [
       supportsFunctionCalling: true,
       cacheDiscountFactor: 0.02,
     },
-    legacyKeys: { deepseekvision: {} },
     source: { url: 'https://api-docs.deepseek.com/quick_start/pricing', verified: '2026-09-30' },
     // Not served on the vendor's own Responses API.
     openRouterOnly: true,
@@ -176,7 +172,6 @@ export const DEEPSEEK_MODELS: readonly ModelEntry[] = [
       cacheDiscountFactor: 0.022 / 0.66,
     },
     reasoning: { efforts: LOW_HIGH_MAX_EFFORTS, off: [], providerDefault: ReasoningEffort.HIGH },
-    legacyKeys: { deepseekpro: { effort: ReasoningEffort.NONE }, deepseekproT: { effort: ReasoningEffort.HIGH } },
     source: { url: 'https://api-docs.deepseek.com/guides/thinking_mode', verified: '2026-09-30' },
     openRouterOnly: false,
   },
@@ -196,7 +191,6 @@ export const DEEPSEEK_MODELS: readonly ModelEntry[] = [
       supportsAssistantPrefill: true,
       supportsFunctionCalling: true,
     },
-    legacyKeys: { dsv32: {}, dsv3: {}, dsv3o: {} },
     // Not served on the vendor's own Responses API.
     openRouterOnly: true,
     deprecated: true,
@@ -219,7 +213,6 @@ export const DEEPSEEK_MODELS: readonly ModelEntry[] = [
       supportsAssistantPrefill: true,
     },
     reasoning: { efforts: [] },
-    legacyKeys: { dsv32T: {}, 'deepseekT+': {}, dsr1: {}, dsr1o: {} },
     // Not served on the vendor's own Responses API.
     openRouterOnly: true,
     deprecated: true,

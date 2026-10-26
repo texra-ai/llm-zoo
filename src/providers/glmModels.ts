@@ -53,7 +53,6 @@ export const GLM_MODELS: readonly ModelEntry[] = [
       cacheDiscountFactor: 0.2,
     },
     reasoning: { efforts: LOW_HIGH_MAX_EFFORTS, providerDefault: ReasoningEffort.MAX },
-    legacyKeys: { glm53flash: { effort: ReasoningEffort.MAX } },
     source: { url: 'https://docs.z.ai/api-reference/llm/chat-completion', verified: '2026-09-30' },
     // Not served on the vendor's own Responses API.
     openRouterOnly: true,
@@ -80,7 +79,6 @@ export const GLM_MODELS: readonly ModelEntry[] = [
       cacheDiscountFactor: 0.203,
     },
     reasoning: { efforts: LOW_HIGH_MAX_EFFORTS, providerDefault: ReasoningEffort.MAX },
-    legacyKeys: { glm53flashx: { effort: ReasoningEffort.MAX } },
     source: { url: 'https://docs.z.ai/api-reference/llm/chat-completion', verified: '2026-09-30' },
     // Not served on the vendor's own Responses API.
     openRouterOnly: true,
@@ -105,7 +103,6 @@ export const GLM_MODELS: readonly ModelEntry[] = [
       cacheDiscountFactor: 0.186,
     },
     reasoning: { efforts: LOW_HIGH_MAX_EFFORTS, providerDefault: ReasoningEffort.MAX },
-    legacyKeys: { glm53: { effort: ReasoningEffort.MAX } },
     source: { url: 'https://docs.z.ai/guides/llm/glm-5.3', verified: '2026-09-30' },
     openRouterOnly: false,
   },
@@ -131,7 +128,6 @@ export const GLM_MODELS: readonly ModelEntry[] = [
       cacheDiscountFactor: 0.186,
     },
     reasoning: { efforts: [ReasoningEffort.HIGH, ReasoningEffort.MAX], off: [], providerDefault: ReasoningEffort.MAX },
-    legacyKeys: { glm52: { effort: ReasoningEffort.MAX } },
     source: { url: 'https://docs.z.ai/api-reference/llm/chat-completion', verified: '2026-09-30' },
     // Not served on the vendor's own Responses API.
     openRouterOnly: true,
@@ -156,7 +152,6 @@ export const GLM_MODELS: readonly ModelEntry[] = [
       cacheDiscountFactor: 0.186,
     },
     reasoning: { efforts: [], off: [] },
-    legacyKeys: { glm51: {} },
     source: { url: 'https://docs.z.ai/api-reference/llm/chat-completion', verified: '2026-09-30' },
     // Not served on the vendor's own Responses API.
     openRouterOnly: true,
@@ -183,7 +178,6 @@ export const GLM_MODELS: readonly ModelEntry[] = [
       cacheDiscountFactor: 0.2,
     },
     reasoning: { efforts: [] },
-    legacyKeys: { glm5vturbo: {} },
     source: { url: 'https://docs.z.ai/guides/vlm/glm-5v-turbo', verified: '2026-09-30' },
     // Not served on the vendor's own Responses API.
     openRouterOnly: true,
@@ -205,7 +199,6 @@ export const GLM_MODELS: readonly ModelEntry[] = [
       cacheDiscountFactor: 0.2,
     },
     reasoning: { efforts: [], off: [] },
-    legacyKeys: { glm5: {} },
     source: { url: 'https://docs.z.ai/api-reference/llm/chat-completion', verified: '2026-09-30' },
     // Not served on the vendor's own Responses API.
     openRouterOnly: true,
@@ -230,7 +223,6 @@ export const GLM_MODELS: readonly ModelEntry[] = [
       cacheDiscountFactor: 0.2,
     },
     reasoning: { efforts: [], off: [] },
-    legacyKeys: { glm5turbo: {} },
     source: { url: 'https://docs.z.ai/guides/llm/glm-5-turbo', verified: '2026-09-30' },
     openRouterOnly: false,
   },
@@ -251,7 +243,6 @@ export const GLM_MODELS: readonly ModelEntry[] = [
       cacheDiscountFactor: 0.183,
     },
     reasoning: { efforts: [], off: [] },
-    legacyKeys: { glm47: {} },
     source: { url: 'https://docs.z.ai/api-reference/llm/chat-completion', verified: '2026-09-30' },
     // Not served on the vendor's own Responses API.
     openRouterOnly: true,
@@ -274,7 +265,6 @@ export const GLM_MODELS: readonly ModelEntry[] = [
       ...GLM_DEFAULT_CAPABILITIES,
     },
     reasoning: { efforts: [], off: [] },
-    legacyKeys: { glm47flash: {} },
     source: { url: 'https://docs.z.ai/api-reference/llm/chat-completion', verified: '2026-09-30' },
     // Not served on the vendor's own Responses API.
     openRouterOnly: true,
@@ -301,7 +291,6 @@ export const GLM_MODELS: readonly ModelEntry[] = [
     // thinking: {type: enabled|disabled} (default enabled, model decides
     // whether to think); reasoning_effort is GLM-5.2+ only.
     reasoning: { efforts: [], off: [] },
-    legacyKeys: { glm46: {} },
     source: { url: 'https://docs.z.ai/api-reference/llm/chat-completion', verified: '2026-09-30' },
     // Not served on the vendor's own Responses API.
     openRouterOnly: true,
@@ -326,7 +315,6 @@ export const GLM_MODELS: readonly ModelEntry[] = [
       cacheDiscountFactor: 0.167,
     },
     reasoning: { efforts: [] },
-    legacyKeys: { glm46v: {} },
     source: { url: 'https://docs.z.ai/guides/vlm/glm-4.6v', verified: '2026-09-30' },
     // Not served on the vendor's own Responses API.
     openRouterOnly: true,
@@ -351,7 +339,6 @@ export const GLM_MODELS: readonly ModelEntry[] = [
       cacheDiscountFactor: 0.183,
     },
     reasoning: { efforts: [], off: [] },
-    legacyKeys: { glm45: {} },
     source: { url: 'https://docs.z.ai/api-reference/llm/chat-completion', verified: '2026-09-30' },
     // Not served on the vendor's own Responses API.
     openRouterOnly: true,
@@ -377,7 +364,6 @@ export const GLM_MODELS: readonly ModelEntry[] = [
       cacheDiscountFactor: 0.183,
     },
     reasoning: { efforts: [], off: [] },
-    legacyKeys: { glm45v: {} },
     source: { url: 'https://docs.z.ai/api-reference/llm/chat-completion', verified: '2026-09-30' },
     // Not served on the vendor's own Responses API.
     openRouterOnly: true,
@@ -400,7 +386,6 @@ export const GLM_MODELS: readonly ModelEntry[] = [
       ...GLM_DEFAULT_CAPABILITIES,
     },
     reasoning: { efforts: [], off: [] },
-    legacyKeys: { glm45air: {} },
     source: { url: 'https://docs.z.ai/api-reference/llm/chat-completion', verified: '2026-09-30' },
     // Not served on the vendor's own Responses API.
     openRouterOnly: true,
@@ -425,7 +410,6 @@ export const GLM_MODELS: readonly ModelEntry[] = [
       supportsAutoPromptCaching: false,
       supportsVision: false,
     },
-    legacyKeys: { glm432b: {} },
     // Not served on the vendor's own Responses API.
     openRouterOnly: true,
     deprecated: true,

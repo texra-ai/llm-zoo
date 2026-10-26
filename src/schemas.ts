@@ -66,7 +66,6 @@ export const ModelRefSchema = Schema.TemplateLiteral([Schema.Literals(Object.val
 
 const selectionFields = {
   effort: Schema.optional(ReasoningEffortSchema),
-  thinking: Schema.optional(Schema.Boolean),
   mode: Schema.optional(Schema.Literal('pro')),
 };
 
@@ -102,7 +101,6 @@ export const ModelConfigSchema = Schema.Struct({
   source: Schema.optional(
     Schema.Struct({ url: Schema.String, verified: Schema.String.check(Schema.isPattern(/^\d{4}-\d{2}-\d{2}$/)) }),
   ),
-  legacyKeys: Schema.optional(Schema.Record(Schema.String, Schema.Struct(selectionFields))),
   openRouterOnly: Schema.Boolean,
   openrouterFullName: Schema.optional(Schema.String),
   vscodeLMFullName: Schema.optional(Schema.String),

@@ -44,7 +44,6 @@ export const DASHSCOPE_MODELS: readonly ModelEntry[] = [
     // Hybrid thinking, on by default: enable_thinking: false turns it off;
     // thinking_budget caps its length. No effort parameter.
     reasoning: { efforts: [], off: [], budget: true },
-    legacyKeys: { qwen38max: {} },
     source: { url: 'https://www.alibabacloud.com/help/en/model-studio/deep-thinking', verified: '2026-09-30' },
     openRouterOnly: false,
   },
@@ -79,7 +78,6 @@ export const DASHSCOPE_MODELS: readonly ModelEntry[] = [
     // Hybrid thinking, on by default: enable_thinking: false turns it off;
     // thinking_budget caps its length. No effort parameter.
     reasoning: { efforts: [], off: [], budget: true },
-    legacyKeys: { qwen37plus: {} },
     source: { url: 'https://www.alibabacloud.com/help/en/model-studio/deep-thinking', verified: '2026-09-30' },
     openRouterOnly: false,
   },
@@ -105,7 +103,6 @@ export const DASHSCOPE_MODELS: readonly ModelEntry[] = [
     // Hybrid thinking, on by default: enable_thinking: false turns it off;
     // thinking_budget caps its length. No effort parameter.
     reasoning: { efforts: [], off: [], budget: true },
-    legacyKeys: { qwen38flash: {} },
     source: { url: 'https://www.alibabacloud.com/help/en/model-studio/deep-thinking', verified: '2026-09-30' },
     openRouterOnly: false,
   },
@@ -125,7 +122,6 @@ export const DASHSCOPE_MODELS: readonly ModelEntry[] = [
     },
     // Hybrid thinking: enable_thinking toggles it (off by default); thinking_budget caps its length.
     reasoning: { efforts: [], off: [], budget: true },
-    legacyKeys: { qwen3max: {} },
     source: { url: 'https://www.alibabacloud.com/help/en/model-studio/deep-thinking', verified: '2026-09-30' },
     openRouterOnly: false,
     deprecated: true,
@@ -146,7 +142,6 @@ export const DASHSCOPE_MODELS: readonly ModelEntry[] = [
     },
     // Hybrid thinking: enable_thinking toggles it (off by default); thinking_budget caps its length.
     reasoning: { efforts: [], off: [], budget: true },
-    legacyKeys: { qwenplus: {} },
     source: { url: 'https://www.alibabacloud.com/help/en/model-studio/deep-thinking', verified: '2026-09-30' },
     openRouterOnly: false,
   },
@@ -166,7 +161,6 @@ export const DASHSCOPE_MODELS: readonly ModelEntry[] = [
     },
     // Hybrid thinking: enable_thinking toggles it (off by default); thinking_budget caps its length.
     reasoning: { efforts: [], off: [], budget: true },
-    legacyKeys: { qwenturbo: {} },
     source: { url: 'https://www.alibabacloud.com/help/en/model-studio/deep-thinking', verified: '2026-09-30' },
     openRouterOnly: false,
     // "Qwen-Turbo will no longer be updated. We recommend switching to

@@ -66,6 +66,7 @@ export const ANTHROPIC_MODELS: readonly ModelEntry[] = [
     outputPrice: 50.0,
     capabilities: {
       ...ANTHROPIC_DEFAULT_CAPABILITIES,
+      supportsIntermDevMsgs: true,
       // Cache reads cost 0.025x base input on Fable 5.1 (a quarter of Fable 5's
       // 0.1x rate), per Anthropic's Fable 5.1 pricing table.
       cacheDiscountFactor: 0.025,
@@ -79,7 +80,6 @@ export const ANTHROPIC_MODELS: readonly ModelEntry[] = [
     },
     reasoning: { efforts: ANTHROPIC_REASONING_EFFORTS, providerDefault: ReasoningEffort.HIGH },
     source: { url: 'https://platform.claude.com/docs/en/build-with-claude/effort', verified: '2026-09-30' },
-    legacyKeys: { fable51: { effort: ReasoningEffort.HIGH } },
     openRouterOnly: false,
   },
   {
@@ -93,6 +93,7 @@ export const ANTHROPIC_MODELS: readonly ModelEntry[] = [
     outputPrice: 50.0,
     capabilities: {
       ...ANTHROPIC_DEFAULT_CAPABILITIES,
+      supportsIntermDevMsgs: true,
       cacheDiscountFactor: 0.025,
       supportsNativeMCPServer: true,
       supportsNativeWebSearch: true,
@@ -104,7 +105,6 @@ export const ANTHROPIC_MODELS: readonly ModelEntry[] = [
     },
     reasoning: { efforts: ANTHROPIC_REASONING_EFFORTS, providerDefault: ReasoningEffort.HIGH },
     source: { url: 'https://platform.claude.com/docs/en/build-with-claude/effort', verified: '2026-09-30' },
-    legacyKeys: { mythos51: { effort: ReasoningEffort.HIGH } },
     // Invitation-only via Project Glasswing; no OpenRouter or VS Code LM routing.
     openRouterOnly: false,
   },
@@ -121,6 +121,7 @@ export const ANTHROPIC_MODELS: readonly ModelEntry[] = [
     outputPrice: 50.0,
     capabilities: {
       ...ANTHROPIC_DEFAULT_CAPABILITIES,
+      supportsIntermDevMsgs: true,
       supportsNativeMCPServer: true,
       supportsNativeWebSearch: true,
       supportsDynamicFilteringWebSearch: true,
@@ -131,7 +132,6 @@ export const ANTHROPIC_MODELS: readonly ModelEntry[] = [
     },
     reasoning: { efforts: ANTHROPIC_REASONING_EFFORTS, providerDefault: ReasoningEffort.HIGH },
     source: { url: 'https://platform.claude.com/docs/en/build-with-claude/effort', verified: '2026-09-30' },
-    legacyKeys: { fable5: { effort: ReasoningEffort.HIGH } },
     openRouterOnly: false,
     // Superseded by Claude Fable 5.1 (same specs/pricing, cheaper cache reads).
     deprecated: true,
@@ -147,6 +147,7 @@ export const ANTHROPIC_MODELS: readonly ModelEntry[] = [
     outputPrice: 50.0,
     capabilities: {
       ...ANTHROPIC_DEFAULT_CAPABILITIES,
+      supportsIntermDevMsgs: true,
       supportsNativeMCPServer: true,
       supportsNativeWebSearch: true,
       supportsDynamicFilteringWebSearch: true,
@@ -157,7 +158,6 @@ export const ANTHROPIC_MODELS: readonly ModelEntry[] = [
     },
     reasoning: { efforts: ANTHROPIC_REASONING_EFFORTS, providerDefault: ReasoningEffort.HIGH },
     source: { url: 'https://platform.claude.com/docs/en/build-with-claude/effort', verified: '2026-09-30' },
-    legacyKeys: { mythos5: { effort: ReasoningEffort.HIGH } },
     // Invitation-only via Project Glasswing; no OpenRouter or VS Code LM routing.
     openRouterOnly: false,
     // Superseded by Claude Mythos 5.1 (same specs/pricing, cheaper cache reads).
@@ -180,6 +180,7 @@ export const ANTHROPIC_MODELS: readonly ModelEntry[] = [
     outputPrice: 20.0,
     capabilities: {
       ...ANTHROPIC_DEFAULT_CAPABILITIES,
+      supportsIntermDevMsgs: true,
       cacheDiscountFactor: 0.05,
       supportsNativeMCPServer: true,
       supportsNativeWebSearch: true,
@@ -190,7 +191,6 @@ export const ANTHROPIC_MODELS: readonly ModelEntry[] = [
     },
     reasoning: { efforts: ANTHROPIC_REASONING_EFFORTS, providerDefault: ReasoningEffort.MEDIUM },
     source: { url: 'https://platform.claude.com/docs/en/build-with-claude/effort', verified: '2026-09-30' },
-    legacyKeys: { opus55: { effort: ReasoningEffort.MEDIUM } },
     openRouterOnly: false,
   },
   {
@@ -206,6 +206,7 @@ export const ANTHROPIC_MODELS: readonly ModelEntry[] = [
     outputPrice: 25.0,
     capabilities: {
       ...ANTHROPIC_DEFAULT_CAPABILITIES,
+      supportsIntermDevMsgs: true,
       supportsNativeMCPServer: true,
       supportsNativeWebSearch: true,
       supportsDynamicFilteringWebSearch: true,
@@ -217,7 +218,6 @@ export const ANTHROPIC_MODELS: readonly ModelEntry[] = [
     // `xhigh` or `max` returns a 400.
     reasoning: { efforts: ANTHROPIC_REASONING_EFFORTS, off: LOW_TO_HIGH_EFFORTS, providerDefault: ReasoningEffort.HIGH },
     source: { url: 'https://platform.claude.com/docs/en/build-with-claude/effort', verified: '2026-09-30' },
-    legacyKeys: { opus5T: { effort: ReasoningEffort.HIGH }, opus5: { effort: ReasoningEffort.HIGH, thinking: false } },
     openRouterOnly: false,
     // Superseded by Claude Opus 5.5 (cheaper, same context and output).
     deprecated: true,
@@ -235,6 +235,7 @@ export const ANTHROPIC_MODELS: readonly ModelEntry[] = [
     outputPrice: 25.0,
     capabilities: {
       ...ANTHROPIC_DEFAULT_CAPABILITIES,
+      supportsIntermDevMsgs: true,
       supportsNativeMCPServer: true,
       supportsNativeWebSearch: true,
       supportsDynamicFilteringWebSearch: true,
@@ -244,7 +245,6 @@ export const ANTHROPIC_MODELS: readonly ModelEntry[] = [
     },
     reasoning: { efforts: ANTHROPIC_REASONING_EFFORTS, off: ANTHROPIC_REASONING_EFFORTS, providerDefault: ReasoningEffort.HIGH },
     source: { url: 'https://platform.claude.com/docs/en/build-with-claude/effort', verified: '2026-09-30' },
-    legacyKeys: { opus48T: { effort: ReasoningEffort.HIGH }, opus48: { effort: ReasoningEffort.HIGH, thinking: false } },
     openRouterOnly: false,
     deprecated: true,
   },
@@ -270,7 +270,6 @@ export const ANTHROPIC_MODELS: readonly ModelEntry[] = [
     },
     reasoning: { efforts: ANTHROPIC_REASONING_EFFORTS, off: ANTHROPIC_REASONING_EFFORTS, providerDefault: ReasoningEffort.HIGH },
     source: { url: 'https://platform.claude.com/docs/en/build-with-claude/effort', verified: '2026-09-30' },
-    legacyKeys: { opus47T: { effort: ReasoningEffort.HIGH }, opus47: { effort: ReasoningEffort.HIGH, thinking: false } },
     openRouterOnly: false,
     deprecated: true,
   },
@@ -296,7 +295,6 @@ export const ANTHROPIC_MODELS: readonly ModelEntry[] = [
     },
     reasoning: { efforts: ANTHROPIC_REASONING_EFFORTS_WITHOUT_XHIGH, off: ANTHROPIC_REASONING_EFFORTS_WITHOUT_XHIGH, providerDefault: ReasoningEffort.HIGH },
     source: { url: 'https://platform.claude.com/docs/en/build-with-claude/effort', verified: '2026-09-30' },
-    legacyKeys: { opus46T: { effort: ReasoningEffort.HIGH }, opus46: { effort: ReasoningEffort.HIGH, thinking: false } },
     openRouterOnly: false,
     deprecated: true,
   },
@@ -319,6 +317,7 @@ export const ANTHROPIC_MODELS: readonly ModelEntry[] = [
     outputPrice: 10.0,
     capabilities: {
       ...ANTHROPIC_DEFAULT_CAPABILITIES,
+      supportsIntermDevMsgs: true,
       cacheDiscountFactor: 0.05,
       supportsNativeWebSearch: true,
       supportsDynamicFilteringWebSearch: true,
@@ -328,7 +327,6 @@ export const ANTHROPIC_MODELS: readonly ModelEntry[] = [
     },
     reasoning: { efforts: ANTHROPIC_REASONING_EFFORTS, providerDefault: ReasoningEffort.HIGH },
     source: { url: 'https://platform.claude.com/docs/en/about-claude/pricing', verified: '2026-10-16' },
-    legacyKeys: { sonnet55: { effort: ReasoningEffort.HIGH } },
     openRouterOnly: false,
   },
   // Haiku 5.5 (2026-10-07): $0.10 / $0.50, cache reads $0.01 (0.1x) for
@@ -357,6 +355,7 @@ export const ANTHROPIC_MODELS: readonly ModelEntry[] = [
     },
     capabilities: {
       ...ANTHROPIC_DEFAULT_CAPABILITIES,
+      supportsIntermDevMsgs: true,
       supportsNativeWebSearch: true,
       supportsDynamicFilteringWebSearch: true,
       supportsNativeCodeExecution: true,
@@ -389,7 +388,6 @@ export const ANTHROPIC_MODELS: readonly ModelEntry[] = [
     },
     reasoning: { efforts: ANTHROPIC_REASONING_EFFORTS, off: ANTHROPIC_REASONING_EFFORTS, providerDefault: ReasoningEffort.HIGH },
     source: { url: 'https://platform.claude.com/docs/en/build-with-claude/effort', verified: '2026-09-30' },
-    legacyKeys: { sonnet5T: { effort: ReasoningEffort.HIGH }, sonnet5: { effort: ReasoningEffort.HIGH, thinking: false } },
     openRouterOnly: false,
     // Superseded by Claude Sonnet 5.5 (same price, context and output).
     deprecated: true,
@@ -401,7 +399,7 @@ export const ANTHROPIC_MODELS: readonly ModelEntry[] = [
     openrouterFullName: 'anthropic/claude-sonnet-4.6',
     vscodeLMFullName: 'claude-sonnet-4.6',
     provider: ModelProvider.ANTHROPIC,
-    maxOutputTokens: 64000,
+    maxOutputTokens: 128000,
     contextWindow: 1000000,
     inputPrice: 3.0,
     outputPrice: 15.0,
@@ -414,8 +412,7 @@ export const ANTHROPIC_MODELS: readonly ModelEntry[] = [
       supportsInterleavedThinking: true,
     },
     reasoning: { efforts: ANTHROPIC_REASONING_EFFORTS_WITHOUT_XHIGH, off: ANTHROPIC_REASONING_EFFORTS_WITHOUT_XHIGH, providerDefault: ReasoningEffort.HIGH },
-    source: { url: 'https://platform.claude.com/docs/en/build-with-claude/effort', verified: '2026-09-30' },
-    legacyKeys: { sonnet46T: { effort: ReasoningEffort.HIGH }, sonnet46: { effort: ReasoningEffort.HIGH, thinking: false } },
+    source: { url: 'https://platform.claude.com/docs/en/models/sonnet-4-6/overview', verified: '2026-10-26' },
     openRouterOnly: false,
     deprecated: true,
   },
@@ -440,7 +437,6 @@ export const ANTHROPIC_MODELS: readonly ModelEntry[] = [
     },
     reasoning: { efforts: LOW_TO_HIGH_EFFORTS, off: LOW_TO_HIGH_EFFORTS, budget: true, providerDefault: ReasoningEffort.HIGH },
     source: { url: 'https://platform.claude.com/docs/en/build-with-claude/effort', verified: '2026-09-30' },
-    legacyKeys: { opus45T: { effort: ReasoningEffort.HIGH }, opus45: { effort: ReasoningEffort.HIGH, thinking: false } },
     openRouterOnly: false,
     deprecated: true,
   },
@@ -464,7 +460,6 @@ export const ANTHROPIC_MODELS: readonly ModelEntry[] = [
       supportsInterleavedThinking: true,
     },
     reasoning: { efforts: [], off: [], budget: true },
-    legacyKeys: { opus41T: { thinking: true }, opus41: { effort: ReasoningEffort.NONE } },
     openRouterOnly: false,
     deprecated: true,
     retired: true,
@@ -489,7 +484,6 @@ export const ANTHROPIC_MODELS: readonly ModelEntry[] = [
       supportsInterleavedThinking: true,
     },
     reasoning: { efforts: [], off: [], budget: true },
-    legacyKeys: { opus4T: { thinking: true }, opus4: { effort: ReasoningEffort.NONE } },
     openRouterOnly: false,
     deprecated: true,
     // Retired on the Claude API; still served on Google Cloud (Vertex).
@@ -515,7 +509,6 @@ export const ANTHROPIC_MODELS: readonly ModelEntry[] = [
     },
     reasoning: { efforts: [], off: [], budget: true },
     source: { url: 'https://platform.claude.com/docs/en/models/sonnet-4-5/overview', verified: '2026-09-30' },
-    legacyKeys: { sonnet45T: { thinking: true }, sonnet45: { effort: ReasoningEffort.NONE } },
     openRouterOnly: false,
     deprecated: true,
   },
@@ -540,7 +533,6 @@ export const ANTHROPIC_MODELS: readonly ModelEntry[] = [
     },
     reasoning: { efforts: [], off: [], budget: true },
     source: { url: 'https://platform.claude.com/docs/en/models/haiku-4-5/overview', verified: '2026-09-30' },
-    legacyKeys: { haiku45T: { thinking: true }, haiku45: { effort: ReasoningEffort.NONE } },
     openRouterOnly: false,
     // Superseded by Claude Haiku 5.5 (a tenth of the price, 1M context);
     // Anthropic still lists it as Active (model deprecations page).
@@ -565,7 +557,6 @@ export const ANTHROPIC_MODELS: readonly ModelEntry[] = [
       supportsInterleavedThinking: true,
     },
     reasoning: { efforts: [], off: [], budget: true },
-    legacyKeys: { sonnet4T: { thinking: true }, sonnet4: { effort: ReasoningEffort.NONE } },
     openRouterOnly: false,
     deprecated: true,
     // Retired on the Claude API; still served on Bedrock and Google Cloud.
@@ -589,7 +580,6 @@ export const ANTHROPIC_MODELS: readonly ModelEntry[] = [
       supportsAssistantPrefill: true,
     },
     reasoning: { efforts: [], off: [], budget: true },
-    legacyKeys: { sonnet37T: { thinking: true }, sonnet37: { effort: ReasoningEffort.NONE } },
     openRouterOnly: false,
     deprecated: true,
     retired: true,
@@ -608,7 +598,6 @@ export const ANTHROPIC_MODELS: readonly ModelEntry[] = [
       ...ANTHROPIC_DEFAULT_CAPABILITIES,
       supportsAssistantPrefill: true,
     },
-    legacyKeys: { opus3: {} },
     openRouterOnly: false,
     deprecated: true,
     retired: true,
@@ -627,7 +616,6 @@ export const ANTHROPIC_MODELS: readonly ModelEntry[] = [
       ...ANTHROPIC_DEFAULT_CAPABILITIES,
       supportsAssistantPrefill: true,
     },
-    legacyKeys: { sonnet36: {} },
     openRouterOnly: false,
     deprecated: true,
     retired: true,
@@ -647,7 +635,6 @@ export const ANTHROPIC_MODELS: readonly ModelEntry[] = [
       supportsNativeWebSearch: true,
       supportsAssistantPrefill: true,
     },
-    legacyKeys: { sonnet35: {} },
     openRouterOnly: false,
     deprecated: true,
     retired: true,
@@ -666,7 +653,6 @@ export const ANTHROPIC_MODELS: readonly ModelEntry[] = [
       ...ANTHROPIC_DEFAULT_CAPABILITIES,
       supportsAssistantPrefill: true,
     },
-    legacyKeys: { sonnet3: {} },
     openRouterOnly: false,
     deprecated: true,
     retired: true,
@@ -688,7 +674,6 @@ export const ANTHROPIC_MODELS: readonly ModelEntry[] = [
       supportsAssistantPrefill: true,
       supportsVision: true,
     },
-    legacyKeys: { haiku35: {} },
     openRouterOnly: false,
     deprecated: true,
     retired: true,
@@ -707,7 +692,6 @@ export const ANTHROPIC_MODELS: readonly ModelEntry[] = [
       ...ANTHROPIC_DEFAULT_CAPABILITIES,
       supportsAssistantPrefill: true,
     },
-    legacyKeys: { haiku3: {} },
     openRouterOnly: false,
     deprecated: true,
     retired: true,

@@ -34,7 +34,6 @@ scope for an automated PR.
    source, do not invent it — skip the model.
 4. Add only models that are (a) verified, (b) from an in-scope
    provider, and (c) not already present (check `id` and labels).
-   New models get no `legacyKeys`; those exist only for 1.x keys.
 5. If you add anything: bump the `version` in `package.json` (minor
    bump), update any provider model counts / highlights in
    `README.md`, then run `npm run typecheck` and `npm run build` and

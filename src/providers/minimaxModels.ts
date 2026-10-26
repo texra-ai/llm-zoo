@@ -55,7 +55,6 @@ export const MINIMAX_MODELS: readonly ModelEntry[] = [
     // thinking: {type: 'disabled'} skips thinking; reasoning_effort is ignored
     // (only M3.1-Flash-Preview tunes depth). M2.x always think.
     reasoning: { efforts: [], off: [] },
-    legacyKeys: { minimaxM3: {} },
     source: { url: 'https://platform.minimax.io/docs/api-reference/text-chat-openai', verified: '2026-10-16' },
     openRouterOnly: false,
   },
@@ -77,7 +76,6 @@ export const MINIMAX_MODELS: readonly ModelEntry[] = [
       cacheDiscountFactor: 0.2,
     },
     reasoning: { efforts: [] },
-    legacyKeys: { minimaxM27: {} },
     source: { url: 'https://platform.minimax.io/docs/guides/models-intro', verified: '2026-10-25' },
     openRouterOnly: false,
     // Dropped from MiniMax's API model list, pay-as-you-go pricing and chat
@@ -103,7 +101,6 @@ export const MINIMAX_MODELS: readonly ModelEntry[] = [
       cacheDiscountFactor: 0.1,
     },
     reasoning: { efforts: [] },
-    legacyKeys: { minimaxM27highspeed: {} },
     source: { url: 'https://platform.minimax.io/docs/guides/models-intro', verified: '2026-10-25' },
     openRouterOnly: false,
     // Dropped from MiniMax's API model list, pay-as-you-go pricing and chat
@@ -125,7 +122,6 @@ export const MINIMAX_MODELS: readonly ModelEntry[] = [
       ...MINIMAX_DEFAULT_CAPABILITIES,
     },
     reasoning: { efforts: [] },
-    legacyKeys: { minimaxM25: {} },
     source: { url: 'https://platform.minimax.io/docs/pricing/overview', verified: '2026-10-16' },
     openRouterOnly: false,
     deprecated: true,
@@ -144,7 +140,6 @@ export const MINIMAX_MODELS: readonly ModelEntry[] = [
       ...MINIMAX_DEFAULT_CAPABILITIES,
     },
     reasoning: { efforts: [] },
-    legacyKeys: { minimaxM21: {} },
     source: { url: 'https://platform.minimax.io/docs/faq/models', verified: '2026-10-16' },
     openRouterOnly: false,
     deprecated: true,
@@ -166,7 +161,6 @@ export const MINIMAX_MODELS: readonly ModelEntry[] = [
       ...MINIMAX_DEFAULT_CAPABILITIES,
     },
     reasoning: { efforts: [] },
-    legacyKeys: { minimaxM2: {} },
     source: { url: 'https://platform.minimax.io/docs/faq/models', verified: '2026-10-16' },
     // Listed as Retired in MiniMax's model list; OpenRouter still routes it
     // to a Google-hosted endpoint.
@@ -188,7 +182,6 @@ export const MINIMAX_MODELS: readonly ModelEntry[] = [
     },
     reasoning: { efforts: [] },
     source: { url: 'https://openrouter.ai/minimax/minimax-m1', verified: '2026-09-30' },
-    legacyKeys: { minimaxM1: {} },
     // Not served on the vendor's own Responses API.
     openRouterOnly: true,
     deprecated: true,
@@ -209,7 +202,6 @@ export const MINIMAX_MODELS: readonly ModelEntry[] = [
     },
     // Not a reasoning model: OpenRouter lists no reasoning parameter for it.
     source: { url: 'https://openrouter.ai/minimax/minimax-01', verified: '2026-09-30' },
-    legacyKeys: { minimax01: {} },
     // Not served on the vendor's own Responses API.
     openRouterOnly: true,
     deprecated: true,

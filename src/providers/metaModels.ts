@@ -79,7 +79,6 @@ export const META_MODELS: readonly ModelEntry[] = [
     // "max" is Standard-tier muse-spark-1.3 only (not Contributor tier).
     reasoning: { efforts: [...MUSE_SPARK_EFFORTS, ReasoningEffort.MAX] },
     source: { url: 'https://dev.meta.ai/docs/reasoning', verified: '2026-09-30' },
-    legacyKeys: { musespark13: { effort: ReasoningEffort.MEDIUM } },
     openRouterOnly: false,
   },
   // Muse Spark 1.2 (released 2026-08-05): Standard tier $1.25 / $0.15 cached /
@@ -103,7 +102,6 @@ export const META_MODELS: readonly ModelEntry[] = [
     // "max" is 1.3-only.
     reasoning: { efforts: MUSE_SPARK_EFFORTS },
     source: { url: 'https://dev.meta.ai/docs/reasoning', verified: '2026-09-30' },
-    legacyKeys: { musespark12: { effort: ReasoningEffort.MEDIUM } },
     openRouterOnly: false,
     deprecated: true,
   },
@@ -120,7 +118,6 @@ export const META_MODELS: readonly ModelEntry[] = [
     capabilities: META_DEFAULT_CAPABILITIES,
     reasoning: { efforts: MUSE_SPARK_EFFORTS },
     source: { url: 'https://dev.meta.ai/docs/reasoning', verified: '2026-09-30' },
-    legacyKeys: { musespark11: { effort: ReasoningEffort.MEDIUM } },
     openRouterOnly: false,
     deprecated: true,
   },

@@ -28,7 +28,6 @@ export const OTHER_MODELS: readonly ModelEntry[] = [
     inputPrice: 3.0,
     outputPrice: 3.0,
     capabilities: OTHER_DEFAULT_CAPABILITIES,
-    legacyKeys: { llama31: {} },
     openRouterOnly: true,
     deprecated: true,
     // Absent from OpenRouter's model list, and its endpoints list is empty
@@ -48,7 +47,6 @@ export const OTHER_MODELS: readonly ModelEntry[] = [
     capabilities: {
       ...OTHER_DEFAULT_CAPABILITIES,
     },
-    legacyKeys: { 'qvq-72b': {} },
     openRouterOnly: true,
     deprecated: true,
     retired: true,

@@ -56,9 +56,9 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     reasoning: { efforts: LOW_TO_HIGH_EFFORTS },
     tiers: { fast: { inputPrice: 2, outputPrice: 8 } },
     source: { url: 'https://developers.openai.com/api/docs/models/o4-mini', verified: '2026-09-30' },
-    legacyKeys: { 'o4-': { effort: ReasoningEffort.HIGH } },
     openRouterOnly: false,
     deprecated: true,
+    retired: true,
   },
   {
     label: 'o3 Pro',
@@ -82,7 +82,6 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     // o-series efforts: the GPT-5.4 guide notes earlier reasoning models like o3 accepted only low/medium/high; no default is documented.
     reasoning: { efforts: LOW_TO_HIGH_EFFORTS },
     source: { url: 'https://developers.openai.com/api/docs/models/o3-pro', verified: '2026-09-30' },
-    legacyKeys: { o3pro: { effort: ReasoningEffort.HIGH } },
     openRouterOnly: false,
     deprecated: true,
   },
@@ -110,7 +109,6 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     reasoning: { efforts: LOW_TO_HIGH_EFFORTS },
     tiers: { fast: { inputPrice: 3.5, outputPrice: 14 } },
     source: { url: 'https://developers.openai.com/api/docs/models/o3', verified: '2026-09-30' },
-    legacyKeys: { o3: { effort: ReasoningEffort.HIGH } },
     openRouterOnly: false,
     deprecated: true,
   },
@@ -134,9 +132,9 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     // o-series efforts: the GPT-5.4 guide notes earlier reasoning models like o3 accepted only low/medium/high; no default is documented.
     reasoning: { efforts: LOW_TO_HIGH_EFFORTS },
     source: { url: 'https://developers.openai.com/api/docs/models/o3-mini', verified: '2026-09-30' },
-    legacyKeys: { 'o3-': { effort: ReasoningEffort.HIGH } },
     openRouterOnly: false,
     deprecated: true,
+    retired: true,
   },
   {
     label: 'o1 Pro',
@@ -156,9 +154,9 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     // o-series efforts: the GPT-5.4 guide notes earlier reasoning models like o3 accepted only low/medium/high; no default is documented.
     reasoning: { efforts: LOW_TO_HIGH_EFFORTS },
     source: { url: 'https://developers.openai.com/api/docs/models/o1-pro', verified: '2026-09-30' },
-    legacyKeys: { o1pro: { effort: ReasoningEffort.HIGH } },
     openRouterOnly: false,
     deprecated: true,
+    retired: true,
   },
   {
     label: 'o1',
@@ -180,9 +178,9 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     // o-series efforts: the GPT-5.4 guide notes earlier reasoning models like o3 accepted only low/medium/high; no default is documented.
     reasoning: { efforts: LOW_TO_HIGH_EFFORTS },
     source: { url: 'https://developers.openai.com/api/docs/models/o1', verified: '2026-09-30' },
-    legacyKeys: { o1: { effort: ReasoningEffort.HIGH } },
     openRouterOnly: false,
     deprecated: true,
+    retired: true,
   },
   {
     label: 'o1 Preview',
@@ -202,7 +200,6 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     },
     // Retired before its effort levels were recorded; they can no longer be checked.
     reasoning: { efforts: [] },
-    legacyKeys: { o1preview: {} },
     openRouterOnly: false,
     deprecated: true,
     retired: true,
@@ -225,7 +222,6 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     },
     // Retired before its effort levels were recorded; they can no longer be checked.
     reasoning: { efforts: [] },
-    legacyKeys: { 'o1-': {} },
     openRouterOnly: false,
     deprecated: true,
     retired: true,
@@ -246,7 +242,6 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     },
     reasoning: { efforts: LOW_TO_HIGH_EFFORTS },
     source: { url: 'https://developers.openai.com/api/docs/models/gpt-oss-120b', verified: '2026-09-30' },
-    legacyKeys: { gptoss: { effort: ReasoningEffort.HIGH } },
     openRouterOnly: true,
     deprecated: true,
   },
@@ -266,7 +261,6 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     },
     reasoning: { efforts: LOW_TO_HIGH_EFFORTS },
     source: { url: 'https://developers.openai.com/api/docs/models/gpt-oss-20b', verified: '2026-09-30' },
-    legacyKeys: { 'gptoss-': { effort: ReasoningEffort.HIGH } },
     openRouterOnly: true,
     deprecated: true,
   },
@@ -293,7 +287,6 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     },
     reasoning: { efforts: [ReasoningEffort.HIGH], providerDefault: ReasoningEffort.HIGH },
     source: { url: 'https://developers.openai.com/api/docs/models/gpt-5-pro', verified: '2026-09-30' },
-    legacyKeys: { gpt5pro: { effort: ReasoningEffort.HIGH } },
     openRouterOnly: false,
     deprecated: true,
   },
@@ -321,7 +314,6 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     reasoning: { efforts: MINIMAL_TO_HIGH_EFFORTS, providerDefault: ReasoningEffort.MEDIUM },
     tiers: { fast: { inputPrice: 2.5, outputPrice: 20 } },
     source: { url: 'https://developers.openai.com/api/docs/guides/latest-model/gpt-5', verified: '2026-09-30' },
-    legacyKeys: { gpt5: { effort: ReasoningEffort.HIGH } },
     openRouterOnly: false,
     deprecated: true,
   },
@@ -349,7 +341,6 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     reasoning: { efforts: LOW_TO_HIGH_EFFORTS, off: [], providerDefault: ReasoningEffort.NONE },
     tiers: { fast: { inputPrice: 2.5, outputPrice: 20 } },
     source: { url: 'https://developers.openai.com/api/docs/models/gpt-5.1', verified: '2026-09-30' },
-    legacyKeys: { gpt51: { effort: ReasoningEffort.HIGH } },
     openRouterOnly: false,
     deprecated: true,
   },
@@ -375,7 +366,6 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     },
     reasoning: { efforts: MEDIUM_TO_XHIGH_EFFORTS },
     source: { url: 'https://developers.openai.com/api/docs/models/gpt-5.2-pro', verified: '2026-09-30' },
-    legacyKeys: { gpt52pro: { effort: ReasoningEffort.XHIGH } },
     requiresResponsesAPI: true,
     openRouterOnly: false,
     deprecated: true,
@@ -403,7 +393,6 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     reasoning: { efforts: LOW_TO_XHIGH_EFFORTS, off: [], providerDefault: ReasoningEffort.NONE },
     tiers: { fast: { inputPrice: 3.5, outputPrice: 28 } },
     source: { url: 'https://developers.openai.com/api/docs/models/gpt-5.2', verified: '2026-09-30' },
-    legacyKeys: { gpt52: { effort: ReasoningEffort.XHIGH } },
     openRouterOnly: false,
     deprecated: true,
   },
@@ -429,7 +418,6 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     },
     // Retired before its effort levels were recorded; they can no longer be checked.
     reasoning: { efforts: [] },
-    legacyKeys: { gpt52codex: {} },
     openRouterOnly: false,
     deprecated: true,
     retired: true,
@@ -457,7 +445,6 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     },
     reasoning: { efforts: LOW_TO_XHIGH_EFFORTS },
     source: { url: 'https://developers.openai.com/api/docs/models/gpt-5.3-codex', verified: '2026-09-30' },
-    legacyKeys: { gpt53codex: { effort: ReasoningEffort.XHIGH } },
     openRouterOnly: false,
     deprecated: true,
   },
@@ -490,7 +477,6 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     },
     reasoning: { efforts: MEDIUM_TO_XHIGH_EFFORTS, providerDefault: ReasoningEffort.MEDIUM },
     source: { url: 'https://developers.openai.com/api/docs/models/gpt-5.4-pro', verified: '2026-09-30' },
-    legacyKeys: { gpt54pro: { effort: ReasoningEffort.XHIGH } },
     requiresResponsesAPI: true,
     openRouterOnly: false,
     deprecated: true,
@@ -525,7 +511,6 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     reasoning: { efforts: LOW_TO_XHIGH_EFFORTS, off: [], providerDefault: ReasoningEffort.MEDIUM },
     tiers: { fast: { inputPrice: 12.5, outputPrice: 75 } },
     source: { url: 'https://developers.openai.com/api/docs/models/gpt-5.5', verified: '2026-09-30' },
-    legacyKeys: { gpt55: { effort: ReasoningEffort.XHIGH } },
     openRouterOnly: false,
     // Retired from Codex with ChatGPT sign-in on 2026-10-14
     // (https://developers.openai.com/codex/models).
@@ -561,7 +546,6 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     },
     reasoning: { efforts: MEDIUM_TO_XHIGH_EFFORTS, providerDefault: ReasoningEffort.HIGH },
     source: { url: 'https://developers.openai.com/api/docs/models/gpt-5.5-pro', verified: '2026-09-30' },
-    legacyKeys: { gpt55pro: { effort: ReasoningEffort.XHIGH } },
     requiresResponsesAPI: true,
     openRouterOnly: false,
     deprecated: true,
@@ -607,10 +591,9 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
       },
     },
     source: { url: 'https://developers.openai.com/api/docs/models/gpt-5.6-sol', verified: '2026-09-30' },
-    legacyKeys: { gpt56: { effort: ReasoningEffort.MEDIUM }, gpt56pro: { effort: ReasoningEffort.MEDIUM, mode: 'pro' }, gpt56fast: { effort: ReasoningEffort.MEDIUM } },
     openRouterOnly: false,
     codexSubscription: { contextWindow: 272000 },
-    // Superseded by GPT-6 Sol (gpt6-).
+    // Superseded by GPT-6 Sol (`openai/gpt-6-sol`).
     deprecated: true,
   },
   {
@@ -646,7 +629,6 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     modes: ['pro'],
     tiers: { fast: { inputPrice: 4, outputPrice: 24 } },
     source: { url: 'https://developers.openai.com/api/docs/models/gpt-5.6-terra', verified: '2026-09-30' },
-    legacyKeys: { 'gpt56-': { effort: ReasoningEffort.MEDIUM } },
     openRouterOnly: false,
     codexSubscription: { contextWindow: 272000 },
   },
@@ -682,10 +664,9 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     modes: ['pro'],
     tiers: { fast: { inputPrice: 0.4, outputPrice: 2.4 } },
     source: { url: 'https://developers.openai.com/api/docs/models/gpt-5.6-luna', verified: '2026-09-30' },
-    legacyKeys: { 'gpt56--': { effort: ReasoningEffort.MEDIUM } },
     openRouterOnly: false,
     codexSubscription: { contextWindow: 272000 },
-    // Superseded by GPT-6 Luna (gpt6--).
+    // Superseded by GPT-6 Luna (`openai/gpt-6-luna`).
     deprecated: true,
   },
   // GPT-6 Astra (2026-09-04): OpenAI's flagship. Launched in the Trusted
@@ -725,7 +706,6 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     modes: ['pro'],
     tiers: { fast: { inputPrice: 20, outputPrice: 100 } },
     source: { url: 'https://developers.openai.com/api/docs/models/gpt-6-astra', verified: '2026-09-30' },
-    legacyKeys: { gpt6: { effort: ReasoningEffort.MEDIUM } },
     // Tool calling and pro mode need the Responses API (Chat Completions works
     // only without tools; every effort level is accepted in both APIs); also
     // keeps coauthor's router (which only pattern-matches gpt-5* names) on the
@@ -773,7 +753,6 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     modes: ['pro'],
     tiers: { fast: { inputPrice: 4, outputPrice: 20 } },
     source: { url: 'https://developers.openai.com/api/docs/models/gpt-6.1-sol', verified: '2026-09-30' },
-    legacyKeys: { 'gpt61-': { effort: ReasoningEffort.MEDIUM } },
     // Same reason as gpt6: tool calling and pro mode need the Responses API.
     requiresResponsesAPI: true,
     openRouterOnly: false,
@@ -812,12 +791,11 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     modes: ['pro'],
     tiers: { fast: { inputPrice: 4, outputPrice: 20 } },
     source: { url: 'https://developers.openai.com/api/docs/models/gpt-6-sol', verified: '2026-09-30' },
-    legacyKeys: { 'gpt6-': { effort: ReasoningEffort.MEDIUM } },
     // Same reason as gpt6: tool calling and pro mode need the Responses API.
     requiresResponsesAPI: true,
     openRouterOnly: false,
     codexSubscription: { contextWindow: 272000 },
-    // Superseded by GPT-6.1 Sol (gpt61-): same price, cheaper cached input.
+    // Superseded by GPT-6.1 Sol (`openai/gpt-6.1-sol`): same price, cheaper cached input.
     deprecated: true,
   },
   {
@@ -849,7 +827,6 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     modes: ['pro'],
     tiers: { fast: { inputPrice: 0.2, outputPrice: 1 } },
     source: { url: 'https://developers.openai.com/api/docs/models/gpt-6-luna', verified: '2026-09-30' },
-    legacyKeys: { 'gpt6--': { effort: ReasoningEffort.MEDIUM } },
     requiresResponsesAPI: true,
     openRouterOnly: false,
     codexSubscription: { contextWindow: 272000 },
@@ -884,7 +861,6 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     reasoning: { efforts: LOW_TO_XHIGH_EFFORTS, off: [], providerDefault: ReasoningEffort.NONE },
     tiers: { fast: { inputPrice: 5, outputPrice: 30 } },
     source: { url: 'https://developers.openai.com/api/docs/models/gpt-5.4', verified: '2026-09-30' },
-    legacyKeys: { gpt54: { effort: ReasoningEffort.XHIGH } },
     openRouterOnly: false,
     deprecated: true,
   },
@@ -912,7 +888,6 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     reasoning: { efforts: LOW_TO_XHIGH_EFFORTS, off: [], providerDefault: ReasoningEffort.NONE },
     tiers: { fast: { inputPrice: 1.5, outputPrice: 9 } },
     source: { url: 'https://developers.openai.com/api/docs/models/gpt-5.4-mini', verified: '2026-09-30' },
-    legacyKeys: { 'gpt54-': { effort: ReasoningEffort.XHIGH } },
     openRouterOnly: false,
     deprecated: true,
   },
@@ -937,7 +912,6 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     },
     reasoning: { efforts: LOW_TO_XHIGH_EFFORTS, off: [], providerDefault: ReasoningEffort.NONE },
     source: { url: 'https://developers.openai.com/api/docs/models/gpt-5.4-nano', verified: '2026-09-30' },
-    legacyKeys: { 'gpt54--': { effort: ReasoningEffort.XHIGH } },
     openRouterOnly: false,
     deprecated: true,
   },
@@ -966,7 +940,6 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     reasoning: { efforts: MINIMAL_TO_HIGH_EFFORTS, providerDefault: ReasoningEffort.MEDIUM },
     tiers: { fast: { inputPrice: 0.45, outputPrice: 3.6 } },
     source: { url: 'https://developers.openai.com/api/docs/guides/latest-model/gpt-5', verified: '2026-09-30' },
-    legacyKeys: { 'gpt5-': { effort: ReasoningEffort.HIGH } },
     openRouterOnly: false,
     deprecated: true,
   },
@@ -993,7 +966,6 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     // GPT-5 family efforts and default (medium) from the Using GPT-5 guide.
     reasoning: { efforts: MINIMAL_TO_HIGH_EFFORTS, providerDefault: ReasoningEffort.MEDIUM },
     source: { url: 'https://developers.openai.com/api/docs/guides/latest-model/gpt-5', verified: '2026-09-30' },
-    legacyKeys: { 'gpt5--': { effort: ReasoningEffort.HIGH } },
     openRouterOnly: false,
     deprecated: true,
   },

@@ -6,7 +6,7 @@
  * @packageDocumentation
  */
 
-import { ModelConfig, ModelEntry, ModelRef, ModelSelection } from './ModelConfig';
+import { ModelConfig, ModelEntry, ModelRef } from './ModelConfig';
 import {
   ANTHROPIC_MODELS,
   OPENAI_DEEP_RESEARCH_MODELS,
@@ -21,7 +21,6 @@ import {
   MINIMAX_MODELS,
   MOONSHOT_MODELS,
   DASHSCOPE_MODELS,
-  COPILOT_MODELS,
   COPILOT_MODEL_IDS,
   COPILOT_MODEL_NAMES,
   type CopilotModelId,
@@ -42,7 +41,6 @@ const ENTRIES: readonly ModelEntry[] = [
   ...MINIMAX_MODELS,
   ...MOONSHOT_MODELS,
   ...DASHSCOPE_MODELS,
-  ...COPILOT_MODELS,
 ];
 
 /**
@@ -69,16 +67,6 @@ export const MODEL_CONFIGS: Readonly<Record<ModelRef, ModelConfig>> = Object.fro
 export const MODELS = Object.keys(MODEL_CONFIGS) as ModelRef[];
 
 /**
- * llm-zoo 1.x registry keys, each mapped to the model selection it stood for
- * (e.g. `opus5T` → `{ ref: 'anthropic/claude-opus-5', effort: 'high' }`).
- */
-export const LEGACY_KEYS: Readonly<Record<string, ModelSelection>> = Object.fromEntries(
-  Object.values(MODEL_CONFIGS).flatMap((model) =>
-    Object.entries(model.legacyKeys ?? {}).map(([key, selection]) => [key, { ref: model.ref, ...selection }]),
-  ),
-);
-
-/**
  * Re-export individual provider model collections for granular access.
  */
 export {
@@ -95,7 +83,6 @@ export {
   MINIMAX_MODELS,
   MOONSHOT_MODELS,
   DASHSCOPE_MODELS,
-  COPILOT_MODELS,
   COPILOT_MODEL_IDS,
   COPILOT_MODEL_NAMES,
   type CopilotModelId,

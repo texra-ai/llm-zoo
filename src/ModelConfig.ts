@@ -128,15 +128,13 @@ export type ModelRef = `${ModelProvider}/${string}`;
 
 /**
  * A model plus how to run it. Written as a string: `provider/id[@effort][+pro]`,
- * e.g. `anthropic/claude-opus-5@high`. `effort: 'none'` turns thinking off;
- * `thinking: false` with another effort is for models whose `reasoning.off`
- * lists that level. Service tiers are not part of a selection: they are a
- * routing choice of the caller.
+ * e.g. `anthropic/claude-opus-5@high`. `effort: 'none'` turns thinking off.
+ * Service tiers are not part of a selection: they are a routing choice of the
+ * caller.
  */
 export interface ModelSelection {
   ref: ModelRef;
   effort?: ReasoningEffort;
-  thinking?: boolean;
   mode?: ReasoningMode;
 }
 
@@ -318,15 +316,6 @@ export interface ModelConfig {
 
   /** Where these facts were checked. Required for every model that is not retired. */
   source?: ModelSource;
-
-  /**
-   * Registry keys from llm-zoo 1.x that meant this model, each with the
-   * selection it stood for (e.g. `opus5T` → effort high). Kept so old
-   * configurations can be read; new code uses `ref`. A selection carries no
-   * service tier, so a 1.x fast-tier key maps to the standard selection and
-   * the caller chooses the tier.
-   */
-  legacyKeys?: Readonly<Record<string, Omit<ModelSelection, 'ref'>>>;
 
   /**
    * Whether this model is only available through OpenRouter.
