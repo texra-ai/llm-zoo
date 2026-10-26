@@ -59,6 +59,7 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     legacyKeys: { 'o4-': { effort: ReasoningEffort.HIGH } },
     openRouterOnly: false,
     deprecated: true,
+    retired: true,
   },
   {
     label: 'o3 Pro',
@@ -137,6 +138,7 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     legacyKeys: { 'o3-': { effort: ReasoningEffort.HIGH } },
     openRouterOnly: false,
     deprecated: true,
+    retired: true,
   },
   {
     label: 'o1 Pro',
@@ -159,6 +161,7 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     legacyKeys: { o1pro: { effort: ReasoningEffort.HIGH } },
     openRouterOnly: false,
     deprecated: true,
+    retired: true,
   },
   {
     label: 'o1',
@@ -183,6 +186,7 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     legacyKeys: { o1: { effort: ReasoningEffort.HIGH } },
     openRouterOnly: false,
     deprecated: true,
+    retired: true,
   },
   {
     label: 'o1 Preview',

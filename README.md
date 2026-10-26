@@ -171,7 +171,7 @@ Of the 35 current models:
 | **DashScope** | 6 | 4 | Qwen3.8 Max / Flash, Qwen3.7 Plus, 1M context, thinking budget |
 | **Meta** | 4 | 2 | Muse Wonder 1.0 (preview), Muse Spark 1.3, 1M context, agentic + multimodal |
 | **OpenRouter** | 2 | 0 | Llama 405B, QVQ-72B (retired) |
-| **Copilot** | 1 | 0 | Deprecated GPT-4o config; 27 documented names and 9 exact model identifiers |
+| **Copilot** | 0 | 0 | A route, not a model source: provider entries carry `copilotFullName`; 27 documented names and 9 exact model identifiers |
 
 "Models" counts every entry, including retired ones kept so old configurations still resolve; "Current" excludes retired and deprecated models.
 

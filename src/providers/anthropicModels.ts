@@ -66,6 +66,7 @@ export const ANTHROPIC_MODELS: readonly ModelEntry[] = [
     outputPrice: 50.0,
     capabilities: {
       ...ANTHROPIC_DEFAULT_CAPABILITIES,
+      supportsIntermDevMsgs: true,
       // Cache reads cost 0.025x base input on Fable 5.1 (a quarter of Fable 5's
       // 0.1x rate), per Anthropic's Fable 5.1 pricing table.
       cacheDiscountFactor: 0.025,
@@ -93,6 +94,7 @@ export const ANTHROPIC_MODELS: readonly ModelEntry[] = [
     outputPrice: 50.0,
     capabilities: {
       ...ANTHROPIC_DEFAULT_CAPABILITIES,
+      supportsIntermDevMsgs: true,
       cacheDiscountFactor: 0.025,
       supportsNativeMCPServer: true,
       supportsNativeWebSearch: true,
@@ -121,6 +123,7 @@ export const ANTHROPIC_MODELS: readonly ModelEntry[] = [
     outputPrice: 50.0,
     capabilities: {
       ...ANTHROPIC_DEFAULT_CAPABILITIES,
+      supportsIntermDevMsgs: true,
       supportsNativeMCPServer: true,
       supportsNativeWebSearch: true,
       supportsDynamicFilteringWebSearch: true,
@@ -147,6 +150,7 @@ export const ANTHROPIC_MODELS: readonly ModelEntry[] = [
     outputPrice: 50.0,
     capabilities: {
       ...ANTHROPIC_DEFAULT_CAPABILITIES,
+      supportsIntermDevMsgs: true,
       supportsNativeMCPServer: true,
       supportsNativeWebSearch: true,
       supportsDynamicFilteringWebSearch: true,
@@ -180,6 +184,7 @@ export const ANTHROPIC_MODELS: readonly ModelEntry[] = [
     outputPrice: 20.0,
     capabilities: {
       ...ANTHROPIC_DEFAULT_CAPABILITIES,
+      supportsIntermDevMsgs: true,
       cacheDiscountFactor: 0.05,
       supportsNativeMCPServer: true,
       supportsNativeWebSearch: true,
@@ -206,6 +211,7 @@ export const ANTHROPIC_MODELS: readonly ModelEntry[] = [
     outputPrice: 25.0,
     capabilities: {
       ...ANTHROPIC_DEFAULT_CAPABILITIES,
+      supportsIntermDevMsgs: true,
       supportsNativeMCPServer: true,
       supportsNativeWebSearch: true,
       supportsDynamicFilteringWebSearch: true,
@@ -235,6 +241,7 @@ export const ANTHROPIC_MODELS: readonly ModelEntry[] = [
     outputPrice: 25.0,
     capabilities: {
       ...ANTHROPIC_DEFAULT_CAPABILITIES,
+      supportsIntermDevMsgs: true,
       supportsNativeMCPServer: true,
       supportsNativeWebSearch: true,
       supportsDynamicFilteringWebSearch: true,
@@ -319,6 +326,7 @@ export const ANTHROPIC_MODELS: readonly ModelEntry[] = [
     outputPrice: 10.0,
     capabilities: {
       ...ANTHROPIC_DEFAULT_CAPABILITIES,
+      supportsIntermDevMsgs: true,
       cacheDiscountFactor: 0.05,
       supportsNativeWebSearch: true,
       supportsDynamicFilteringWebSearch: true,
@@ -357,6 +365,7 @@ export const ANTHROPIC_MODELS: readonly ModelEntry[] = [
     },
     capabilities: {
       ...ANTHROPIC_DEFAULT_CAPABILITIES,
+      supportsIntermDevMsgs: true,
       supportsNativeWebSearch: true,
       supportsDynamicFilteringWebSearch: true,
       supportsNativeCodeExecution: true,
@@ -401,7 +410,7 @@ export const ANTHROPIC_MODELS: readonly ModelEntry[] = [
     openrouterFullName: 'anthropic/claude-sonnet-4.6',
     vscodeLMFullName: 'claude-sonnet-4.6',
     provider: ModelProvider.ANTHROPIC,
-    maxOutputTokens: 64000,
+    maxOutputTokens: 128000,
     contextWindow: 1000000,
     inputPrice: 3.0,
     outputPrice: 15.0,
@@ -414,7 +423,7 @@ export const ANTHROPIC_MODELS: readonly ModelEntry[] = [
       supportsInterleavedThinking: true,
     },
     reasoning: { efforts: ANTHROPIC_REASONING_EFFORTS_WITHOUT_XHIGH, off: ANTHROPIC_REASONING_EFFORTS_WITHOUT_XHIGH, providerDefault: ReasoningEffort.HIGH },
-    source: { url: 'https://platform.claude.com/docs/en/build-with-claude/effort', verified: '2026-09-30' },
+    source: { url: 'https://platform.claude.com/docs/en/models/sonnet-4-6/overview', verified: '2026-10-26' },
     legacyKeys: { sonnet46T: { effort: ReasoningEffort.HIGH }, sonnet46: { effort: ReasoningEffort.HIGH, thinking: false } },
     openRouterOnly: false,
     deprecated: true,

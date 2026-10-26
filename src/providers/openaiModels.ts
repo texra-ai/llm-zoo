@@ -99,6 +99,7 @@ export const OPENAI_MODELS: readonly ModelEntry[] = [
     legacyKeys: { 'gpt41--': {} },
     openRouterOnly: false,
     deprecated: true,
+    retired: true,
   },
   {
     label: 'GPT-4.5 Preview',
@@ -162,6 +163,7 @@ export const OPENAI_MODELS: readonly ModelEntry[] = [
     openRouterOnly: false,
     // Deprecated; OpenAI shuts it down on 2026-10-23.
     deprecated: true,
+    retired: true,
   },
   {
     label: 'GPT-4o Mini',

@@ -5,7 +5,6 @@
 
 export { ANTHROPIC_MODELS } from './anthropicModels';
 export {
-  COPILOT_MODELS,
   COPILOT_MODEL_IDS,
   COPILOT_MODEL_NAMES,
   type CopilotModelId,

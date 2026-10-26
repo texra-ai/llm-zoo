@@ -1,15 +1,9 @@
-import {
-  DEFAULT_MODEL_CAPABILITIES,
-  ModelCapabilities,
-  ModelEntry,
-  ModelProvider,
-} from '../ModelConfig';
-
 /**
  * Model names documented as supported by GitHub Copilot.
  *
- * These labels cover the complete documented catalog. Matching ModelConfig
- * entries also carry `copilotFullName` and `vscodeLMFullName` route identifiers.
+ * These labels cover the complete documented catalog. Copilot has no model
+ * entries of its own: it is a route to the providers' models, whose entries
+ * carry `copilotFullName` and `vscodeLMFullName` route identifiers.
  * An authenticated adapter should still intersect the static catalog with the
  * account-specific model response at runtime because availability depends on
  * the user's plan, policy, and client.
@@ -69,38 +63,3 @@ export const COPILOT_MODEL_IDS = [
 ] as const;
 
 export type CopilotModelId = (typeof COPILOT_MODEL_IDS)[number];
-
-/**
- * Default capabilities for GitHub Copilot models.
- */
-const COPILOT_DEFAULT_CAPABILITIES: ModelCapabilities = {
-  ...DEFAULT_MODEL_CAPABILITIES,
-  supportsVision: true,
-  supportsNativePdf: false,
-};
-
-/**
- * GitHub Copilot model configurations.
- * The configured GPT-4o placeholder is retained for compatibility. Future
- * Copilot integrations should use the per-model route identifiers plus runtime
- * discovery; COPILOT_MODEL_NAMES retains models without a ModelConfig entry.
- */
-export const COPILOT_MODELS: readonly ModelEntry[] = [
-  {
-    label: 'Copilot GPT-4o',
-    id: 'copilot-gpt-4o',
-    shortName: 'copilot-gpt-4o',
-    provider: ModelProvider.COPILOT,
-    maxOutputTokens: 8192,
-    contextWindow: 128000,
-    inputPrice: 0,
-    outputPrice: 0,
-    capabilities: {
-      ...COPILOT_DEFAULT_CAPABILITIES,
-    },
-    legacyKeys: { copilot4o: {} },
-    openRouterOnly: false,
-    deprecated: true,
-    retired: true,
-  },
-];
