@@ -593,7 +593,7 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     source: { url: 'https://developers.openai.com/api/docs/models/gpt-5.6-sol', verified: '2026-09-30' },
     openRouterOnly: false,
     codexSubscription: { contextWindow: 272000 },
-    // Superseded by GPT-6 Sol (gpt6-).
+    // Superseded by GPT-6 Sol (`openai/gpt-6-sol`).
     deprecated: true,
   },
   {
@@ -666,7 +666,7 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     source: { url: 'https://developers.openai.com/api/docs/models/gpt-5.6-luna', verified: '2026-09-30' },
     openRouterOnly: false,
     codexSubscription: { contextWindow: 272000 },
-    // Superseded by GPT-6 Luna (gpt6--).
+    // Superseded by GPT-6 Luna (`openai/gpt-6-luna`).
     deprecated: true,
   },
   // GPT-6 Astra (2026-09-04): OpenAI's flagship. Launched in the Trusted
@@ -795,7 +795,7 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     requiresResponsesAPI: true,
     openRouterOnly: false,
     codexSubscription: { contextWindow: 272000 },
-    // Superseded by GPT-6.1 Sol (gpt61-): same price, cheaper cached input.
+    // Superseded by GPT-6.1 Sol (`openai/gpt-6.1-sol`): same price, cheaper cached input.
     deprecated: true,
   },
   {

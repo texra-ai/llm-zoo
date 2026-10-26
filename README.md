@@ -169,7 +169,7 @@ Of the 35 current models:
 | **OpenRouter** | 2 | 0 | Llama 405B, QVQ-72B (retired) |
 | **Copilot** | 0 | 0 | A route, not a model source: provider entries carry `copilotFullName`; 27 documented names and 9 exact model identifiers |
 
-"Models" counts every entry, including retired ones kept so old configurations still resolve; "Current" excludes retired and deprecated models.
+"Models" counts every entry, including retired ones kept so a caller can say a stored model is retired; "Current" excludes retired and deprecated models.
 
 ---
 
@@ -310,7 +310,6 @@ interface ReasoningSpec {
 interface ModelSelection {
   ref: ModelRef;
   effort?: ReasoningEffort;  // 'none' = thinking off
-  thinking?: boolean;
   mode?: 'pro';
 }
 
