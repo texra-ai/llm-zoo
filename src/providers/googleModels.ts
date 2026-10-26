@@ -85,7 +85,6 @@ export const GOOGLE_MODELS: readonly ModelEntry[] = [
     },
     reasoning: { efforts: LOW_TO_HIGH_EFFORTS, providerDefault: ReasoningEffort.MEDIUM },
     source: { url: 'https://ai.google.dev/gemini-api/docs/thinking', verified: '2026-09-30' },
-    legacyKeys: { gemini38f: { effort: ReasoningEffort.MEDIUM } },
     openRouterOnly: false,
   },
   {
@@ -108,7 +107,6 @@ export const GOOGLE_MODELS: readonly ModelEntry[] = [
     },
     reasoning: { efforts: LOW_TO_HIGH_EFFORTS, providerDefault: ReasoningEffort.MEDIUM },
     source: { url: 'https://ai.google.dev/gemini-api/docs/thinking', verified: '2026-09-30' },
-    legacyKeys: { gemini37f: { effort: ReasoningEffort.HIGH } },
     openRouterOnly: false,
     deprecated: true,
   },
@@ -135,7 +133,6 @@ export const GOOGLE_MODELS: readonly ModelEntry[] = [
     },
     reasoning: { efforts: MINIMAL_TO_HIGH_EFFORTS, providerDefault: ReasoningEffort.MEDIUM },
     source: { url: 'https://ai.google.dev/gemini-api/docs/thinking', verified: '2026-09-30' },
-    legacyKeys: { gemini36f: { effort: ReasoningEffort.HIGH } },
     openRouterOnly: false,
     deprecated: true,
   },
@@ -158,7 +155,6 @@ export const GOOGLE_MODELS: readonly ModelEntry[] = [
     },
     reasoning: { efforts: MINIMAL_TO_HIGH_EFFORTS, providerDefault: ReasoningEffort.MINIMAL },
     source: { url: 'https://ai.google.dev/gemini-api/docs/thinking', verified: '2026-09-30' },
-    legacyKeys: { 'gemini35f-': { effort: ReasoningEffort.LOW } },
     openRouterOnly: false,
   },
   {
@@ -182,7 +178,6 @@ export const GOOGLE_MODELS: readonly ModelEntry[] = [
     },
     reasoning: { efforts: MINIMAL_TO_HIGH_EFFORTS, providerDefault: ReasoningEffort.MEDIUM },
     source: { url: 'https://ai.google.dev/gemini-api/docs/thinking', verified: '2026-09-30' },
-    legacyKeys: { gemini35f: { effort: ReasoningEffort.HIGH } },
     openRouterOnly: false,
     deprecated: true,
   },
@@ -213,7 +208,6 @@ export const GOOGLE_MODELS: readonly ModelEntry[] = [
     },
     reasoning: { efforts: LOW_TO_HIGH_EFFORTS, providerDefault: ReasoningEffort.HIGH },
     source: { url: 'https://ai.google.dev/gemini-api/docs/thinking', verified: '2026-09-30' },
-    legacyKeys: { gemini31p: { effort: ReasoningEffort.HIGH } },
     openRouterOnly: false,
   },
   {
@@ -236,7 +230,6 @@ export const GOOGLE_MODELS: readonly ModelEntry[] = [
     // Not in the thinking-page table; the Gemini 3 guide lists minimal (default) to high.
     reasoning: { efforts: MINIMAL_TO_HIGH_EFFORTS, providerDefault: ReasoningEffort.MINIMAL },
     source: { url: 'https://ai.google.dev/gemini-api/docs/gemini-3', verified: '2026-09-30' },
-    legacyKeys: { 'gemini31f-': { effort: ReasoningEffort.LOW } },
     openRouterOnly: false,
     deprecated: true,
   },
@@ -259,7 +252,6 @@ export const GOOGLE_MODELS: readonly ModelEntry[] = [
       supportsNativeMCPServer: true,
     },
     reasoning: { efforts: [ReasoningEffort.LOW, ReasoningEffort.HIGH], providerDefault: ReasoningEffort.HIGH },
-    legacyKeys: { gemini3p: { effort: ReasoningEffort.HIGH } },
     openRouterOnly: false,
     deprecated: true,
     retired: true,
@@ -285,7 +277,6 @@ export const GOOGLE_MODELS: readonly ModelEntry[] = [
     },
     reasoning: { efforts: MINIMAL_TO_HIGH_EFFORTS, providerDefault: ReasoningEffort.HIGH },
     source: { url: 'https://ai.google.dev/gemini-api/docs/thinking', verified: '2026-09-30' },
-    legacyKeys: { gemini3f: { effort: ReasoningEffort.HIGH } },
     openRouterOnly: false,
     // Still served as a preview; the deprecations page announces no shutdown
     // date (recommended replacement: gemini-3.6-flash), so not retired.
@@ -319,7 +310,6 @@ export const GOOGLE_MODELS: readonly ModelEntry[] = [
     // 2.5 uses thinking_budget (tokens); thinking cannot be turned off for 2.5 Pro.
     reasoning: { efforts: [], budget: true },
     source: { url: 'https://ai.google.dev/gemini-api/docs/openai', verified: '2026-09-30' },
-    legacyKeys: { gemini25p: {} },
     openRouterOnly: false,
     deprecated: true,
   },
@@ -344,7 +334,6 @@ export const GOOGLE_MODELS: readonly ModelEntry[] = [
     // The alias has pointed to gemini-3.5-flash since 2026-05-19 (release notes).
     reasoning: { efforts: MINIMAL_TO_HIGH_EFFORTS, providerDefault: ReasoningEffort.MEDIUM },
     source: { url: 'https://ai.google.dev/gemini-api/docs/thinking', verified: '2026-09-30' },
-    legacyKeys: { gemini25f: {} },
     openRouterOnly: false,
     deprecated: true,
   },
@@ -369,7 +358,6 @@ export const GOOGLE_MODELS: readonly ModelEntry[] = [
     // 2.5 uses thinking_budget (tokens); reasoning_effort 'none' turns thinking off.
     reasoning: { efforts: [], off: [], budget: true },
     source: { url: 'https://ai.google.dev/gemini-api/docs/openai', verified: '2026-09-30' },
-    legacyKeys: { gemini25f0617: {} },
     openRouterOnly: false,
     deprecated: true,
   },
@@ -397,7 +385,6 @@ export const GOOGLE_MODELS: readonly ModelEntry[] = [
     // the thinking page's table) and reasoning_effort 'none' keeps it off.
     reasoning: { efforts: [], off: [], budget: true, providerDefault: ReasoningEffort.NONE },
     source: { url: 'https://ai.google.dev/gemini-api/docs/thinking', verified: '2026-09-30' },
-    legacyKeys: { 'gemini25f-0722': {} },
     openRouterOnly: false,
     deprecated: true,
   },
@@ -418,7 +405,6 @@ export const GOOGLE_MODELS: readonly ModelEntry[] = [
       supportsNativeCodeExecution: false,
     },
     reasoning: { efforts: [] },
-    legacyKeys: { 'gemini25f-': {} },
     openRouterOnly: false,
     deprecated: true,
     retired: true,

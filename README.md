@@ -41,7 +41,7 @@ A **selection** (a model plus how to run it) has a string form
 `provider/id[@effort][+pro]`:
 
 ```typescript
-import { parseModelRef, formatModelRef, LEGACY_KEYS } from 'llm-zoo';
+import { parseModelRef, formatModelRef } from 'llm-zoo';
 
 parseModelRef('anthropic/claude-opus-5-5@high');
 // → { ref: 'anthropic/claude-opus-5-5', effort: 'high' }
@@ -50,10 +50,6 @@ parseModelRef('openai/gpt-5.6-sol@xhigh+pro');
 parseModelRef('deepseek/deepseek-flash@none');   // effort 'none' = thinking off
 formatModelRef({ ref: 'openai/gpt-6.1-sol', effort: 'medium' });
 // → 'openai/gpt-6.1-sol@medium'
-
-// llm-zoo 1.x keys still parse, to the selection they meant
-parseModelRef('sonnet55');     // → { ref: 'anthropic/claude-sonnet-5-5', effort: 'high' }
-LEGACY_KEYS['deepseek41'];     // → { ref: 'deepseek/deepseek-flash', effort: 'none' }
 ```
 
 `parseModelRef` returns `undefined` for an unknown model or effort name; whether
@@ -185,7 +181,7 @@ Of the 35 current models:
 lookup('anthropic/claude-sonnet-5-5')  // → ModelConfig | undefined
 resolve('claude-sonnet-5-5')           // → by API model ID
 exists('openai/gpt-6.1-sol')           // → true
-parseModelRef('sonnet55')              // → selection, from a ref string or 1.x key
+parseModelRef('anthropic/claude-sonnet-5-5@high')  // → selection
 ```
 
 ### Filter
@@ -262,7 +258,7 @@ Available schemas:
 - `ReasoningSpecSchema` — A model's `reasoning` spec
 - `LongContextPricingSchema` — A long-context pricing tier
 - `ModelRefSchema` — A `provider/id` reference
-- `ModelSelectionSchema` — A reference plus effort / thinking / mode
+- `ModelSelectionSchema` — A reference plus effort / mode
 - `ModelProviderSchema` — Provider enum
 - `ReasoningEffortSchema` — Reasoning levels
 
@@ -289,7 +285,6 @@ interface ModelConfig {
   tiers?: { fast?: { inputPrice: number; outputPrice: number; longContextPricing?: LongContextPricing } };
   longContextPricing?: LongContextPricing;  // rates for a whole request above a prompt size
   source?: { url: string; verified: string };  // official page + date read
-  legacyKeys?: Record<string, { effort?: ReasoningEffort; thinking?: boolean; mode?: 'pro' }>;
   openRouterOnly: boolean;
   openrouterFullName?: string;
   codexSubscription?: { contextWindow: number };  // served by the ChatGPT Codex backend, with its input window
@@ -408,9 +403,9 @@ ANTHROPIC_MODELS.map(m => m.id);           // provider lists are arrays of entri
 
 ## Upgrading from 1.x
 
-- **Keys → references.** Registry keys are now `provider/id`. Convert stored 1.x
-  keys with `parseModelRef(key)` or `LEGACY_KEYS[key]`, which give the selection
-  the key meant (e.g. `opus5T` → `{ ref: 'anthropic/claude-opus-5', effort: 'high' }`).
+- **Keys → references.** Registry keys are now `provider/id`, and 1.x keys
+  (`opus5T`, `gpt4t`, …) are no longer read: since 4.1.0 there is no
+  `LEGACY_KEYS` map, `legacyKeys` field or `ModelSelection.thinking`.
 - **`fullName` → `id`.** `name` is removed; `ref` is added.
 - **Reasoning capability fields → `reasoning`.** `supportsReasoning`,
   `supportsReasoningEffort`, `reasoningEffort`, `maxReasoningEffort` and

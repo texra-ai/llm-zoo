@@ -41,7 +41,6 @@ export const MOONSHOT_MODELS: readonly ModelEntry[] = [
       ...MOONSHOT_DEFAULT_CAPABILITIES,
       supportsVision: false,
     },
-    legacyKeys: { kimi: {} },
     // Not served on the vendor's own Responses API.
     openRouterOnly: true,
     deprecated: true,
@@ -63,7 +62,6 @@ export const MOONSHOT_MODELS: readonly ModelEntry[] = [
       ...MOONSHOT_DEFAULT_CAPABILITIES,
       supportsVision: true,
     },
-    legacyKeys: { kimiv: {} },
     // Not served on the vendor's own Responses API.
     openRouterOnly: true,
     deprecated: true,
@@ -86,7 +84,6 @@ export const MOONSHOT_MODELS: readonly ModelEntry[] = [
       supportsVision: true,
     },
     reasoning: { efforts: [] },
-    legacyKeys: { kimit: {} },
     // Not served on the vendor's own Responses API.
     openRouterOnly: true,
     deprecated: true,
@@ -108,7 +105,6 @@ export const MOONSHOT_MODELS: readonly ModelEntry[] = [
       supportsAutoPromptCaching: true,
       cacheDiscountFactor: 0.25,
     },
-    legacyKeys: { kimi2: {} },
     // Not served on the vendor's own Responses API.
     openRouterOnly: true,
     deprecated: true,
@@ -130,7 +126,6 @@ export const MOONSHOT_MODELS: readonly ModelEntry[] = [
       supportsAutoPromptCaching: true,
       cacheDiscountFactor: 0.15 / 1.15,
     },
-    legacyKeys: { 'kimi2+': {} },
     // Not served on the vendor's own Responses API.
     openRouterOnly: true,
     deprecated: true,
@@ -154,7 +149,6 @@ export const MOONSHOT_MODELS: readonly ModelEntry[] = [
       cacheDiscountFactor: 0.25,
     },
     reasoning: { efforts: [] },
-    legacyKeys: { kimi2T: {} },
     // Not served on the vendor's own Responses API.
     openRouterOnly: true,
     deprecated: true,
@@ -178,7 +172,6 @@ export const MOONSHOT_MODELS: readonly ModelEntry[] = [
       cacheDiscountFactor: 0.15 / 1.15,
     },
     reasoning: { efforts: [] },
-    legacyKeys: { 'kimi2T+': {} },
     // Not served on the vendor's own Responses API.
     openRouterOnly: true,
     deprecated: true,
@@ -208,9 +201,6 @@ export const MOONSHOT_MODELS: readonly ModelEntry[] = [
     },
     reasoning: { efforts: [] },
     source: { url: 'https://platform.kimi.ai/docs/guide/kimi-k2-7-code-quickstart', verified: '2026-09-30' },
-    // 1.x `kimi27code` asked for thinking off, which the API rejects; it now
-    // resolves to the (thinking) default.
-    legacyKeys: { kimi27code: {}, kimi27codeT: {} },
     // Not served on the vendor's own Responses API.
     openRouterOnly: true,
   },
@@ -237,7 +227,6 @@ export const MOONSHOT_MODELS: readonly ModelEntry[] = [
     // `thinking: {type: enabled|disabled}` (default enabled); no effort parameter.
     reasoning: { efforts: [], off: [] },
     source: { url: 'https://platform.kimi.ai/docs/guide/kimi-k2-6-quickstart', verified: '2026-09-30' },
-    legacyKeys: { kimi26: { effort: ReasoningEffort.NONE }, kimi26T: {} },
     // Not served on the vendor's own Responses API.
     openRouterOnly: true,
   },
@@ -263,7 +252,6 @@ export const MOONSHOT_MODELS: readonly ModelEntry[] = [
     // Moonshot discontinued kimi-k2.5 on 2026-08-31 (this page); OpenRouter
     // still routes it to third-party hosts. Thinking facts carried over.
     source: { url: 'https://platform.kimi.ai/docs/models', verified: '2026-09-30' },
-    legacyKeys: { kimi25: { effort: ReasoningEffort.NONE }, kimi25T: {} },
     // Not served on the vendor's own Responses API.
     openRouterOnly: true,
     deprecated: true,
@@ -296,7 +284,6 @@ export const MOONSHOT_MODELS: readonly ModelEntry[] = [
     },
     reasoning: { efforts: KIMI_EFFORTS, providerDefault: ReasoningEffort.MAX },
     source: { url: 'https://platform.kimi.ai/docs/guide/use-reasoning-effort', verified: '2026-09-30' },
-    legacyKeys: { kimi3: { effort: ReasoningEffort.MAX } },
     openRouterOnly: false,
   },
   // ==========================================================================
@@ -329,7 +316,6 @@ export const MOONSHOT_MODELS: readonly ModelEntry[] = [
     },
     reasoning: { efforts: KIMI_EFFORTS, off: [], providerDefault: ReasoningEffort.MAX },
     source: { url: KIMI_CODE_MODELS_URL, verified: '2026-10-25' },
-    legacyKeys: { kimiCoding: {} },
     openRouterOnly: false,
   },
   // kimi-for-coding-highspeed: Allegretto+ only; K2.7 Code at 5-6x output
@@ -353,7 +339,6 @@ export const MOONSHOT_MODELS: readonly ModelEntry[] = [
     },
     reasoning: { efforts: [] },
     source: { url: KIMI_CODE_MODELS_URL, verified: '2026-09-30' },
-    legacyKeys: { kimiCodingFast: {} },
     openRouterOnly: false,
   },
 ];
