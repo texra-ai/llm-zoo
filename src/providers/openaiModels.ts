@@ -158,10 +158,10 @@ export const OPENAI_MODELS: readonly ModelEntry[] = [
       ...OPENAI_DEFAULT_CAPABILITIES,
       supportsAutoPromptCaching: false,
     },
-    source: { url: 'https://developers.openai.com/api/docs/deprecations', verified: '2026-09-30' },
+    source: { url: 'https://developers.openai.com/api/docs/deprecations', verified: '2026-10-26' },
     legacyKeys: { gpt4t: {} },
     openRouterOnly: false,
-    // Deprecated; OpenAI shuts it down on 2026-10-23.
+    // OpenAI shut it down on 2026-10-23.
     deprecated: true,
     retired: true,
   },
