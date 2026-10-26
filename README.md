@@ -101,6 +101,7 @@ Current models only (retired and deprecated models excluded).
 | `dashscope/qwen3.8-flash` | $0.15 | $0.47 | DashScope |
 | `glm/glm-5.3-flash` | $0.15 | $0.50 | GLM |
 | `deepseek/deepseek-flash` | $0.15 | $0.60 | DeepSeek |
+| `minimax/MiniMax-M3.1-Flash` | $0.15 | $0.60 | MiniMax |
 | `minimax/MiniMax-M3` | $0.30 | $1.20 | MiniMax |
 | `google/gemini-3.5-flash-lite` | $0.30 | $2.50 | Google |
 | `glm/glm-5.3-flashx` | $0.37 | $1.25 | GLM |
@@ -133,7 +134,7 @@ Gemini 4 Argon's $2 / $10 is introductory through 2026-11-30; Google lists $4 / 
 | Context (tokens) | Models |
 |------------------|--------|
 | 1,050,000 | `openai/gpt-6-astra`, `openai/gpt-6.1-sol`, `openai/gpt-6-luna`, `openai/gpt-5.6-terra` |
-| 1,048,576 | `google/gemini-4-argon`, `google/gemini-3.8-flash`, `google/gemini-3.5-flash-lite`, `google/gemini-3.1-pro-preview`, `deepseek/deepseek-flash`, `deepseek/deepseek-v4-pro`, `moonshot/kimi-k3`, `minimax/MiniMax-M3`, `meta/muse-wonder-1.0`, `meta/muse-spark-1.3` |
+| 1,048,576 | `google/gemini-4-argon`, `google/gemini-3.8-flash`, `google/gemini-3.5-flash-lite`, `google/gemini-3.1-pro-preview`, `deepseek/deepseek-flash`, `deepseek/deepseek-v4-pro`, `moonshot/kimi-k3`, `minimax/MiniMax-M3.1-Flash`, `minimax/MiniMax-M3`, `meta/muse-wonder-1.0`, `meta/muse-spark-1.3` |
 | 1,000,000 | `anthropic/claude-fable-5-1`, `anthropic/claude-mythos-5-1`, `anthropic/claude-opus-5-5`, `anthropic/claude-sonnet-5-5`, `anthropic/claude-haiku-5-5`, `glm/glm-5.3`, `glm/glm-5.3-flash`, `glm/glm-5.3-flashx`, `dashscope/qwen3.8-max`, `dashscope/qwen3.8-flash`, `dashscope/qwen3.7-plus`, `dashscope/qwen-plus` |
 | 500,000 | `xai/grok-4.7` |
 
@@ -162,7 +163,7 @@ Of the 35 current models:
 | **Google** | 15 | 4 | Gemini 4 Argon, 3.8 Flash, 3.1 Pro, 1M context, audio input |
 | **Moonshot** | 13 | 5 | Kimi K3 (1M context), K2.7 Code, K2.6, Kimi Code subscription |
 | **xAI** | 12 | 2 | Grok 4.7 (500K context), Grok Build 0.1, effort levels, vision |
-| **MiniMax** | 8 | 1 | M3 (1M context, thinking can be turned off, long-context tier above 512K) |
+| **MiniMax** | 9 | 2 | M3.1 Flash (always-thinking, $0.15 / $0.60), M3 (1M context, thinking can be turned off, long-context tier above 512K) |
 | **DeepSeek** | 6 | 2 | V4.1 Flash (native vision, $0.15/1M), V4 Pro, three effort levels |
 | **DashScope** | 6 | 4 | Qwen3.8 Max / Flash, Qwen3.7 Plus, 1M context, thinking budget |
 | **Meta** | 4 | 2 | Muse Wonder 1.0 (preview), Muse Spark 1.3, 1M context, agentic + multimodal |
