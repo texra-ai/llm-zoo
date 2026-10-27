@@ -161,7 +161,7 @@ Of the 36 current models:
 | **Anthropic** | 26 | 5 | Fable 5.1, Mythos 5.1, Opus 5.5, Sonnet 5.5, Haiku 5.5, 1M context, 97.5% cache savings on Fable/Mythos 5.1, PDF support |
 | **GLM** | 16 | 5 | Zhipu GLM-5.3 / Flash / FlashX, native vision, 1M context |
 | **Google** | 15 | 4 | Gemini 4 Argon, 3.8 Flash, 3.1 Pro, 1M context, audio input |
-| **Moonshot** | 13 | 5 | Kimi K3 (1M context), K2.7 Code, K2.6, Kimi Code subscription |
+| **Moonshot** | 15 | 5 | Kimi K3.1 Pro / Highspeed, Kimi K3 (1M context), K2.7 Code, K2.6, Kimi Code subscription |
 | **xAI** | 12 | 2 | Grok 4.7 (500K context), Grok Build 0.1, effort levels, vision |
 | **MiniMax** | 8 | 1 | M3 (1M context, thinking can be turned off, long-context tier above 512K) |
 | **DeepSeek** | 6 | 2 | V4.1 Flash (native vision, $0.15/1M), V4 Pro, three effort levels |

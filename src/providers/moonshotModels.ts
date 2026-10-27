@@ -286,6 +286,52 @@ export const MOONSHOT_MODELS: readonly ModelEntry[] = [
     source: { url: 'https://platform.kimi.ai/docs/guide/use-reasoning-effort', verified: '2026-09-30' },
     openRouterOnly: false,
   },
+  // kimi-k3.1-pro / kimi-k3.1-pro-highspeed: post-trained K3 (same parameter
+  // constraints as kimi-k3; always reasons, low | high | max, default max).
+  // Highspeed is the same model at 2-3x speed for double the price.
+  {
+    label: 'Kimi K3.1 Pro',
+    id: 'kimi-k3.1-pro',
+    shortName: 'kimi-k3.1-pro',
+    openrouterFullName: 'moonshotai/kimi-k3.1-pro',
+    provider: ModelProvider.MOONSHOT,
+    maxOutputTokens: 1048576,
+    contextWindow: 1048576,
+    inputPrice: 2.0,
+    outputPrice: 10.0,
+    capabilities: {
+      ...MOONSHOT_DEFAULT_CAPABILITIES,
+      supportsVision: true,
+      supportsInterleavedThinking: true,
+      supportsAutoPromptCaching: true,
+      // Cached input $0.20 / 1M vs $2.00 / 1M input (cache miss).
+      cacheDiscountFactor: 0.2 / 2.0,
+    },
+    reasoning: { efforts: KIMI_EFFORTS, providerDefault: ReasoningEffort.MAX },
+    source: { url: 'https://platform.kimi.ai/docs/pricing/chat', verified: '2026-10-27' },
+    openRouterOnly: false,
+  },
+  {
+    label: 'Kimi K3.1 Pro Highspeed',
+    id: 'kimi-k3.1-pro-highspeed',
+    shortName: 'kimi-k3.1-pro-highspeed',
+    provider: ModelProvider.MOONSHOT,
+    maxOutputTokens: 1048576,
+    contextWindow: 1048576,
+    inputPrice: 4.0,
+    outputPrice: 20.0,
+    capabilities: {
+      ...MOONSHOT_DEFAULT_CAPABILITIES,
+      supportsVision: true,
+      supportsInterleavedThinking: true,
+      supportsAutoPromptCaching: true,
+      // Cached input $0.20 / 1M vs $4.00 / 1M input (cache miss).
+      cacheDiscountFactor: 0.2 / 4.0,
+    },
+    reasoning: { efforts: KIMI_EFFORTS, providerDefault: ReasoningEffort.MAX },
+    source: { url: 'https://platform.kimi.ai/docs/pricing/chat', verified: '2026-10-27' },
+    openRouterOnly: false,
+  },
   // ==========================================================================
   // Kimi Code (Moonshot coding-subscription plan) — served ONLY by the managed
   // endpoint https://api.kimi.com/coding/v1 (OAuth device-flow token or Kimi
