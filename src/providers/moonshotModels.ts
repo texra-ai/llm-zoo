@@ -286,6 +286,30 @@ export const MOONSHOT_MODELS: readonly ModelEntry[] = [
     source: { url: 'https://platform.kimi.ai/docs/guide/use-reasoning-effort', verified: '2026-09-30' },
     openRouterOnly: false,
   },
+  // kimi-k3.1-pro: K3 series flagship (successor to kimi-k3) with a 1M-token
+  // context window and vision input. Always reasons; reasoning_effort
+  // low | high | max, default max. Batch is billed at 60% of standard.
+  {
+    label: 'Kimi K3.1 Pro',
+    id: 'kimi-k3.1-pro',
+    shortName: 'kimi-k3.1-pro',
+    provider: ModelProvider.MOONSHOT,
+    maxOutputTokens: 1048576,
+    contextWindow: 1048576,
+    inputPrice: 2.0,
+    outputPrice: 10.0,
+    capabilities: {
+      ...MOONSHOT_DEFAULT_CAPABILITIES,
+      supportsVision: true,
+      supportsInterleavedThinking: true,
+      supportsAutoPromptCaching: true,
+      // Cached input $0.20 / 1M vs $2.00 / 1M input (cache miss).
+      cacheDiscountFactor: 0.2 / 2.0,
+    },
+    reasoning: { efforts: KIMI_EFFORTS, providerDefault: ReasoningEffort.MAX },
+    source: { url: 'https://platform.kimi.ai/docs/guide/kimi-k3-1-pro-quickstart', verified: '2026-11-01' },
+    openRouterOnly: false,
+  },
   // ==========================================================================
   // Kimi Code (Moonshot coding-subscription plan) — served ONLY by the managed
   // endpoint https://api.kimi.com/coding/v1 (OAuth device-flow token or Kimi
