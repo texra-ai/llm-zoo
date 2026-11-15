@@ -27,6 +27,8 @@ const GOOGLE_DEFAULT_CAPABILITIES: ModelCapabilities = {
 /** Gemini 3.x thinking levels (thinking cannot be turned off on 3.x). */
 const LOW_TO_HIGH_EFFORTS = [ReasoningEffort.LOW, ReasoningEffort.MEDIUM, ReasoningEffort.HIGH] as const;
 const MINIMAL_TO_HIGH_EFFORTS = [ReasoningEffort.MINIMAL, ...LOW_TO_HIGH_EFFORTS] as const;
+/** Gemini 4 Hydrogen adds `xhigh` above `high`. */
+const LOW_TO_XHIGH_EFFORTS = [...LOW_TO_HIGH_EFFORTS, ReasoningEffort.XHIGH] as const;
 
 /**
  * Google Gemini model configurations.
@@ -62,6 +64,62 @@ export const GOOGLE_MODELS: readonly ModelEntry[] = [
     },
     reasoning: { efforts: LOW_TO_HIGH_EFFORTS, providerDefault: ReasoningEffort.MEDIUM },
     source: { url: 'https://ai.google.dev/gemini-api/docs/models/gemini-4-argon', verified: '2026-10-16' },
+    openRouterOnly: false,
+  },
+  // Gemini 4 Carbon (GA 2026-11-10). $2 input / $0.10 cached / $10 output
+  // (thinking included) through 2026-11-30; from 2026-12-01 $4 / $0.20 / $20.
+  // Implicit caching only, 95% off cached input. Unified 1,048,576-token
+  // window; synchronous requests cap max_output_tokens at 65,536, and long
+  // decode up to 1,048,576 needs `background: true`.
+  // thinking_level low / medium (default) / high. Not on the Free tier.
+  {
+    label: 'Gemini 4 Carbon',
+    id: 'gemini-4-carbon',
+    shortName: 'gemini-4-carbon',
+    openrouterFullName: 'google/gemini-4-carbon',
+    provider: ModelProvider.GOOGLE,
+    maxOutputTokens: 65536,
+    contextWindow: 1048576,
+    inputPrice: 2.0,
+    outputPrice: 10.0,
+    capabilities: {
+      ...GOOGLE_DEFAULT_CAPABILITIES,
+      cacheDiscountFactor: 0.05,
+      supportsPromptCaching: false,
+      supportsAutoPromptCaching: true,
+      supportsNativeCodeExecution: true,
+      supportsNativeMCPServer: true,
+    },
+    reasoning: { efforts: LOW_TO_HIGH_EFFORTS, providerDefault: ReasoningEffort.MEDIUM },
+    source: { url: 'https://ai.google.dev/gemini-api/docs/models/gemini-4-carbon', verified: '2026-11-15' },
+    openRouterOnly: false,
+  },
+  // Gemini 4 Hydrogen (GA 2026-11-12). $1.50 input / $0.075 cached / $7.50
+  // output (thinking included), flat rate. Implicit caching only, 95% off
+  // cached input. Same unified 1,048,576-token window and 64K synchronous
+  // max_output_tokens as the other Gemini 4 models.
+  // thinking_level low / medium / high / xhigh (default high); the only
+  // Gemini 4 model on the Free tier.
+  {
+    label: 'Gemini 4 Hydrogen',
+    id: 'gemini-4-hydrogen',
+    shortName: 'gemini-4-hydrogen',
+    openrouterFullName: 'google/gemini-4-hydrogen',
+    provider: ModelProvider.GOOGLE,
+    maxOutputTokens: 65536,
+    contextWindow: 1048576,
+    inputPrice: 1.5,
+    outputPrice: 7.5,
+    capabilities: {
+      ...GOOGLE_DEFAULT_CAPABILITIES,
+      cacheDiscountFactor: 0.05,
+      supportsPromptCaching: false,
+      supportsAutoPromptCaching: true,
+      supportsNativeCodeExecution: true,
+      supportsNativeMCPServer: true,
+    },
+    reasoning: { efforts: LOW_TO_XHIGH_EFFORTS, providerDefault: ReasoningEffort.HIGH },
+    source: { url: 'https://ai.google.dev/gemini-api/docs/models/gemini-4-hydrogen', verified: '2026-11-15' },
     openRouterOnly: false,
   },
   {
