@@ -3,6 +3,7 @@ import {
   ModelCapabilities,
   ModelEntry,
   ModelProvider,
+  ReasoningEffort,
 } from '../ModelConfig';
 
 /**
@@ -23,9 +24,44 @@ const MINIMAX_DEFAULT_CAPABILITIES: ModelCapabilities = {
 
 /**
  * MiniMax model configurations.
- * Includes the M-series models: M3, M2.7 (and M2.7-highspeed), M2.5, M2.1, M2, M1, and MiniMax-01.
+ * Includes the M-series models: M3.1-Flash, M3, M2.7 (and M2.7-highspeed), M2.5, M2.1, M2, M1, and MiniMax-01.
  */
 export const MINIMAX_MODELS: readonly ModelEntry[] = [
+  {
+    label: 'MiniMax M3.1 Flash',
+    id: 'MiniMax-M3.1-Flash',
+    shortName: 'MiniMax-M3.1-Flash',
+    openrouterFullName: 'minimax/minimax-m3.1-flash',
+    provider: ModelProvider.MINIMAX,
+    // max_completion_tokens maximum 524288 (recommended 131072).
+    maxOutputTokens: 524288,
+    contextWindow: 1048576,
+    // Pay-as-you-go: $0.15 / $0.015 cache read / $0.60, one rate at any input
+    // length (platform.minimax.io/docs/guides/pricing-paygo).
+    inputPrice: 0.15,
+    outputPrice: 0.6,
+    capabilities: {
+      ...MINIMAX_DEFAULT_CAPABILITIES,
+      // Text, image and video input.
+      supportsVision: true,
+      // Cache read $0.015 / 1M vs $0.15 / 1M input.
+      cacheDiscountFactor: 0.015 / 0.15,
+    },
+    // Always thinks (thinking: {type: 'disabled'} returns 400);
+    // reasoning_effort low | medium | high | xhigh | max, default max.
+    reasoning: {
+      efforts: [
+        ReasoningEffort.LOW,
+        ReasoningEffort.MEDIUM,
+        ReasoningEffort.HIGH,
+        ReasoningEffort.XHIGH,
+        ReasoningEffort.MAX,
+      ],
+      providerDefault: ReasoningEffort.MAX,
+    },
+    source: { url: 'https://platform.minimax.io/docs/api-reference/text-chat-openai', verified: '2026-11-16' },
+    openRouterOnly: false,
+  },
   {
     label: 'MiniMax M3',
     id: 'MiniMax-M3',
@@ -53,7 +89,7 @@ export const MINIMAX_MODELS: readonly ModelEntry[] = [
       cacheDiscountFactor: 0.2,
     },
     // thinking: {type: 'disabled'} skips thinking; reasoning_effort is ignored
-    // (only M3.1-Flash-Preview tunes depth). M2.x always think.
+    // (only M3.1-Flash tunes depth). M2.x always think.
     reasoning: { efforts: [], off: [] },
     source: { url: 'https://platform.minimax.io/docs/api-reference/text-chat-openai', verified: '2026-10-16' },
     openRouterOnly: false,

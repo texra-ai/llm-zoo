@@ -15,8 +15,8 @@ const MOONSHOT_DEFAULT_CAPABILITIES: ModelCapabilities = {
   supportsSystemPrompt: true,
 };
 
-// Kimi K3 and the Kimi Code `kimi-for-coding` alias take top-level
-// `reasoning_effort` low | high | max. K3 always reasons; `kimi-for-coding`
+// Kimi K3, K3.1 Pro and the Kimi Code `kimi-for-coding` alias take top-level
+// `reasoning_effort` low | high | max. K3 and K3.1 Pro always reason; `kimi-for-coding`
 // can turn thinking off.
 const KIMI_EFFORTS = [ReasoningEffort.LOW, ReasoningEffort.HIGH, ReasoningEffort.MAX] as const;
 
@@ -24,9 +24,37 @@ const KIMI_CODE_MODELS_URL = 'https://www.kimi.com/code/docs/en/kimi-code/models
 
 /**
  * Moonshot AI (Kimi) model configurations.
- * Includes Kimi K2 and thinking variants.
+ * Includes Kimi K3.1 Pro, Kimi K3, Kimi K2 and thinking variants.
  */
 export const MOONSHOT_MODELS: readonly ModelEntry[] = [
+  // kimi-k3.1-pro: post-trained successor to Kimi K3 with native visual
+  // understanding and a 1,048,576-token context. Flat pricing: $2 input /
+  // $0.20 cached input / $10 output. max_completion_tokens up to 1,048,576.
+  // Always reasons; reasoning_effort low | high | max, default max.
+  // Sources: https://platform.kimi.ai/docs/pricing/chat and
+  // https://platform.kimi.ai/docs/guide/kimi-k3-1-pro-quickstart
+  {
+    label: 'Kimi K3.1 Pro',
+    id: 'kimi-k3.1-pro',
+    shortName: 'kimi-k3.1-pro',
+    openrouterFullName: 'moonshotai/kimi-k3.1-pro',
+    provider: ModelProvider.MOONSHOT,
+    maxOutputTokens: 1048576,
+    contextWindow: 1048576,
+    inputPrice: 2.0,
+    outputPrice: 10.0,
+    capabilities: {
+      ...MOONSHOT_DEFAULT_CAPABILITIES,
+      supportsVision: true,
+      supportsInterleavedThinking: true,
+      supportsAutoPromptCaching: true,
+      // Cached input $0.20 / 1M vs $2.00 / 1M input (cache miss).
+      cacheDiscountFactor: 0.2 / 2.0,
+    },
+    reasoning: { efforts: KIMI_EFFORTS, providerDefault: ReasoningEffort.MAX },
+    source: { url: 'https://platform.kimi.ai/docs/guide/kimi-k3-1-pro-quickstart', verified: '2026-11-16' },
+    openRouterOnly: false,
+  },
   {
     label: 'Moonshot V1 128K',
     id: 'moonshot-v1-128k',
