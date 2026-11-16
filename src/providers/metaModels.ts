@@ -68,7 +68,7 @@ export const META_MODELS: readonly ModelEntry[] = [
       cacheDiscountFactor: 0.04,
       supportsNativeAudio: true,
     },
-    reasoning: { efforts: [...MUSE_SPARK_EFFORTS, ReasoningEffort.MAX] },
+    reasoning: { efforts: [...MUSE_SPARK_EFFORTS, ReasoningEffort.MAX], providerDefault: ReasoningEffort.MAX },
     source: { url: 'https://dev.meta.ai/docs/muse-ember', verified: '2026-11-16' },
     openRouterOnly: false,
   },

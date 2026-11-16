@@ -40,6 +40,7 @@ export const DASHSCOPE_MODELS: readonly ModelEntry[] = [
     outputPrice: 4.5,
     capabilities: {
       ...DASHSCOPE_DEFAULT_CAPABILITIES,
+      supportsPromptCaching: true,
       supportsAutoPromptCaching: true,
       // Cache read $0.075 / 1M vs $1.5 / 1M input.
       cacheDiscountFactor: 0.075 / 1.5,
