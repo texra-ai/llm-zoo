@@ -140,8 +140,8 @@ Gemini 4 Carbon's and Argon's $2 / $10 is introductory through 2026-11-30; Googl
 | Context (tokens) | Models |
 |------------------|--------|
 | 1,050,000 | `openai/gpt-6-astra`, `openai/gpt-6.1-sol`, `openai/gpt-6.1-terra`, `openai/gpt-6-luna`, `openai/gpt-5.6-terra` |
-| 1,048,576 | `google/gemini-4-carbon`, `google/gemini-4-hydrogen`, `google/gemini-4-argon`, `google/gemini-3.8-flash`, `google/gemini-3.5-flash-lite`, `google/gemini-3.1-pro-preview`, `deepseek/deepseek-flash`, `deepseek/deepseek-v4-pro`, `moonshot/kimi-k3.1-pro`, `moonshot/kimi-k3`, `minimax/MiniMax-M3.1-Flash`, `minimax/MiniMax-M3`, `meta/muse-wonder-1.0`, `meta/muse-ember-1.0`, `meta/muse-spark-1.3` |
-| 1,000,000 | `anthropic/claude-fable-5-2`, `anthropic/claude-fable-5-1`, `anthropic/claude-mythos-5-1`, `anthropic/claude-opus-5-5`, `anthropic/claude-sonnet-5-5`, `anthropic/claude-haiku-5-5`, `glm/glm-5.3`, `glm/glm-5.3-flash`, `glm/glm-5.3-flashx`, `dashscope/qwen4-max`, `dashscope/qwen3.8-max`, `dashscope/qwen3.8-flash`, `dashscope/qwen3.7-plus`, `dashscope/qwen-plus` |
+| 1,048,576 | `google/gemini-4-carbon`, `google/gemini-4-hydrogen`, `google/gemini-4-argon`, `google/gemini-3.8-flash`, `google/gemini-3.5-flash-lite`, `google/gemini-3.1-pro-preview`, `deepseek/deepseek-flash`, `deepseek/deepseek-v4-pro`, `moonshot/kimi-k3.1-pro`, `moonshot/kimi-k3`, `meta/muse-wonder-1.0`, `meta/muse-ember-1.0`, `meta/muse-spark-1.3` |
+| 1,000,000 | `anthropic/claude-fable-5-2`, `anthropic/claude-fable-5-1`, `anthropic/claude-mythos-5-1`, `anthropic/claude-opus-5-5`, `anthropic/claude-sonnet-5-5`, `anthropic/claude-haiku-5-5`, `glm/glm-5.3`, `glm/glm-5.3-flash`, `glm/glm-5.3-flashx`, `dashscope/qwen4-max`, `dashscope/qwen3.8-max`, `dashscope/qwen3.8-flash`, `dashscope/qwen3.7-plus`, `dashscope/qwen-plus`, `minimax/MiniMax-M3.1-Flash`, `minimax/MiniMax-M3` |
 | 500,000 | `xai/grok-4.7` |
 
 ### Capabilities

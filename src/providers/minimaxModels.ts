@@ -35,7 +35,7 @@ export const MINIMAX_MODELS: readonly ModelEntry[] = [
     provider: ModelProvider.MINIMAX,
     // max_completion_tokens maximum 524288 (recommended 131072).
     maxOutputTokens: 524288,
-    contextWindow: 1048576,
+    contextWindow: 1000000,
     // Pay-as-you-go: $0.15 / $0.015 cache read / $0.60, one rate at any input
     // length (platform.minimax.io/docs/guides/pricing-paygo).
     inputPrice: 0.15,
@@ -59,7 +59,7 @@ export const MINIMAX_MODELS: readonly ModelEntry[] = [
       ],
       providerDefault: ReasoningEffort.MAX,
     },
-    source: { url: 'https://platform.minimax.io/docs/api-reference/text-chat-openai', verified: '2026-11-16' },
+    source: { url: 'https://platform.minimax.io/docs/guides/text-generation', verified: '2026-11-16' },
     openRouterOnly: false,
   },
   {
@@ -70,7 +70,7 @@ export const MINIMAX_MODELS: readonly ModelEntry[] = [
     provider: ModelProvider.MINIMAX,
     // max_completion_tokens maximum 524288 for M3; 204800 for M2.x.
     maxOutputTokens: 524288,
-    contextWindow: 1048576,
+    contextWindow: 1000000,
     inputPrice: 0.3,
     outputPrice: 1.2,
     // Standard tier above 512K input tokens: $0.60 / $0.12 cache read / $2.40
