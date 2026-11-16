@@ -48,11 +48,39 @@ const LOW_TO_HIGH_EFFORTS = [
 
 /**
  * Anthropic Claude model configurations.
- * Includes Claude Fable 5.1, Claude Mythos 5.1, Claude Fable 5, Claude Mythos 5,
- * Claude Opus 5.5, Claude Sonnet 5.5, Claude Haiku 5.5, and 5.x/4.x/3.x Opus,
- * Sonnet, and Haiku variants.
+ * Includes Claude Fable 5.2, Claude Fable 5.1, Claude Mythos 5.1, Claude Fable 5,
+ * Claude Mythos 5, Claude Opus 5.5, Claude Sonnet 5.5, Claude Haiku 5.5, and
+ * 5.x/4.x/3.x Opus, Sonnet, and Haiku variants.
  */
 export const ANTHROPIC_MODELS: readonly ModelEntry[] = [
+  {
+    label: 'Claude Fable 5.2',
+    id: 'claude-fable-5-2',
+    shortName: 'claude-fable-5-2',
+    openrouterFullName: 'anthropic/claude-fable-5.2',
+    provider: ModelProvider.ANTHROPIC,
+    maxOutputTokens: 128000,
+    contextWindow: 1000000,
+    inputPrice: 8.0,
+    outputPrice: 40.0,
+    capabilities: {
+      ...ANTHROPIC_DEFAULT_CAPABILITIES,
+      supportsIntermDevMsgs: true,
+      // Cache reads $0.20 / MTok vs $8 / MTok input (0.025x), per the Fable 5.2
+      // model page pricing table.
+      cacheDiscountFactor: 0.025,
+      supportsNativeMCPServer: true,
+      supportsNativeWebSearch: true,
+      supportsDynamicFilteringWebSearch: true,
+      supportsNativeCodeExecution: true,
+      supportsAssistantPrefill: false,
+      // Adaptive thinking is always on for Fable 5.2 and cannot be disabled.
+      supportsInterleavedThinking: true,
+    },
+    reasoning: { efforts: ANTHROPIC_REASONING_EFFORTS, providerDefault: ReasoningEffort.HIGH },
+    source: { url: 'https://platform.claude.com/docs/en/models/fable-5-2/overview', verified: '2026-11-16' },
+    openRouterOnly: false,
+  },
   {
     label: 'Claude Fable 5.1',
     id: 'claude-fable-5-1',

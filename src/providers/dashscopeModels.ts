@@ -3,6 +3,7 @@ import {
   ModelCapabilities,
   ModelEntry,
   ModelProvider,
+  ReasoningEffort,
 } from '../ModelConfig';
 
 /**
@@ -17,10 +18,45 @@ const DASHSCOPE_DEFAULT_CAPABILITIES: ModelCapabilities = {
 
 /**
  * Alibaba DashScope (Qwen) model configurations.
- * Includes Qwen 3.8 Max, Qwen 3.7 Plus, Qwen 3.8 Flash, Qwen 3 Max, Plus, and
+ * Includes Qwen4 Max, Qwen 3.8 Max, Qwen 3.7 Plus, Qwen 3.8 Flash, Qwen 3 Max, Plus, and
  * Turbo variants. Prices are the Singapore (International) list prices.
  */
 export const DASHSCOPE_MODELS: readonly ModelEntry[] = [
+  // qwen4-max: Qwen4 flagship with image/video input. 1,000,000-token context,
+  // 131,072 max output without thinking (thinking + answer up to 262,144).
+  // Single price tier: $1.5 input / $0.075 implicit- or explicit-cache read /
+  // $4.5 output.
+  // Sources: https://www.alibabacloud.com/help/en/model-studio/qwen4-max and
+  // https://www.alibabacloud.com/help/en/model-studio/model-pricing
+  {
+    label: 'Qwen4 Max',
+    id: 'qwen4-max',
+    shortName: 'qwen4-max',
+    openrouterFullName: 'qwen/qwen4-max',
+    provider: ModelProvider.DASHSCOPE,
+    maxOutputTokens: 131072,
+    contextWindow: 1000000,
+    inputPrice: 1.5,
+    outputPrice: 4.5,
+    capabilities: {
+      ...DASHSCOPE_DEFAULT_CAPABILITIES,
+      supportsPromptCaching: true,
+      supportsAutoPromptCaching: true,
+      // Cache read $0.075 / 1M vs $1.5 / 1M input.
+      cacheDiscountFactor: 0.075 / 1.5,
+    },
+    // Thinking on by default: enable_thinking: false turns it off;
+    // thinking_budget caps its length. reasoning_effort low | high | xhigh,
+    // default high (minimal, medium and max are aliases of those three).
+    reasoning: {
+      efforts: [ReasoningEffort.LOW, ReasoningEffort.HIGH, ReasoningEffort.XHIGH],
+      off: [],
+      budget: true,
+      providerDefault: ReasoningEffort.HIGH,
+    },
+    source: { url: 'https://www.alibabacloud.com/help/en/model-studio/qwen4-max', verified: '2026-11-16' },
+    openRouterOnly: false,
+  },
   // qwen3.8-max: 2.4T-parameter MoE flagship with native image/video input.
   // 1,000,000-token context, 131,072 max output. $2 input / $0.25
   // implicit-cache input / $6 output.

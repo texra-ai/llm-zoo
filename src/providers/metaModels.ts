@@ -34,10 +34,44 @@ const MUSE_SPARK_EFFORTS = [
 
 /**
  * Meta Model API model configurations.
- * Includes Muse Spark, served via Meta's OpenAI-compatible Model API
+ * Includes Muse Wonder, Muse Spark and Muse Ember, served via Meta's
+ * OpenAI-compatible Model API
  * (api.meta.ai/v1) and also listed on OpenRouter.
  */
 export const META_MODELS: readonly ModelEntry[] = [
+  // Muse Ember 1.0 (Meta's smallest reasoning model): $0.10 / $0.004 cached /
+  // $0.50 up to 200K input tokens, 1M context, 524,288 max output,
+  // text/image/video/audio/PDF input, effort minimal..max with default max
+  // (dev.meta.ai/docs/muse-ember, /docs/pricing-rate-limits). Standard mode
+  // only. OpenRouter lists it as meta/muse-ember.
+  {
+    label: 'Muse Ember 1.0',
+    id: 'muse-ember-1.0',
+    shortName: 'muse-ember-1.0',
+    openrouterFullName: 'meta/muse-ember',
+    provider: ModelProvider.META,
+    maxOutputTokens: 524288,
+    contextWindow: 1048576,
+    inputPrice: 0.1,
+    outputPrice: 0.5,
+    // Requests above 200K input tokens (cached included) bill the whole
+    // request at $0.30 / $0.012 cached / $1.50 (dev.meta.ai/docs/pricing-rate-limits).
+    longContextPricing: {
+      aboveInputTokens: 200_000,
+      inputPrice: 0.3,
+      outputPrice: 1.5,
+      cacheDiscountFactor: 0.04,
+    },
+    capabilities: {
+      ...META_DEFAULT_CAPABILITIES,
+      // Cached input $0.004 / 1M vs $0.10 / 1M input.
+      cacheDiscountFactor: 0.04,
+      supportsNativeAudio: true,
+    },
+    reasoning: { efforts: [...MUSE_SPARK_EFFORTS, ReasoningEffort.MAX], providerDefault: ReasoningEffort.MAX },
+    source: { url: 'https://dev.meta.ai/docs/muse-ember', verified: '2026-11-16' },
+    openRouterOnly: false,
+  },
   // Muse Wonder 1.0 (preview, released 2026-10-12): Standard tier $4 / $0.20
   // cached / $20, 1M context, text/image/video/audio/PDF input, effort
   // minimal..max (dev.meta.ai/docs/models, /docs/pricing-rate-limits,
