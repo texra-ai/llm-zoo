@@ -26,7 +26,7 @@ const GLM_DEFAULT_CAPABILITIES: ModelCapabilities = {
 
 /**
  * Zhipu AI GLM model configurations.
- * Includes GLM-5.3-Flash/FlashX, GLM-5.3, GLM-5.2, GLM-5.1, GLM-5V-Turbo, GLM-5, GLM-4.7, GLM-4.6, GLM-4.6V, and GLM-4.5 series.
+ * Includes GLM-5.3-Flash/FlashX/FlashX-Legal, GLM-5.3, GLM-5.2, GLM-5.1, GLM-5V-Turbo, GLM-5, GLM-4.7, GLM-4.6, GLM-4.6V, and GLM-4.5 series.
  *
  * Model name conventions:
  * - fullName: Model name for native Zhipu AI API (e.g., 'glm-5.2', 'glm-5')
@@ -80,6 +80,34 @@ export const GLM_MODELS: readonly ModelEntry[] = [
     },
     reasoning: { efforts: LOW_HIGH_MAX_EFFORTS, providerDefault: ReasoningEffort.MAX },
     source: { url: 'https://docs.z.ai/api-reference/llm/chat-completion', verified: '2026-09-30' },
+    // Not served on the vendor's own Responses API.
+    openRouterOnly: true,
+  },
+  // GLM-5.3-FlashX-Legal (GLM-Legal): GLM-5.3-FlashX tuned for legal research,
+  // contract review and legal drafting, served on the general Chat Completion
+  // API. Same limits as GLM-5.3-Flash/FlashX: video/image/text/file input,
+  // 1M-token context, 128K output, mandatory reasoning with Low/High/Max tiers.
+  // $0.37 input / $0.075 cached input / $1.25 output
+  // (https://docs.z.ai/guides/overview/pricing,
+  // https://docs.z.ai/guides/vlm/glm-5.3-flash#glm-5-3-flashx-legal).
+  {
+    label: 'GLM-5.3 FlashX Legal',
+    id: 'glm-5.3-flashx-legal',
+    shortName: 'glm-5.3-flashx-legal',
+    openrouterFullName: 'z-ai/glm-5.3-flashx-legal',
+    provider: ModelProvider.GLM,
+    maxOutputTokens: 131072,
+    contextWindow: 1000000,
+    inputPrice: 0.37,
+    outputPrice: 1.25,
+    capabilities: {
+      ...GLM_DEFAULT_CAPABILITIES,
+      supportsVision: true,
+      // Cached input $0.075 / 1M vs $0.37 / 1M input.
+      cacheDiscountFactor: 0.203,
+    },
+    reasoning: { efforts: LOW_HIGH_MAX_EFFORTS, providerDefault: ReasoningEffort.MAX },
+    source: { url: 'https://docs.z.ai/api-reference/llm/chat-completion', verified: '2026-11-16' },
     // Not served on the vendor's own Responses API.
     openRouterOnly: true,
   },
