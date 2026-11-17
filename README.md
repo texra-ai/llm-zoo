@@ -118,6 +118,7 @@ Claude Haiku 5.5 bills prompts over 100K tokens at $0.50 / $2.50; Muse Ember bil
 | `anthropic/claude-mythos-5-1` | $10 | $50 | ✓ | Anthropic |
 | `openai/gpt-6-astra` | $10 | $50 | ✓ | OpenAI |
 | `anthropic/claude-fable-5-2` | $8 | $40 | ✓ | Anthropic |
+| `anthropic/claude-mythos-5-2` | $8 | $40 | ✓ | Anthropic |
 | `openai/chat-latest` | $5 | $30 | | OpenAI |
 | `anthropic/claude-opus-5-5` | $4 | $20 | ✓ | Anthropic |
 | `moonshot/kimi-k3` | $3 | $15 | ✓ | Moonshot |
@@ -141,7 +142,7 @@ Gemini 4 Carbon's and Argon's $2 / $10 is introductory through 2026-11-30; Googl
 |------------------|--------|
 | 1,050,000 | `openai/gpt-6-astra`, `openai/gpt-6.1-sol`, `openai/gpt-6.1-terra`, `openai/gpt-6-luna`, `openai/gpt-5.6-terra` |
 | 1,048,576 | `google/gemini-4-carbon`, `google/gemini-4-hydrogen`, `google/gemini-4-argon`, `google/gemini-3.8-flash`, `google/gemini-3.5-flash-lite`, `google/gemini-3.1-pro-preview`, `deepseek/deepseek-flash`, `deepseek/deepseek-v4-pro`, `moonshot/kimi-k3.1-pro`, `moonshot/kimi-k3`, `meta/muse-wonder-1.0`, `meta/muse-ember-1.0`, `meta/muse-spark-1.3` |
-| 1,000,000 | `anthropic/claude-fable-5-2`, `anthropic/claude-fable-5-1`, `anthropic/claude-mythos-5-1`, `anthropic/claude-opus-5-5`, `anthropic/claude-sonnet-5-5`, `anthropic/claude-haiku-5-5`, `glm/glm-5.3`, `glm/glm-5.3-flash`, `glm/glm-5.3-flashx`, `dashscope/qwen4-max`, `dashscope/qwen3.8-max`, `dashscope/qwen3.8-flash`, `dashscope/qwen3.7-plus`, `dashscope/qwen-plus`, `minimax/MiniMax-M3.1-Flash`, `minimax/MiniMax-M3` |
+| 1,000,000 | `anthropic/claude-fable-5-2`, `anthropic/claude-mythos-5-2`, `anthropic/claude-fable-5-1`, `anthropic/claude-mythos-5-1`, `anthropic/claude-opus-5-5`, `anthropic/claude-sonnet-5-5`, `anthropic/claude-haiku-5-5`, `glm/glm-5.3`, `glm/glm-5.3-flash`, `glm/glm-5.3-flashx`, `dashscope/qwen4-max`, `dashscope/qwen3.8-max`, `dashscope/qwen3.8-flash`, `dashscope/qwen3.7-plus`, `dashscope/qwen-plus`, `minimax/MiniMax-M3.1-Flash`, `minimax/MiniMax-M3` |
 | 500,000 | `xai/grok-4.7` |
 
 ### Capabilities
@@ -164,7 +165,7 @@ Of the 43 current models:
 | Provider | Models | Current | Highlights |
 |----------|--------|---------|------------|
 | **OpenAI** | 44 | 6 | GPT-6 Astra, GPT-6.1 Sol, GPT-6.1 Terra, GPT-6 Luna, GPT-5.6 Terra, Chat Latest; fast tier and pro mode; Codex subscription windows |
-| **Anthropic** | 27 | 6 | Fable 5.2, Fable 5.1, Mythos 5.1, Opus 5.5, Sonnet 5.5, Haiku 5.5, 1M context, 97.5% cache savings on Fable 5.2 and Fable/Mythos 5.1, PDF support |
+| **Anthropic** | 28 | 7 | Fable 5.2, Mythos 5.2, Fable 5.1, Mythos 5.1, Opus 5.5, Sonnet 5.5, Haiku 5.5, 1M context, 97.5% cache savings on Fable/Mythos 5.2 and Fable/Mythos 5.1, PDF support |
 | **GLM** | 16 | 5 | Zhipu GLM-5.3 / Flash / FlashX, native vision, 1M context |
 | **Google** | 17 | 6 | Gemini 4 Carbon, Hydrogen and Argon, 3.8 Flash, 3.1 Pro, 1M context, audio input |
 | **Moonshot** | 14 | 6 | Kimi K3.1 Pro and K3 (1M context), K2.7 Code, K2.6, Kimi Code subscription |
