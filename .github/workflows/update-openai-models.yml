@@ -1,0 +1,57 @@
+name: OpenAI model update
+
+# Checks every two days for OpenAI models the registry is missing and opens a
+# PR adding the ones it can verify against OpenAI's own documentation. The
+# daily workflow covers every provider; this one gives OpenAI a dedicated
+# prompt. Same secrets and repository settings as `update-models.yml`.
+
+on:
+  schedule:
+    # 07:23 UTC on every second day of the month. The day-of-month step
+    # restarts each month, so the gap is one day across a 31-day month's end.
+    - cron: '23 7 */2 * *'
+  workflow_dispatch:
+
+concurrency:
+  group: openai-model-update
+  cancel-in-progress: false
+
+jobs:
+  update-openai-models:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Load prompt
+        id: load_prompt
+        run: |
+          set -euo pipefail
+          {
+            echo 'prompt<<PROMPT_EOF'
+            cat .github/prompts/update-openai-models.md
+            echo 'PROMPT_EOF'
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Research and add new OpenAI models
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          base_branch: main
+          claude_args: |
+            --model sonnet
+            --max-turns 40
+            --allowedTools "WebSearch,WebFetch,Bash,Read,Edit,Write,Glob,Grep"
+          prompt: ${{ steps.load_prompt.outputs.prompt }}
