@@ -14,6 +14,9 @@ const ANTHROPIC_DEFAULT_CAPABILITIES: ModelCapabilities = {
   ...DEFAULT_MODEL_CAPABILITIES,
   supportsPromptCaching: true,
   cacheDiscountFactor: 0.1,
+  // 5-minute writes at 1.25x input, 1-hour writes at 2x
+  // (platform.claude.com/docs/en/about-claude/pricing, read 2026-11-18).
+  cacheWriteFactors: { '5m': 1.25, '1h': 2 },
   supportsTokenCounting: true,
   supportsVision: true,
   supportsNativePdf: true,

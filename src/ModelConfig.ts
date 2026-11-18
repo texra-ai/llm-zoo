@@ -176,6 +176,14 @@ export interface ModelCapabilities {
    */
   cacheDiscountFactor: number;
 
+  /**
+   * What a cache write costs, as a multiplier of the input rate, by the cache
+   * lifetime the request chose. Absent: the provider bills cache writes as
+   * ordinary input (OpenAI before GPT-5.6, and providers with automatic
+   * caching).
+   */
+  cacheWriteFactors?: CacheWriteFactors;
+
   /** Whether reasoning can be interleaved with tool calls and regular output */
   supportsInterleavedThinking: boolean;
 
@@ -227,6 +235,18 @@ export const DEFAULT_MODEL_CAPABILITIES: ModelCapabilities = {
   supportsIntermDevMsgs: false,
   supportsNativeAudio: false,
 };
+
+/**
+ * Cache-write multipliers of the input rate, by cache lifetime: Anthropic's
+ * 5-minute and 1-hour writes, OpenAI's 30-minute and 12-hour writes. A write
+ * bills at this rate in place of the input rate.
+ */
+export interface CacheWriteFactors {
+  '5m'?: number;
+  '1h'?: number;
+  '30m'?: number;
+  '12h'?: number;
+}
 
 /** A provider file's entry: a `ModelConfig` whose `ref` the registry derives from `provider` and `id`. */
 export type ModelEntry = Omit<ModelConfig, 'ref'>;
