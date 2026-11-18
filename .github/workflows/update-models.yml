@@ -1,6 +1,6 @@
-name: Daily model update
+name: Model update
 
-# Researches newly-released LLMs every day and opens a PR adding any that the
+# Researches newly-released LLMs every two days and opens a PR adding any that the
 # registry is missing. Powered by Claude Code (anthropics/claude-code-action),
 # which has WebSearch / WebFetch for research and the gh CLI for PR creation.
 #
@@ -13,14 +13,16 @@ name: Daily model update
 
 on:
   schedule:
-    # 08:00 UTC daily. GitHub may delay scheduled runs under load.
-    - cron: '0 8 * * *'
+    # 08:00 UTC on every second day of the month (the step restarts each month,
+    # so the gap is one day across a 31-day month's end). GitHub may delay
+    # scheduled runs under load.
+    - cron: '0 8 */2 * *'
   # Allow manual runs from the Actions tab for testing.
   workflow_dispatch:
 
 # Avoid overlapping runs piling up duplicate PRs.
 concurrency:
-  group: daily-model-update
+  group: model-update
   cancel-in-progress: false
 
 jobs:
