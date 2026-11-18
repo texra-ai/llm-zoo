@@ -31,6 +31,14 @@ export const ModelCapabilitiesSchema = Schema.Struct({
   supportsPromptCaching: Schema.Boolean,
   supportsAutoPromptCaching: Schema.Boolean,
   cacheDiscountFactor: Schema.Finite,
+  cacheWriteFactors: Schema.optional(
+    Schema.Struct({
+      '5m': Schema.optional(Schema.Finite),
+      '1h': Schema.optional(Schema.Finite),
+      '30m': Schema.optional(Schema.Finite),
+      '12h': Schema.optional(Schema.Finite),
+    }),
+  ),
   supportsInterleavedThinking: Schema.Boolean,
   supportsVision: Schema.Boolean,
   supportsNativePdf: Schema.Boolean,

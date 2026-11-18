@@ -21,6 +21,10 @@ const OPENAI_REASONING_DEFAULT_CAPABILITIES: ModelCapabilities = {
 // Models that accept `none` turn thinking off with it (`off: []`). Pro mode
 // (`reasoning.mode: 'pro'`) is documented for GPT-5.6 and GPT-6 models only;
 // fast-tier prices are from the pricing page's Fast table.
+// GPT-5.6 and later bill cache writes: 1.25x input for a 30-minute write and
+// 2.5x for a 12-hour one (prompt-caching guide and pricing page, read
+// 2026-11-18). GPT-5.5 and earlier carry no cache-write charge.
+const OPENAI_CACHE_WRITE_FACTORS = { '30m': 1.25, '12h': 2.5 } as const;
 const LOW_TO_HIGH_EFFORTS = [ReasoningEffort.LOW, ReasoningEffort.MEDIUM, ReasoningEffort.HIGH] as const;
 const MINIMAL_TO_HIGH_EFFORTS = [ReasoningEffort.MINIMAL, ...LOW_TO_HIGH_EFFORTS] as const;
 const LOW_TO_XHIGH_EFFORTS = [...LOW_TO_HIGH_EFFORTS, ReasoningEffort.XHIGH] as const;
@@ -571,6 +575,7 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     },
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
+      cacheWriteFactors: OPENAI_CACHE_WRITE_FACTORS,
       cacheDiscountFactor: 0.1,
       supportsPromptCaching: true,
       supportsNativeMCPServer: true,
@@ -616,6 +621,7 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     },
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
+      cacheWriteFactors: OPENAI_CACHE_WRITE_FACTORS,
       cacheDiscountFactor: 0.1,
       supportsPromptCaching: true,
       supportsNativeMCPServer: true,
@@ -651,6 +657,7 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     },
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
+      cacheWriteFactors: OPENAI_CACHE_WRITE_FACTORS,
       cacheDiscountFactor: 0.1,
       supportsPromptCaching: true,
       supportsNativeMCPServer: true,
@@ -694,6 +701,7 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     },
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
+      cacheWriteFactors: OPENAI_CACHE_WRITE_FACTORS,
       cacheDiscountFactor: 0.1,
       supportsPromptCaching: true,
       supportsNativeMCPServer: true,
@@ -735,6 +743,7 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     },
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
+      cacheWriteFactors: OPENAI_CACHE_WRITE_FACTORS,
       cacheDiscountFactor: 0.05,
       supportsPromptCaching: true,
       supportsNativeMCPServer: true,
@@ -776,6 +785,7 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     },
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
+      cacheWriteFactors: OPENAI_CACHE_WRITE_FACTORS,
       cacheDiscountFactor: 0.05,
       supportsPromptCaching: true,
       supportsNativeMCPServer: true,
@@ -829,6 +839,7 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     },
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
+      cacheWriteFactors: OPENAI_CACHE_WRITE_FACTORS,
       cacheDiscountFactor: 0.05,
       supportsPromptCaching: true,
       supportsNativeMCPServer: true,
@@ -867,6 +878,7 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     },
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
+      cacheWriteFactors: OPENAI_CACHE_WRITE_FACTORS,
       cacheDiscountFactor: 0.05,
       supportsPromptCaching: true,
       supportsNativeMCPServer: true,
@@ -901,6 +913,7 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     },
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
+      cacheWriteFactors: OPENAI_CACHE_WRITE_FACTORS,
       cacheDiscountFactor: 0.1,
       supportsPromptCaching: true,
       supportsNativeMCPServer: true,
@@ -937,6 +950,7 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     },
     capabilities: {
       ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
+      cacheWriteFactors: OPENAI_CACHE_WRITE_FACTORS,
       cacheDiscountFactor: 0.1,
       supportsPromptCaching: true,
       supportsNativeMCPServer: true,

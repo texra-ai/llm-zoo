@@ -26,6 +26,7 @@ export type {
   ModelConfig,
   ModelEntry,
   ModelCapabilities,
+  CacheWriteFactors,
   LongContextPricing,
   ModelRef,
   ModelSelection,

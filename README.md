@@ -330,6 +330,7 @@ interface ModelCapabilities {
   supportsPromptCaching: boolean;
   supportsAutoPromptCaching: boolean;
   cacheDiscountFactor: number;   // 0.1 = 90% savings
+  cacheWriteFactors?: { '5m'?: number; '1h'?: number; '30m'?: number; '12h'?: number };  // write rate ÷ input rate, by cache lifetime
   supportsInterleavedThinking: boolean;
   supportsNativePdf: boolean;
   supportsNativeAudio: boolean;
