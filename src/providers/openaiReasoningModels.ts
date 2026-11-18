@@ -742,9 +742,9 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
       supportsNativeCodeExecution: true,
       supportsVision: true,
     },
-    // The model page says only that `none` is rejected. The effort list below
-    // is not documented for this model: it copies GPT-6.1 Sol. No default is
-    // documented either.
+    // Effort levels are listed on https://developers.openai.com/api/docs/models
+    // (read 2026-11-18); the model page adds that `none` is rejected. No
+    // default effort is documented for this model.
     reasoning: { efforts: LOW_TO_MAX_EFFORTS },
     tiers: { fast: { inputPrice: 16, outputPrice: 80 } },
     source: { url: 'https://developers.openai.com/api/docs/models/gpt-6.2-astra', verified: '2026-11-18' },
@@ -776,9 +776,9 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
       supportsNativeCodeExecution: true,
       supportsVision: true,
     },
-    // The model page says only that `none` is rejected. The effort list below
-    // is not documented for this model: it copies GPT-6.1 Sol. No default is
-    // documented either.
+    // Effort levels are listed on https://developers.openai.com/api/docs/models
+    // (read 2026-11-18); the model page adds that `none` is rejected. No
+    // default effort is documented for this model.
     reasoning: { efforts: LOW_TO_MAX_EFFORTS },
     modes: ['pro'],
     tiers: { fast: { inputPrice: 4, outputPrice: 20 } },
