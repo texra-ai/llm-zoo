@@ -746,7 +746,14 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     // (read 2026-11-18); the model page adds that `none` is rejected. No
     // default effort is documented for this model.
     reasoning: { efforts: LOW_TO_MAX_EFFORTS },
-    tiers: { fast: { inputPrice: 16, outputPrice: 80 } },
+    tiers: {
+      fast: {
+        inputPrice: 16,
+        outputPrice: 80,
+        // Fast mode has its own long-context rates (pricing page, Fast table).
+        longContextPricing: { aboveInputTokens: 272_000, inputPrice: 32.0, outputPrice: 120.0, cacheDiscountFactor: 0.05 },
+      },
+    },
     source: { url: 'https://developers.openai.com/api/docs/models/gpt-6.2-astra', verified: '2026-11-18' },
     // Tool calling requires the Responses API.
     requiresResponsesAPI: true,
@@ -781,7 +788,14 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     // default effort is documented for this model.
     reasoning: { efforts: LOW_TO_MAX_EFFORTS },
     modes: ['pro'],
-    tiers: { fast: { inputPrice: 4, outputPrice: 20 } },
+    tiers: {
+      fast: {
+        inputPrice: 4,
+        outputPrice: 20,
+        // Fast mode has its own long-context rates (pricing page, Fast table).
+        longContextPricing: { aboveInputTokens: 272_000, inputPrice: 8.0, outputPrice: 30.0, cacheDiscountFactor: 0.05 },
+      },
+    },
     source: { url: 'https://developers.openai.com/api/docs/models/gpt-6.2-sol', verified: '2026-11-18' },
     // Tool calling requires the Responses API.
     requiresResponsesAPI: true,

@@ -141,25 +141,25 @@ Gemini 4 Carbon's and Argon's $2 / $10 is introductory through 2026-11-30; Googl
 
 | Context (tokens) | Models |
 |------------------|--------|
-| 1,050,000 | `openai/gpt-6-astra`, `openai/gpt-6.1-sol`, `openai/gpt-6.1-terra`, `openai/gpt-6-luna`, `openai/gpt-5.6-terra` |
+| 1,050,000 | `openai/gpt-6.2-astra`, `openai/gpt-6.2-sol`, `openai/gpt-6-astra`, `openai/gpt-6.1-sol`, `openai/gpt-6.1-terra`, `openai/gpt-6-luna`, `openai/gpt-5.6-terra` |
 | 1,048,576 | `google/gemini-4-carbon`, `google/gemini-4-hydrogen`, `google/gemini-4-argon`, `google/gemini-3.8-flash`, `google/gemini-3.5-flash-lite`, `google/gemini-3.1-pro-preview`, `deepseek/deepseek-flash`, `deepseek/deepseek-v4-pro`, `moonshot/kimi-k3.1-pro`, `moonshot/kimi-k3`, `meta/muse-wonder-1.0`, `meta/muse-ember-1.0`, `meta/muse-spark-1.3` |
 | 1,000,000 | `anthropic/claude-fable-5-2`, `anthropic/claude-fable-5-1`, `anthropic/claude-mythos-5-1`, `anthropic/claude-opus-5-5`, `anthropic/claude-sonnet-5-5`, `anthropic/claude-haiku-5-5`, `glm/glm-5.3`, `glm/glm-5.3-flash`, `glm/glm-5.3-flashx`, `dashscope/qwen4-max`, `dashscope/qwen3.8-max`, `dashscope/qwen3.8-flash`, `dashscope/qwen3.7-plus`, `dashscope/qwen-plus`, `minimax/MiniMax-M3.1-Flash`, `minimax/MiniMax-M3` |
 | 500,000 | `xai/grok-4.7` |
 
 ### Capabilities
 
-Of the 43 current models:
+Of the 45 current models:
 
 | Capability | Count | Examples |
 |------------|-------|----------|
-| Reasoning | 42 | `anthropic/claude-opus-5-5`, `openai/gpt-6.1-sol`, `deepseek/deepseek-flash`, `xai/grok-4.7` |
-| Prompt caching | 42 | `anthropic/claude-opus-5-5`, `google/gemini-4-argon`, `deepseek/deepseek-flash`, `glm/glm-5.3` |
-| Vision | 39 | `anthropic/claude-sonnet-5-5`, `openai/gpt-6.1-sol`, `google/gemini-3.1-pro-preview` |
-| Effort levels | 31 | `anthropic/claude-sonnet-5-5`, `openai/gpt-6.1-sol`, `glm/glm-5.3`, `moonshot/kimi-k3` |
-| Code execution | 18 | `anthropic/claude-sonnet-5-5`, `openai/gpt-6.1-sol`, `google/gemini-3.8-flash` |
+| Reasoning | 44 | `anthropic/claude-opus-5-5`, `openai/gpt-6.1-sol`, `deepseek/deepseek-flash`, `xai/grok-4.7` |
+| Prompt caching | 44 | `anthropic/claude-opus-5-5`, `google/gemini-4-argon`, `deepseek/deepseek-flash`, `glm/glm-5.3` |
+| Vision | 41 | `anthropic/claude-sonnet-5-5`, `openai/gpt-6.1-sol`, `google/gemini-3.1-pro-preview` |
+| Effort levels | 33 | `anthropic/claude-sonnet-5-5`, `openai/gpt-6.1-sol`, `glm/glm-5.3`, `moonshot/kimi-k3` |
+| Code execution | 20 | `anthropic/claude-sonnet-5-5`, `openai/gpt-6.1-sol`, `google/gemini-3.8-flash` |
 | Thinking can be turned off | 15 | `anthropic/claude-haiku-5-5`, `openai/gpt-6-luna`, `deepseek/deepseek-flash`, `dashscope/qwen3.8-max`, `moonshot/kimi-k2.6` |
-| Web search | 15 | `anthropic/claude-opus-5-5`, `openai/gpt-6.1-sol`, `meta/muse-wonder-1.0` |
-| Fast tier + pro mode | 4 | `openai/gpt-6-astra`, `openai/gpt-6.1-sol`, `openai/gpt-6-luna`, `openai/gpt-5.6-terra` |
+| Web search | 17 | `anthropic/claude-opus-5-5`, `openai/gpt-6.1-sol`, `meta/muse-wonder-1.0` |
+| Fast tier + pro mode | 5 | `openai/gpt-6-astra`, `openai/gpt-6.1-sol`, `openai/gpt-6.2-sol`, `openai/gpt-6-luna`, `openai/gpt-5.6-terra` |
 
 ### Providers
 
