@@ -1,6 +1,6 @@
 You maintain `llm-zoo`, an npm package that catalogs LLM models with
 their pricing, context windows, and capabilities. Today's job: find
-genuinely new LLM models released in roughly the last 7 days and add
+genuinely new LLM models released in roughly the last 7 days (the job runs every two days) and add
 any that this repository is missing.
 
 ## Scope — only providers this repo already tracks
@@ -52,5 +52,5 @@ scope for an automated PR.
   changes and open NO pull request. Just print a one-line summary of
   what you checked. Do not open empty or "nothing to do" PRs.
 
-Be conservative: a missed model is fine (tomorrow's run catches it);
+Be conservative: a missed model is fine (the next run catches it);
 a wrong price or hallucinated model in a published package is not.
