@@ -118,6 +118,7 @@ Claude Haiku 5.5 bills prompts over 100K tokens at $0.50 / $2.50; Muse Ember bil
 | `anthropic/claude-mythos-5-1` | $10 | $50 | ✓ | Anthropic |
 | `openai/gpt-6-astra` | $10 | $50 | ✓ | OpenAI |
 | `anthropic/claude-fable-5-2` | $8 | $40 | ✓ | Anthropic |
+| `openai/gpt-6.2-astra` | $8 | $40 | ✓ | OpenAI |
 | `openai/chat-latest` | $5 | $30 | | OpenAI |
 | `anthropic/claude-opus-5-5` | $4 | $20 | ✓ | Anthropic |
 | `moonshot/kimi-k3` | $3 | $15 | ✓ | Moonshot |
@@ -128,6 +129,7 @@ Claude Haiku 5.5 bills prompts over 100K tokens at $0.50 / $2.50; Muse Ember bil
 | `moonshot/kimi-k3.1-pro` | $2 | $10 | ✓ | Moonshot |
 | `anthropic/claude-sonnet-5-5` | $2 | $10 | ✓ | Anthropic |
 | `openai/gpt-6.1-sol` | $2 | $10 | ✓ | OpenAI |
+| `openai/gpt-6.2-sol` | $2 | $10 | ✓ | OpenAI |
 | `google/gemini-4-hydrogen` | $1.50 | $7.50 | ✓ | Google |
 | `dashscope/qwen4-max` | $1.50 | $4.50 | ✓ | DashScope |
 | `openai/gpt-6.1-terra` | $1 | $5 | ✓ | OpenAI |
@@ -139,31 +141,31 @@ Gemini 4 Carbon's and Argon's $2 / $10 is introductory through 2026-11-30; Googl
 
 | Context (tokens) | Models |
 |------------------|--------|
-| 1,050,000 | `openai/gpt-6-astra`, `openai/gpt-6.1-sol`, `openai/gpt-6.1-terra`, `openai/gpt-6-luna`, `openai/gpt-5.6-terra` |
+| 1,050,000 | `openai/gpt-6.2-astra`, `openai/gpt-6.2-sol`, `openai/gpt-6-astra`, `openai/gpt-6.1-sol`, `openai/gpt-6.1-terra`, `openai/gpt-6-luna`, `openai/gpt-5.6-terra` |
 | 1,048,576 | `google/gemini-4-carbon`, `google/gemini-4-hydrogen`, `google/gemini-4-argon`, `google/gemini-3.8-flash`, `google/gemini-3.5-flash-lite`, `google/gemini-3.1-pro-preview`, `deepseek/deepseek-flash`, `deepseek/deepseek-v4-pro`, `moonshot/kimi-k3.1-pro`, `moonshot/kimi-k3`, `meta/muse-wonder-1.0`, `meta/muse-ember-1.0`, `meta/muse-spark-1.3` |
 | 1,000,000 | `anthropic/claude-fable-5-2`, `anthropic/claude-fable-5-1`, `anthropic/claude-mythos-5-1`, `anthropic/claude-opus-5-5`, `anthropic/claude-sonnet-5-5`, `anthropic/claude-haiku-5-5`, `glm/glm-5.3`, `glm/glm-5.3-flash`, `glm/glm-5.3-flashx`, `dashscope/qwen4-max`, `dashscope/qwen3.8-max`, `dashscope/qwen3.8-flash`, `dashscope/qwen3.7-plus`, `dashscope/qwen-plus`, `minimax/MiniMax-M3.1-Flash`, `minimax/MiniMax-M3` |
 | 500,000 | `xai/grok-4.7` |
 
 ### Capabilities
 
-Of the 43 current models:
+Of the 45 current models:
 
 | Capability | Count | Examples |
 |------------|-------|----------|
-| Reasoning | 42 | `anthropic/claude-opus-5-5`, `openai/gpt-6.1-sol`, `deepseek/deepseek-flash`, `xai/grok-4.7` |
-| Prompt caching | 42 | `anthropic/claude-opus-5-5`, `google/gemini-4-argon`, `deepseek/deepseek-flash`, `glm/glm-5.3` |
-| Vision | 39 | `anthropic/claude-sonnet-5-5`, `openai/gpt-6.1-sol`, `google/gemini-3.1-pro-preview` |
-| Effort levels | 31 | `anthropic/claude-sonnet-5-5`, `openai/gpt-6.1-sol`, `glm/glm-5.3`, `moonshot/kimi-k3` |
-| Code execution | 18 | `anthropic/claude-sonnet-5-5`, `openai/gpt-6.1-sol`, `google/gemini-3.8-flash` |
+| Reasoning | 44 | `anthropic/claude-opus-5-5`, `openai/gpt-6.1-sol`, `deepseek/deepseek-flash`, `xai/grok-4.7` |
+| Prompt caching | 44 | `anthropic/claude-opus-5-5`, `google/gemini-4-argon`, `deepseek/deepseek-flash`, `glm/glm-5.3` |
+| Vision | 41 | `anthropic/claude-sonnet-5-5`, `openai/gpt-6.1-sol`, `google/gemini-3.1-pro-preview` |
+| Effort levels | 33 | `anthropic/claude-sonnet-5-5`, `openai/gpt-6.1-sol`, `glm/glm-5.3`, `moonshot/kimi-k3` |
+| Code execution | 20 | `anthropic/claude-sonnet-5-5`, `openai/gpt-6.1-sol`, `google/gemini-3.8-flash` |
 | Thinking can be turned off | 15 | `anthropic/claude-haiku-5-5`, `openai/gpt-6-luna`, `deepseek/deepseek-flash`, `dashscope/qwen3.8-max`, `moonshot/kimi-k2.6` |
-| Web search | 15 | `anthropic/claude-opus-5-5`, `openai/gpt-6.1-sol`, `meta/muse-wonder-1.0` |
-| Fast tier + pro mode | 4 | `openai/gpt-6-astra`, `openai/gpt-6.1-sol`, `openai/gpt-6-luna`, `openai/gpt-5.6-terra` |
+| Web search | 17 | `anthropic/claude-opus-5-5`, `openai/gpt-6.1-sol`, `meta/muse-wonder-1.0` |
+| Fast tier + pro mode | 5 | `openai/gpt-6-astra`, `openai/gpt-6.1-sol`, `openai/gpt-6.2-sol`, `openai/gpt-6-luna`, `openai/gpt-5.6-terra` |
 
 ### Providers
 
 | Provider | Models | Current | Highlights |
 |----------|--------|---------|------------|
-| **OpenAI** | 44 | 6 | GPT-6 Astra, GPT-6.1 Sol, GPT-6.1 Terra, GPT-6 Luna, GPT-5.6 Terra, Chat Latest; fast tier and pro mode; Codex subscription windows |
+| **OpenAI** | 46 | 8 | GPT-6.2 Astra, GPT-6.2 Sol, GPT-6 Astra, GPT-6.1 Sol, GPT-6.1 Terra, GPT-6 Luna, GPT-5.6 Terra, Chat Latest; fast tier and pro mode; Codex subscription windows |
 | **Anthropic** | 27 | 6 | Fable 5.2, Fable 5.1, Mythos 5.1, Opus 5.5, Sonnet 5.5, Haiku 5.5, 1M context, 97.5% cache savings on Fable 5.2 and Fable/Mythos 5.1, PDF support |
 | **GLM** | 16 | 5 | Zhipu GLM-5.3 / Flash / FlashX, native vision, 1M context |
 | **Google** | 17 | 6 | Gemini 4 Carbon, Hydrogen and Argon, 3.8 Flash, 3.1 Pro, 1M context, audio input |

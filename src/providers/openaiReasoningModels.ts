@@ -714,6 +714,93 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     openRouterOnly: false,
     codexSubscription: { contextWindow: 272000 },
   },
+  // GPT-6.2 Astra and Sol: $8 / $40 and $2 / $10, cached input at 5% of input,
+  // prompts over 272K input tokens bill the full request at 2x input/cache and
+  // 1.5x output (`longContextPricing`). Pro mode is listed for Sol only, from the
+  // reasoning guide's `gpt-6.2-sol` example; no page states it for Astra.
+  {
+    label: 'GPT-6.2 Astra',
+    id: 'gpt-6.2-astra',
+    shortName: 'gpt-6.2-astra',
+    provider: ModelProvider.OPENAI,
+    maxOutputTokens: 128000,
+    contextWindow: 1050000,
+    inputPrice: 8.0,
+    outputPrice: 40.0,
+    longContextPricing: {
+      aboveInputTokens: 272_000,
+      inputPrice: 16.0,
+      outputPrice: 60.0,
+      cacheDiscountFactor: 0.05,
+    },
+    capabilities: {
+      ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
+      cacheDiscountFactor: 0.05,
+      supportsPromptCaching: true,
+      supportsNativeMCPServer: true,
+      supportsNativeWebSearch: true,
+      supportsNativeCodeExecution: true,
+      supportsVision: true,
+    },
+    // Effort levels are listed on https://developers.openai.com/api/docs/models
+    // (read 2026-11-18); the model page adds that `none` is rejected. No
+    // default effort is documented for this model.
+    reasoning: { efforts: LOW_TO_MAX_EFFORTS },
+    tiers: {
+      fast: {
+        inputPrice: 16,
+        outputPrice: 80,
+        // Fast mode has its own long-context rates (pricing page, Fast table).
+        longContextPricing: { aboveInputTokens: 272_000, inputPrice: 32.0, outputPrice: 120.0, cacheDiscountFactor: 0.05 },
+      },
+    },
+    source: { url: 'https://developers.openai.com/api/docs/models/gpt-6.2-astra', verified: '2026-11-18' },
+    // Tool calling requires the Responses API.
+    requiresResponsesAPI: true,
+    openRouterOnly: false,
+  },
+  {
+    label: 'GPT-6.2 Sol',
+    id: 'gpt-6.2-sol',
+    shortName: 'gpt-6.2-sol',
+    provider: ModelProvider.OPENAI,
+    maxOutputTokens: 128000,
+    contextWindow: 1050000,
+    inputPrice: 2.0,
+    outputPrice: 10.0,
+    longContextPricing: {
+      aboveInputTokens: 272_000,
+      inputPrice: 4.0,
+      outputPrice: 15.0,
+      cacheDiscountFactor: 0.05,
+    },
+    capabilities: {
+      ...OPENAI_REASONING_DEFAULT_CAPABILITIES,
+      cacheDiscountFactor: 0.05,
+      supportsPromptCaching: true,
+      supportsNativeMCPServer: true,
+      supportsNativeWebSearch: true,
+      supportsNativeCodeExecution: true,
+      supportsVision: true,
+    },
+    // Effort levels are listed on https://developers.openai.com/api/docs/models
+    // (read 2026-11-18); the model page adds that `none` is rejected. No
+    // default effort is documented for this model.
+    reasoning: { efforts: LOW_TO_MAX_EFFORTS },
+    modes: ['pro'],
+    tiers: {
+      fast: {
+        inputPrice: 4,
+        outputPrice: 20,
+        // Fast mode has its own long-context rates (pricing page, Fast table).
+        longContextPricing: { aboveInputTokens: 272_000, inputPrice: 8.0, outputPrice: 30.0, cacheDiscountFactor: 0.05 },
+      },
+    },
+    source: { url: 'https://developers.openai.com/api/docs/models/gpt-6.2-sol', verified: '2026-11-18' },
+    // Tool calling requires the Responses API.
+    requiresResponsesAPI: true,
+    openRouterOnly: false,
+  },
   // GPT-6 Sol and Luna: smaller GPT-6 models built on Astra, launched at 50%
   // below GPT-5.6's promotional API rates. Same rate-card shape as Astra:
   // cached input at 10% of input, cache writes at 1.25x, and prompts over
