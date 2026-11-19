@@ -91,7 +91,7 @@ export const MINIMAX_MODELS: readonly ModelEntry[] = [
     // thinking: {type: 'disabled'} skips thinking; reasoning_effort is ignored
     // (only M3.1-Flash tunes depth). M2.x always think.
     reasoning: { efforts: [], off: [] },
-    source: { url: 'https://platform.minimax.io/docs/api-reference/text-chat-openai', verified: '2026-10-16' },
+    source: { url: 'https://platform.minimax.io/docs/guides/text-generation', verified: '2026-11-19' },
     openRouterOnly: false,
   },
   {

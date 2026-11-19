@@ -31,7 +31,7 @@ const LOW_TO_XHIGH_EFFORTS = [...LOW_TO_HIGH_EFFORTS, ReasoningEffort.XHIGH] as 
 
 /**
  * Google Gemini model configurations.
- * Includes Gemini 4 Carbon, Hydrogen and Argon, Gemini 3.x and 2.5 Pro/Flash variants.
+ * Includes Gemini 4 Carbon, Neon, Hydrogen and Argon, Gemini 3.x and 2.5 Pro/Flash variants.
  */
 export const GOOGLE_MODELS: readonly ModelEntry[] = [
   // Gemini 4 Carbon (GA 2026-11-10). Same price card as Argon: introductory
@@ -61,6 +61,36 @@ export const GOOGLE_MODELS: readonly ModelEntry[] = [
     },
     reasoning: { efforts: LOW_TO_HIGH_EFFORTS, providerDefault: ReasoningEffort.MEDIUM },
     source: { url: 'https://ai.google.dev/gemini-api/docs/models/gemini-4-carbon', verified: '2026-11-16' },
+    openRouterOnly: false,
+  },
+  // Gemini 4 Neon (stable, November 2026): sits between Carbon and Hydrogen
+  // for complex, high-frequency work. $3 input / $0.15 cached / $15 output
+  // (thinking billed as output), no introductory schedule; not on the Free
+  // tier. Implicit caching only (prompts >= 4,096 tokens). Unified 1,048,576-
+  // token window; synchronous output caps at 65,536, long decode needs
+  // `background: true`. thinking_level low / medium / high (default) / xhigh;
+  // `minimal` is rejected. Sampling parameters are ignored (out-of-range
+  // values are a 400).
+  {
+    label: 'Gemini 4 Neon',
+    id: 'gemini-4-neon',
+    shortName: 'gemini-4-neon',
+    openrouterFullName: 'google/gemini-4-neon',
+    provider: ModelProvider.GOOGLE,
+    maxOutputTokens: 65536,
+    contextWindow: 1048576,
+    inputPrice: 3.0,
+    outputPrice: 15.0,
+    capabilities: {
+      ...GOOGLE_DEFAULT_CAPABILITIES,
+      cacheDiscountFactor: 0.05,
+      supportsPromptCaching: false,
+      supportsAutoPromptCaching: true,
+      supportsNativeCodeExecution: true,
+      supportsNativeMCPServer: true,
+    },
+    reasoning: { efforts: LOW_TO_XHIGH_EFFORTS, providerDefault: ReasoningEffort.HIGH },
+    source: { url: 'https://ai.google.dev/gemini-api/docs/models/gemini-4-neon', verified: '2026-11-19' },
     openRouterOnly: false,
   },
   // Gemini 4 Hydrogen (GA 2026-11-12), adapted from Carbon for speed.
