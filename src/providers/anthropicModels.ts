@@ -51,7 +51,7 @@ const LOW_TO_HIGH_EFFORTS = [
 
 /**
  * Anthropic Claude model configurations.
- * Includes Claude Fable 5.2, Claude Fable 5.1, Claude Mythos 5.1, Claude Fable 5,
+ * Includes Claude Fable 5.2, Claude Fable 5.1, Claude Mythos 5.2, Claude Mythos 5.1, Claude Fable 5,
  * Claude Mythos 5, Claude Opus 5.5, Claude Sonnet 5.5, Claude Haiku 5.5, and
  * 5.x/4.x/3.x Opus, Sonnet, and Haiku variants.
  */
@@ -111,6 +111,33 @@ export const ANTHROPIC_MODELS: readonly ModelEntry[] = [
     },
     reasoning: { efforts: ANTHROPIC_REASONING_EFFORTS, providerDefault: ReasoningEffort.HIGH },
     source: { url: 'https://platform.claude.com/docs/en/build-with-claude/effort', verified: '2026-09-30' },
+    openRouterOnly: false,
+  },
+  {
+    label: 'Mythos 5.2 (Limited Availability)',
+    id: 'claude-mythos-5-2',
+    shortName: 'claude-mythos-5-2',
+    provider: ModelProvider.ANTHROPIC,
+    maxOutputTokens: 128000,
+    contextWindow: 1000000,
+    inputPrice: 8.0,
+    outputPrice: 40.0,
+    capabilities: {
+      ...ANTHROPIC_DEFAULT_CAPABILITIES,
+      supportsIntermDevMsgs: true,
+      // Cache reads $0.20 / MTok vs $8 / MTok input (0.025x).
+      cacheDiscountFactor: 0.025,
+      supportsNativeMCPServer: true,
+      supportsNativeWebSearch: true,
+      supportsDynamicFilteringWebSearch: true,
+      supportsNativeCodeExecution: true,
+      supportsAssistantPrefill: false,
+      // Adaptive thinking is always on for Mythos 5.2 and cannot be disabled.
+      supportsInterleavedThinking: true,
+    },
+    reasoning: { efforts: ANTHROPIC_REASONING_EFFORTS, providerDefault: ReasoningEffort.HIGH },
+    source: { url: 'https://platform.claude.com/docs/en/models/mythos-5-2/overview', verified: '2026-11-25' },
+    // Verified organizations only; no OpenRouter or VS Code LM routing.
     openRouterOnly: false,
   },
   {
