@@ -85,6 +85,34 @@ export const ANTHROPIC_MODELS: readonly ModelEntry[] = [
     openRouterOnly: false,
   },
   {
+    label: 'Mythos 5.2 (Limited Availability)',
+    id: 'claude-mythos-5-2',
+    shortName: 'claude-mythos-5-2',
+    provider: ModelProvider.ANTHROPIC,
+    maxOutputTokens: 128000,
+    contextWindow: 1000000,
+    inputPrice: 8.0,
+    outputPrice: 40.0,
+    capabilities: {
+      ...ANTHROPIC_DEFAULT_CAPABILITIES,
+      supportsIntermDevMsgs: true,
+      // Cache reads $0.20 / MTok vs $8 / MTok input (0.025x), per the Mythos 5.2
+      // model page pricing table.
+      cacheDiscountFactor: 0.025,
+      supportsNativeMCPServer: true,
+      supportsNativeWebSearch: true,
+      supportsDynamicFilteringWebSearch: true,
+      supportsNativeCodeExecution: true,
+      supportsAssistantPrefill: false,
+      // Mythos 5.2 is the same model as Fable 5.2: adaptive thinking is always on.
+      supportsInterleavedThinking: true,
+    },
+    reasoning: { efforts: ANTHROPIC_REASONING_EFFORTS, providerDefault: ReasoningEffort.HIGH },
+    source: { url: 'https://platform.claude.com/docs/en/models/mythos-5-2/overview', verified: '2026-11-27' },
+    // Verification-required access; no OpenRouter or VS Code LM routing.
+    openRouterOnly: false,
+  },
+  {
     label: 'Claude Fable 5.1',
     id: 'claude-fable-5-1',
     shortName: 'claude-fable-5-1',
