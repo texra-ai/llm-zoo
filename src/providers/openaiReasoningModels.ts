@@ -767,6 +767,9 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     // Tool calling requires the Responses API.
     requiresResponsesAPI: true,
     openRouterOnly: false,
+    // Codex CLI 0.172.0's backend model catalog (cached 2026-11-27) lists
+    // context_window 272000 for this subscription route.
+    codexSubscription: { contextWindow: 272000 },
   },
   {
     label: 'GPT-6.2 Sol',
@@ -810,6 +813,9 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     // Tool calling requires the Responses API.
     requiresResponsesAPI: true,
     openRouterOnly: false,
+    // Codex CLI 0.172.0's backend model catalog (cached 2026-11-27) lists
+    // context_window 500000 for this subscription route.
+    codexSubscription: { contextWindow: 500000 },
   },
   // GPT-6 Sol and Luna: smaller GPT-6 models built on Astra, launched at 50%
   // below GPT-5.6's promotional API rates. Same rate-card shape as Astra:
@@ -892,9 +898,9 @@ export const OPENAI_REASONING_MODELS: readonly ModelEntry[] = [
     // Tool calling requires the Responses API.
     requiresResponsesAPI: true,
     openRouterOnly: false,
-    // Codex CLI 0.164.0's backend model catalog, fetched 2026-10-27,
-    // lists context_window 272000 for this subscription route.
-    codexSubscription: { contextWindow: 272000 },
+    // Codex CLI 0.172.0's backend model catalog (cached 2026-11-27) lists
+    // context_window 500000 for this subscription route (raised from 272000).
+    codexSubscription: { contextWindow: 500000 },
   },
   {
     label: 'GPT-6 Sol',
